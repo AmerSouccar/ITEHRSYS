@@ -21,7 +21,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HR\Administrative\Classes\Employees\Services\" />
-    <Folder Include="HR\Administrative\Enums\" />
     <Folder Include="HR\Administrative\Indexes\Cities\Services\" />
+    <Folder Include="HR\Administrative\Indexes\Countries\Services\" />
+    <Folder Include="HR\Administrative\Indexes\Nationalities\Services\" />
+    <Folder Include="HR\Administrative\Indexes\Religions\Services\" />
   </ItemGroup>
 </Project>

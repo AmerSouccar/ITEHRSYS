@@ -99,6 +99,7 @@ namespace HRSystem.HR.Administrative.Classes.Employees
         public List<Residence> Residences { get; set; }
         public List<Position> Positions { get; set; }       
         public List<PositionLog> LogOfPosition { get; set; }
-       
+        public BloodType BloodType { get; set; }
+
     }
 }
