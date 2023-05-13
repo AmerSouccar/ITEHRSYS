@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using HRSystem.HR.Administrative.Classes.Attachments;
 using HRSystem.HR.Administrative.Classes.Spouses;
 using HRSystem.HR.Administrative.Enums;
 using HRSystem.HR.Administrative.Indexes.Cities;
@@ -34,6 +35,6 @@ namespace HRSystem.HR.Administrative.Classes.Childrens
         public string PassportExpireDate { get; set; }
         public bool isDead { get; set; }
         public DateTime? DeathDate { get; set; }
-
+        public List<Attachment> Attachments { get; set; }
     }
 }
