@@ -34,7 +34,10 @@ namespace HRSystem.HR.Administrative.Classes.Spouses
         public int Order { get; set; }
         public DateTime MarrigeDate { get; set; }
         public bool isDivorced { get; set; }
+        public DateTime? DivorceDate { get; set; }
         public bool isDead { get; set; }
+        public DateTime? DeathDate { get; set; }
+
         #endregion
         #region JobInfo
         public bool HasJob { get; set; }
