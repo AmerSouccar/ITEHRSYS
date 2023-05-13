@@ -1,6 +1,8 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Classes.Attachments;
 using HRSystem.HR.Administrative.Classes.Childrens;
+using HRSystem.HR.Administrative.Classes.Dependences;
+using HRSystem.HR.Administrative.Classes.Educations;
 using HRSystem.HR.Administrative.Classes.Spouses;
 using HRSystem.HR.Administrative.Enums;
 using HRSystem.HR.Administrative.Indexes.Cities;
@@ -88,7 +90,7 @@ namespace HRSystem.HR.Administrative.Classes.Employees
         public List<Attachment> Attachments { get; set; }
         public List<Spouse> Spouse { get; set; }
         public List<Children> Children { get; set; }
-        public List<Dependents> Dependents { get; set; }
+        public List<Dependent> Dependents { get; set; }
         public List<Education> Educations { get; set; }
         public List<Training> Trainings { get; set; }
         public List<Experience> Experiences { get; set; }
