@@ -1,5 +1,7 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Classes.Attachments;
+using HRSystem.HR.Administrative.Classes.Childrens;
+using HRSystem.HR.Administrative.Classes.Spouses;
 using HRSystem.HR.Administrative.Enums;
 using HRSystem.HR.Administrative.Indexes.Cities;
 using HRSystem.HR.Administrative.Indexes.Countries;
