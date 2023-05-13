@@ -4,6 +4,7 @@ using HRSystem.HR.Administrative.Classes.Childrens;
 using HRSystem.HR.Administrative.Classes.Dependents;
 using HRSystem.HR.Administrative.Classes.Educations;
 using HRSystem.HR.Administrative.Classes.Spouses;
+using HRSystem.HR.Administrative.Classes.Trainings;
 using HRSystem.HR.Administrative.Enums;
 using HRSystem.HR.Administrative.Indexes.Cities;
 using HRSystem.HR.Administrative.Indexes.Countries;
