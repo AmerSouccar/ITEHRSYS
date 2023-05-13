@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRSystem.HR.Administrative.Classes.Dependences
+namespace HRSystem.HR.Administrative.Classes.Dependents
 {
     public class Dependent : FullAuditedAggregateRoot<Guid>
     {
