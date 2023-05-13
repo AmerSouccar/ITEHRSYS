@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using HRSystem.HR.Administrative.Classes.Attachments;
 using HRSystem.HR.Administrative.Indexes.Cities;
 using HRSystem.HR.Administrative.Indexes.Nationalities;
 using System;
@@ -48,5 +49,6 @@ namespace HRSystem.HR.Administrative.Classes.Spouses
         public string? WorkEmail { get; set; }
 
         #endregion
+        public List<Attachment> Attachments{ get; set; }
     }
 }
