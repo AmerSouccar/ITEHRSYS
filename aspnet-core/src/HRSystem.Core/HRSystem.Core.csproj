@@ -24,8 +24,13 @@
     <Folder Include="HR\Administrative\Classes\Dependents\Services\" />
     <Folder Include="HR\Administrative\Classes\Educations\Services\" />
     <Folder Include="HR\Administrative\Classes\Employees\Services\" />
+    <Folder Include="HR\Administrative\Classes\Languages\Services\" />
+    <Folder Include="HR\Administrative\Classes\Passports\Services\" />
+    <Folder Include="HR\Administrative\Classes\Residences\Services\" />
+    <Folder Include="HR\Administrative\Classes\Skills\Services\" />
     <Folder Include="HR\Administrative\Classes\Spouses\Services\" />
     <Folder Include="HR\Administrative\Classes\Trainings\Services\" />
+    <Folder Include="HR\Administrative\Classes\Certificates\Services\" />
     <Folder Include="HR\Administrative\Indexes\Cities\Services\" />
     <Folder Include="HR\Administrative\Indexes\Countries\Services\" />
     <Folder Include="HR\Administrative\Indexes\EducationIndexes\EducationMajors\Services\" />
@@ -35,7 +40,9 @@
     <Folder Include="HR\Administrative\Indexes\EducationIndexes\ScoreTypes\Services\" />
     <Folder Include="HR\Administrative\Indexes\EducationIndexes\Universities\Services\" />
     <Folder Include="HR\Administrative\Indexes\KinshipTypes\Services\" />
+    <Folder Include="HR\Administrative\Indexes\LanguageNames\Services\" />
     <Folder Include="HR\Administrative\Indexes\Nationalities\Services\" />
     <Folder Include="HR\Administrative\Indexes\Religions\Services\" />
+    <Folder Include="HR\Administrative\Indexes\Levels\Services\" />
   </ItemGroup>
 </Project>
