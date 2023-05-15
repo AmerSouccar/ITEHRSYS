@@ -15,6 +15,6 @@
     <ProjectReference Include="..\HRSystem.Core\HRSystem.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="HR\" />
+    <Folder Include="HR\Administrative\Classes\" />
   </ItemGroup>
 </Project>
