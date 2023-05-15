@@ -20,9 +20,21 @@
     <PackageReference Include="Castle.Windsor.MsDependencyInjection" Version="3.4.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="HR\Administrative\Classes\Attachments\Services\" />
+    <Folder Include="HR\Administrative\Classes\Dependents\Services\" />
+    <Folder Include="HR\Administrative\Classes\Educations\Services\" />
     <Folder Include="HR\Administrative\Classes\Employees\Services\" />
+    <Folder Include="HR\Administrative\Classes\Spouses\Services\" />
+    <Folder Include="HR\Administrative\Classes\Trainings\Services\" />
     <Folder Include="HR\Administrative\Indexes\Cities\Services\" />
     <Folder Include="HR\Administrative\Indexes\Countries\Services\" />
+    <Folder Include="HR\Administrative\Indexes\EducationIndexes\EducationMajors\Services\" />
+    <Folder Include="HR\Administrative\Indexes\EducationIndexes\EducationTypes\Services\" />
+    <Folder Include="HR\Administrative\Indexes\EducationIndexes\Ranks\Services\" />
+    <Folder Include="HR\Administrative\Indexes\EducationIndexes\Scores\Services\" />
+    <Folder Include="HR\Administrative\Indexes\EducationIndexes\ScoreTypes\Services\" />
+    <Folder Include="HR\Administrative\Indexes\EducationIndexes\Universities\Services\" />
+    <Folder Include="HR\Administrative\Indexes\KinshipTypes\Services\" />
     <Folder Include="HR\Administrative\Indexes\Nationalities\Services\" />
     <Folder Include="HR\Administrative\Indexes\Religions\Services\" />
   </ItemGroup>
