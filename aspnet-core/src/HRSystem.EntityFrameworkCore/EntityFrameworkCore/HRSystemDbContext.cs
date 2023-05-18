@@ -29,6 +29,10 @@ using HRSystem.HR.Administrative.Indexes.LanguageNames;
 using HRSystem.HR.Administrative.Indexes.Levels;
 using HRSystem.HR.Administrative.Indexes.Nationalities;
 using HRSystem.HR.Administrative.Indexes.Religions;
+using HRSystem.HR.Administrative.Classes.MilitaryServices;
+using HRSystem.HR.Administrative.Classes.DriverLicenses;
+using HRSystem.HR.Administrative.Indexes.DriverLicenseTypes;
+using HRSystem.HR.Administrative.Classes.Convictions;
 
 namespace HRSystem.EntityFrameworkCore
 {
@@ -66,6 +70,10 @@ namespace HRSystem.EntityFrameworkCore
         public DbSet<Level> Levels { get; set; }
         public DbSet<Nationality> Nationalities { get; set; }
         public DbSet<Religion> Religions { get; set; }
+        public DbSet<MilitaryService> MilitaryServices { get; set; }
+        public DbSet<DriverLicense> DriverLicenses { get; set; }
+        public DbSet<DriverLicenseType> DriverLicenseTypes { get; set; }
+        public DbSet<Conviction> Convictions { get; set; }
 
     }
 }

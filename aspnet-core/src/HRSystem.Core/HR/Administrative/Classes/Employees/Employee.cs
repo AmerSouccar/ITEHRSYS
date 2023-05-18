@@ -2,10 +2,13 @@
 using HRSystem.HR.Administrative.Classes.Attachments;
 using HRSystem.HR.Administrative.Classes.Certificates;
 using HRSystem.HR.Administrative.Classes.Childrens;
+using HRSystem.HR.Administrative.Classes.Convictions;
 using HRSystem.HR.Administrative.Classes.Dependents;
+using HRSystem.HR.Administrative.Classes.DriverLicenses;
 using HRSystem.HR.Administrative.Classes.Educations;
 using HRSystem.HR.Administrative.Classes.Experiences;
 using HRSystem.HR.Administrative.Classes.Languages;
+using HRSystem.HR.Administrative.Classes.MilitaryServices;
 using HRSystem.HR.Administrative.Classes.Passports;
 using HRSystem.HR.Administrative.Classes.Residences;
 using HRSystem.HR.Administrative.Classes.Skills;
@@ -104,10 +107,10 @@ namespace HRSystem.HR.Administrative.Classes.Employees
         public List<Skill> Skills { get; set; }
         public List<Language> Languages { get; set; }
         public List<Certificate> Certificates { get; set; }
-        //public List<MilitaryService> MilitaryService { get; set; }
+        public List<MilitaryService> MilitaryService { get; set; }
         public List<Passport> Passports { get; set; }
-        //public List<DriverLicense> DriverLicense { get; set; }
-        //public List<Conviction> Convictions { get; set; }
+        public List<DriverLicense> DriverLicense { get; set; }
+        public List<Conviction> Convictions { get; set; }
         public List<Residency> Residences { get; set; }
         //public List<Position> Positions { get; set; }       
         //public List<PositionLog> LogOfPosition { get; set; }
