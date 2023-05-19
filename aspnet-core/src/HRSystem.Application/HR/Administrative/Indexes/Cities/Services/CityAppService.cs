@@ -1,4 +1,6 @@
 ﻿using HRSystem.HR.Administrative.Indexes.Cities.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.Cities;
+using HRSystem.HR.Administrative.Personal.Indexes.Cities.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

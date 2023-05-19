@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HRSystem.HR.Administrative.Indexes.Cities.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.Cities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
