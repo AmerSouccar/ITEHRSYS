@@ -1,12 +1,12 @@
 ﻿using Abp.Application.Services;
-using HRSystem.HR.Administrative.Indexes.Cities.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.Cities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRSystem.HR.Administrative.Indexes.Cities.Services
+namespace HRSystem.HR.Administrative.Personal.Indexes.Cities.Services
 {
     public interface ICityAppService : IApplicationService
     {

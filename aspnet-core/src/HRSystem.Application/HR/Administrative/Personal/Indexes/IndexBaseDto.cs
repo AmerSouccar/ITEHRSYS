@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRSystem.HR.Administrative.Indexes
+namespace HRSystem.HR.Administrative.Personal.Indexes
 {
     public class IndexBaseDto : EntityDto<Guid>
     {
