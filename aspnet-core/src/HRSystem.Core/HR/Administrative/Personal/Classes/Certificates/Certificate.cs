@@ -12,7 +12,10 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Certificates
     public class Certificate : FullAuditedAggregateRoot<Guid>
     {
         public string Type { get; set; }
+        #region PlaceofIssuance
+        public Guid CityId { get; set; }
         public City PlaceofIssuance { get; set; }
+        #endregion
         public DateTime DateofIssuance { get; set; }
         public DateTime ExpirationDate { get; set; }
         public string Notes { get; set; }

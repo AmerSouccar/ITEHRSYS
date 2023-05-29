@@ -30,7 +30,10 @@
     <Folder Include="HR\Administrative\OrgChart\Classes\Nodes\Services\" />
     <Folder Include="HR\Administrative\OrgChart\Indexes\" />
     <Folder Include="HR\Administrative\Personal\Classes\Attachments\Services\" />
+    <Folder Include="HR\Administrative\Personal\Classes\BankInformations\Services\" />
+    <Folder Include="HR\Administrative\Personal\Classes\Banks\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Convictions\Services\" />
+    <Folder Include="HR\Administrative\Personal\Classes\Custodies\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Dependents\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\DriverLicenses\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Educations\Services\" />
@@ -57,5 +60,14 @@
     <Folder Include="HR\Administrative\Personal\Indexes\Nationalities\Services\" />
     <Folder Include="HR\Administrative\Personal\Indexes\Religions\Services\" />
     <Folder Include="HR\Administrative\Personal\Indexes\Levels\Services\" />
+    <Folder Include="HR\Operational\AttendanceSystem\Classes\" />
+    <Folder Include="HR\Operational\AttendanceSystem\Enums\" />
+    <Folder Include="HR\Operational\AttendanceSystem\Indexes\" />
+    <Folder Include="HR\Operational\EmployeeServices\Classes\" />
+    <Folder Include="HR\Operational\EmployeeServices\Enums\" />
+    <Folder Include="HR\Operational\EmployeeServices\Indexes\" />
+    <Folder Include="HR\Operational\PayrollSystem\Classes\" />
+    <Folder Include="HR\Operational\PayrollSystem\Enums\" />
+    <Folder Include="HR\Operational\PayrollSystem\Indexes\" />
   </ItemGroup>
 </Project>
