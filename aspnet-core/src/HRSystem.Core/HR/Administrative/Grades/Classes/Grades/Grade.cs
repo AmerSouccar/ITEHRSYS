@@ -20,7 +20,11 @@ namespace HRSystem.HR.Administrative.Grades.Classes.Grades
         public Guid OrganizationLevelId { get; set; }
         public OrganizationLevel OrganizationLevel { get; set; }
         #endregion
+        #region EducationGrade
+        [ForeignKey("EducationGrade")]
+        public Guid EducationGradeId { get; set; }
         public EducationGrade EducationGrade { get; set; }
+        #endregion
         public double? MinSalary { get; set; }
         public double? MaxSalary { get; set; }
         public Currency? Currency { get; set; }

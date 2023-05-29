@@ -36,7 +36,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Childrens
         public Guid PlaceofBirthId { get; set; }
         public City PlaceofBirth { get; set; }
         #endregion
+        #region Nationality
+        [ForeignKey("Nationality")]
+        public Guid NationalityId { get; set; }
         public Nationality Nationality { get; set; }
+        #endregion
         public string ResidencyNo { get; set; }
         public string ResidencExpireDate { get; set; }
         public string PassportNo { get; set; }

@@ -4,6 +4,7 @@ using HRSystem.HR.Administrative.Personal.Enums;
 using HRSystem.HR.Administrative.Personal.Indexes.Nationalities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Residences
         public string FatherName { get; set; }
         public string MotherName { get; set; }
         public ResidencyType ResidencyType { get; set; }
+        #region Nationality
+        [ForeignKey("Nationality")]
+        public Guid NationalityId { get; set; }
         public Nationality Nationality { get; set; }
+        #endregion
         public DateTime IssuanceDate { get; set; }
         public DateTime ExpirationDate { get; set; }
         public string Address { get; set; }

@@ -2,6 +2,7 @@
 using HRSystem.HR.Administrative.OrgChart.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,11 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes
         public string Name { get; set; }
 
         public NodeType Type { get; set; }
+        #region Parent
+        [ForeignKey("Parent")]
+        public Guid ParentId { get; set; }
         public Node? Parent { get; set; }
+        #endregion
         public string Code { get; set; }
         public bool IsRoot { get; set; }
         //public List<JobDescription> JobDescriptions { get; set; }
