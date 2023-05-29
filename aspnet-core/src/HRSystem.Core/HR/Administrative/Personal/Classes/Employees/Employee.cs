@@ -21,6 +21,7 @@ using HRSystem.HR.Administrative.Personal.Indexes.Nationalities;
 using HRSystem.HR.Administrative.Personal.Indexes.Religions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -51,7 +52,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees
             }
 
         }
+        #region PlaceofBirth
+        [ForeignKey("PlaceofBirth")]
+        public Guid PlaceofBirthId { get; set; }
         public City PlaceofBirth { get; set; }
+        #endregion
         public DateTime DateofBirth { get; set; }
         public int Age
         {
@@ -61,11 +66,18 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees
             }
         }
         public string IdNumber { get; set; }
+        #region CountryofBirth
+        [ForeignKey("CountryofBirth")]
+        public Guid CountryofBirthId { get; set; }
         public Country CountryofBirth { get; set; }
+        #endregion
         public string PersonalRecordSource { get; set; }
         public string CivilRecordPlaceAndNumber { get; set; }
         public Gender Gender { get; set; }
+        #region Religion
+        public Guid ReligionId { get; set; }
         public Religion Religion { get; set; }
+        #endregion
         public string FirstNameAr { get; set; }
         public string LastNameAr { get; set; }
         public string FatherNameAr { get; set; }
@@ -87,8 +99,16 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees
 
         }
         public string PlaceofBirthAr { get; set; }
+        #region Nationality
+        [ForeignKey("Nationality")]
+        public Guid NationalityId { get; set; }
         public Nationality Nationality { get; set; }
+        #endregion
+        #region SecondaryNationality
+        [ForeignKey("SecondaryNationality")]
+        public Guid SecondaryNationalityId { get; set; }
         public Nationality SecondaryNationality { get; set; }
+        #endregion
         public MaritialStatus MaritialStatus { get; set; }
         public string PhotoPath { get; set; }
         public string Address { get; set; }

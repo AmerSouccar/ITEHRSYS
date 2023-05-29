@@ -5,6 +5,7 @@ using HRSystem.HR.Administrative.Grades.Enums;
 using HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,11 @@ namespace HRSystem.HR.Administrative.Grades.Classes.Grades
     public class Grade : FullAuditedAggregateRoot<Guid>
     {
         public string Name { get; set; }
+        #region  OrganizationLevel
+        [ForeignKey("OrganizationLevel")]
+        public Guid OrganizationLevelId { get; set; }
         public OrganizationLevel OrganizationLevel { get; set; }
+        #endregion
         public EducationGrade EducationGrade { get; set; }
         public double? MinSalary { get; set; }
         public double? MaxSalary { get; set; }
