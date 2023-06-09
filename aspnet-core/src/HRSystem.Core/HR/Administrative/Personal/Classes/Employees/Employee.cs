@@ -1,4 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using HRSystem.Authorization.Users;
+using HRSystem.HR.Administrative.JobDesc.Classes.Positions;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments;
 using HRSystem.HR.Administrative.Personal.Classes.Certificates;
 using HRSystem.HR.Administrative.Personal.Classes.Childrens;
@@ -132,9 +134,12 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees
         public List<DriverLicense> DriverLicense { get; set; }
         public List<Conviction> Convictions { get; set; }
         public List<Residency> Residences { get; set; }
-        //public List<Position> Positions { get; set; }       
+        public List<Position> Positions { get; set; }
         //public List<PositionLog> LogOfPosition { get; set; }
         public BloodType BloodType { get; set; }
-
+        #region User
+        public long UserId { get; set; }
+        public User? User { get; set; }
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions;
 using HRSystem.HR.Administrative.OrgChart.Enums;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes
         #endregion
         public string Code { get; set; }
         public bool IsRoot { get; set; }
-        //public List<JobDescription> JobDescriptions { get; set; }
+        public List<JobDescription> JobDescriptions { get; set; }
         public List<Node> Childrens { get; set; }
 
         //Add Benefits And Deductions
