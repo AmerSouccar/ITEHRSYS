@@ -6,6 +6,11 @@ using HRSystem.HR.Administrative.JobDesc.Classes.Positions;
 using HRSystem.HR.Administrative.Personal.Classes.Custodies;
 using HRSystem.HR.Administrative.Personal.Classes.Employees;
 using HRSystem.HR.Administrative.Personal.Enums;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Assignments;
+using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Promotions;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Resignations;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Transfers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -54,6 +59,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.EmployeeCards
         public DateTime ProbationPeriodDate { get; set; }
         public ContractType ContractType { get; set; }
         public List<Custodie> Custodies { get; set; }
+        public List<Assignment> Assignments { get; set; }
+        public List<Transfer> Transfers { get; set; }
+        public List<Resignation> Resignations { get; set; }
+        public List<Promotion> Promotions { get; set; }
+        public List<LeaveRequest> LeaveRequests { get; set; }
 
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions;
 using HRSystem.HR.Administrative.OrgChart.Enums;
+using HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards;
+using HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,9 +26,6 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes
         public bool IsRoot { get; set; }
         public List<JobDescription> JobDescriptions { get; set; }
         public List<Node> Childrens { get; set; }
-
-        //Add Benefits And Deductions
-
 
     }
 }
