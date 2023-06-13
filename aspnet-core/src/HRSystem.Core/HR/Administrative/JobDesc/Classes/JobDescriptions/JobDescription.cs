@@ -1,6 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
-using Castle.MicroKernel.Registration;
 using HRSystem.HR.Administrative.Grades.Classes.JobTitles;
+using HRSystem.HR.Administrative.OrgChart.Classes.Nodes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;

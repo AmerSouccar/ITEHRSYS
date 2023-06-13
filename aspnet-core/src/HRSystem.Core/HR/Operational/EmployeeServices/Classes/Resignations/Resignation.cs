@@ -1,4 +1,5 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.EmployeeCards;
+﻿using Abp.Domain.Entities.Auditing;
+using HRSystem.HR.Administrative.Personal.Classes.EmployeeCards;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HRSystem.HR.Operational.EmployeeServices.Classes.Resignations
 {
-    public class Resignation
+    public class Resignation : FullAuditedAggregateRoot<Guid>
     {
         public DateTime ResignationDate { get; set; }
         #region EmployeeCard

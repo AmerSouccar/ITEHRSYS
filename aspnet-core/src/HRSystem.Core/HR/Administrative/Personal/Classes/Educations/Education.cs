@@ -19,7 +19,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Educations
     public class Education : FullAuditedAggregateRoot<Guid>
     {
         #region Type
-        [ForeignKey(nameof"Type")]
+        [ForeignKey("Type")]
         public Guid TypeId { get; set; }
         public EducationType Type { get; set; }
         #endregion

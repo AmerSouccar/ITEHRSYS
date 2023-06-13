@@ -114,7 +114,6 @@ namespace HRSystem.EntityFrameworkCore
         public DbSet<Bank> Banks { get; set; }
         public DbSet<Custodie> Custodies { get; set; }
         public DbSet<EmployeeCard> EmployeeCards { get; set; }
-        public DbSet<Node> Nodes { get; set; }
         public DbSet<JobDescription> JobDescriptions { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<PositionWorkType> PositionWorkTypes { get; set; }
@@ -151,6 +150,8 @@ namespace HRSystem.EntityFrameworkCore
         public DbSet<Workflow> Workflows { get; set; }
         public DbSet<WorkflowSetting> WorkflowSettings { get; set; }
         public DbSet<AttendanceMonthlyCard> AttendanceMonthlyCards { get; set; }
+        public DbSet<Node> Nodes { get; set; }
+
 
 
     }
