@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards;
 using HRSystem.HR.Operational.AttendanceSystem.Enums;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,8 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
         public string Note { get; set; }
+        public List<AttendanceMonthlyCard> AttendanceMonthlyCards { get; set; }
+        public bool isCalculated { get; set; }
+
     }
 }

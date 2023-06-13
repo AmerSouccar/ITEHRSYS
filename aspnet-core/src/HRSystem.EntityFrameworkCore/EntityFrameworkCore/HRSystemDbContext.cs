@@ -68,6 +68,7 @@ using HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards;
 using HRSystem.HR.Operational.PayrollSystem.Classes.Months;
 using HRSystem.HR.Operational.Workflows.Classes.Workflow;
 using HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards;
 
 namespace HRSystem.EntityFrameworkCore
 {
@@ -149,6 +150,7 @@ namespace HRSystem.EntityFrameworkCore
         public DbSet<Month> Months { get; set; }
         public DbSet<Workflow> Workflows { get; set; }
         public DbSet<WorkflowSetting> WorkflowSettings { get; set; }
+        public DbSet<AttendanceMonthlyCard> AttendanceMonthlyCards { get; set; }
 
 
     }
