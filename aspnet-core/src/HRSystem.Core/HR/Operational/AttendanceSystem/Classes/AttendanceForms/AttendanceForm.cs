@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceFroms
+namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms
 {
-    public class AttendanceFrom : FullAuditedAggregateRoot<Guid>
+    public class AttendanceForm : FullAuditedAggregateRoot<Guid>
     {
         public string Name { get; set; }
         public List<Workshop> Workshops { get; set; }

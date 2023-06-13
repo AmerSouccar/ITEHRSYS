@@ -15,5 +15,6 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.Months
         public MonthName MonthName { get; set; }
         public string Title { get; set; }
         public List<MonthlyCard> MonthlyCards { get; set; }
+        public bool isCalculated { get; set; }
     }
 }
