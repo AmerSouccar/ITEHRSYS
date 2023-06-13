@@ -28,6 +28,5 @@ namespace HRSystem.HR.Administrative.Personal.Classes.DriverLicenses
         public City PlaceofIssuance { get; set; }
         #endregion
         public List<Attachment> Attachments { get; set; }
-
     }
 }

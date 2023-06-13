@@ -109,7 +109,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees
         #region SecondaryNationality
         [ForeignKey("SecondaryNationality")]
         public Guid SecondaryNationalityId { get; set; }
-        public Nationality SecondaryNationality { get; set; }
+        public Nationality? SecondaryNationality { get; set; }
         #endregion
         public MaritialStatus MaritialStatus { get; set; }
         public string PhotoPath { get; set; }

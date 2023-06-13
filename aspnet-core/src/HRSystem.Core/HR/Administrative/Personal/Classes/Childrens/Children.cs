@@ -41,9 +41,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Childrens
         public Nationality Nationality { get; set; }
         #endregion
         public string ResidencyNo { get; set; }
-        public string ResidencExpireDate { get; set; }
+        public DateTime? ResidencExpireDate { get; set; }
         public string PassportNo { get; set; }
-        public string PassportExpireDate { get; set; }
+        public DateTime? PassportExpireDate { get; set; }
         public bool isDead { get; set; }
         public DateTime? DeathDate { get; set; }
         public List<Attachment> Attachments { get; set; }

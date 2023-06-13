@@ -29,6 +29,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses
         public string SecondContactNumber { get; set; }
         public string Email { get; set; }
         public string Note { get; set; }
+        //add gender
         #endregion
 
         #region MarrigeInfo
