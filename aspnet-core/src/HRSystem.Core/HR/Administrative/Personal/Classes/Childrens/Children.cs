@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 namespace HRSystem.HR.Administrative.Personal.Classes.Childrens
 {
     public class Children : FullAuditedAggregateRoot<Guid>
-
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

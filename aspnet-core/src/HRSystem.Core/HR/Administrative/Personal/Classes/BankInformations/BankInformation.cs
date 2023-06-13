@@ -14,6 +14,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.BankInformations
         public Guid BankId { get; set; }
         public Bank Bank { get; set; }
         #endregion
+        //add employee card information
         public string AccountNumber { get; set; }
         public string AccountName { get; set; }
         public DateTime? FromDate { get; set; }

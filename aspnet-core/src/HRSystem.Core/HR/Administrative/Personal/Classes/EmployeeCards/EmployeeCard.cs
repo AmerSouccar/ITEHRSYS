@@ -64,6 +64,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.EmployeeCards
         public List<Resignation> Resignations { get; set; }
         public List<Promotion> Promotions { get; set; }
         public List<LeaveRequest> LeaveRequests { get; set; }
+        //add bank information
 
     }
 }
