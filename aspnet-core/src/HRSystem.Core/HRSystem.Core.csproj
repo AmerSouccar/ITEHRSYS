@@ -32,6 +32,7 @@
     <Folder Include="HR\Administrative\Personal\Classes\Attachments\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\BankInformations\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Banks\Services\" />
+    <Folder Include="HR\Administrative\Personal\Classes\Childrens\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Convictions\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Custodies\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Dependents\Services\" />
