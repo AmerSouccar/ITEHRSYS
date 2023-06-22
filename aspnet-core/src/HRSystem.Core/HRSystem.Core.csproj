@@ -30,7 +30,6 @@
     <Folder Include="HR\Administrative\OrgChart\Classes\Nodes\Services\" />
     <Folder Include="HR\Administrative\OrgChart\Indexes\" />
     <Folder Include="HR\Administrative\Personal\Classes\Attachments\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\BankInformations\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Banks\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Childrens\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Convictions\Services\" />
