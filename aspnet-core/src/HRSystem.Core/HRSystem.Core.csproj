@@ -29,12 +29,6 @@
     <Folder Include="HR\Administrative\JobDesc\Indexes\PositionWorkTypes\Services\" />
     <Folder Include="HR\Administrative\OrgChart\Classes\Nodes\Services\" />
     <Folder Include="HR\Administrative\OrgChart\Indexes\" />
-    <Folder Include="HR\Administrative\Personal\Classes\MilitaryServices\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Passports\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Residences\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Skills\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Spouses\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Trainings\Services\" />
     <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceForms\Services\" />
     <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceMonthlyCards\Services\" />
     <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceRecords\Services\" />
