@@ -18,17 +18,17 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Skills.Services
 
         public async Task Delete(Guid id)
         {
-           await _SkillRepository.DeleteAsync(id);
+            await _SkillRepository.DeleteAsync(id);
         }
 
         public async Task<List<Skill>> GetAll()
         {
-            return _SkillRepository.GetAllIncluding(x => x.Level,x => x.Attachments).ToList();
+            return _SkillRepository.GetAllIncluding(x => x.Level, x => x.Attachments).ToList();
         }
 
         public async Task<Skill> GetbyId(Guid id)
         {
-           return _SkillRepository.GetAllIncluding(x => x.Level, x => x.Attachments).FirstOrDefault(x => x.Id == id);
+            return _SkillRepository.GetAllIncluding(x => x.Level, x => x.Attachments).FirstOrDefault(x => x.Id == id);
         }
 
         public async Task<Skill> Insert(Skill skill)
@@ -39,5 +39,6 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Skills.Services
         public async Task<Skill> Update(Skill skill)
         {
             return await (_SkillRepository.UpdateAsync(skill));
+        }
     }
 }

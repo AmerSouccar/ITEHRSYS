@@ -26,7 +26,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses.Services
             return _spouseRepository.GetAllIncluding(x => x.PlaceofBirth,x => x.Nationality,x => x.Attachments).ToList();
         }
 
-        public Task<Spouse> GetbyId(Guid id)
+        public async Task<Spouse> GetbyId(Guid id)
         {
             return _spouseRepository.GetAllIncluding(x => x.PlaceofBirth, x => x.Nationality, x => x.Attachments).FirstOrDefault(x => x.Id == id);
         }
