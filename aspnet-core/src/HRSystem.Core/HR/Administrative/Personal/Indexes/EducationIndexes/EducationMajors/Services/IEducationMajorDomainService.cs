@@ -1,4 +1,5 @@
-﻿using HRSystem.HR.Administrative.Personal.Indexes.Cities;
+﻿using Abp.Domain.Services;
+using HRSystem.HR.Administrative.Personal.Indexes.Cities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.EducationMajors.Services
 {
-    public interface IEducationMajorDomainService
+    public interface IEducationMajorDomainService : IDomainService
     {
         Task<List<EducationMajor>> GetEducationMajorsAsync();
         Task<EducationMajor> GetbyId(Guid id);

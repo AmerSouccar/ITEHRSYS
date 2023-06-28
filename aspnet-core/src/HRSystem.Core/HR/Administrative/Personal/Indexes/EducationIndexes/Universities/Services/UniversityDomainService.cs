@@ -26,7 +26,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universit
             return await _universities.GetAsync (id);
         }
 
-        public async Task<List<University>> GetCitiesAsync()
+        public async Task<List<University>> GetAllAsync()
         {
             return await _universities.GetAllListAsync();
         }

@@ -26,7 +26,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.LanguageNames.Services
             return await _languageNames.GetAsync(id);
         }
 
-        public async Task<List<LanguageName>> GetCitiesAsync()
+        public async Task<List<LanguageName>> GetAllAsync()
         {
             return await _languageNames.GetAllListAsync();
         }

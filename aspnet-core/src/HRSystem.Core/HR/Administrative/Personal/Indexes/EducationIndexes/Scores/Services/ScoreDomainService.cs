@@ -26,7 +26,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Se
             return await _scores.GetAsync(id);
         }
 
-        public async Task<List<Score>> GetCitiesAsync()
+        public async Task<List<Score>> GetAllAsync()
         {
             return await _scores.GetAllListAsync();
         }

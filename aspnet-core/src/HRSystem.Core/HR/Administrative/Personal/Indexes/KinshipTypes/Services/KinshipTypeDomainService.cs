@@ -26,7 +26,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.KinshipTypes.Services
             return await _kinshipTypes.GetAsync(id);
         }
 
-        public async Task<List<KinshipType>> GetCitiesAsync()
+        public async Task<List<KinshipType>> GetAllAsync()
         {
             return await _kinshipTypes.GetAllListAsync();
         }

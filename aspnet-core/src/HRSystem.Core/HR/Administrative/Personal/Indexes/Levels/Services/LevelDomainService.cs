@@ -26,7 +26,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Levels.Services
             return await _levels.GetAsync(id);
         }
 
-        public async Task<List<Level>> GetCitiesAsync()
+        public async Task<List<Level>> GetAllAsync()
         {
             return await _levels.GetAllListAsync();
         }
