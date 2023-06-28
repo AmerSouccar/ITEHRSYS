@@ -26,7 +26,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Education
             return await _educationTypes.GetAsync (id);
         }
 
-        public async Task<List<EducationType>> GetCitiesAsync()
+        public async Task<List<EducationType>> GetAllAsync()
         {
             return await _educationTypes.GetAllListAsync();
         }

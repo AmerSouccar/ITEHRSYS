@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Services
 {
     public interface INationalityDomainService : IDomainService
     {
-        Task<List<Nationality>> GetCitiesAsync();
+        Task<List<Nationality>> GetAllAsync();
         Task<Nationality> GetbyId(Guid id);
         Task<Nationality> InsertAsync(Nationality nationality);
         Task<Nationality> UpdateAsync(Nationality nationality);

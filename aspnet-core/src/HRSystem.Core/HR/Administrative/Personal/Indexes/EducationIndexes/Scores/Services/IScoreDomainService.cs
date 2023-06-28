@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Se
 {
     public interface IScoreDomainService :IDomainService
     {
-        Task<List<Score>> GetCitiesAsync();
+        Task<List<Score>> GetAllAsync();
         Task<Score> GetbyId(Guid id);
         Task<Score> InsertAsync(Score score);
         Task<Score> UpdateAsync(Score score);

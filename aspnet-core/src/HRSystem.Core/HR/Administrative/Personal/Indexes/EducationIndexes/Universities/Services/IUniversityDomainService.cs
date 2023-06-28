@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universit
 {
     public interface IUniversityDomainService : IDomainService
     {
-        Task<List<University>> GetCitiesAsync();
+        Task<List<University>> GetAllAsync();
         Task<University> GetbyId(Guid id);
         Task<University> InsertAsync(University university);
         Task<University> UpdateAsync(University university);

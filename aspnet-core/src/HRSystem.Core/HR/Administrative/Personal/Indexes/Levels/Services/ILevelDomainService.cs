@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Levels.Services
 {
     public interface ILevelDomainService : IDomainService
     {
-        Task<List<Level>> GetCitiesAsync();
+        Task<List<Level>> GetAllAsync();
         Task<Level> GetbyId(Guid id);
         Task<Level> InsertAsync(Level level);
         Task<Level> UpdateAsync(Level level);
