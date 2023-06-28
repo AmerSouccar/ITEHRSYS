@@ -16,6 +16,5 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Languages.Services
         public Task<Language> Insert(Language language);
         public Task<Language> Update(Language language);
         public Task Delete(Guid id);
-        Task<object> Update(LanguageName languageName);
     }
 }
