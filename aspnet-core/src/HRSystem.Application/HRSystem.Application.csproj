@@ -60,8 +60,5 @@
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Trainings\Dto\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Trainings\Map\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Trainings\Services\" />
   </ItemGroup>
 </Project>
