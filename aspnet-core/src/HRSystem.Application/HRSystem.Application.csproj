@@ -15,9 +15,6 @@
     <ProjectReference Include="..\HRSystem.Core\HRSystem.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="HR\Administrative\Personal\Classes\Childrens\Dto\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Childrens\Map\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Childrens\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Convictions\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Convictions\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Convictions\Services\" />
@@ -57,9 +54,6 @@
     <Folder Include="HR\Administrative\Personal\Classes\Skills\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Skills\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Skills\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Spouses\Dto\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Spouses\Map\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Spouses\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Trainings\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Trainings\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Trainings\Services\" />

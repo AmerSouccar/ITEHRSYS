@@ -1,18 +1,13 @@
-﻿using Abp.Domain.Entities.Auditing;
-using HRSystem.HR.Administrative.Personal.Classes.Attachments;
-using HRSystem.HR.Administrative.Personal.Enums;
-using HRSystem.HR.Administrative.Personal.Indexes.Cities;
-using HRSystem.HR.Administrative.Personal.Indexes.Nationalities;
+﻿using Abp.Application.Services.Dto;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRSystem.HR.Administrative.Personal.Classes.Spouses
+namespace HRSystem.HR.Administrative.Personal.Classes.Spouses.Dto
 {
-    public class Spouse : FullAuditedAggregateRoot<Guid>
+    public class UpdateSpouseDto : EntityDto<Guid>
     {
         #region BasicInfo
         public string IdNumber { get; set; }
@@ -21,15 +16,8 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses
         public string FatherName { get; set; }
         public string MotherName { get; set; }
         public DateTime DateofBirth { get; set; }
-        #region PlaceofBirth
-        [ForeignKey("PlaceofBirth")]
         public Guid PlaceofBirthId { get; set; }
-        public City PlaceofBirth { get; set; }
-        #endregion
-        #region Nationality
-        [ForeignKey("Nationality")]
         public Guid NationalityId { get; set; }
-        public Nationality Nationality { get; set; }
         #endregion
         public string ResidencyNo { get; set; }
         public DateTime ResidencyExpireDate { get; set; }
@@ -39,8 +27,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses
         public string SecondContactNumber { get; set; }
         public string Email { get; set; }
         public string Note { get; set; }
-        public Gender Gender { get; set; }
-        #endregion
+        public int Gender { get; set; }
 
         #region MarrigeInfo
         public int Order { get; set; }
@@ -60,6 +47,5 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses
         public string WorkEmail { get; set; }
 
         #endregion
-        public List<Attachment> Attachments { get; set; }
     }
 }

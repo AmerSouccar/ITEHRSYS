@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HRSystem.HR.Administrative.Personal.Classes.Spouses.Services
 {
-    partial interface ISpouseDomainService :IDomainService
+    public interface ISpouseDomainService :IDomainService
     {
         public Task<List<Spouse>> GetAll();
         public Task<Spouse> GetbyId(Guid id);
