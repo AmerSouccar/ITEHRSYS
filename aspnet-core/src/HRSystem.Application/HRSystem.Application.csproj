@@ -15,9 +15,6 @@
     <ProjectReference Include="..\HRSystem.Core\HRSystem.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="HR\Administrative\Personal\Classes\BankInformations\Dto\" />
-    <Folder Include="HR\Administrative\Personal\Classes\BankInformations\Map\" />
-    <Folder Include="HR\Administrative\Personal\Classes\BankInformations\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Certificates\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Certificates\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Certificates\Services\" />
