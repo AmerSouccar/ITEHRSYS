@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments;
+using HRSystem.HR.Administrative.Personal.Classes.Employees;
 using HRSystem.HR.Administrative.Personal.Indexes.Cities;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Passports
 {
     public class Passport : FullAuditedAggregateRoot<Guid>
     {
+        #region Employee
+        [ForeignKey("Employee")]
+        public Guid EmployeeId { get; set; }
+        public Employee Employee { get; set; }
+        #endregion
         public string Number { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

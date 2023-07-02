@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Cities;
+using HRSystem.HR.Administrative.Personal.Indexes.Cities.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,6 +13,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Passports.Dto
 {
     public class ReadPassportDto :EntityDto<Guid>
     {
+        public Guid EmployeeId { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
+
         public string Number { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,13 +23,10 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Passports.Dto
         public string LastNameAr { get; set; }
         public string FatherName { get; set; }
         public string MotherName { get; set; }
-        #region PlaceofIssuance
-        [ForeignKey("PlaceofIssuance")]
         public Guid PlaceofIssuanceId { get; set; }
-        public City PlaceofIssuance { get; set; }
-        #endregion
+        public CityDto PlaceofIssuance { get; set; }
         public DateTime IssuanceDate { get; set; }
         public DateTime ExpirationDate { get; set; }
-        public List<ReadPassportDto> Attachments { get; set; }
+        public List<ReadAttachmentDto> Attachments { get; set; }
     }
 }

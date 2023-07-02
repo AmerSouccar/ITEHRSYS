@@ -9,6 +9,8 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses.Dto
 {
     public class UpdateSpouseDto : EntityDto<Guid>
     {
+        public Guid EmployeeId { get; set; }
+
         #region BasicInfo
         public string IdNumber { get; set; }
         public string FirstName { get; set; }

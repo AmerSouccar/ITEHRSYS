@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Childrens.Dto
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Guid SpouseId { get; set; }
+        public Guid EmployeeId { get; set; }
         public int OrderInFamily { get; set; }
         public int Gender { get; set; }
         public int MaritialStatus { get; set; }

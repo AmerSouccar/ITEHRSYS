@@ -10,6 +10,8 @@ namespace HRSystem.HR.Administrative.Personal.Classes.MilitaryServices.Dto
 {
     public class UpdateMilitaryServiceDto :EntityDto<Guid>
     {
+        public Guid EmployeeId { get; set; }
+
         public MilitaryStatus MilitaryStatus { get; set; }
         public bool? IsPermanentExemption { get; set; }
         public string ExemptionReason { get; set; }

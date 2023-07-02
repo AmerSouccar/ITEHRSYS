@@ -12,16 +12,16 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Languages.Map
 {
     public class LanguageMapProfile :Profile
     {
+
+        public LanguageMapProfile()
         {
-            public LanguageMapProfile()
-            {
-                CreateMap<Language, ReadLanguageDto>();
-                CreateMap<ReadLanguageDto, Language>();
-                CreateMap<Language, InsertLanguageDto>();
-                CreateMap<InsertLanguageDto, Language>();
-                CreateMap<Language, UpdateLanguageDto>();
-                CreateMap<UpdateLanguageDto, Language>();
-            }
+            CreateMap<Language, ReadLanguageDto>();
+            CreateMap<ReadLanguageDto, Language>();
+            CreateMap<Language, InsertLanguageDto>();
+            CreateMap<InsertLanguageDto, Language>();
+            CreateMap<Language, UpdateLanguageDto>();
+            CreateMap<UpdateLanguageDto, Language>();
         }
+        
     }
 }

@@ -12,6 +12,8 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Residences.Dto
 {
     public class InsertResidencyDto :EntityDto<Guid>
     {
+        public Guid EmployeeId { get; set; }
+
         public string Number { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
@@ -19,11 +21,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Residences.Dto
         public string FatherName { get; set; }
         public string MotherName { get; set; }
         public ResidencyType ResidencyType { get; set; }
-        #region Nationality
-        [ForeignKey("Nationality")]
         public Guid NationalityId { get; set; }
-        public Nationality Nationality { get; set; }
-        #endregion
         public DateTime IssuanceDate { get; set; }
         public DateTime ExpirationDate { get; set; }
         public string Address { get; set; }

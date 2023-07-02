@@ -13,6 +13,8 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Trainings.Dto
     {
         public class Training : FullAuditedAggregateRoot<Guid>
         {
+            public Guid EmployeeId { get; set; }
+
             #region Course
             public string Specialize { get; set; }
             public string CourseName { get; set; }

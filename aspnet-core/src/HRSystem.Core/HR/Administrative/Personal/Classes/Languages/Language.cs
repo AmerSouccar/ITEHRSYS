@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments;
+using HRSystem.HR.Administrative.Personal.Classes.Employees;
 using HRSystem.HR.Administrative.Personal.Indexes.LanguageNames;
 using HRSystem.HR.Administrative.Personal.Indexes.Levels;
 using System;
@@ -13,6 +14,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Languages
 {
     public class Language : FullAuditedAggregateRoot<Guid>
     {
+        #region Employee
+        [ForeignKey("Employee")]
+        public Guid EmployeeId { get; set; }
+        public Employee Employee { get; set; }
+        #endregion
         #region LanguageName
         [ForeignKey("LanguageName")]
         public Guid LanguageNameId { get; set; }

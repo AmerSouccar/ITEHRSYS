@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments;
+using HRSystem.HR.Administrative.Personal.Classes.Employees;
 using HRSystem.HR.Administrative.Personal.Indexes.Levels;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Skills
 {
     public class Skill : FullAuditedAggregateRoot<Guid>
     {
+        #region Employee
+        [ForeignKey("Employee")]
+        public Guid EmployeeId { get; set; }
+        public Employee Employee { get; set; }
+        #endregion
         public string SkillName { get; set; }
         #region Level
         [ForeignKey("Level")]

@@ -12,8 +12,8 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Residences.Services
     {
         public Task<List<ReadResidencyDto>> GetAll();
         public Task<ReadResidencyDto> GetbyId(Guid id);
-        public Task<InsertResidencyDto> Insert(InsertResidencyDto Residency);
-        public Task<UpdateResidencyDto> Update(UpdateResidencyDto Residency);
+        public Task<InsertResidencyDto> Insert(InsertResidencyDto residency);
+        public Task<UpdateResidencyDto> Update(UpdateResidencyDto residency);
         public Task Delete(Guid id);
     }
 }

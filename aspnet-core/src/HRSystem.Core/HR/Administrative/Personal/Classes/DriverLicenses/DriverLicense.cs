@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments;
+using HRSystem.HR.Administrative.Personal.Classes.Employees;
 using HRSystem.HR.Administrative.Personal.Indexes.Cities;
 using HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes;
 using System;
@@ -13,6 +14,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.DriverLicenses
 {
     public class DriverLicense : FullAuditedAggregateRoot<Guid>
     {
+        #region Employee
+        [ForeignKey("Employee")]
+        public Guid EmployeeId { get; set; }
+        public Employee Employee { get; set; }
+        #endregion
         public string Number { get; set; }
         public DateTime IssuanceDate { get; set; }
         public DateTime ExpiryDate { get; set; }

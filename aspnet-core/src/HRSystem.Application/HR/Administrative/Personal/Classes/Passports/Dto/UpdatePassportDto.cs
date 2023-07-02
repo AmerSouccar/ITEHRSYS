@@ -11,6 +11,8 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Passports.Dto
 {
     public class UpdatePassportDto :EntityDto<Guid>
     {
+        public Guid EmployeeId { get; set; }
+
         public string Number { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,11 +20,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Passports.Dto
         public string LastNameAr { get; set; }
         public string FatherName { get; set; }
         public string MotherName { get; set; }
-        #region PlaceofIssuance
-        [ForeignKey("PlaceofIssuance")]
         public Guid PlaceofIssuanceId { get; set; }
-        public City PlaceofIssuance { get; set; }
-        #endregion
         public DateTime IssuanceDate { get; set; }
         public DateTime ExpirationDate { get; set; }
     }

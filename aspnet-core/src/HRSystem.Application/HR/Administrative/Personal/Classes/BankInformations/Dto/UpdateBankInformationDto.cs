@@ -10,6 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.BankInformations.Dto
     public class UpdateBankInformationDto : EntityDto<Guid>
     {
         public Guid BankId { get; set; }
+        public Guid EmployeeId { get; set; }
         public string AccountNumber { get; set; }
         public string AccountName { get; set; }
         public DateTime? FromDate { get; set; }

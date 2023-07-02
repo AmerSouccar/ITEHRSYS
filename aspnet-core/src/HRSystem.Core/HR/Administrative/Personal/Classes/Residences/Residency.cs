@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments;
+using HRSystem.HR.Administrative.Personal.Classes.Employees;
 using HRSystem.HR.Administrative.Personal.Enums;
 using HRSystem.HR.Administrative.Personal.Indexes.Nationalities;
 using System;
@@ -13,6 +14,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Residences
 {
     public class Residency : FullAuditedAggregateRoot<Guid>
     {
+        #region Employee
+        [ForeignKey("Employee")]
+        public Guid EmployeeId { get; set; }
+        public Employee Employee { get; set; }
+        #endregion
         public string Number { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }

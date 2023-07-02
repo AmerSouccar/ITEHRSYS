@@ -17,4 +17,3 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses.Services
         public Task Delete(Guid id);
     }
 }
-}
