@@ -42,9 +42,6 @@
     <Folder Include="HR\Administrative\Personal\Classes\Experiences\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Experiences\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Experiences\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Languages\Dto\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Languages\Map\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Languages\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Services\" />
