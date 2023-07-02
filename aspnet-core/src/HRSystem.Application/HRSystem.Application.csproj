@@ -45,9 +45,6 @@
     <Folder Include="HR\Administrative\Personal\Classes\Languages\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Languages\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Languages\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\MilitaryServices\Dto\" />
-    <Folder Include="HR\Administrative\Personal\Classes\MilitaryServices\Map\" />
-    <Folder Include="HR\Administrative\Personal\Classes\MilitaryServices\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Services\" />
