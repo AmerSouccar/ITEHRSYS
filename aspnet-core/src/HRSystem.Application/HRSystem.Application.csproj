@@ -39,7 +39,6 @@
     <Folder Include="HR\Administrative\Personal\Classes\Employees\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Employees\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Employees\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Experiences\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Experiences\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Experiences\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Dto\" />
