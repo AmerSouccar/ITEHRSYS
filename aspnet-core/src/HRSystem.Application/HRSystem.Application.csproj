@@ -51,12 +51,6 @@
     <Folder Include="HR\Administrative\Personal\Classes\Passports\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Passports\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Passports\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Residences\Dto\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Residences\Map\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Residences\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Skills\Dto\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Skills\Map\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Skills\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Services\" />
