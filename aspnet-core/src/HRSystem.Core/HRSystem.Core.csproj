@@ -27,7 +27,6 @@
     <Folder Include="HR\Administrative\JobDesc\Classes\JobDescriptions\Services\" />
     <Folder Include="HR\Administrative\JobDesc\Classes\Positions\Services\" />
     <Folder Include="HR\Administrative\JobDesc\Indexes\PositionWorkTypes\Services\" />
-    <Folder Include="HR\Administrative\OrgChart\Classes\Nodes\Services\" />
     <Folder Include="HR\Administrative\OrgChart\Indexes\" />
     <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceForms\Services\" />
     <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceMonthlyCards\Services\" />
