@@ -11,6 +11,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Custodies.Services
     {
         private readonly IRepository<Custodie, Guid> _custodieRepository;
 
+        public CustodieDomainService(IRepository<Custodie, Guid> custodieRepository)
+        {
+            _custodieRepository = custodieRepository;
+        }
+
         public async Task Delete(Guid id)
         {
             await _custodieRepository.DeleteAsync(id);

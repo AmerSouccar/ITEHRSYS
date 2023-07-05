@@ -15,7 +15,6 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes
     public class Node : FullAuditedAggregateRoot<Guid>
     {
         public string Name { get; set; }
-
         public NodeType Type { get; set; }
         #region Parent
         [ForeignKey("Parent")]
