@@ -20,13 +20,6 @@
     <PackageReference Include="Castle.Windsor.MsDependencyInjection" Version="3.4.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="HR\Administrative\Grades\Classes\EducationGrades\Services\" />
-    <Folder Include="HR\Administrative\Grades\Classes\Grades\Services\" />
-    <Folder Include="HR\Administrative\Grades\Classes\JobTitles\Services\" />
-    <Folder Include="HR\Administrative\Grades\Indexes\OrganizationLevels\Services\" />
-    <Folder Include="HR\Administrative\JobDesc\Classes\JobDescriptions\Services\" />
-    <Folder Include="HR\Administrative\JobDesc\Classes\Positions\Services\" />
-    <Folder Include="HR\Administrative\JobDesc\Indexes\PositionWorkTypes\Services\" />
     <Folder Include="HR\Administrative\OrgChart\Indexes\" />
     <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceForms\Services\" />
     <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceMonthlyCards\Services\" />
