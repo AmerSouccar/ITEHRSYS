@@ -15,6 +15,27 @@
     <ProjectReference Include="..\HRSystem.Core\HRSystem.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="HR\Administrative\Grades\Classes\EducationGrades\Dto\" />
+    <Folder Include="HR\Administrative\Grades\Classes\EducationGrades\Map\" />
+    <Folder Include="HR\Administrative\Grades\Classes\EducationGrades\Services\" />
+    <Folder Include="HR\Administrative\Grades\Classes\Grades\Dto\" />
+    <Folder Include="HR\Administrative\Grades\Classes\Grades\Map\" />
+    <Folder Include="HR\Administrative\Grades\Classes\Grades\Services\" />
+    <Folder Include="HR\Administrative\Grades\Classes\JobTitles\Dto\" />
+    <Folder Include="HR\Administrative\Grades\Classes\JobTitles\Map\" />
+    <Folder Include="HR\Administrative\Grades\Classes\JobTitles\Services\" />
+    <Folder Include="HR\Administrative\Grades\Indexes\OrganizationLevels\Dto\" />
+    <Folder Include="HR\Administrative\Grades\Indexes\OrganizationLevels\Map\" />
+    <Folder Include="HR\Administrative\Grades\Indexes\OrganizationLevels\Services\" />
+    <Folder Include="HR\Administrative\JobDesc\Classes\JobDescriptions\Dto\" />
+    <Folder Include="HR\Administrative\JobDesc\Classes\JobDescriptions\Map\" />
+    <Folder Include="HR\Administrative\JobDesc\Classes\JobDescriptions\Services\" />
+    <Folder Include="HR\Administrative\JobDesc\Classes\Positions\Dto\" />
+    <Folder Include="HR\Administrative\JobDesc\Classes\Positions\Map\" />
+    <Folder Include="HR\Administrative\JobDesc\Classes\Positions\Services\" />
+    <Folder Include="HR\Administrative\JobDesc\Indexes\PositionWorkTypes\Dto\" />
+    <Folder Include="HR\Administrative\JobDesc\Indexes\PositionWorkTypes\Map\" />
+    <Folder Include="HR\Administrative\JobDesc\Indexes\PositionWorkTypes\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Childrens\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Childrens\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Childrens\Services\" />
