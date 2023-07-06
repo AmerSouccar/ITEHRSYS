@@ -38,6 +38,11 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions
         public Guid? ManagerId { get; set; }
         public JobDescription? Manager { get; set; }
         #endregion
+        #region Employee
+        [ForeignKey("Employee")]
+        public Guid? EmployeeId { get; set; }
+        public Employee? Employee { get; set; }
+        #endregion
 
         //public List<BenefitCard> BenefitCards { get; set; }
         //public List<DeductionCard> DeductionCards { get; set; }

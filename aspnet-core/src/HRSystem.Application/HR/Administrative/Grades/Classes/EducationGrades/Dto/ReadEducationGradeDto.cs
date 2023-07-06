@@ -14,7 +14,7 @@ namespace HRSystem.HR.Administrative.Grades.Classes.EducationGrades.Dto
         public int Order { get; set; }
         public double? MinSalary { get; set; }
         public double? MaxSalary { get; set; }
-        public Currency? Currency { get; set; }
+        public int? Currency { get; set; }
         public string? Description { get; set; }
     }
 }

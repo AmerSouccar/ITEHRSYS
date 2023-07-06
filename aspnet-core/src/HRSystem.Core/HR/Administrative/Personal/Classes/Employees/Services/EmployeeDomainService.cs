@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Repositories;
+using HRSystem.Authorization.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
 {
-    public class EmployeeDomanService : IEmployeeDomanService
+    public class EmployeeDomainService : IEmployeeDomainService
     {
         private readonly IRepository<Employee, Guid> _employeeRepository;
+        private readonly UserRegistrationManager _userRegistrationManager;
 
-        public EmployeeDomanService(IRepository<Employee, Guid> employeeRepository)
+        public EmployeeDomainService(IRepository<Employee, Guid> employeeRepository, UserRegistrationManager userRegistrationManager)
         {
             _employeeRepository = employeeRepository;
+            _userRegistrationManager = userRegistrationManager;
         }
 
         public async Task Delete(Guid id)
@@ -33,6 +36,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
 
         public async Task<Employee> Insert(Employee employee)
         {
+            var newUser = await _userRegistrationManager.RegisterAsync(employee.FirstName,employee.LastName,employee.Email, employee.Email, "123456",true);
+            employee.UserId = newUser.Id;
+            employee.User = newUser;
             return await _employeeRepository.InsertAsync(employee);
         }
 

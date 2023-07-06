@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Employees.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Cities;
 using HRSystem.HR.Administrative.Personal.Indexes.Cities.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Nationalities;
@@ -16,7 +17,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses.Dto
     public class ReadSpouseDto : EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        //public ReadEmployeeDto Employee { get; set; }
+        public ReadEmployeeDto Employee { get; set; }
 
         #region BasicInfo
         public string IdNumber { get; set; }

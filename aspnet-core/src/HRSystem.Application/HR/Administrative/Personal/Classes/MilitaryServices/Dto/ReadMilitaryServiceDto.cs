@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Employees.Dto;
 using HRSystem.HR.Administrative.Personal.Enums;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.MilitaryServices.Dto
     public class ReadMilitaryServiceDto :EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        //public ReadEmployeeDto Employee { get; set; }
+        public ReadEmployeeDto Employee { get; set; }
 
         public MilitaryStatus MilitaryStatus { get; set; }
         public bool? IsPermanentExemption { get; set; }

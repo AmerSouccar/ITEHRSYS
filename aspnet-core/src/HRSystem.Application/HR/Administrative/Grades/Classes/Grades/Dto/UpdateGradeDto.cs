@@ -16,8 +16,8 @@ namespace HRSystem.HR.Administrative.Grades.Classes.Grades.Dto
         public Guid EducationGradeId { get; set; }
         public double? MinSalary { get; set; }
         public double? MaxSalary { get; set; }
-        public Currency? Currency { get; set; }
-        public GradeCategory GradeCategory { get; set; }
+        public int? Currency { get; set; }
+        public int GradeCategory { get; set; }
         //public LeaveTemplate LeaveTemplateMaster { get; set; }
         //public AttendanceForm AttendanceForm { get; set; }
         //public LatnessForm LatnessForm { get; set; }

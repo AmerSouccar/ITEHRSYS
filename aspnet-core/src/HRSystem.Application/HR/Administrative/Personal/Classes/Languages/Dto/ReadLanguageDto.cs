@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Employees.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.LanguageNames;
 using HRSystem.HR.Administrative.Personal.Indexes.LanguageNames.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Levels;
@@ -17,7 +18,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Languages.Dto
     public class ReadLanguageDto : EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        //public ReadEmployeeDto Employee { get; set; }
+        public ReadEmployeeDto Employee { get; set; }
 
         public Guid LanguageNameId { get; set; }
         public LanguageNameDto LanguageName { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Employees.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Levels;
 using HRSystem.HR.Administrative.Personal.Indexes.Levels.Dto;
 using System;
@@ -15,7 +16,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Skills.Dto
     public class ReadSkillDto : EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        //public ReadEmployeeDto Employee { get; set; }
+        public ReadEmployeeDto Employee { get; set; }
 
         public string SkillName { get; set; }
         public Guid LevelId { get; set; }

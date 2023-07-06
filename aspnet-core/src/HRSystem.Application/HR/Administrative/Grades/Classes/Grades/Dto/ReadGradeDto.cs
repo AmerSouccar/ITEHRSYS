@@ -1,9 +1,11 @@
 ﻿using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Grades.Classes.EducationGrades;
+using HRSystem.HR.Administrative.Grades.Classes.EducationGrades.Dto;
 using HRSystem.HR.Administrative.Grades.Classes.JobTitles;
 using HRSystem.HR.Administrative.Grades.Classes.JobTitles.Dto;
 using HRSystem.HR.Administrative.Grades.Enums;
 using HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels;
+using HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,19 +19,17 @@ namespace HRSystem.HR.Administrative.Grades.Classes.Grades.Dto
     {
         public string Name { get; set; }
         #region  OrganizationLevel
-        [ForeignKey("OrganizationLevel")]
         public Guid OrganizationLevelId { get; set; }
-        public OrganizationLevel OrganizationLevel { get; set; }
+        public ReadOrganizationLevelDto OrganizationLevel { get; set; }
         #endregion
         #region EducationGrade
-        [ForeignKey("EducationGrade")]
         public Guid EducationGradeId { get; set; }
-        public EducationGrade EducationGrade { get; set; }
+        public ReadEducationGradeDto EducationGrade { get; set; }
         #endregion
         public double? MinSalary { get; set; }
         public double? MaxSalary { get; set; }
-        public Currency? Currency { get; set; }
-        public GradeCategory GradeCategory { get; set; }
+        public int? Currency { get; set; }
+        public int GradeCategory { get; set; }
         //public LeaveTemplate LeaveTemplateMaster { get; set; }
         //public AttendanceForm AttendanceForm { get; set; }
         //public LatnessForm LatnessForm { get; set; }

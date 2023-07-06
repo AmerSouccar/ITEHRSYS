@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Employees.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Cities.Dto;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Certificates.Dto
         public CityDto PlaceofIssuance { get; set; }
         #endregion
         public Guid EmployeeId { get; set; }
-        //public ReadEmployeeDto Employee { get; set; }
+        public ReadEmployeeDto Employee { get; set; }
         public DateTime DateofIssuance { get; set; }
         public DateTime ExpirationDate { get; set; }
         public string Notes { get; set; }

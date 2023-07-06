@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Employees.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Countries;
 using HRSystem.HR.Administrative.Personal.Indexes.Countries.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.EducationMajors;
@@ -38,7 +39,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Educations.Dto
         public Guid ScoreId { get; set; }
         public ScoreDto Score { get; set; }
         public Guid EmployeeId { get; set; }
-        //public ReadEmployeeDto Employee { get; set; }
+        public ReadEmployeeDto Employee { get; set; }
         public DateTime? DateofIssuance { get; set; }
         public Guid CountryId { get; set; }
         public CountryDto Country { get; set; }

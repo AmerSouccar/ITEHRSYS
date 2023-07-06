@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Employees.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Convictions.Dto
     public class ReadConvictionDto :EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        //public EmployeeDto Employee { get; set; }
+        public ReadEmployeeDto Employee { get; set; }
         public string Number { get; set; }
         public DateTime? ReleaseDate { get; set; }
         public DateTime? ExpiryDate { get; set; }

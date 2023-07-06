@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Employees.Dto;
 using HRSystem.HR.Administrative.Personal.Enums;
 using HRSystem.HR.Administrative.Personal.Indexes.Nationalities;
 using HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Dto;
@@ -16,7 +17,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Residences.Dto
     public class ReadResidencyDto : EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        //public ReadEmployeeDto Employee { get; set; }
+        public ReadEmployeeDto Employee { get; set; }
 
         public string Number { get; set; }
         public string FirstName { get; set; }

@@ -21,7 +21,6 @@
     <Folder Include="HR\Administrative\Personal\Classes\EmployeeCards\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\EmployeeCards\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\EmployeeCards\Services\" />
-    <Folder Include="HR\Administrative\Personal\Classes\Employees\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Employees\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Employees\Services\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Dto\" />

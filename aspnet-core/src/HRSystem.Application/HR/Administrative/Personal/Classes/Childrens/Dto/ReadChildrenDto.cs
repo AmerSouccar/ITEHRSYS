@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Employees.Dto;
 using HRSystem.HR.Administrative.Personal.Classes.Spouses;
 using HRSystem.HR.Administrative.Personal.Classes.Spouses.Dto;
 using HRSystem.HR.Administrative.Personal.Enums;
@@ -23,7 +24,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Childrens.Dto
         public Guid SpouseId { get; set; }
         public ReadSpouseDto Spouse { get; set; }
         public Guid EmployeeId { get; set; }
-        //public ReadEmployeeDto Employee { get; set; }
+        public ReadEmployeeDto Employee { get; set; }
         public int OrderInFamily { get; set; }
         public int Gender { get; set; }
         public int MaritialStatus { get; set; }

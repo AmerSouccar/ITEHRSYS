@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
 {
-    public interface IEmployeeDomanService : IDomainService
+    public interface IEmployeeDomainService : IDomainService
     {
         public Task<List<Employee>> GetAll();
         public Task<Employee> GetbyId(Guid id);

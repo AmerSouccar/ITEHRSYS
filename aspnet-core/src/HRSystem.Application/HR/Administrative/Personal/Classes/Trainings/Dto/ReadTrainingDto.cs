@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Employees.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Trainings.Dto
         public class Training : FullAuditedAggregateRoot<Guid>
         {
             public Guid EmployeeId { get; set; }
-            //public ReadEmployeeDto Employee { get; set; }
+            public ReadEmployeeDto Employee { get; set; }
             #region Course
             public string Specialize { get; set; }
             public string CourseName { get; set; }
