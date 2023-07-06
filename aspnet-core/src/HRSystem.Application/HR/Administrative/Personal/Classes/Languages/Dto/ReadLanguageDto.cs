@@ -18,7 +18,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Languages.Dto
     public class ReadLanguageDto : EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
 
         public Guid LanguageNameId { get; set; }
         public LanguageNameDto LanguageName { get; set; }

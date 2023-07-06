@@ -19,7 +19,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Certificates.Dto
         public CityDto PlaceofIssuance { get; set; }
         #endregion
         public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
         public DateTime DateofIssuance { get; set; }
         public DateTime ExpirationDate { get; set; }
         public string Notes { get; set; }

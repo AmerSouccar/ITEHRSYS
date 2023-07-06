@@ -13,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Experiences.Dto
     public class ReadExperienceDto :EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
 
         public string JobTitle { get; set; }
         public string Industry { get; set; }

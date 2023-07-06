@@ -20,7 +20,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Dependents.Dto
     public class ReadDependentDto : EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }

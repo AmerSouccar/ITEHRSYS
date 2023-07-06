@@ -39,7 +39,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Educations.Dto
         public Guid ScoreId { get; set; }
         public ScoreDto Score { get; set; }
         public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
         public DateTime? DateofIssuance { get; set; }
         public Guid CountryId { get; set; }
         public CountryDto Country { get; set; }

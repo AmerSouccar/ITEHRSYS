@@ -24,7 +24,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Childrens.Dto
         public Guid SpouseId { get; set; }
         public ReadSpouseDto Spouse { get; set; }
         public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
         public int OrderInFamily { get; set; }
         public int Gender { get; set; }
         public int MaritialStatus { get; set; }

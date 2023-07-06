@@ -17,7 +17,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses.Dto
     public class ReadSpouseDto : EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
 
         #region BasicInfo
         public string IdNumber { get; set; }

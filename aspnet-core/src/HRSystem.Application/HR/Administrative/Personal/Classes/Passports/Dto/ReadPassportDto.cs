@@ -15,7 +15,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Passports.Dto
     public class ReadPassportDto :EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
 
         public string Number { get; set; }
         public string FirstName { get; set; }

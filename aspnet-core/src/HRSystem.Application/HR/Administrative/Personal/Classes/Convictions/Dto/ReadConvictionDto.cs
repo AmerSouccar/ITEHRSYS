@@ -13,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Convictions.Dto
     public class ReadConvictionDto :EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
         public string Number { get; set; }
         public DateTime? ReleaseDate { get; set; }
         public DateTime? ExpiryDate { get; set; }

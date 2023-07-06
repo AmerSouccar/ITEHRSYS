@@ -51,7 +51,6 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Dto
         }
         #region PlaceofBirth
         public Guid PlaceofBirthId { get; set; }
-        public CityDto PlaceofBirth { get; set; }
         #endregion
         public DateTime DateofBirth { get; set; }
         public int Age
@@ -64,14 +63,12 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Dto
         public string IdNumber { get; set; }
         #region CountryofBirth
         public Guid CountryofBirthId { get; set; }
-        public CountryDto CountryofBirth { get; set; }
         #endregion
         public string PersonalRecordSource { get; set; }
         public string CivilRecordPlaceAndNumber { get; set; }
         public int Gender { get; set; }
         #region Religion
         public Guid ReligionId { get; set; }
-        public ReligionDto Religion { get; set; }
         #endregion
         public string FirstNameAr { get; set; }
         public string LastNameAr { get; set; }
@@ -96,11 +93,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Dto
         public string PlaceofBirthAr { get; set; }
         #region Nationality
         public Guid NationalityId { get; set; }
-        public NationalityDto Nationality { get; set; }
         #endregion
         #region SecondaryNationality
         public Guid SecondaryNationalityId { get; set; }
-        public NationalityDto? SecondaryNationality { get; set; }
         #endregion
         public int MaritialStatus { get; set; }
         public string PhotoPath { get; set; }

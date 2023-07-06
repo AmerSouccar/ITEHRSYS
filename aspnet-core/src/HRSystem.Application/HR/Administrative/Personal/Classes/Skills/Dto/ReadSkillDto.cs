@@ -16,7 +16,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Skills.Dto
     public class ReadSkillDto : EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
+        //public ReadEmployeeDto Employee { get; set; }
 
         public string SkillName { get; set; }
         public Guid LevelId { get; set; }
