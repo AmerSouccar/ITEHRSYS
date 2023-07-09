@@ -1,4 +1,5 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+﻿using HRSystem.HR.Administrative.Grades.Classes.EducationGrades.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,24 +22,24 @@ namespace HRSystem.HR.Administrative.Grades.Classes.EducationGrades.Services
             await _educationGrade.Delete(id);
         }
 
-        public async Task<List<ReadEducationDto>> GetAll()
+        public async Task<List<ReadEducationGradeDto>> GetAll()
         {
-           return ObjectMapper.Map<List<ReadEducationDto>>(await _educationGrade.GetAll());
+           return ObjectMapper.Map<List<ReadEducationGradeDto>>(await _educationGrade.GetAll());
         }
 
-        public async Task<ReadEducationDto> GetbyId(Guid id)
+        public async Task<ReadEducationGradeDto> GetbyId(Guid id)
         {
-            return ObjectMapper.Map<ReadEducationDto>(await _educationGrade.GetbyId(id));
+            return ObjectMapper.Map<ReadEducationGradeDto>(await _educationGrade.GetbyId(id));
         }
 
-        public async Task<InsertEducationDto> Insert(InsertEducationDto educationGrade)
+        public async Task<InsertEducationGradeDto> Insert(InsertEducationGradeDto educationGrade)
         {
-           return ObjectMapper.Map<InsertEducationDto>(await _educationGrade.Insert(ObjectMapper.Map<EducationGrade>(educationGrade)));
+           return ObjectMapper.Map<InsertEducationGradeDto>(await _educationGrade.Insert(ObjectMapper.Map<EducationGrade>(educationGrade)));
         }
 
-        public async Task<UpdateEducationDto> Update(UpdateEducationDto educationGrade)
+        public async Task<UpdateEducationGradeDto> Update(UpdateEducationGradeDto educationGrade)
         {
-            return ObjectMapper.Map<UpdateEducationDto>(await _educationGrade.Update(ObjectMapper.Map<EducationGrade>(educationGrade)));
+            return ObjectMapper.Map<UpdateEducationGradeDto>(await _educationGrade.Update(ObjectMapper.Map<EducationGrade>(educationGrade)));
 
         }
     }
