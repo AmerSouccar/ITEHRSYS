@@ -9,7 +9,7 @@ namespace HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.Services
 {
     public class OrganizationLevelDomainService : IOrganizationLevelDomainService
     {
-        private readonly IRepository<OrganizationLevel,Guid> _organizationLevelRepository;
+        private readonly IRepository<OrganizationLevel, Guid> _organizationLevelRepository;
 
         public OrganizationLevelDomainService(IRepository<OrganizationLevel, Guid> organizationLevelRepository)
         {

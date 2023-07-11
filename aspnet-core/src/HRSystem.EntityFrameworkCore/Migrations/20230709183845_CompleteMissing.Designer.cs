@@ -4,6 +4,7 @@ using HRSystem.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRSystem.Migrations
 {
     [DbContext(typeof(HRSystemDbContext))]
-    partial class HRSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230709183845_CompleteMissing")]
+    partial class CompleteMissing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1761,7 +1764,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrganizationLevels");
+                    b.ToTable("OrganizationLevel");
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.JobDescription", b =>

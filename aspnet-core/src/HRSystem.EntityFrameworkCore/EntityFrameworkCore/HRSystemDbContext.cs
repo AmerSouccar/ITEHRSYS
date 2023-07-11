@@ -69,6 +69,7 @@ using HRSystem.HR.Operational.PayrollSystem.Classes.Months;
 using HRSystem.HR.Operational.Workflows.Classes.Workflow;
 using HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards;
+using HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels;
 
 namespace HRSystem.EntityFrameworkCore
 {
@@ -152,6 +153,7 @@ namespace HRSystem.EntityFrameworkCore
         public DbSet<AttendanceMonthlyCard> AttendanceMonthlyCards { get; set; }
         public DbSet<Node> Nodes { get; set; }
 
+        public DbSet<OrganizationLevel> OrganizationLevels { get;set; }
 
 
     }
