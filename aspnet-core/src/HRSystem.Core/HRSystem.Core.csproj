@@ -21,8 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HR\Administrative\OrgChart\Indexes\" />
-    <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceForms\Services\" />
-    <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceMonthlyCards\Services\" />
     <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceRecords\Services\" />
     <Folder Include="HR\Operational\AttendanceSystem\Classes\EntranceExitRecords\Services\" />
     <Folder Include="HR\Operational\AttendanceSystem\Classes\HourlyMissions\Sevices\" />
