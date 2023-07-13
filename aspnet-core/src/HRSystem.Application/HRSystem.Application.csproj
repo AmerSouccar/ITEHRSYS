@@ -24,5 +24,13 @@
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Dto\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Map\" />
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Services\" />
+    <Folder Include="HR\Operational\AttendanceSystem\Classes\" />
+    <Folder Include="HR\Operational\AttendanceSystem\Indexes\" />
+    <Folder Include="HR\Operational\EmployeeServices\Classes\" />
+    <Folder Include="HR\Operational\EmployeeServices\Indexes\" />
+    <Folder Include="HR\Operational\PayrollSystem\Classes\" />
+    <Folder Include="HR\Operational\PayrollSystem\Indexes\" />
+    <Folder Include="HR\Operational\Workflows\Classes\" />
+    <Folder Include="HR\Operational\Workflows\Indexes\" />
   </ItemGroup>
 </Project>
