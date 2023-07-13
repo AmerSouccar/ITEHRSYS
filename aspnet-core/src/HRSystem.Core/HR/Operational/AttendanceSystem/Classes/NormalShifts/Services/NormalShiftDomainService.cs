@@ -30,10 +30,6 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Services
         public async Task<NormalShift> GetbyId(Guid id)
         {
             NormalShift normalShift = await _normalShiftRepository.GetAsync(id);
-            if (normalShift != null)
-            { 
-                await _normalShiftRepository.EnsurePropertyLoadedAsync(normalShift);
-            }
             return normalShift;
 
         }

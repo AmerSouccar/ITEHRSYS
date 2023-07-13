@@ -33,7 +33,8 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.Se
             TemporaryWorkshop temporaryWorkshop = await _temporaryWorkshoprepository.GetAsync(id);
             if (temporaryWorkshop != null)
             {
-                await _temporaryWorkshoprepository.EnsurePropertyLoadedAsync(temporaryWorkshop, x => x.Workshop, x => x.TempWorkshop);
+                await _temporaryWorkshoprepository.EnsurePropertyLoadedAsync(temporaryWorkshop, x => x.Workshop);
+                await _temporaryWorkshoprepository.EnsurePropertyLoadedAsync(temporaryWorkshop, x => x.TempWorkshop);
             }
             return temporaryWorkshop;
         }
