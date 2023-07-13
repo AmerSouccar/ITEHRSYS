@@ -21,13 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HR\Administrative\OrgChart\Indexes\" />
-    <Folder Include="HR\Operational\AttendanceSystem\Classes\AttendanceRecords\Services\" />
-    <Folder Include="HR\Operational\AttendanceSystem\Classes\EntranceExitRecords\Services\" />
-    <Folder Include="HR\Operational\AttendanceSystem\Classes\HourlyMissions\Sevices\" />
-    <Folder Include="HR\Operational\AttendanceSystem\Classes\NormalShifts\Services\" />
-    <Folder Include="HR\Operational\AttendanceSystem\Classes\TemporaryWorkshops\Services\" />
-    <Folder Include="HR\Operational\AttendanceSystem\Classes\TravelMissions\Services\" />
-    <Folder Include="HR\Operational\AttendanceSystem\Classes\Workshops\Services\" />
     <Folder Include="HR\Operational\AttendanceSystem\Indexes\" />
     <Folder Include="HR\Operational\EmployeeServices\Classes\Assignments\Services\" />
     <Folder Include="HR\Operational\EmployeeServices\Classes\ChangeableHolidays\Services\" />
