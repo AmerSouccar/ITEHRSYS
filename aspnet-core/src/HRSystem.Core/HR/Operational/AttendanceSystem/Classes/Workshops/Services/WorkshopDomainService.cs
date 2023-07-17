@@ -32,7 +32,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Services
             Workshop workshop = await _workshopRepository.GetAsync(id);
             if (workshop != null)
             {
-                await _workshopRepository.EnsurePropertyLoadedAsync(workshop, x => x.NormalShifts);
+                await _workshopRepository.EnsureCollectionLoadedAsync(workshop, x => x.NormalShifts);
             }
             return workshop;
         }

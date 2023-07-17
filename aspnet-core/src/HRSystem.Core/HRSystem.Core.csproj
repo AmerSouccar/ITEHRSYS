@@ -22,10 +22,6 @@
   <ItemGroup>
     <Folder Include="HR\Administrative\OrgChart\Indexes\" />
     <Folder Include="HR\Operational\AttendanceSystem\Indexes\" />
-    <Folder Include="HR\Operational\EmployeeServices\Classes\Assignments\Services\" />
-    <Folder Include="HR\Operational\EmployeeServices\Classes\ChangeableHolidays\Services\" />
-    <Folder Include="HR\Operational\EmployeeServices\Classes\CompanyHolidays\Services\" />
-    <Folder Include="HR\Operational\EmployeeServices\Classes\FixedHolidays\Services\" />
     <Folder Include="HR\Operational\EmployeeServices\Classes\LeaveSettings\Services\" />
     <Folder Include="HR\Operational\EmployeeServices\Classes\LeaveRequests\Services\" />
     <Folder Include="HR\Operational\EmployeeServices\Classes\Promotions\Services\" />

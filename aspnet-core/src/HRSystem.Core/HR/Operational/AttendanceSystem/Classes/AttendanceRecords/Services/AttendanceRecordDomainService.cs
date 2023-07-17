@@ -32,7 +32,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
             AttendanceRecord attendanceRecord = await _attendanceRecordRepository.GetAsync(id);
             if (attendanceRecord != null)
             {
-                await _attendanceRecordRepository.EnsurePropertyLoadedAsync(attendanceRecord, x => x.AttendanceMonthlyCards);
+                await _attendanceRecordRepository.EnsureCollectionLoadedAsync(attendanceRecord, x => x.AttendanceMonthlyCards);
             }
             return attendanceRecord;
         }
