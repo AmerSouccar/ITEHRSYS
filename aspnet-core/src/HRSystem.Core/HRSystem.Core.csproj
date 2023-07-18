@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <VersionPrefix>1.0.0.0</VersionPrefix>
     <TargetFramework>net7.0</TargetFramework>
@@ -22,21 +22,9 @@
   <ItemGroup>
     <Folder Include="HR\Administrative\OrgChart\Indexes\" />
     <Folder Include="HR\Operational\AttendanceSystem\Indexes\" />
-    <Folder Include="HR\Operational\EmployeeServices\Classes\LeaveSettings\Services\" />
-    <Folder Include="HR\Operational\EmployeeServices\Classes\LeaveRequests\Services\" />
-    <Folder Include="HR\Operational\EmployeeServices\Classes\Promotions\Services\" />
-    <Folder Include="HR\Operational\EmployeeServices\Classes\Resignations\Services\" />
-    <Folder Include="HR\Operational\EmployeeServices\Classes\Transfers\Services\" />
     <Folder Include="HR\Operational\EmployeeServices\Enums\" />
     <Folder Include="HR\Operational\EmployeeServices\Indexes\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\BenefitCards\Services\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\DeductionCards\Services\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\FinancialCards\Services\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\MonthlyCards\Services\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\Months\Services\" />
     <Folder Include="HR\Operational\PayrollSystem\Indexes\" />
-    <Folder Include="HR\Operational\Workflows\Classes\WorkflowSettings\Services\" />
-    <Folder Include="HR\Operational\Workflows\Classes\Workflow\Services\" />
     <Folder Include="HR\Operational\Workflows\Indexes\" />
   </ItemGroup>
 </Project>
