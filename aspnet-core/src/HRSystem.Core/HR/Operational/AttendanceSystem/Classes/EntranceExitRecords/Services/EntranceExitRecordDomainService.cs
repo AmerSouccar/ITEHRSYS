@@ -45,7 +45,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
             {
                 using (var package = new ExcelPackage(stream))
                 {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0]; // Assuming data is on the first sheet
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0]; 
 
                     int startRow = worksheet.Dimension.Start.Row;
                     int endRow = worksheet.Dimension.End.Row;
@@ -61,9 +61,6 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
                             var cellValue = worksheet.Cells[row, col].Value?.ToString();
                             rowData.Add(cellValue);
                         }
-
-                        // Process the rowData list (e.g., save it to the database or perform other operations)
-                        // Your logic here...
                     }
                 }
             }
