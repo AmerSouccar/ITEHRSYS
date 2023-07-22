@@ -11,6 +11,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Languages.Services
     {
         private readonly IRepository<Language, Guid> _languageRepository;
 
+        public LanguageDomainService(IRepository<Language, Guid> languageRepository)
+        {
+            _languageRepository = languageRepository;
+        }
+
         public async Task Delete(Guid id)
         {
             await _languageRepository.DeleteAsync(id);

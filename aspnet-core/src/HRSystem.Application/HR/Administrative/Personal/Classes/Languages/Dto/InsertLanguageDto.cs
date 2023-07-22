@@ -13,7 +13,6 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Languages.Dto
     public class InsertLanguageDto :EntityDto<Guid>
     {
         public Guid EmployeeId { get; set; }
-
         public Guid LanguageNameId { get; set; }
         public Guid WritingId { get; set; }
         public Guid ReadingId { get; set; }

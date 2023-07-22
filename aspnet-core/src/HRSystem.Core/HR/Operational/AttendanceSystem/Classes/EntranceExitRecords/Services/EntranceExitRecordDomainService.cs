@@ -1,5 +1,7 @@
 ﻿using Abp.Domain.Repositories;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords;
+using Microsoft.AspNetCore.Http;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +37,36 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
                 await _entranceExitRecordRepository.EnsurePropertyLoadedAsync(entranceExitRecord, x => x.Employee);
             }
             return entranceExitRecord;
+        }
+
+        public void ImportDataFromExcel(IFormFile file)
+        {
+            using (var stream = file.OpenReadStream())
+            {
+                using (var package = new ExcelPackage(stream))
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0]; // Assuming data is on the first sheet
+
+                    int startRow = worksheet.Dimension.Start.Row;
+                    int endRow = worksheet.Dimension.End.Row;
+                    int startColumn = worksheet.Dimension.Start.Column;
+                    int endColumn = worksheet.Dimension.End.Column;
+
+                    for (int row = startRow + 1; row <= endRow; row++) // Start from 2nd row (skipping headers)
+                    {
+                        List<string> rowData = new List<string>();
+
+                        for (int col = startColumn; col <= endColumn; col++)
+                        {
+                            var cellValue = worksheet.Cells[row, col].Value?.ToString();
+                            rowData.Add(cellValue);
+                        }
+
+                        // Process the rowData list (e.g., save it to the database or perform other operations)
+                        // Your logic here...
+                    }
+                }
+            }
         }
 
         public async Task<EntranceExitRecord> Insert(EntranceExitRecord entranceExitRecord)

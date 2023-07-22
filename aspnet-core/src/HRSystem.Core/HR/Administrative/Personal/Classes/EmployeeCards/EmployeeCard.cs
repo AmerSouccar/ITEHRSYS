@@ -36,23 +36,23 @@ namespace HRSystem.HR.Administrative.Personal.Classes.EmployeeCards
         }
         #region JobDescription
         [ForeignKey("JobDescription")]
-        public Guid JobDescriptionId { get; set; }
-        public JobDescription JobDescription { get; set; }
+        public Guid? JobDescriptionId { get; set; }
+        public JobDescription? JobDescription { get; set; }
         #endregion
         #region Position
         [ForeignKey("Position")]
-        public Guid PositionId { get; set; }
-        public Position Position { get; set; }
+        public Guid? PositionId { get; set; }
+        public Position? Position { get; set; }
         #endregion
         #region JobTitle
         [ForeignKey("JobTitle")]
-        public Guid JobTitleId { get; set; }
-        public JobTitle JobTitle { get; set; }
+        public Guid? JobTitleId { get; set; }
+        public JobTitle? JobTitle { get; set; }
         #endregion
         #region Grade
         [ForeignKey("Grade")]
-        public Guid GradeId { get; set; }
-        public Grade Grade { get; set; }
+        public Guid? GradeId { get; set; }
+        public Grade? Grade { get; set; }
         #endregion
         public DateTime StartWorkingDate { get; set; }
         public DateTime EndWorkingDate { get; set; }

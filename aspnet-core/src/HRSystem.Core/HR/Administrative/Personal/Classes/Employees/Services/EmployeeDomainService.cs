@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Repositories;
 using HRSystem.Authorization.Users;
+using HRSystem.HR.Administrative.Personal.Classes.EmployeeCards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
     public class EmployeeDomainService : IEmployeeDomainService
     {
         private readonly IRepository<Employee, Guid> _employeeRepository;
+        private readonly IRepository<EmployeeCard, Guid> _employeeCardRepository;
         private readonly UserRegistrationManager _userRegistrationManager;
 
-        public EmployeeDomainService(IRepository<Employee, Guid> employeeRepository, UserRegistrationManager userRegistrationManager)
+        public EmployeeDomainService(IRepository<Employee, Guid> employeeRepository, UserRegistrationManager userRegistrationManager, IRepository<EmployeeCard, Guid> employeeCardRepository)
         {
             _employeeRepository = employeeRepository;
             _userRegistrationManager = userRegistrationManager;
+            _employeeCardRepository = employeeCardRepository;
         }
 
         public async Task Delete(Guid id)
@@ -39,7 +42,13 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
             var newUser = await _userRegistrationManager.RegisterAsync(employee.FirstName,employee.LastName,employee.Email, employee.Email, "123456",true);
             employee.UserId = newUser.Id;
             employee.User = newUser;
-            return await _employeeRepository.InsertAsync(employee);
+            var employeeId = await _employeeRepository.InsertAndGetIdAsync(employee);
+            EmployeeCard employeeCard = new EmployeeCard()
+            {
+                EmployeeId = employeeId,
+            };
+            await _employeeCardRepository.InsertAsync(employeeCard);
+            return employee;
         }
 
         public async Task<Employee> Update(Employee employee)

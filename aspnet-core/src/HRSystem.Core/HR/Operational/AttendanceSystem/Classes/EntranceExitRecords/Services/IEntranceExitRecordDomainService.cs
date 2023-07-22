@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Services;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
         public Task<EntranceExitRecord> Insert(EntranceExitRecord entranceExitRecord);
         public Task<EntranceExitRecord> Update(EntranceExitRecord entranceExitRecord);
         public Task Delete(Guid id);
+        public void ImportDataFromExcel(IFormFile file);
     }
 }
