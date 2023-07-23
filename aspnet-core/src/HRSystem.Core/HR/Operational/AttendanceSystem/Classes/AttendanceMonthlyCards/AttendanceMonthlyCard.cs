@@ -13,7 +13,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCard
     {
         #region EmployeeCard
         [ForeignKey("EmployeeCardId")]
-        public EmployeeCard EmployeeCard { get; set; }
+        public ReadEmployeeCardDto EmployeeCard { get; set; }
         public Guid EmployeeCardId { get; set; }
         #endregion
         public double TotalRequiredWorkHours { get; set; }

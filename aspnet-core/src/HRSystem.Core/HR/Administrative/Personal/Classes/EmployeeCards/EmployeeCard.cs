@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace HRSystem.HR.Administrative.Personal.Classes.EmployeeCards
 {
-    public class EmployeeCard : FullAuditedAggregateRoot<Guid>
+    public class ReadEmployeeCardDto : FullAuditedAggregateRoot<Guid>
     {
         #region Employee
         [ForeignKey("Employee")]

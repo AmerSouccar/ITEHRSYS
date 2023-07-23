@@ -114,7 +114,7 @@ namespace HRSystem.EntityFrameworkCore
         public DbSet<BankInformation> BankInformations { get; set; }
         public DbSet<Bank> Banks { get; set; }
         public DbSet<Custodie> Custodies { get; set; }
-        public DbSet<EmployeeCard> EmployeeCards { get; set; }
+        public DbSet<ReadEmployeeCardDto> EmployeeCards { get; set; }
         public DbSet<JobDescription> JobDescriptions { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<PositionWorkType> PositionWorkTypes { get; set; }

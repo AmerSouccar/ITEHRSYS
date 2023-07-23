@@ -12,10 +12,10 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
     public class EmployeeDomainService : IEmployeeDomainService
     {
         private readonly IRepository<Employee, Guid> _employeeRepository;
-        private readonly IRepository<EmployeeCard, Guid> _employeeCardRepository;
+        private readonly IRepository<ReadEmployeeCardDto, Guid> _employeeCardRepository;
         private readonly UserRegistrationManager _userRegistrationManager;
 
-        public EmployeeDomainService(IRepository<Employee, Guid> employeeRepository, UserRegistrationManager userRegistrationManager, IRepository<EmployeeCard, Guid> employeeCardRepository)
+        public EmployeeDomainService(IRepository<Employee, Guid> employeeRepository, UserRegistrationManager userRegistrationManager, IRepository<ReadEmployeeCardDto, Guid> employeeCardRepository)
         {
             _employeeRepository = employeeRepository;
             _userRegistrationManager = userRegistrationManager;
@@ -43,7 +43,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
             employee.UserId = newUser.Id;
             employee.User = newUser;
             var employeeId = await _employeeRepository.InsertAndGetIdAsync(employee);
-            EmployeeCard employeeCard = new EmployeeCard()
+            ReadEmployeeCardDto employeeCard = new ReadEmployeeCardDto()
             {
                 EmployeeId = employeeId,
             };

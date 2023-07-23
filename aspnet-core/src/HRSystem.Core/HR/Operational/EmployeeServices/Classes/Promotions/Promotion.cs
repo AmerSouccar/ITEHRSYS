@@ -26,7 +26,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Promotions
         #region EmployeeCard
         [ForeignKey("EmployeeCard")]
         public Guid EmployeeCardId { get; set; }
-        public EmployeeCard EmployeeCard { get; set; }
+        public ReadEmployeeCardDto EmployeeCard { get; set; }
         #endregion
         public DateTime PromotionDate { get; set; }
         public string Description { get; set; }

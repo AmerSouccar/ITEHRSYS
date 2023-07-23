@@ -17,7 +17,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings
         #region EmployeeCard
         [ForeignKey("EmployeeCard")]
         public Guid EmployeeCardId { get; set; }
-        public EmployeeCard EmployeeCard { get; set; }
+        public ReadEmployeeCardDto EmployeeCard { get; set; }
         #endregion
         #region WorkflowSetting
         [ForeignKey("WorkflowSetting")]
