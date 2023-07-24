@@ -26,28 +26,7 @@
     <Folder Include="HR\Administrative\Personal\Classes\Spouses\Services\" />
     <Folder Include="HR\Operational\AttendanceSystem\Indexes\" />
     <Folder Include="HR\Operational\EmployeeServices\Indexes\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\FinancialCards\Dto\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\FinancialCards\Map\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\FinancialCards\Services\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\MonthlyCards\Dto\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\MonthlyCards\Map\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\MonthlyCards\Services\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\Months\Dto\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\Months\Map\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\Months\Services\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\DeductionCards\Dto\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\DeductionCards\Map\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\DeductionCards\Services\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\BenefitCards\Dto\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\BenefitCards\Map\" />
-    <Folder Include="HR\Operational\PayrollSystem\Classes\BenefitCards\Services\" />
     <Folder Include="HR\Operational\PayrollSystem\Indexes\" />
-    <Folder Include="HR\Operational\Workflows\Classes\WorkflowSettings\Dto\" />
-    <Folder Include="HR\Operational\Workflows\Classes\WorkflowSettings\Map\" />
-    <Folder Include="HR\Operational\Workflows\Classes\WorkflowSettings\Services\" />
-    <Folder Include="HR\Operational\Workflows\Classes\Workflow\Dto\" />
-    <Folder Include="HR\Operational\Workflows\Classes\Workflow\Map\" />
-    <Folder Include="HR\Operational\Workflows\Classes\Workflow\Services\" />
     <Folder Include="HR\Operational\Workflows\Indexes\" />
   </ItemGroup>
 </Project>
