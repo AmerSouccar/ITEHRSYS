@@ -13,7 +13,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Resignations.Dto
     {
         public DateTime ResignationDate { get; set; }
         public Guid EmployeeCardId { get; set; }
-        public ReadEmployeeCardDto EmployeeCard { get; set; }
+        public EmployeeCard EmployeeCard { get; set; }
         public string Description { get; set; }
     }
 }

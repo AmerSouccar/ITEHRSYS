@@ -15,7 +15,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Resignations
         #region EmployeeCard
         [ForeignKey("EmployeeCard")]
         public Guid EmployeeCardId { get; set; }
-        public ReadEmployeeCardDto EmployeeCard { get; set; }
+        public EmployeeCard EmployeeCard { get; set; }
         #endregion
         public string Description { get; set; }
     }

@@ -16,7 +16,7 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards
         #region EmployeeCard
         [ForeignKey("EmployeeCard")]
         public Guid EmployeeCardId { get; set; }
-        public ReadEmployeeCardDto EmployeeCard { get; set; }
+        public EmployeeCard EmployeeCard { get; set; }
         #endregion
         public double Salary { get; set; }
         public bool Calculated { get; set; }

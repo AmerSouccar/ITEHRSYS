@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Repositories;
 using HRSystem.Authorization.Users;
 using HRSystem.HR.Administrative.Personal.Classes.EmployeeCards;
+using HRSystem.HR.Operational.PayrollSystem.Classes.FinancialCards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,16 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
     public class EmployeeDomainService : IEmployeeDomainService
     {
         private readonly IRepository<Employee, Guid> _employeeRepository;
-        private readonly IRepository<ReadEmployeeCardDto, Guid> _employeeCardRepository;
+        private readonly IRepository<EmployeeCard, Guid> _employeeCardRepository;
+        private readonly IRepository<FinancialCard, Guid> _financialCardRepository;
         private readonly UserRegistrationManager _userRegistrationManager;
 
-        public EmployeeDomainService(IRepository<Employee, Guid> employeeRepository, UserRegistrationManager userRegistrationManager, IRepository<ReadEmployeeCardDto, Guid> employeeCardRepository)
+        public EmployeeDomainService(IRepository<Employee, Guid> employeeRepository, UserRegistrationManager userRegistrationManager, IRepository<EmployeeCard, Guid> employeeCardRepository, IRepository<FinancialCard, Guid> financialCardRepository)
         {
             _employeeRepository = employeeRepository;
             _userRegistrationManager = userRegistrationManager;
             _employeeCardRepository = employeeCardRepository;
+            _financialCardRepository = financialCardRepository;
         }
 
         public async Task Delete(Guid id)
@@ -43,11 +46,17 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
             employee.UserId = newUser.Id;
             employee.User = newUser;
             var employeeId = await _employeeRepository.InsertAndGetIdAsync(employee);
-            ReadEmployeeCardDto employeeCard = new ReadEmployeeCardDto()
+            EmployeeCard employeeCard = new EmployeeCard()
             {
                 EmployeeId = employeeId,
             };
             await _employeeCardRepository.InsertAsync(employeeCard);
+            FinancialCard financialCard = new FinancialCard()
+            {
+                EmployeeId = employeeId,
+                Salary = 0,
+            };
+            await _financialCardRepository.InsertAsync(financialCard);
             return employee;
         }
 

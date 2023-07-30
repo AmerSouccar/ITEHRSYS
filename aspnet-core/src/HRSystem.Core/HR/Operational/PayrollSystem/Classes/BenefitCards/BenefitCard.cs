@@ -13,5 +13,6 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards
         public string Name { get; set; }
         public double Value { get; set; }
         public Formula Formula { get; set; }
+        public bool isCalculatedInPayrollSystem { get; set; }
     }
 }
