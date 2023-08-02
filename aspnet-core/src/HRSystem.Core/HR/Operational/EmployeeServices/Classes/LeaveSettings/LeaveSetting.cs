@@ -14,11 +14,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings
     {
         public string Name { get; set; }
         public double Balance { get; set; }
-        #region EmployeeCard
-        [ForeignKey("EmployeeCard")]
-        public Guid EmployeeCardId { get; set; }
-        public EmployeeCard EmployeeCard { get; set; }
-        #endregion
+        public bool isPaidLeave { get; set; }
         #region WorkflowSetting
         [ForeignKey("WorkflowSetting")]
         public Guid WorkflowSettingId { get; set; }

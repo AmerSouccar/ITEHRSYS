@@ -25,7 +25,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.Service
 
         public async Task<List<LeaveSetting>> GetAll()
         {
-            return _leaveSettingRepository.GetAllIncluding(x => x.EmployeeCard, x => x.WorkflowSetting).ToList();
+            return _leaveSettingRepository.GetAllIncluding(x => x.WorkflowSetting).ToList();
         }
 
         public async Task<LeaveSetting> GetbyId(Guid id)
@@ -33,7 +33,6 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.Service
             LeaveSetting leaveSetting = await _leaveSettingRepository.GetAsync(id);
             if (leaveSetting != null)
             {
-                await _leaveSettingRepository.EnsurePropertyLoadedAsync(leaveSetting, x => x.EmployeeCard);
                 await _leaveSettingRepository.EnsurePropertyLoadedAsync(leaveSetting, x => x.WorkflowSetting);
 
             }

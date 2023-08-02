@@ -6,6 +6,7 @@ using HRSystem.HR.Administrative.JobDesc.Classes.Positions;
 using HRSystem.HR.Administrative.Personal.Classes.Custodies;
 using HRSystem.HR.Administrative.Personal.Classes.Employees;
 using HRSystem.HR.Administrative.Personal.Enums;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms;
 using HRSystem.HR.Operational.EmployeeServices.Classes.Assignments;
 using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests;
 using HRSystem.HR.Operational.EmployeeServices.Classes.Promotions;
@@ -53,6 +54,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.EmployeeCards
         [ForeignKey("Grade")]
         public Guid? GradeId { get; set; }
         public Grade? Grade { get; set; }
+        #endregion
+        #region AttendanceForm
+        [ForeignKey("AttendanceForm")]
+        public Guid? AttendanceFormId { get; set; }
+        public AttendanceForm? AttendanceForm { get; set; }
         #endregion
         public DateTime StartWorkingDate { get; set; }
         public DateTime EndWorkingDate { get; set; }

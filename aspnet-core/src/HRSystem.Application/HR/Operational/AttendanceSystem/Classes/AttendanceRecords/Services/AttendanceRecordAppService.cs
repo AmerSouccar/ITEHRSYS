@@ -16,9 +16,19 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
             _attendanceRecord = attendanceRecord;
         }
 
+        public async Task CalculateMonth(Guid id)
+        {
+            await _attendanceRecord.CalculateMonth(id);
+        }
+
         public async Task Delete(Guid id)
         {
             await _attendanceRecord.Delete(id);
+        }
+
+        public async Task GenerateMonthlyCards(Guid id, List<Guid> employeeCardsIds)
+        {
+            await _attendanceRecord.GenerateMonthlyCards(id,employeeCardsIds);
         }
 
         public async Task<List<ReadAttendanceRecordDto>> GetAll()

@@ -10,14 +10,25 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Dto
     public class UpdateLeaveRequestDto :EntityDto<Guid>
     {
         public Guid LeaveSettingId { get; set; }
+        public Guid EmployeeId { get; set; }
         public DateTime RequestDate { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public bool isHourly { get; set; }
+        public DateTime? StartHour { get; set; }
+        public DateTime? EndHour { get; set; }
         public double LeaveRequestBalance
         {
             get
             {
-                return EndDate.Subtract(StartDate).TotalDays;
+                if (isHourly)
+                {
+                    double spentHours = EndDate.Subtract(StartDate).TotalHours;
+                    double spentDays = spentHours / 8;
+                    return spentDays;
+                }
+                else
+                    return EndDate.Subtract(StartDate).TotalDays;
             }
         }
         public string Description { get; set; }

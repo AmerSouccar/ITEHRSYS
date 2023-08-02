@@ -23,7 +23,6 @@
   <ItemGroup>
     <Folder Include="HR\Administrative\OrgChart\Indexes\" />
     <Folder Include="HR\Operational\AttendanceSystem\Indexes\" />
-    <Folder Include="HR\Operational\EmployeeServices\Enums\" />
     <Folder Include="HR\Operational\EmployeeServices\Indexes\" />
     <Folder Include="HR\Operational\PayrollSystem\Indexes\" />
     <Folder Include="HR\Operational\Workflows\Indexes\" />

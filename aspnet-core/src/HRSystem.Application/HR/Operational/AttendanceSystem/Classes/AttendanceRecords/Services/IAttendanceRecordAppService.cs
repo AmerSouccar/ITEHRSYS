@@ -15,5 +15,8 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
         public Task<InsertAttendanceRecordDto> Insert(InsertAttendanceRecordDto attendanceRecord);
         public Task<UpdateAttendanceRecordDto> Update(UpdateAttendanceRecordDto attendanceRecord);
         public Task Delete(Guid id);
+        public Task GenerateMonthlyCards(Guid id, List<Guid> employeeCardsIds);
+        public Task CalculateMonth(Guid id);
+
     }
 }

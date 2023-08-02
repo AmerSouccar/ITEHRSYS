@@ -56,7 +56,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
                 EmployeeId = employeeId,
                 Salary = 0,
             };
-            await _financialCardRepository.InsertAsync(financialCard);
+            var t = await _financialCardRepository.InsertAsync(financialCard);
             return employee;
         }
 
