@@ -13,6 +13,7 @@ using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests;
 using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Services;
 using HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards;
 using HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards;
+using HRSystem.HR.Operational.PayrollSystem.Classes.FinancialCards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,9 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
         private readonly IRepository<AttendanceForm,Guid> _attendanceFormRepository;
         private readonly IRepository<Workshop,Guid> _workshopRepository;
         private readonly IRepository<NormalShift,Guid> _normalShiftRepository;
+        private readonly IRepository<FinancialCard,Guid> _financialCardRepository;
 
-        public AttendanceRecordDomainService(IRepository<AttendanceRecord, Guid> attendanceRecordRepository, IRepository<EmployeeCard, Guid> employeeCardRepository, IRepository<Employee, Guid> employeeRepository, IRepository<AttendanceMonthlyCard, Guid> attendanceMonthlyCardRepository, ICompanyHolidayDomainService companyHolidayDomainService, IFixedHolidayDomainService fixedHolidayDomainService, IChangeableHolidayDomainService changeableHolidayDomainService, IRepository<LeaveRequest, Guid> leaveRequestRepository, IRepository<EntranceExitRecord, Guid> entranceExitRecordRepository, IRepository<AttendanceForm, Guid> attendanceFormRepository, IRepository<Workshop, Guid> workshopRepository, IRepository<NormalShift, Guid> normalShiftRepository)
+        public AttendanceRecordDomainService(IRepository<AttendanceRecord, Guid> attendanceRecordRepository, IRepository<EmployeeCard, Guid> employeeCardRepository, IRepository<Employee, Guid> employeeRepository, IRepository<AttendanceMonthlyCard, Guid> attendanceMonthlyCardRepository, ICompanyHolidayDomainService companyHolidayDomainService, IFixedHolidayDomainService fixedHolidayDomainService, IChangeableHolidayDomainService changeableHolidayDomainService, IRepository<LeaveRequest, Guid> leaveRequestRepository, IRepository<EntranceExitRecord, Guid> entranceExitRecordRepository, IRepository<AttendanceForm, Guid> attendanceFormRepository, IRepository<Workshop, Guid> workshopRepository, IRepository<NormalShift, Guid> normalShiftRepository, IRepository<FinancialCard, Guid> financialCardRepository)
         {
             _attendanceRecordRepository = attendanceRecordRepository;
             _employeeCardRepository = employeeCardRepository;
@@ -50,6 +52,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
             _attendanceFormRepository = attendanceFormRepository;
             _workshopRepository = workshopRepository;
             _normalShiftRepository = normalShiftRepository;
+            _financialCardRepository = financialCardRepository;
         }
 
         public async Task CalculateMonth(Guid id)
@@ -188,18 +191,17 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
                             }
 
 
-
-
-
                             employeeCard.TotalRequiredWorkHours = requiredHours;
                             employeeCard.ActualTotalWorkHours = actualHours;
                             employeeCard.isCalculated = true;
 
-                            if(employeeCard.TotalRequiredWorkHours < employeeCard.ActualTotalWorkHours)
+                            var financialCard = _financialCardRepository.GetAllList().FirstOrDefault(x => x.EmployeeId == employee.Id);
+                            double empSalaryPerHour = (financialCard.Salary / 30) / 8;
+
+
+                            if (employeeCard.TotalRequiredWorkHours < employeeCard.ActualTotalWorkHours)
                             {
                                 double benefitHours = employeeCard.ActualTotalWorkHours - employeeCard.TotalRequiredWorkHours;
-                                //here we should get the employee salary and calculate the hour cost
-                                double empSalaryPerHour = 0;
                                 BenefitCard benefitCard = new BenefitCard()
                                 {
                                     isCalculatedInPayrollSystem = false,
@@ -210,8 +212,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
                             else if (employeeCard.TotalRequiredWorkHours > employeeCard.ActualTotalWorkHours)
                             {
                                 double deductionHours =  employeeCard.TotalRequiredWorkHours - employeeCard.ActualTotalWorkHours;
-                                //here we should get the employee salary and calculate the hour cost
-                                double empSalaryPerHour = 0;
+
                                 DeductionCard benefitCard = new DeductionCard()
                                 {
                                     isCalculatedInPayrollSystem = false,
