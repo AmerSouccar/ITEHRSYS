@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Banks.Services
          await _bankRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Bank>> GetAll()
+        public IQueryable<Bank> GetAll()
         {
-            return _bankRepository.GetAllIncluding(x => x.Nationality).ToList();
+            return _bankRepository.GetAllIncluding(x => x.Nationality);
         }
 
         public async Task<Bank> GetbyId(Guid id)

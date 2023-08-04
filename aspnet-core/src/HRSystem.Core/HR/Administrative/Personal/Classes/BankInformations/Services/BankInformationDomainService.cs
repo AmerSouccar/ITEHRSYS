@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.BankInformations.Services
            await _bankInformationRepository.DeleteAsync(id);
         }
 
-        public async Task<List<BankInformation>> GetAll()
+        public IQueryable<BankInformation> GetAll()
         {
-            return _bankInformationRepository.GetAllIncluding(x => x.Bank).ToList();
+            return _bankInformationRepository.GetAllIncluding(x => x.Bank);
         }
 
         public async Task<BankInformation> GetbyId(Guid id)

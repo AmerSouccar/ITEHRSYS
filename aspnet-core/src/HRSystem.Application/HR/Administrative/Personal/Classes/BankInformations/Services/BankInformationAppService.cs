@@ -1,4 +1,6 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.BankInformations.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.BankInformations.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.BankInformations.Services
             await _bankInformationDomainService.Delete(id);
         }
 
-        public async Task<List<ReadBankInformationDto>> GetAll()
+        public PagedResultDto<ReadBankInformationDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadBankInformationDto>>(await _bankInformationDomainService.GetAll());
+            var bankInformations = _bankInformationDomainService.GetAll();
+            int total = bankInformations.Count();
+            bankInformations = bankInformations.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadBankInformationDto>>(bankInformations.ToList());
+            return new PagedResultDto<ReadBankInformationDto>(total, list);
         }
 
         public async Task<ReadBankInformationDto> GetbyId(Guid id)

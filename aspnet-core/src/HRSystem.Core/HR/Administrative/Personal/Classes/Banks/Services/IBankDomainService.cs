@@ -9,7 +9,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Banks.Services
 {
     public interface IBankDomainService : IDomainService
     {
-        public Task<List<Bank>> GetAll();
+        public IQueryable<Bank> GetAll();
         public Task<Bank> GetbyId(Guid id);
         public Task<Bank> Insert(Bank bank);
         public Task<Bank> Update(Bank bank);

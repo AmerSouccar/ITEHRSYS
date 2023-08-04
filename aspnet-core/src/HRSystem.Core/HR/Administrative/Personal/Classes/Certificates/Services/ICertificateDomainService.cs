@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Certificates.Services
 {
     public interface ICertificateDomainService : IDomainService
     {
-        public Task<List<Certificate>> GetAll();
+        public IQueryable<Certificate> GetAll();
         public Task<Certificate> GetbyId(Guid id);
         public Task<Certificate> Insert(Certificate certificate);
         public Task<Certificate> Update(Certificate certificate);

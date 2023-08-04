@@ -9,6 +9,6 @@ namespace HRSystem.HR.PaginationDto
 {
     public class PagedGeneralResultRequestDto : PagedResultRequestDto
     {
-        public string Keyword { get; set; }
+        //public string Keyword { get; set; }
     }
 }

@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Certificates.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Banks.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Certificates.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Certificates.Services
             await _certificateDomainService.Delete(id);
         }
 
-        public async Task<List<ReadCertificateDto>> GetAll()
+        public PagedResultDto<ReadCertificateDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<ReadCertificateDto>>(await _certificateDomainService.GetAll());
+            var certificates = _certificateDomainService.GetAll();
+            int total = certificates.Count();
+            certificates = certificates.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadCertificateDto>>(certificates.ToList());
+            return new PagedResultDto<ReadCertificateDto>(total, list);
         }
 
         public async Task<ReadCertificateDto> GetbyId(Guid id)

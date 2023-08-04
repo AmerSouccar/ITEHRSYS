@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Certificates.Services
             await _certificateRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Certificate>> GetAll()
+        public IQueryable<Certificate> GetAll()
         {
-            return _certificateRepository.GetAllIncluding(x => x.PlaceofIssuance,x => x.Attachments).ToList();
+            return _certificateRepository.GetAllIncluding(x => x.PlaceofIssuance,x => x.Attachments);
         }
 
         public async Task<Certificate> GetbyId(Guid id)
