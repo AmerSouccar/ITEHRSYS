@@ -63,56 +63,38 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                 'fas fa-users',
                 'Pages.Users'
             ),
-            new MenuItem(this.l('MultiLevelMenu'), '', 'fas fa-circle', '', [
-                new MenuItem('ASP.NET Boilerplate', '', 'fas fa-dot-circle', '', [
+            new MenuItem(this.l('Administrative'), '', 'fas fa-circle', '', [
+                new MenuItem(this.l('Personal'), '', 'fas fa-dot-circle', '', [
                     new MenuItem(
-                        'Home',
+                        this.l('Employee'),
                         'https://aspnetboilerplate.com?ref=abptmpl',
                         'far fa-circle'
                     ),
                     new MenuItem(
-                        'Templates',
+                        this.l('Employee Card'),
                         'https://aspnetboilerplate.com/Templates?ref=abptmpl',
                         'far fa-circle'
                     ),
                     new MenuItem(
-                        'Samples',
-                        'https://aspnetboilerplate.com/Samples?ref=abptmpl',
-                        'far fa-circle'
+                        this.l('Indexes'),
+                        '',
+                        'fas fa-dot-circle',
+                        '',
+                        [
+                            new MenuItem(
+                                this.l('Country'),
+                                '/app/countries',
+                                'far fa-circle'
+                            ),
+                            new MenuItem(
+                                this.l('City'),
+                                '/app/cities',
+                                'far fa-circle'
+                            ),
+                        ]
                     ),
-                    new MenuItem(
-                        'Documents',
-                        'https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl',
-                        'far fa-circle'
-                    ),
+                   
                 ]),
-                new MenuItem('ASP.NET Zero', '', 'fas fa-dot-circle', '', [
-                    new MenuItem(
-                        'Home',
-                        'https://aspnetzero.com?ref=abptmpl',
-                        'far fa-circle'
-                    ),
-                    new MenuItem(
-                        'Features',
-                        'https://aspnetzero.com/Features?ref=abptmpl',
-                        'far fa-circle'
-                    ),
-                    new MenuItem(
-                        'Pricing',
-                        'https://aspnetzero.com/Pricing?ref=abptmpl#pricing',
-                        'far fa-circle'
-                    ),
-                    new MenuItem(
-                        'Faq',
-                        'https://aspnetzero.com/Faq?ref=abptmpl',
-                        'far fa-circle'
-                    ),
-                    new MenuItem(
-                        'Documents',
-                        'https://aspnetzero.com/Documents?ref=abptmpl',
-                        'far fa-circle'
-                    )
-                ])
             ])
         ];
     }

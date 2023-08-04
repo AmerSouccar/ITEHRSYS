@@ -38,6 +38,12 @@ import { SidebarComponent } from './layout/sidebar.component';
 import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
+import { CityComponent } from './city/city.component';
+import { CreateCityDialogComponent } from './city/create-city-dialog/create-city-dialog.component';
+import { EditCityDialogComponent } from './city/edit-city-dialog/edit-city-dialog.component';
+import { CountryComponent } from './country/country.component';
+import { CreateCountryDialogComponent } from './country/create-country-dialog/create-country-dialog.component';
+import { EditCountryDialogComponent } from './country/edit-country-dialog/edit-country-dialog.component';
 
 @NgModule({
     declarations: [
@@ -67,7 +73,13 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
         SidebarComponent,
         SidebarLogoComponent,
         SidebarUserPanelComponent,
-        SidebarMenuComponent
+        SidebarMenuComponent,
+        CityComponent,
+        CreateCityDialogComponent,
+        EditCityDialogComponent,
+        CountryComponent,
+        CreateCountryDialogComponent,
+        EditCountryDialogComponent
     ],
     imports: [
         CommonModule,
