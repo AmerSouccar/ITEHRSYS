@@ -1,5 +1,8 @@
-﻿using HRSystem.HR.Administrative.Grades.Classes.EducationGrades.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Grades.Classes.EducationGrades.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Banks.Dto;
 using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +25,14 @@ namespace HRSystem.HR.Administrative.Grades.Classes.EducationGrades.Services
             await _educationGrade.Delete(id);
         }
 
-        public async Task<List<ReadEducationGradeDto>> GetAll()
+        public PagedResultDto<ReadEducationGradeDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<ReadEducationGradeDto>>(await _educationGrade.GetAll());
+            var educationGrade = _educationGrade.GetAll();
+            int total = educationGrade.Count();
+            educationGrade = educationGrade.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadEducationGradeDto>>(educationGrade.ToList());
+            return new PagedResultDto<ReadEducationGradeDto>(total, list);
         }
 
         public async Task<ReadEducationGradeDto> GetbyId(Guid id)

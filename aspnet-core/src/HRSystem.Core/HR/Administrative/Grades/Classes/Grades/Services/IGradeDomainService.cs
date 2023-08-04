@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Grades.Classes.Grades.Services
 {
     public interface IGradeDomainService : IDomainService
     {
-        public Task<List<Grade>> GetAll();
+        public IQueryable<Grade> GetAll();
         public Task<Grade> GetbyId(Guid id);
         public Task<Grade> Insert(Grade grade);
         public Task<Grade> Update(Grade grade);

@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Grades.Classes.Grades.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Grades.Classes.Grades.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Banks.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Grades.Classes.Grades.Services
            await _gradeDomainService.Delete(id);
         }
 
-        public async Task<List<ReadGradeDto>> GetAll()
+        public PagedResultDto<ReadGradeDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadGradeDto>>(await _gradeDomainService.GetAll());
+            var grades = _gradeDomainService.GetAll();
+            int total = grades.Count();
+            grades = grades.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadGradeDto>>(grades.ToList());
+            return new PagedResultDto<ReadGradeDto>(total, list);
         }
 
         public async Task<ReadGradeDto> GetbyId(Guid id)

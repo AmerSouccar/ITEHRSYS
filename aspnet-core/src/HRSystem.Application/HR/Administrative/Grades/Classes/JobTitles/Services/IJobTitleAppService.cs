@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Grades.Classes.JobTitles.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace HRSystem.HR.Administrative.Grades.Classes.JobTitles.Services
 {
     public interface IJobTitleAppService : IApplicationService
     {
-        public Task<List<ReadJobTitleDto>> GetAll();
+        public PagedResultDto<ReadJobTitleDto>GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadJobTitleDto> GetbyId(Guid id);
         public Task<InsertJobTitleDto> Insert(InsertJobTitleDto jobTitle);
         public Task<UpdateJobTitleDto> Update(UpdateJobTitleDto jobTitle);

@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Grades.Classes.JobTitles.Services
 {
     public interface IJobTitleDomainService : IDomainService
     {
-        public Task<List<JobTitle>> GetAll();
+        public IQueryable<JobTitle>GetAll();
         public Task<JobTitle> GetbyId(Guid id);
         public Task<JobTitle> Insert(JobTitle jobTitle);
         public Task<JobTitle> Update(JobTitle jobTitle);

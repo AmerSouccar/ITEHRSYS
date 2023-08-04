@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Grades.Classes.JobTitles.Services
            await _jobTitleRepository.DeleteAsync(id);
         }
 
-        public async Task<List<JobTitle>> GetAll()
+        public IQueryable<JobTitle> GetAll()
         {
-            return await _jobTitleRepository.GetAllListAsync();
+            return  _jobTitleRepository.GetAll();
         }
 
         public async Task<JobTitle> GetbyId(Guid id)
