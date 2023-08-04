@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Services
 {
     public interface IPositionDomainService : IDomainService
     {
-        public Task<List<Position>> GetAll();
+        public IQueryable<Position>GetAll();
         public Task<Position> GetbyId(Guid id);
         public Task<Position> Insert(Position position);
         public Task<Position> Update(Position position);

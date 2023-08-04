@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.JobDesc.Indexes.PositionWorkTypes.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace HRSystem.HR.Administrative.JobDesc.Indexes.PositionWorkTypes.Services
 {
     public interface IPositionWorkTypeAppService :IApplicationService
     {
-        Task<List<ReadPositionWorkTypeDto>> GetAllAsync();
+        PagedResultDto<ReadPositionWorkTypeDto> GetAll(PagedGeneralResultRequestDto input);
         Task<ReadPositionWorkTypeDto> GetbyId(Guid id);
         Task<InsertPositionWorkTypeDto> InsertAsync(InsertPositionWorkTypeDto positionWorkType);
         Task<UpdatePositionWorkTypeDto> UpdateAsync(UpdatePositionWorkTypeDto positionWorkType);

@@ -1,8 +1,11 @@
-﻿using Abp.Domain.Services;
+﻿using Abp.Application.Services.Dto;
+using Abp.Domain.Services;
 using AutoMapper.Internal.Mappers;
 using HRSystem.HR.Administrative.Grades.Classes.JobTitles;
 using HRSystem.HR.Administrative.Grades.Classes.JobTitles.Dto;
+using HRSystem.HR.Administrative.JobDesc.Classes.Positions.Dto;
 using HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +29,14 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Services
            await _nodeDomainService.Delete(id);
         }
 
-        public async Task<List<ReadNodeDto>> GetAll()
+        public PagedResultDto<ReadNodeDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<ReadNodeDto>> (await _nodeDomainService.GetAll());
+            var nodes = _nodeDomainService.GetAll();
+            int total = nodes.Count();
+            nodes = nodes.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadNodeDto>>(nodes.ToList());
+            return new PagedResultDto<ReadNodeDto>(total, list);
         }
 
         public async Task<ReadNodeDto> GetbyId(Guid id)

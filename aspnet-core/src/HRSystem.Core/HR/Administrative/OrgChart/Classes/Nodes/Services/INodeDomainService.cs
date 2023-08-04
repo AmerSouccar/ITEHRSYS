@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Services
 {
     public interface INodeDomainService : IDomainService
     {
-        public Task<List<Node>> GetAll();
+        public IQueryable<Node>GetAll();
         public Task<Node> GetbyId(Guid id);
         public Task<Node> Insert(Node bank);
         public Task<Node> Update(Node bank);

@@ -1,4 +1,8 @@
-﻿using HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Grades.Classes.Grades;
+using HRSystem.HR.Administrative.Grades.Classes.Grades.Dto;
+using HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +25,14 @@ namespace HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.Services
            await _organizationLevelDomainService.Delete(id);
         }
 
-        public async Task<List<ReadOrganizationLevelDto>> GetAll()
+        public PagedResultDto<ReadOrganizationLevelDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadOrganizationLevelDto>>(await _organizationLevelDomainService.GetAll());
+            var organizationLevels = _organizationLevelDomainService.GetAll();
+            int total = organizationLevels.Count();
+            organizationLevels = organizationLevels.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadOrganizationLevelDto>>(organizationLevels.ToList());
+            return new PagedResultDto<ReadOrganizationLevelDto>(total, list);
         }
 
         public async Task<ReadOrganizationLevelDto> GetbyId(Guid id)

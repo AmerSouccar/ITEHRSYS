@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.Services
 {
     public interface IOrganizationLevelDomainService : IDomainService
     {
-        public Task<List<OrganizationLevel>> GetAll();
+        public IQueryable<OrganizationLevel> GetAll();
         public Task<OrganizationLevel> GetbyId(Guid id);
         public Task<OrganizationLevel> Insert(OrganizationLevel organizationLevel);
         public Task<OrganizationLevel> Update(OrganizationLevel organizationLevel);

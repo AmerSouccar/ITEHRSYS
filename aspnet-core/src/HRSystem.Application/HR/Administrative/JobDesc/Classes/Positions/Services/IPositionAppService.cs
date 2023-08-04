@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.JobDesc.Classes.Positions.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Services
 {
     public interface IPositionAppService :IApplicationService
     {
-        public Task<List<ReadPositionDto>> GetAll();
+        public PagedResultDto<ReadPositionDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadPositionDto> GetbyId(Guid id);
         public Task<InsertPositionDto> Insert(InsertPositionDto position);
         public Task<UpdatePositionDto> Update(UpdatePositionDto position);

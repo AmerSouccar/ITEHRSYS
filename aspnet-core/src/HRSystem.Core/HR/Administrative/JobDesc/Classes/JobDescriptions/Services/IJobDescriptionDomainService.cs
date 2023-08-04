@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.Services
 {
     public interface IJobDescriptionDomainService : IDomainService
     {
-        public Task<List<JobDescription>> GetAll();
+        public IQueryable<JobDescription> GetAll();
         public Task<JobDescription> GetbyId(Guid id);
         public Task<JobDescription> Insert(JobDescription jobDescription);
         public Task<JobDescription> Update(JobDescription jobDescription);

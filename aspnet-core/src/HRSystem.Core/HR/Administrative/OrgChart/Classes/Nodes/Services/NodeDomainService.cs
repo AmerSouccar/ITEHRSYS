@@ -23,9 +23,9 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Services
             await _nodeRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Node>> GetAll()
+        public IQueryable<Node> GetAll()
         {
-          return _nodeRepository.GetAllIncluding(x => x.Childrens,x => x.JobDescriptions,x => x.Parent).ToList();
+          return _nodeRepository.GetAllIncluding(x => x.Childrens,x => x.JobDescriptions,x => x.Parent);
         }
 
         public async Task<Node> GetbyId(Guid id)

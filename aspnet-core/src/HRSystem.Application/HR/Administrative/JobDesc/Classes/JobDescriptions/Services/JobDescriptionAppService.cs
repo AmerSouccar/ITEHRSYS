@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.Dto;
+using HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.Services
             await _jobDescriptionDomainService.Delete(id);
         }
 
-        public async Task<List<ReadJobDescriptionDto>> GetAll()
+        public PagedResultDto<ReadJobDescriptionDto>GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadJobDescriptionDto>>(await _jobDescriptionDomainService.GetAll());
+            var jobDescriptions = _jobDescriptionDomainService.GetAll();
+            int total = jobDescriptions.Count();
+            jobDescriptions = jobDescriptions.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadJobDescriptionDto>>(jobDescriptions.ToList());
+            return new PagedResultDto<ReadJobDescriptionDto>(total, list);
         }
 
         public async Task<ReadJobDescriptionDto> GetbyId(Guid id)

@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.JobDesc.Classes.Positions.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.Dto;
+using HRSystem.HR.Administrative.JobDesc.Classes.Positions.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Services
             await _positionDomainService.Delete(id);
         }
 
-        public async Task<List<ReadPositionDto>> GetAll()
+        public PagedResultDto<ReadPositionDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadPositionDto>>(await _positionDomainService.GetAll());
+            var positions = _positionDomainService.GetAll();
+            int total = positions.Count();
+            positions = positions.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadPositionDto>>(positions.ToList());
+            return new PagedResultDto<ReadPositionDto>(total, list);
         }
 
         public async Task<ReadPositionDto> GetbyId(Guid id)

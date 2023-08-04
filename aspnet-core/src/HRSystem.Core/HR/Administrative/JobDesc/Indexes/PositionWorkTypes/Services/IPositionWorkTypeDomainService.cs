@@ -9,7 +9,7 @@ namespace HRSystem.HR.Administrative.JobDesc.Indexes.PositionWorkTypes.Services
 {
     public interface IPositionWorkTypeDomainService : IDomainService
     {
-        Task<List<PositionWorkType>> GetAllAsync();
+        IQueryable<PositionWorkType> GetAll();
         Task<PositionWorkType> GetbyId(Guid id);
         Task<PositionWorkType> InsertAsync(PositionWorkType positionWorkType);
         Task<PositionWorkType> UpdateAsync(PositionWorkType positionWorkType);

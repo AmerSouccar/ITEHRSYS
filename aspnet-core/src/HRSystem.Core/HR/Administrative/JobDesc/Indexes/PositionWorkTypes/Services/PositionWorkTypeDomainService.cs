@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.JobDesc.Indexes.PositionWorkTypes.Services
             await _positionWorkType.DeleteAsync(id);
         }
 
-        public async Task<List<PositionWorkType>> GetAllAsync()
+        public  IQueryable<PositionWorkType> GetAll()
         {
-            return await _positionWorkType.GetAllListAsync();
+            return  _positionWorkType.GetAll();
         }
 
         public async Task<PositionWorkType> GetbyId(Guid id)

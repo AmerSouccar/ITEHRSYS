@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.Services
            await _jobDescriptionRepository.DeleteAsync(id);
         }
 
-        public async Task<List<JobDescription>> GetAll()
+        public IQueryable<JobDescription> GetAll()
         {
-            return _jobDescriptionRepository.GetAllIncluding(x => x.JobTitle, x => x.Node).ToList();
+            return _jobDescriptionRepository.GetAllIncluding(x => x.JobTitle, x => x.Node);
         }
 
         public async Task<JobDescription> GetbyId(Guid id)

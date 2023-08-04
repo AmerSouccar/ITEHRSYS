@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.Services
            await _organizationLevelRepository.DeleteAsync(id);
         }
 
-        public async Task<List<OrganizationLevel>> GetAll()
+        public  IQueryable<OrganizationLevel>GetAll()
         {
-            return await _organizationLevelRepository.GetAllListAsync();
+            return _organizationLevelRepository.GetAll();
         }
 
         public async Task<OrganizationLevel> GetbyId(Guid id)

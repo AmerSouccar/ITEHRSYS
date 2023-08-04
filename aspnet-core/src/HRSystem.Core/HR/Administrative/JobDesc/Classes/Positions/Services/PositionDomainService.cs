@@ -22,9 +22,9 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Services
             await _positionRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Position>> GetAll()
+        public IQueryable<Position> GetAll()
         {
-            return _positionRepository.GetAllIncluding(x => x.JobDescription, x => x.PositionWorkType, x => x.ManagerJobTitle, x => x.Manager).ToList();
+            return _positionRepository.GetAllIncluding(x => x.JobDescription, x => x.PositionWorkType, x => x.ManagerJobTitle, x => x.Manager);
         }
 
         public async Task<Position> GetbyId(Guid id)
