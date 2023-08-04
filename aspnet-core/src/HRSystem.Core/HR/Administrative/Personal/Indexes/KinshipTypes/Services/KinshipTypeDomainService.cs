@@ -26,9 +26,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.KinshipTypes.Services
             return await _kinshipTypes.GetAsync(id);
         }
 
-        public async Task<List<KinshipType>> GetAllAsync()
+        public IQueryable<KinshipType> GetAll()
         {
-            return await _kinshipTypes.GetAllListAsync();
+            return _kinshipTypes.GetAll();
         }
 
         public async Task<KinshipType> InsertAsync(KinshipType kinshipType)

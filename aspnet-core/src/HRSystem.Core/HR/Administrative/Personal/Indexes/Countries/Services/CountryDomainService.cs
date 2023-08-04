@@ -27,9 +27,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Countries.Services
             return await _countries.GetAsync(id);
         }
 
-        public async Task<List<Country>> GetCountriesAsync()
+        public IQueryable<Country> GetAll()
         {
-            return await _countries.GetAllListAsync();
+            return _countries.GetAll();
         }
 
         public async Task<Country> InsertAsync(Country country)

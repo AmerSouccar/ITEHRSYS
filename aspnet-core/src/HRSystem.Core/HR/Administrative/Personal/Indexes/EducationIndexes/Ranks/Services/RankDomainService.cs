@@ -28,9 +28,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Ranks.Ser
             return await _ranks.GetAsync (id);
         }
 
-        public async Task<List<Rank>> GetAllAsync()
+        public IQueryable<Rank> GetAll()
         {
-            return await _ranks.GetAllListAsync();
+            return _ranks.GetAll();
         }
 
         public async Task<Rank> InsertAsync(Rank rank)

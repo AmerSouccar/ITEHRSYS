@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Ranks.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Ranks.Ser
 {
     public interface IRankAppService : IApplicationService
     {
-        Task<List<RankDto>> GetAllAsync();
+        PagedResultDto<RankDto> GetAll(PagedGeneralResultRequestDto input);
         Task<RankDto> GetbyId(Guid id);
         Task<RankDto> InsertAsync(RankDto rank);
         Task<RankDto> UpdateAsync(RankDto rank);

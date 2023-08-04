@@ -26,9 +26,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Se
             return await _scores.GetAsync(id);
         }
 
-        public async Task<List<Score>> GetAllAsync()
+        public IQueryable<Score> GetAll()
         {
-            return await _scores.GetAllListAsync();
+            return _scores.GetAll();
         }
 
         public async Task<Score> InsertAsync(Score score)

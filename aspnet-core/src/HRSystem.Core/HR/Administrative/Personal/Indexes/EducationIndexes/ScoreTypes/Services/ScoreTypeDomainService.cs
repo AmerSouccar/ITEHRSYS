@@ -27,9 +27,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.ScoreType
             return await _scoreTypes.GetAsync (id);
         }
 
-        public async Task<List<ScoreType>> GetAllAsync()
+        public IQueryable<ScoreType> GetAll()
         {
-            return await _scoreTypes.GetAllListAsync();
+            return _scoreTypes.GetAll();
         }
 
         public async Task<ScoreType> InsertAsync(ScoreType scoreType)

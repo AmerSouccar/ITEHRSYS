@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.Service
 {
     public interface IDriverLicenseTypeDomainService :IDomainService
     {
-        Task<List<DriverLicenseType>> GetDriverLicenseTypesAsync();
+        IQueryable<DriverLicenseType> GetAll();
         Task<DriverLicenseType> GetbyId(Guid id);
         Task<DriverLicenseType> InsertAsync(DriverLicenseType driverLicenseType);
         Task<DriverLicenseType> UpdateAsync(DriverLicenseType driverLicenseType);

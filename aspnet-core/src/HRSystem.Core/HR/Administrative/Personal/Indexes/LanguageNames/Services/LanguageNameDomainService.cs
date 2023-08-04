@@ -26,9 +26,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.LanguageNames.Services
             return await _languageNames.GetAsync(id);
         }
 
-        public async Task<List<LanguageName>> GetAllAsync()
+        public IQueryable<LanguageName> GetAll()
         {
-            return await _languageNames.GetAllListAsync();
+            return _languageNames.GetAll();
         }
 
         public async Task<LanguageName> InsertAsync(LanguageName languageName)

@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Se
 {
     public interface IScoreAppService : IApplicationService
     {
-        Task<List<ScoreDto>> GetAllAsync();
+        PagedResultDto<ScoreDto> GetAll(PagedGeneralResultRequestDto input);
         Task<ScoreDto> GetbyId(Guid id);
         Task<ScoreDto> InsertAsync(ScoreDto score);
         Task<ScoreDto> UpdateAsync(ScoreDto score);

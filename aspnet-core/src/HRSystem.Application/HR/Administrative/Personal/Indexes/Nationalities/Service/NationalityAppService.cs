@@ -1,5 +1,8 @@
-﻿using HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Services;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +25,14 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Service
             await _nationalityDomainService.DeleteAsync(id);
         }
 
-        public async Task<List<NationalityDto>> GetAllAsync()
+        public PagedResultDto<NationalityDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<NationalityDto>>(await _nationalityDomainService.GetAllAsync());
+            var nationalites = _nationalityDomainService.GetAll();
+            int total = nationalites.Count();
+            nationalites = nationalites.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<NationalityDto>>(nationalites.ToList());
+            return new PagedResultDto<NationalityDto>(total, list);
         }
 
         public async Task<NationalityDto> GetbyId(Guid id)

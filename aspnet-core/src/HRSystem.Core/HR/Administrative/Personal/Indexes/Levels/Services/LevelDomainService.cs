@@ -26,9 +26,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Levels.Services
             return await _levels.GetAsync(id);
         }
 
-        public async Task<List<Level>> GetAllAsync()
+        public IQueryable<Level> GetAll()
         {
-            return await _levels.GetAllListAsync();
+            return _levels.GetAll();
         }
 
         public async Task<Level> InsertAsync(Level level)

@@ -1,5 +1,8 @@
-﻿using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Services;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +25,14 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Se
             await _scoreDomainService.DeleteAsync(id);
         }
 
-        public async Task<List<ScoreDto>> GetAllAsync()
+        public PagedResultDto<ScoreDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ScoreDto>>(await _scoreDomainService.GetAllAsync());
+            var scores = _scoreDomainService.GetAll();
+            int total = scores.Count();
+            scores = scores.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ScoreDto>>(scores.ToList());
+            return new PagedResultDto<ScoreDto>(total, list);
         }
 
         public async Task<ScoreDto> GetbyId(Guid id)

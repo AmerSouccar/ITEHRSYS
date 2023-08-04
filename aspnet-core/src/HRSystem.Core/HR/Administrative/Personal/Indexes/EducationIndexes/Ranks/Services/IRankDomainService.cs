@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Ranks.Ser
 {
     public interface IRankDomainService : IDomainService
     {
-        Task<List<Rank>> GetAllAsync();
+        IQueryable<Rank> GetAll();
         Task<Rank> GetbyId(Guid id);
         Task<Rank> InsertAsync(Rank rank);
         Task<Rank> UpdateAsync(Rank rank);

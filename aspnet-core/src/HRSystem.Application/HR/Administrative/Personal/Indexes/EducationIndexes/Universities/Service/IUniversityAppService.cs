@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universities.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universit
 {
     public interface IUniversityAppService : IApplicationService
     {
-        Task<List<UniversityDto>> GetAllAsync();
+        PagedResultDto<UniversityDto> GetAll(PagedGeneralResultRequestDto input);
         Task<UniversityDto> GetbyId(Guid id);
         Task<UniversityDto> InsertAsync(UniversityDto university);
         Task<UniversityDto> UpdateAsync(UniversityDto university);

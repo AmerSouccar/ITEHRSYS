@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Countries.Services
 {
     public interface ICountryDomainService : IDomainService
     {
-        Task<List<Country>> GetCountriesAsync();
+        IQueryable<Country> GetAll();
         Task<Country> GetbyId(Guid id);
         Task<Country> InsertAsync(Country country);
         Task<Country> UpdateAsync(Country country);

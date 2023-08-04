@@ -1,5 +1,8 @@
-﻿using HRSystem.HR.Administrative.Personal.Indexes.Cities;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.Cities;
 using HRSystem.HR.Administrative.Personal.Indexes.Cities.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +30,14 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Cities.Services
             return ObjectMapper.Map<CityDto>(await _cityDomainService.GetbyId(id));
         }
 
-        public async Task<List<CityDto>> GetCitiesAsync()
+        public PagedResultDto<CityDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<CityDto>>(await _cityDomainService.GetCitiesAsync());
+            var cities = _cityDomainService.GetAll();
+            int total = cities.Count();
+            cities = cities.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<CityDto>>(cities.ToList());
+            return new PagedResultDto<CityDto>(total, list);
         }
 
         public async Task<CityDto> InsertAsync(CityDto city)

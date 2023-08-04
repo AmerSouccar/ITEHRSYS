@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.ScoreTypes.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.ScoreType
 {
     public interface IScoreTypeAppService :IApplicationService
     {
-        Task<List<ScoreTypeDto>> GetAllAsync();
+        PagedResultDto<ScoreTypeDto> GetAll(PagedGeneralResultRequestDto input);
         Task<ScoreTypeDto> GetbyId(Guid id);
         Task<ScoreTypeDto> InsertAsync(ScoreTypeDto scoreType);
         Task<ScoreTypeDto> UpdateAsync(ScoreTypeDto scoretype);

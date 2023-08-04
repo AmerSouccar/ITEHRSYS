@@ -26,9 +26,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Education
             return await _educationMajors.GetAsync(id);
         }
 
-        public async Task<List<EducationMajor>> GetEducationMajorsAsync()
+        public IQueryable<EducationMajor> GetAll()
         {
-            return await _educationMajors.GetAllListAsync();
+            return _educationMajors.GetAll();
         }
 
         public async Task<EducationMajor> InsertAsync(EducationMajor educationMajor)

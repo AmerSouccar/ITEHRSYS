@@ -1,5 +1,8 @@
-﻿using HRSystem.HR.Administrative.Personal.Indexes.KinshipTypes.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.KinshipTypes.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.KinshipTypes.Services;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +25,14 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.KinshipTypes.Service
           await _kinshipTypedomainService.DeleteAsync(id);
         }
 
-        public async Task<List<KinshipTypeDto>> GetAllAsync()
+        public PagedResultDto<KinshipTypeDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<KinshipTypeDto>>(await _kinshipTypedomainService.GetAllAsync());
+            var kinshipTypes = _kinshipTypedomainService.GetAll();
+            int total = kinshipTypes.Count();
+            kinshipTypes = kinshipTypes.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<KinshipTypeDto>>(kinshipTypes.ToList());
+            return new PagedResultDto<KinshipTypeDto>(total, list);
         }
 
         public async Task<KinshipTypeDto> GetbyId(Guid id)

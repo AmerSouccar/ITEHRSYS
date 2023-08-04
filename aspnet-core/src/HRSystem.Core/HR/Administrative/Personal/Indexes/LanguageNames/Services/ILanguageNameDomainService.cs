@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.LanguageNames.Services
 {
     public interface ILanguageNameDomainService : IDomainService
     {
-        Task<List<LanguageName>> GetAllAsync();
+        IQueryable<LanguageName> GetAll();
         Task<LanguageName> GetbyId(Guid id);
         Task<LanguageName> InsertAsync(LanguageName languageName);
         Task<LanguageName> UpdateAsync(LanguageName languageName);

@@ -1,5 +1,8 @@
-﻿using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universities.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universities.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universities.Services;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +25,14 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universit
             await _universitydomainService.DeleteAsync(id);
         }
 
-        public async Task<List<UniversityDto>> GetAllAsync()
+        public PagedResultDto<UniversityDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<UniversityDto>>(await _universitydomainService.GetAllAsync());
+            var universities = _universitydomainService.GetAll();
+            int total = universities.Count();
+            universities = universities.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<UniversityDto>>(universities.ToList());
+            return new PagedResultDto<UniversityDto>(total, list);
         }
 
         public async Task<UniversityDto> GetbyId(Guid id)

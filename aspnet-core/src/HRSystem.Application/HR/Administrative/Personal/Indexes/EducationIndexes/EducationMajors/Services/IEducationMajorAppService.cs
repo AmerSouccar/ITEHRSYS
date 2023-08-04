@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.EducationMajors.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Education
 {
     public interface IEducationMajorAppService :IApplicationService
     {
-        Task<List<EducationMajorDto>> GetAllAsync();
+        PagedResultDto<EducationMajorDto> GetAll(PagedGeneralResultRequestDto input);
         Task<EducationMajorDto> GetbyId(Guid id);
         Task<EducationMajorDto> InsertAsync(EducationMajorDto educationMajor);
         Task<EducationMajorDto> UpdateAsync(EducationMajorDto educationMajor);

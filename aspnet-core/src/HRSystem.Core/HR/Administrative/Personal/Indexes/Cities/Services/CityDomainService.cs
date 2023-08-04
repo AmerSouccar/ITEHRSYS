@@ -26,9 +26,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Cities.Services
             return await _cities.GetAsync(id);
         }
 
-        public async Task<List<City>> GetCitiesAsync()
+        public IQueryable<City> GetAll()
         {
-            return await _cities.GetAllListAsync();
+            return _cities.GetAll();
         }
 
         public async Task<City> InsertAsync(City city)

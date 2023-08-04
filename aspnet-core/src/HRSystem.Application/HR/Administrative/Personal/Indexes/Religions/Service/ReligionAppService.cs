@@ -1,5 +1,8 @@
-﻿using HRSystem.HR.Administrative.Personal.Indexes.Religions.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.Religions.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Religions.Services;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +25,14 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Religions.Service
            await _religionDomainService.DeleteAsync(id);
         }
 
-        public async Task<List<ReligionDto>> GetAllAsync()
+        public PagedResultDto<ReligionDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReligionDto>>(await _religionDomainService.GetAllAsync());
+            var religions = _religionDomainService.GetAll();
+            int total = religions.Count();
+            religions = religions.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReligionDto>>(religions.ToList());
+            return new PagedResultDto<ReligionDto>(total, list);
         }
 
         public async Task<ReligionDto> GetbyId(Guid id)

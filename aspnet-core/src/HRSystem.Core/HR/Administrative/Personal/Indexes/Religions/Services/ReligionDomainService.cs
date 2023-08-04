@@ -26,9 +26,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Religions.Services
             return await _religions.GetAsync(id);
         }
 
-        public async Task<List<Religion>> GetAllAsync()
+        public IQueryable<Religion> GetAll()
         {
-            return await _religions.GetAllListAsync();
+            return _religions.GetAll();
         }
 
         public async Task<Religion> InsertAsync(Religion religion)

@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Education
 {
     public interface IEducationMajorDomainService : IDomainService
     {
-        Task<List<EducationMajor>> GetEducationMajorsAsync();
+        IQueryable<EducationMajor> GetAll();
         Task<EducationMajor> GetbyId(Guid id);
         Task<EducationMajor> InsertAsync(EducationMajor educationMajor);
         Task<EducationMajor> UpdateAsync(EducationMajor educationMajor);

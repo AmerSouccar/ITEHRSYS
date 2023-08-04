@@ -11,7 +11,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.ScoreType
 {
     public interface IScoreTypeDomainService : IDomainService
     {
-        Task<List<ScoreType>> GetAllAsync();
+        IQueryable<ScoreType> GetAll();
         Task<ScoreType> GetbyId(Guid id);
         Task<ScoreType> InsertAsync(ScoreType scoreType);
         Task<ScoreType> UpdateAsync(ScoreType scoreType);

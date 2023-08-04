@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Religions.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Religions.Service
 {
     public interface IReligionAppService : IApplicationService
     {
-        Task<List<ReligionDto>> GetAllAsync();
+        PagedResultDto<ReligionDto> GetAll(PagedGeneralResultRequestDto input);
         Task<ReligionDto> GetbyId(Guid id);
         Task<ReligionDto> InsertAsync(ReligionDto religion);
         Task<ReligionDto> UpdateAsync(ReligionDto religion);

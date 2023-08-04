@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Personal.Indexes.Countries.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.Countries.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.Countries.Services
            await _countryDomainService.DeleteAsync(id);
         }
 
-        public async Task<List<CountryDto>> GetAllAsync()
+        public PagedResultDto<CountryDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<CountryDto>>(await _countryDomainService.GetCountriesAsync());
+            var countries = _countryDomainService.GetAll();
+            int total = countries.Count();
+            countries = countries.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<CountryDto>>(countries.ToList());
+            return new PagedResultDto<CountryDto>(total, list);
         }
 
         public async Task<CountryDto> GetbyId(Guid id)

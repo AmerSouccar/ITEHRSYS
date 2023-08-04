@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.Countries.Dto;
 using HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.Service
 {
     public interface IDriverLicenseTypeAppService : IApplicationService
     {
-        Task<List<DriverLicenseTypeDto>> GetAllAsync();
+        PagedResultDto<DriverLicenseTypeDto> GetAll(PagedGeneralResultRequestDto input);
         Task<DriverLicenseTypeDto> GetbyId(Guid id);
         Task<DriverLicenseTypeDto> InsertAsync(DriverLicenseTypeDto driverLicenseType);
         Task<DriverLicenseTypeDto> UpdateAsync(DriverLicenseTypeDto driverLicenseType);

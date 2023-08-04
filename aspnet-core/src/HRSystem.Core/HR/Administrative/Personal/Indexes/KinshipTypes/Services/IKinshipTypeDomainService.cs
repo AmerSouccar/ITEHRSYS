@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.KinshipTypes.Services
 {
     public interface IKinshipTypeDomainService : IDomainService
     {
-        Task<List<KinshipType>> GetAllAsync();
+        IQueryable<KinshipType> GetAll();
         Task<KinshipType> GetbyId(Guid id);
         Task<KinshipType> InsertAsync(KinshipType kinshipType);
         Task<KinshipType> UpdateAsync(KinshipType kinshipType);

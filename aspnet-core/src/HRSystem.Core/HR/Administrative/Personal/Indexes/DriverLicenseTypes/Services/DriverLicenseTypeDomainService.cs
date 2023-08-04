@@ -31,9 +31,9 @@ namespace HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.Service
             return await _driverLicenseTypes.GetAsync(id);
         }
 
-        public async Task<List<DriverLicenseType>> GetDriverLicenseTypesAsync()
+        public IQueryable<DriverLicenseType> GetAll()
         {
-            return await _driverLicenseTypes.GetAllListAsync();
+            return _driverLicenseTypes.GetAll();
         }
 
         public async Task<DriverLicenseType> InsertAsync(DriverLicenseType driverLicenseType)
