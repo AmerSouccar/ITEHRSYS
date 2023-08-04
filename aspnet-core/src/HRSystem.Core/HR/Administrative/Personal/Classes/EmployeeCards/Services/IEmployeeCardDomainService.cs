@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.Services
 {
     public interface IEmployeeCardDomainService :IDomainService
     {
-        public Task<List<EmployeeCard>> GetAll();
+        public IQueryable<EmployeeCard> GetAll();
         public Task<EmployeeCard> GetbyId(Guid id);
         public Task<EmployeeCard> Insert(EmployeeCard employeeCard);
         public Task<EmployeeCard> Update(EmployeeCard employeeCard);

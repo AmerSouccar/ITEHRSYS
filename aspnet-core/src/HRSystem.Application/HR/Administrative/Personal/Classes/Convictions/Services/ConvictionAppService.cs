@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Convictions.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Childrens.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Convictions.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Convictions.Services
             await _convictionDomainService.Delete(id);
         }
 
-        public async Task<List<ReadConvictionDto>> GetAll()
+        public PagedResultDto<ReadConvictionDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<ReadConvictionDto>>(await _convictionDomainService.GetAll());
+            var convictions = _convictionDomainService.GetAll();
+            int total = convictions.Count();
+            convictions = convictions.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadConvictionDto>>(convictions.ToList());
+            return new PagedResultDto<ReadConvictionDto>(total, list);
         }
 
         public async Task<ReadConvictionDto> GetbyId(Guid id)

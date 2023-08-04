@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
 {
     public interface IEmployeeDomainService : IDomainService
     {
-        public Task<List<Employee>> GetAll();
+        public IQueryable<Employee> GetAll();
         public Task<Employee> GetbyId(Guid id);
         public Task<Employee> Insert(Employee employee);
         public Task<Employee> Update(Employee employee);

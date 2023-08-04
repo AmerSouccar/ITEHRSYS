@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Languages.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Languages.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Languages.Services
             return _languageDomainService.Delete(id);
         }
 
-        public async Task<List<ReadLanguageDto>> GetAll()
+        public PagedResultDto<ReadLanguageDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadLanguageDto>>(await _languageDomainService.GetAll());
+            var languages = _languageDomainService.GetAll();
+            int total = languages.Count();
+            languages = languages.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadLanguageDto>>(languages.ToList());
+            return new PagedResultDto<ReadLanguageDto>(total, list);
         }
 
         public async Task<ReadLanguageDto> GetbyId(Guid id)

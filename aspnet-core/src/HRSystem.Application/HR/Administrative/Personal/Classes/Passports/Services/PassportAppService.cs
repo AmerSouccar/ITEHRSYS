@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Passports.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Passports.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Passports.Services
             await _passportDomainService.Delete(id);
         }
 
-        public async Task<List<ReadPassportDto>> GetAll()
+        public PagedResultDto<ReadPassportDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadPassportDto>>(await _passportDomainService.GetAll());
+            var passports = _passportDomainService.GetAll();
+            int total = passports.Count();
+            passports = passports.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadPassportDto>>(passports.ToList());
+            return new PagedResultDto<ReadPassportDto>(total, list);
         }
 
         public async Task<ReadPassportDto> GetbyId(Guid id)

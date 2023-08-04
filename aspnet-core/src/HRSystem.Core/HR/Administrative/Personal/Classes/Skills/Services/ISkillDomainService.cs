@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Skills.Services
 {
     public interface ISkillDomainService :IDomainService
     {
-        public Task<List<Skill>> GetAll();
+        public IQueryable<Skill> GetAll();
         public Task<Skill> GetbyId(Guid id);
         public Task<Skill> Insert(Skill skill);
         public Task<Skill> Update(Skill skill);

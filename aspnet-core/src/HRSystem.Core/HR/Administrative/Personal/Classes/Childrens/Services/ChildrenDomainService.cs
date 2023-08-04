@@ -23,9 +23,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Childrens.Services
 
         }
 
-        public async Task<List<Children>> GetAll()
+        public IQueryable<Children> GetAll()
         {
-            return _childrenRepository.GetAllIncluding(x => x.PlaceofBirth, x => x.Spouse, x => x.Nationality,x => x.Attachments).ToList();
+            return _childrenRepository.GetAllIncluding(x => x.PlaceofBirth, x => x.Spouse, x => x.Nationality,x => x.Attachments);
         }
 
         public async Task<Children> GetbyId(Guid id)

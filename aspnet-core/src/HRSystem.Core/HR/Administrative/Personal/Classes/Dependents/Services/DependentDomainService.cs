@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Dependents.Services
             await _dependenRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Dependent>> GetAll()
+        public IQueryable<Dependent> GetAll()
         {
-            return _dependenRepository.GetAllIncluding(x => x.KinshipType,x => x.PlaceofBirth,x => x.Nationality,x => x.Attachments).ToList();
+            return _dependenRepository.GetAllIncluding(x => x.KinshipType,x => x.PlaceofBirth,x => x.Nationality,x => x.Attachments);
         }
 
         public async Task<Dependent> GetbyId(Guid id)

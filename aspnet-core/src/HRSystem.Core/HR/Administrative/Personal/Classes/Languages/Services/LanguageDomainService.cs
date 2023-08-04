@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Languages.Services
             await _languageRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Language>> GetAll()
+        public IQueryable<Language> GetAll()
         {
-            return _languageRepository.GetAllIncluding(x => x.LanguageName, x => x.Writing, x => x.Reading, x => x.Speaking, x => x.Listening, x => x.Attachments).ToList();
+            return _languageRepository.GetAllIncluding(x => x.LanguageName, x => x.Writing, x => x.Reading, x => x.Speaking, x => x.Listening, x => x.Attachments);
         }
         public async Task<Language> GetbyId(Guid id)
         {

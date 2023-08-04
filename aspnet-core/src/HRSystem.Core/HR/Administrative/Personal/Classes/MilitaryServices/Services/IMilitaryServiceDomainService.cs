@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.MilitaryServices.Services
 {
     public interface IMilitaryServiceDomainService :IDomainService
     {
-        public Task<List<MilitaryService>> GetAll();
+        public IQueryable<MilitaryService> GetAll();
         public Task<MilitaryService> GetbyId(Guid id);
         public Task<MilitaryService> Insert(MilitaryService militaryService);
         public Task<MilitaryService> Update(MilitaryService militaryService);

@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Custodies.Services
             await _custodieRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Custodie>> GetAll()
+        public IQueryable<Custodie> GetAll()
         {
-            return await _custodieRepository.GetAllListAsync();
+            return _custodieRepository.GetAll();
         }
 
         public async Task<Custodie> GetbyId(Guid id)

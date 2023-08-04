@@ -11,7 +11,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Residences.Services
 {
     public interface IResidencyDomainService : IDomainService
     {
-        public Task<List<Residency>> GetAll();
+        public IQueryable<Residency> GetAll();
         public Task<Residency> GetbyId(Guid id);
         public Task<Residency> Insert(Residency Residency);
         public Task<Residency> Update(Residency Residency);

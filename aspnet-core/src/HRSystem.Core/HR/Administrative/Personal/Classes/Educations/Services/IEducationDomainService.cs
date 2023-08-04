@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Educations.Services
 {
     public interface IEducationDomainService :IDomainService
     {
-        public Task<List<Education>> GetAll();
+        public IQueryable<Education> GetAll();
         public Task<Education> GetbyId(Guid id);
         public Task<Education> Insert(Education education);
         public Task<Education> Update(Education education);

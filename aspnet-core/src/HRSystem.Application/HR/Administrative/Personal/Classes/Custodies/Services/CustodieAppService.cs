@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Custodies.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Convictions.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Custodies.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Custodies.Services
             await _custodieDomainService.Delete(id);
         }
 
-        public async Task<List<ReadCustodieDto>> GetAll()
+        public PagedResultDto<ReadCustodieDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<ReadCustodieDto>>(await _custodieDomainService.GetAll());
+            var custodies = _custodieDomainService.GetAll();
+            int total = custodies.Count();
+            custodies = custodies.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadCustodieDto>>(custodies.ToList());
+            return new PagedResultDto<ReadCustodieDto>(total, list);
         }
 
         public async Task<ReadCustodieDto> GetbyId(Guid id)

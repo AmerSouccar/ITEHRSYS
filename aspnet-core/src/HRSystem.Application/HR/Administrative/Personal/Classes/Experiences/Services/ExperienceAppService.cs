@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Experiences.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Experiences.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Experiences.Services
            await _experienceDomainService.Delete(id);
         }
 
-        public async Task<List<ReadExperienceDto>> GetAll()
+        public PagedResultDto<ReadExperienceDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadExperienceDto>>(await _experienceDomainService.GetAll());
+            var experiences = _experienceDomainService.GetAll();
+            int total = experiences.Count();
+            experiences = experiences.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadExperienceDto>>(experiences.ToList());
+            return new PagedResultDto<ReadExperienceDto>(total, list);
         }
 
         public async Task<ReadExperienceDto> GetbyId(Guid id)

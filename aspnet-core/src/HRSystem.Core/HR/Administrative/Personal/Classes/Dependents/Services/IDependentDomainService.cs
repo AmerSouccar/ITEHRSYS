@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Dependents.Services
 {
     public interface IDependentDomainService :IDomainService
     {
-        public Task<List<Dependent>> GetAll();
+        public IQueryable<Dependent> GetAll();
         public Task<Dependent> GetbyId(Guid id);
         public Task<Dependent> Insert(Dependent dependent);
         public Task<Dependent> Update(Dependent dependent);

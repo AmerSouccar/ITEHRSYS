@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.Services
             await _driverLicenseRepository.DeleteAsync(id);
         }
 
-        public async Task<List<DriverLicense>> GetAll()
+        public IQueryable<DriverLicense> GetAll()
         {
-            return _driverLicenseRepository.GetAllIncluding(x => x.DriverLicenseType, x => x.PlaceofIssuance, x => x.Attachments).ToList() ;
+            return _driverLicenseRepository.GetAllIncluding(x => x.DriverLicenseType, x => x.PlaceofIssuance, x => x.Attachments) ;
         }
 
         public async Task<DriverLicense> GetbyId(Guid id)

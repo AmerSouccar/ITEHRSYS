@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.Services
 {
     public interface IDriverLicenseDomainService :IDomainService
     {
-        public Task<List<DriverLicense>> GetAll();
+        public IQueryable<DriverLicense> GetAll();
         public Task<DriverLicense> GetbyId(Guid id);
         public Task<DriverLicense> Insert(DriverLicense driverLicense);
         public Task<DriverLicense> Update(DriverLicense driverLicense);

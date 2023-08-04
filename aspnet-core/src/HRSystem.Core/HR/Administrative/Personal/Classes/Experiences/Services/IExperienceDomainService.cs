@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Experiences.Services
 {
     public interface IExperienceDomainService :IDomainService
     {
-        public Task<List<Experience>> GetAll();
+        public IQueryable<Experience> GetAll();
         public Task<Experience> GetbyId(Guid id);
         public Task<Experience> Insert(Experience experience);
         public Task<Experience> Update(Experience experience);

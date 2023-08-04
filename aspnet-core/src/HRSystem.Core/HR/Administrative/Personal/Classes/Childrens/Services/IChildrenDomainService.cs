@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Childrens.Services
 {
     public  interface IChildrenDomainService :IDomainService
     {
-        public Task<List<Children>> GetAll();
+        public IQueryable<Children> GetAll();
         public Task<Children> GetbyId(Guid id);
         public Task<Children> Insert(Children children);
         public Task<Children> Update(Children children);

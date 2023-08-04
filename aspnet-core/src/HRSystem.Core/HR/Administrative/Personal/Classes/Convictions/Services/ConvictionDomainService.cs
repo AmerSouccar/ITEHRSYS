@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Convictions.Services
             await _convictionRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Conviction>> GetAll()
+        public IQueryable<Conviction> GetAll()
         {
-            return _convictionRepository.GetAllIncluding(x => x.Attachments).ToList();
+            return _convictionRepository.GetAllIncluding(x => x.Attachments);
         }
 
         public async Task<Conviction> GetbyId(Guid id)

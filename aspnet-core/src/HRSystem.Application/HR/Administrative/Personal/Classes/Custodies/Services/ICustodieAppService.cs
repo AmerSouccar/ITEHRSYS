@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Classes.Custodies.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Custodies.Services
 {
     public interface ICustodieAppService : IApplicationService
     {
-        public Task<List<ReadCustodieDto>> GetAll();
+        public PagedResultDto<ReadCustodieDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadCustodieDto> GetbyId(Guid id);
         public Task<InsertCustodieDto> Insert(InsertCustodieDto custodie);
         public Task<UpdateCustodieDto> Update(UpdateCustodieDto custodie);

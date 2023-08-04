@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Trainings.Services
            await _trainingRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Training>> GetAll()
+        public IQueryable<Training> GetAll()
         {
-            return _trainingRepository.GetAllIncluding(x => x.Attachments).ToList();
+            return _trainingRepository.GetAllIncluding(x => x.Attachments);
         }
 
         public async Task<Training> GetbyId(Guid id)

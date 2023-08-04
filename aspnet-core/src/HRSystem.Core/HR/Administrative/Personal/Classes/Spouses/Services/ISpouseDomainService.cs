@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses.Services
 {
     public interface ISpouseDomainService :IDomainService
     {
-        public Task<List<Spouse>> GetAll();
+        public IQueryable<Spouse> GetAll();
         public Task<Spouse> GetbyId(Guid id);
         public Task<Spouse> Insert(Spouse spouse);
         public Task<Spouse> Update(Spouse spouse);

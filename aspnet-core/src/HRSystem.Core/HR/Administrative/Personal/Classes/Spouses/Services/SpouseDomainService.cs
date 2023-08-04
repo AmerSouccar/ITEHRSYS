@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Spouses.Services
            await _spouseRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Spouse>> GetAll()
+        public IQueryable<Spouse> GetAll()
         {
-            return _spouseRepository.GetAllIncluding(x => x.PlaceofBirth,x => x.Nationality,x => x.Attachments).ToList();
+            return _spouseRepository.GetAllIncluding(x => x.PlaceofBirth,x => x.Nationality,x => x.Attachments);
         }
 
         public async Task<Spouse> GetbyId(Guid id)

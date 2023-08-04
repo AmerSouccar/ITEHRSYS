@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Educations.Services
             await _educationRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Education>> GetAll()
+        public IQueryable<Education> GetAll()
         {
-            return _educationRepository.GetAllIncluding(x => x.Type, x => x.Major, x => x.University, x => x.Rank, x => x.ScoreType, x => x.Score, x => x.Country, x => x.Attachments).ToList();
+            return _educationRepository.GetAllIncluding(x => x.Type, x => x.Major, x => x.University, x => x.Rank, x => x.ScoreType, x => x.Score, x => x.Country, x => x.Attachments);
         }
 
         public async Task<Education> GetbyId(Guid id)

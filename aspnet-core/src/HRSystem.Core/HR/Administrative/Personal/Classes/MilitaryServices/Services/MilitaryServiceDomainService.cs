@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.MilitaryServices.Services
             await _militaryServiceRepository.DeleteAsync(id);
         }
 
-        public async Task<List<MilitaryService>> GetAll()
+        public IQueryable<MilitaryService> GetAll()
         {
-           return _militaryServiceRepository.GetAllIncluding(x => x.Attachments).ToList();
+           return _militaryServiceRepository.GetAllIncluding(x => x.Attachments);
         }
 
         public async Task<MilitaryService> GetbyId(Guid id)

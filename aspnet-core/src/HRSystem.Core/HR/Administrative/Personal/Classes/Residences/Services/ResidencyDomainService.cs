@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Residences.Services
             await _residencyRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Residency>> GetAll()
+        public IQueryable<Residency> GetAll()
         {
-           return _residencyRepository.GetAllIncluding(x => x.Nationality,x => x.Attachments).ToList();
+           return _residencyRepository.GetAllIncluding(x => x.Nationality,x => x.Attachments);
         }
 
         public async Task<Residency> GetbyId(Guid id)

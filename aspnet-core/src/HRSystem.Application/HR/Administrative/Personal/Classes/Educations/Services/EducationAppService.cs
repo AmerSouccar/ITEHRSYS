@@ -1,4 +1,8 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.Services;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +25,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Educations.Services
            await _educationDomainService.Delete(id);
         }
 
-        public async Task<List<ReadEducationDto>> GetAll()
+        public PagedResultDto<ReadEducationDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<ReadEducationDto>>(await _educationDomainService.GetAll());
+            var educations = _educationDomainService.GetAll();
+            int total = educations.Count();
+            educations = educations.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadEducationDto>>(educations.ToList());
+            return new PagedResultDto<ReadEducationDto>(total, list);
         }
 
         public async Task<ReadEducationDto> GetbyId(Guid id)

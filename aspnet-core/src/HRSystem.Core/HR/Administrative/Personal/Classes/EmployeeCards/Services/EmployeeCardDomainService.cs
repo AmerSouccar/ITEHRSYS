@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.Services
             await _employeeCardRepository.DeleteAsync(id);
         }
 
-        public async Task<List<EmployeeCard>> GetAll()
+        public IQueryable<EmployeeCard> GetAll()
         {
-            return _employeeCardRepository.GetAllIncluding(x => x.JobDescription, x => x.Employee, x => x.Position, x => x.JobTitle, x => x.Grade, x => x.Custodies, x => x.Assignments, x => x.Transfers, x => x.Resignations, x => x.Promotions, x => x.LeaveRequests).ToList();
+            return _employeeCardRepository.GetAllIncluding(x => x.JobDescription, x => x.Employee, x => x.Position, x => x.JobTitle, x => x.Grade, x => x.Custodies, x => x.Assignments, x => x.Transfers, x => x.Resignations, x => x.Promotions, x => x.LeaveRequests);
         }
 
         public async Task<EmployeeCard> GetbyId(Guid id)

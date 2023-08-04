@@ -1,4 +1,8 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Dependents.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Custodies.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Custodies.Services;
+using HRSystem.HR.Administrative.Personal.Classes.Dependents.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +25,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Dependents.Services
             await _dependentDomainService.Delete(id);
         }
 
-        public async Task<List<ReadDependentDto>> GetAll()
+        public PagedResultDto<ReadDependentDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadDependentDto>>(await _dependentDomainService.GetAll());
+            var dependants = _dependentDomainService.GetAll();
+            int total = dependants.Count();
+            dependants = dependants.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadDependentDto>>(dependants.ToList());
+            return new PagedResultDto<ReadDependentDto>(total, list);
         }
 
         public async Task<ReadDependentDto> GetbyId(Guid id)

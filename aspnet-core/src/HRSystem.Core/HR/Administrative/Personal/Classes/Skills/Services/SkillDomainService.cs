@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Skills.Services
             await _SkillRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Skill>> GetAll()
+        public IQueryable<Skill> GetAll()
         {
-            return _SkillRepository.GetAllIncluding(x => x.Level, x => x.Attachments).ToList();
+            return _SkillRepository.GetAllIncluding(x => x.Level, x => x.Attachments);
         }
 
         public async Task<Skill> GetbyId(Guid id)

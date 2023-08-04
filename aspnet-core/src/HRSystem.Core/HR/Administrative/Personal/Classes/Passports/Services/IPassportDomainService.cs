@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Passports.Services
 {
     public interface IPassportDomainService :IDomainService
     {
-        public Task<List<Passport>> GetAll();
+        public IQueryable<Passport> GetAll();
         public Task<Passport> GetbyId(Guid id);
         public Task<Passport> Insert(Passport passport);
         public Task<Passport> Update(Passport passport);

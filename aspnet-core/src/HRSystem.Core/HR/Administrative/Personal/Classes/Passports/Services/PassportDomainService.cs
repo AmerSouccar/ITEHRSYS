@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Passports.Services
             await _passportRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Passport>> GetAll()
+        public IQueryable<Passport> GetAll()
         {
-            return _passportRepository.GetAllIncluding(x =>x.PlaceofIssuance, x => x.Attachments).ToList();
+            return _passportRepository.GetAllIncluding(x =>x.PlaceofIssuance, x => x.Attachments);
         }
 
         public async Task<Passport> GetbyId(Guid id)

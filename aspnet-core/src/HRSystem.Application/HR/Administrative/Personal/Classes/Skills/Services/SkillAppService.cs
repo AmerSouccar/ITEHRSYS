@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Skills.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Skills.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Skills.Services
             await _skillDomainService.Delete(id);
         }
 
-        public async Task<List<ReadSkillDto>> GetAll()
+        public PagedResultDto<ReadSkillDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadSkillDto>>(await _skillDomainService.GetAll());
+            var skills = _skillDomainService.GetAll();
+            int total = skills.Count();
+            skills = skills.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadSkillDto>>(skills.ToList());
+            return new PagedResultDto<ReadSkillDto>(total, list);
         }
 
         public async Task<ReadSkillDto> GetbyId(Guid id)

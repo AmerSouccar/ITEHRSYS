@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.Childrens.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Banks.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Childrens.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Childrens.Services
            await _childrenDomainService.Delete(id);
         }
 
-        public async Task<List<ReadChildrenDto>> GetAll()
+        public PagedResultDto<ReadChildrenDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<ReadChildrenDto>>(await _childrenDomainService.GetAll());
+            var childrens = _childrenDomainService.GetAll();
+            int total = childrens.Count();
+            childrens = childrens.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadChildrenDto>>(childrens.ToList());
+            return new PagedResultDto<ReadChildrenDto>(total, list);
         }
 
         public async Task<ReadChildrenDto> GetbyId(Guid id)

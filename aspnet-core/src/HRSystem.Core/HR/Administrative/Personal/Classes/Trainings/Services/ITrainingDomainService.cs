@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Trainings.Services
 {
     public interface ITrainingDomainService :IDomainService
     {
-        public Task<List<Training>> GetAll();
+        public IQueryable<Training> GetAll();
         public Task<Training> GetbyId(Guid id);
         public Task<Training> Insert(Training training);
         public Task<Training> Update(Training training);

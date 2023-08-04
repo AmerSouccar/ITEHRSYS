@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Convictions.Services
 {
     public interface IConvictionDomainService :IDomainService
     {
-        public Task<List<Conviction>> GetAll();
+        public IQueryable<Conviction> GetAll();
         public Task<Conviction> GetbyId(Guid id);
         public Task<Conviction> Insert(Conviction conviction);
         public Task<Conviction> Update(Conviction conviction);

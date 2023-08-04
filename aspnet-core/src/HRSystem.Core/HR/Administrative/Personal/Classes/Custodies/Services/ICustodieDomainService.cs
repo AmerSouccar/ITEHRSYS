@@ -10,7 +10,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Custodies.Services
 {
     public interface ICustodieDomainService :IDomainService
     {
-        public Task<List<Custodie>> GetAll();
+        public IQueryable<Custodie> GetAll();
         public Task<Custodie> GetbyId(Guid id);
         public Task<Custodie> Insert(Custodie custodie);
         public Task<Custodie> Update(Custodie custodie);

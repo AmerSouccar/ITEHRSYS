@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.Dependents.Dto;
+using HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.Services
            await _driverLicenseDomainService.Delete(id);
         }
 
-        public async Task<List<ReadDriverLicenseDto>> GetAll()
+        public PagedResultDto<ReadDriverLicenseDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadDriverLicenseDto>>(await _driverLicenseDomainService.GetAll());    
+            var driverLicenses = _driverLicenseDomainService.GetAll();
+            int total = driverLicenses.Count();
+            driverLicenses = driverLicenses.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadDriverLicenseDto>>(driverLicenses.ToList());
+            return new PagedResultDto<ReadDriverLicenseDto>(total, list);
         }
 
         public async Task<ReadDriverLicenseDto> GetbyId(Guid id)

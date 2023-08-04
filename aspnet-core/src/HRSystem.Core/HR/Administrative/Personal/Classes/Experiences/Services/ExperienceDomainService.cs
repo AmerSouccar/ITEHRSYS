@@ -21,9 +21,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Experiences.Services
             await _experienceRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Experience>> GetAll()
+        public IQueryable<Experience> GetAll()
         {
-            return _experienceRepository.GetAllIncluding(x => x.Attachments).ToList();
+            return _experienceRepository.GetAllIncluding(x => x.Attachments);
         }
 
         public async Task<Experience> GetbyId(Guid id)
