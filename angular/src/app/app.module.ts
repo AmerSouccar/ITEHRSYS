@@ -44,6 +44,12 @@ import { EditCityDialogComponent } from './city/edit-city-dialog/edit-city-dialo
 import { CountryComponent } from './country/country.component';
 import { CreateCountryDialogComponent } from './country/create-country-dialog/create-country-dialog.component';
 import { EditCountryDialogComponent } from './country/edit-country-dialog/edit-country-dialog.component';
+import { ReligionComponent } from './religion/religion.component';
+import { CreateReligionDialogComponent } from './religion/create-religion-dialog/create-religion-dialog.component';
+import { EditReligionDialogComponent } from './religion/edit-religion-dialog/edit-religion-dialog.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { CreateEmployeeDialogComponent } from './employee/create-employee-dialog/create-employee-dialog.component';
+import { EditEmployeeDialogComponent } from './employee/edit-employee-dialog/edit-employee-dialog.component';
 
 @NgModule({
     declarations: [
@@ -79,7 +85,13 @@ import { EditCountryDialogComponent } from './country/edit-country-dialog/edit-c
         EditCityDialogComponent,
         CountryComponent,
         CreateCountryDialogComponent,
-        EditCountryDialogComponent
+        EditCountryDialogComponent,
+        ReligionComponent,
+        CreateReligionDialogComponent,
+        EditReligionDialogComponent,
+        EmployeeComponent,
+        CreateEmployeeDialogComponent,
+        EditEmployeeDialogComponent
     ],
     imports: [
         CommonModule,

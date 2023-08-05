@@ -10,6 +10,8 @@ import { RolesComponent } from 'app/roles/roles.component';
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { CityComponent } from './city/city.component';
 import { CountryComponent } from './country/country.component';
+import { ReligionComponent } from './religion/religion.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
     imports: [
@@ -25,7 +27,9 @@ import { CountryComponent } from './country/country.component';
                     { path: 'about', component: AboutComponent, canActivate: [AppRouteGuard] },
                     { path: 'update-password', component: ChangePasswordComponent, canActivate: [AppRouteGuard] },
                     { path: 'cities', component: CityComponent, canActivate: [AppRouteGuard] },
-                    { path: 'countries', component: CountryComponent, canActivate: [AppRouteGuard] }
+                    { path: 'countries', component: CountryComponent, canActivate: [AppRouteGuard] },
+                    { path: 'religions', component: ReligionComponent, canActivate: [AppRouteGuard] },
+                    { path: 'employees', component: EmployeeComponent, canActivate: [AppRouteGuard] },
                 ]
             }
         ])

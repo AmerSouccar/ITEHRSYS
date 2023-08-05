@@ -67,7 +67,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                 new MenuItem(this.l('Personal'), '', 'fas fa-dot-circle', '', [
                     new MenuItem(
                         this.l('Employee'),
-                        'https://aspnetboilerplate.com?ref=abptmpl',
+                        '/app/employees',
                         'far fa-circle'
                     ),
                     new MenuItem(
@@ -89,6 +89,11 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                             new MenuItem(
                                 this.l('City'),
                                 '/app/cities',
+                                'far fa-circle'
+                            ),
+                            new MenuItem(
+                                this.l('Religion'),
+                                '/app/religions',
                                 'far fa-circle'
                             ),
                         ]

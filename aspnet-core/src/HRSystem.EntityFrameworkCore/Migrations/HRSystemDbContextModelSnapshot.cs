@@ -63,7 +63,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpEditions");
+                    b.ToTable("AbpEditions", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.FeatureSetting", b =>
@@ -99,7 +99,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("FeatureSetting");
 
@@ -179,7 +179,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpAuditLogs");
+                    b.ToTable("AbpAuditLogs", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.PermissionSetting", b =>
@@ -215,7 +215,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("PermissionSetting");
 
@@ -255,7 +255,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpRoleClaims");
+                    b.ToTable("AbpRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserAccount", b =>
@@ -316,7 +316,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserName");
 
-                    b.ToTable("AbpUserAccounts");
+                    b.ToTable("AbpUserAccounts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserClaim", b =>
@@ -352,7 +352,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpUserClaims");
+                    b.ToTable("AbpUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLogin", b =>
@@ -391,7 +391,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "LoginProvider", "ProviderKey");
 
-                    b.ToTable("AbpUserLogins");
+                    b.ToTable("AbpUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLoginAttempt", b =>
@@ -440,7 +440,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenancyName", "UserNameOrEmailAddress", "Result");
 
-                    b.ToTable("AbpUserLoginAttempts");
+                    b.ToTable("AbpUserLoginAttempts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserOrganizationUnit", b =>
@@ -475,7 +475,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserOrganizationUnits");
+                    b.ToTable("AbpUserOrganizationUnits", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserRole", b =>
@@ -509,7 +509,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserRoles");
+                    b.ToTable("AbpUserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserToken", b =>
@@ -547,7 +547,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserTokens");
+                    b.ToTable("AbpUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Abp.BackgroundJobs.BackgroundJobInfo", b =>
@@ -593,7 +593,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("IsAbandoned", "NextTryTime");
 
-                    b.ToTable("AbpBackgroundJobs");
+                    b.ToTable("AbpBackgroundJobs", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Configuration.Setting", b =>
@@ -637,7 +637,7 @@ namespace HRSystem.Migrations
                     b.HasIndex("TenantId", "Name", "UserId")
                         .IsUnique();
 
-                    b.ToTable("AbpSettings");
+                    b.ToTable("AbpSettings", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityProperty", b =>
@@ -666,7 +666,7 @@ namespace HRSystem.Migrations
                         .IsUnique()
                         .HasFilter("[EntityFullName] IS NOT NULL AND [TenantId] IS NOT NULL");
 
-                    b.ToTable("AbpDynamicEntityProperties");
+                    b.ToTable("AbpDynamicEntityProperties", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityPropertyValue", b =>
@@ -694,7 +694,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("DynamicEntityPropertyId");
 
-                    b.ToTable("AbpDynamicEntityPropertyValues");
+                    b.ToTable("AbpDynamicEntityPropertyValues", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicProperty", b =>
@@ -727,7 +727,7 @@ namespace HRSystem.Migrations
                         .IsUnique()
                         .HasFilter("[PropertyName] IS NOT NULL AND [TenantId] IS NOT NULL");
 
-                    b.ToTable("AbpDynamicProperties");
+                    b.ToTable("AbpDynamicProperties", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicPropertyValue", b =>
@@ -752,7 +752,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("DynamicPropertyId");
 
-                    b.ToTable("AbpDynamicPropertyValues");
+                    b.ToTable("AbpDynamicPropertyValues", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChange", b =>
@@ -789,7 +789,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EntityTypeFullName", "EntityId");
 
-                    b.ToTable("AbpEntityChanges");
+                    b.ToTable("AbpEntityChanges", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChangeSet", b =>
@@ -842,7 +842,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpEntityChangeSets");
+                    b.ToTable("AbpEntityChangeSets", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityPropertyChange", b =>
@@ -885,7 +885,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EntityChangeId");
 
-                    b.ToTable("AbpEntityPropertyChanges");
+                    b.ToTable("AbpEntityPropertyChanges", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguage", b =>
@@ -941,7 +941,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpLanguages");
+                    b.ToTable("AbpLanguages", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguageText", b =>
@@ -991,7 +991,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "Source", "LanguageName", "Key");
 
-                    b.ToTable("AbpLanguageTexts");
+                    b.ToTable("AbpLanguageTexts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationInfo", b =>
@@ -1052,7 +1052,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpNotifications");
+                    b.ToTable("AbpNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationSubscriptionInfo", b =>
@@ -1095,7 +1095,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "NotificationName", "EntityTypeName", "EntityId", "UserId");
 
-                    b.ToTable("AbpNotificationSubscriptions");
+                    b.ToTable("AbpNotificationSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.TenantNotificationInfo", b =>
@@ -1145,7 +1145,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId");
 
-                    b.ToTable("AbpTenantNotifications");
+                    b.ToTable("AbpTenantNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.UserNotificationInfo", b =>
@@ -1177,7 +1177,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("UserId", "State", "CreationTime");
 
-                    b.ToTable("AbpUserNotifications");
+                    b.ToTable("AbpUserNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnit", b =>
@@ -1231,7 +1231,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "Code");
 
-                    b.ToTable("AbpOrganizationUnits");
+                    b.ToTable("AbpOrganizationUnits", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnitRole", b =>
@@ -1266,7 +1266,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "RoleId");
 
-                    b.ToTable("AbpOrganizationUnitRoles");
+                    b.ToTable("AbpOrganizationUnitRoles", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookEvent", b =>
@@ -1296,7 +1296,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookEvents");
+                    b.ToTable("AbpWebhookEvents", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSendAttempt", b =>
@@ -1330,7 +1330,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("WebhookEventId");
 
-                    b.ToTable("AbpWebhookSendAttempts");
+                    b.ToTable("AbpWebhookSendAttempts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSubscriptionInfo", b =>
@@ -1367,7 +1367,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookSubscriptions");
+                    b.ToTable("AbpWebhookSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.Authorization.Roles.Role", b =>
@@ -1442,7 +1442,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "NormalizedName");
 
-                    b.ToTable("AbpRoles");
+                    b.ToTable("AbpRoles", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.Authorization.Users.User", b =>
@@ -1570,7 +1570,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "NormalizedUserName");
 
-                    b.ToTable("AbpUsers");
+                    b.ToTable("AbpUsers", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Classes.EducationGrades.EducationGrade", b =>
@@ -1620,7 +1620,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EducationGrades");
+                    b.ToTable("EducationGrades", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Classes.Grades.Grade", b =>
@@ -1677,7 +1677,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("OrganizationLevelId");
 
-                    b.ToTable("Grades");
+                    b.ToTable("Grades", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", b =>
@@ -1726,7 +1726,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("GradeId");
 
-                    b.ToTable("JobTitles");
+                    b.ToTable("JobTitles", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.OrganizationLevel", b =>
@@ -1761,7 +1761,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrganizationLevels");
+                    b.ToTable("OrganizationLevels", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.JobDescription", b =>
@@ -1809,7 +1809,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("NodeId");
 
-                    b.ToTable("JobDescriptions");
+                    b.ToTable("JobDescriptions", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.JobDesc.Classes.Positions.Position", b =>
@@ -1875,7 +1875,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("PositionWorkTypeId");
 
-                    b.ToTable("Positions");
+                    b.ToTable("Positions", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.JobDesc.Indexes.PositionWorkTypes.PositionWorkType", b =>
@@ -1910,7 +1910,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PositionWorkTypes");
+                    b.ToTable("PositionWorkTypes", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Node", b =>
@@ -1959,7 +1959,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Nodes");
+                    b.ToTable("Nodes", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Attachments.Attachment", b =>
@@ -2075,7 +2075,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TrainingId");
 
-                    b.ToTable("Attachments");
+                    b.ToTable("Attachments", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.BankInformations.BankInformation", b =>
@@ -2129,7 +2129,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("BankInformations");
+                    b.ToTable("BankInformations", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Banks.Bank", b =>
@@ -2172,7 +2172,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("NationalityId");
 
-                    b.ToTable("Banks");
+                    b.ToTable("Banks", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Certificates.Certificate", b =>
@@ -2226,7 +2226,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Certificates");
+                    b.ToTable("Certificates", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Childrens.Children", b =>
@@ -2323,7 +2323,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("SpouseId");
 
-                    b.ToTable("Childrens");
+                    b.ToTable("Childrens", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Convictions.Conviction", b =>
@@ -2375,7 +2375,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Convictions");
+                    b.ToTable("Convictions", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Custodies.Custodie", b =>
@@ -2432,7 +2432,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Custodies");
+                    b.ToTable("Custodies", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Dependents.Dependent", b =>
@@ -2505,7 +2505,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("PlaceofBirthId");
 
-                    b.ToTable("Dependents");
+                    b.ToTable("Dependents", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.DriverLicense", b =>
@@ -2564,7 +2564,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("PlaceofIssuanceId");
 
-                    b.ToTable("DriverLicenses");
+                    b.ToTable("DriverLicenses", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Educations.Education", b =>
@@ -2648,7 +2648,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("UniversityId");
 
-                    b.ToTable("Educations");
+                    b.ToTable("Educations", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", b =>
@@ -2722,7 +2722,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("PositionId");
 
-                    b.ToTable("EmployeeCards");
+                    b.ToTable("EmployeeCards", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", b =>
@@ -2853,7 +2853,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Experiences.Experience", b =>
@@ -2929,7 +2929,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Experiences");
+                    b.ToTable("Experiences", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Languages.Language", b =>
@@ -2991,7 +2991,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("WritingId");
 
-                    b.ToTable("HRLanguages");
+                    b.ToTable("HRLanguages", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.MilitaryServices.MilitaryService", b =>
@@ -3079,7 +3079,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("MilitaryServices");
+                    b.ToTable("MilitaryServices", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Passports.Passport", b =>
@@ -3148,7 +3148,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("PlaceofIssuanceId");
 
-                    b.ToTable("Passports");
+                    b.ToTable("Passports", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Residences.Residency", b =>
@@ -3226,7 +3226,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("NationalityId");
 
-                    b.ToTable("Residencies");
+                    b.ToTable("Residencies", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Skills.Skill", b =>
@@ -3277,7 +3277,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("LevelId");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skills", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Spouses.Spouse", b =>
@@ -3405,7 +3405,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("PlaceofBirthId");
 
-                    b.ToTable("Spouses");
+                    b.ToTable("Spouses", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Trainings.Training", b =>
@@ -3478,7 +3478,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Trainings");
+                    b.ToTable("Trainings", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.Cities.City", b =>
@@ -3513,7 +3513,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.Countries.Country", b =>
@@ -3548,7 +3548,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Countries", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.DriverLicenseType", b =>
@@ -3583,7 +3583,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DriverLicenseTypes");
+                    b.ToTable("DriverLicenseTypes", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.EducationMajors.EducationMajor", b =>
@@ -3618,7 +3618,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EducationMajors");
+                    b.ToTable("EducationMajors", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.EducationTypes.EducationType", b =>
@@ -3653,7 +3653,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EducationTypes");
+                    b.ToTable("EducationTypes", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Ranks.Rank", b =>
@@ -3688,7 +3688,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ranks");
+                    b.ToTable("Ranks", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.ScoreTypes.ScoreType", b =>
@@ -3723,7 +3723,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ScoreTypes");
+                    b.ToTable("ScoreTypes", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Score", b =>
@@ -3758,7 +3758,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Scores");
+                    b.ToTable("Scores", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universities.University", b =>
@@ -3793,7 +3793,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Universities");
+                    b.ToTable("Universities", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.KinshipTypes.KinshipType", b =>
@@ -3828,7 +3828,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("KinshipTypes");
+                    b.ToTable("KinshipTypes", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.LanguageNames.LanguageName", b =>
@@ -3863,7 +3863,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LanguageNames");
+                    b.ToTable("LanguageNames", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.Levels.Level", b =>
@@ -3898,7 +3898,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Levels");
+                    b.ToTable("Levels", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Nationality", b =>
@@ -3933,7 +3933,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Nationalities");
+                    b.ToTable("Nationalities", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.Religions.Religion", b =>
@@ -3968,7 +3968,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Religions");
+                    b.ToTable("Religions", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms.AttendanceForm", b =>
@@ -4003,7 +4003,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AttendanceForms");
+                    b.ToTable("AttendanceForms", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards.AttendanceMonthlyCard", b =>
@@ -4054,7 +4054,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeCardId");
 
-                    b.ToTable("AttendanceMonthlyCards");
+                    b.ToTable("AttendanceMonthlyCards", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.AttendanceRecord", b =>
@@ -4107,7 +4107,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AttendanceRecords");
+                    b.ToTable("AttendanceRecords", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.EntranceExitRecord", b =>
@@ -4159,7 +4159,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("EntranceExitRecords");
+                    b.ToTable("EntranceExitRecords", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.HourlyMission", b =>
@@ -4214,7 +4214,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("HourlyMissions");
+                    b.ToTable("HourlyMissions", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.NormalShift", b =>
@@ -4263,7 +4263,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("WorkshopId");
 
-                    b.ToTable("NormalShifts");
+                    b.ToTable("NormalShifts", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.TemporaryWorkshop", b =>
@@ -4311,7 +4311,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("WorkshopId");
 
-                    b.ToTable("TemporaryWorkshops");
+                    b.ToTable("TemporaryWorkshops", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.TravelMissions.TravelMission", b =>
@@ -4363,7 +4363,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("TravelMissions");
+                    b.ToTable("TravelMissions", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Workshop", b =>
@@ -4403,7 +4403,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("AttendanceFormId");
 
-                    b.ToTable("Workshops");
+                    b.ToTable("Workshops", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Assignment", b =>
@@ -4456,7 +4456,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("PositionID");
 
-                    b.ToTable("Assignments");
+                    b.ToTable("Assignments", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.ChangeableHolidays.ChangeableHoliday", b =>
@@ -4497,7 +4497,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ChangeableHolidays");
+                    b.ToTable("ChangeableHolidays", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.CompanyHolidays.CompanyHoliday", b =>
@@ -4532,7 +4532,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CompanyHolidays");
+                    b.ToTable("CompanyHolidays", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.FixedHoliday", b =>
@@ -4576,7 +4576,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FixedHolidays");
+                    b.ToTable("FixedHolidays", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.LeaveRequest", b =>
@@ -4647,7 +4647,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("LeaveSettingId");
 
-                    b.ToTable("LeaveRequests");
+                    b.ToTable("LeaveRequests", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.LeaveSetting", b =>
@@ -4696,7 +4696,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("WorkflowSettingId");
 
-                    b.ToTable("LeaveSettings");
+                    b.ToTable("LeaveSettings", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Promotions.Promotion", b =>
@@ -4749,7 +4749,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("PositionId");
 
-                    b.ToTable("Promotions");
+                    b.ToTable("Promotions", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Resignations.Resignation", b =>
@@ -4792,7 +4792,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeCardId");
 
-                    b.ToTable("Resignations");
+                    b.ToTable("Resignations", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Transfers.Transfer", b =>
@@ -4845,7 +4845,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeCardId");
 
-                    b.ToTable("Transfers");
+                    b.ToTable("Transfers", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards.BenefitCard", b =>
@@ -4894,7 +4894,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("MonthlyCardId");
 
-                    b.ToTable("BenefitCards");
+                    b.ToTable("BenefitCards", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards.DeductionCard", b =>
@@ -4943,7 +4943,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("MonthlyCardId");
 
-                    b.ToTable("DeductionCards");
+                    b.ToTable("DeductionCards", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.FinancialCards.FinancialCard", b =>
@@ -4983,7 +4983,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("FinancialCards");
+                    b.ToTable("FinancialCards", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.MonthlyCard", b =>
@@ -5043,7 +5043,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("MonthId");
 
-                    b.ToTable("MonthlyCards");
+                    b.ToTable("MonthlyCards", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.Months.Month", b =>
@@ -5087,7 +5087,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Months");
+                    b.ToTable("Months", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.Workflows.Classes.Workflow.Workflow", b =>
@@ -5151,7 +5151,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TargetUserId");
 
-                    b.ToTable("Workflows");
+                    b.ToTable("Workflows", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings.WorkflowSetting", b =>
@@ -5189,7 +5189,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkflowSettings");
+                    b.ToTable("WorkflowSettings", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.MultiTenancy.Tenant", b =>
@@ -5253,7 +5253,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenancyName");
 
-                    b.ToTable("AbpTenants");
+                    b.ToTable("AbpTenants", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -5265,7 +5265,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EditionId", "Name");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator().HasValue("EditionFeatureSetting");
                 });
@@ -5276,7 +5276,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator().HasValue("TenantFeatureSetting");
                 });
@@ -5290,7 +5290,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator().HasValue("RolePermissionSetting");
                 });
@@ -5304,7 +5304,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator().HasValue("UserPermissionSetting");
                 });

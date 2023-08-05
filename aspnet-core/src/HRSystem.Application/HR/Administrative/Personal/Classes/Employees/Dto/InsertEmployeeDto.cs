@@ -1,29 +1,5 @@
 ﻿using Abp.Application.Services.Dto;
-using HRSystem.HR.Administrative.JobDesc.Classes.Positions.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Attachments.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Certificates.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Childrens.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Convictions.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Dependents.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Educations.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Experiences.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Languages.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.MilitaryServices.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Passports.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Residences.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Skills.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Spouses.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.Trainings.Dto;
-using HRSystem.HR.Administrative.Personal.Indexes.Cities.Dto;
-using HRSystem.HR.Administrative.Personal.Indexes.Countries.Dto;
-using HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Dto;
-using HRSystem.HR.Administrative.Personal.Indexes.Religions.Dto;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Dto
 {
@@ -95,10 +71,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Dto
         public Guid NationalityId { get; set; }
         #endregion
         #region SecondaryNationality
-        public Guid SecondaryNationalityId { get; set; }
+        public Guid? SecondaryNationalityId { get; set; }
         #endregion
         public int MaritialStatus { get; set; }
-        public string PhotoPath { get; set; }
         public string Address { get; set; }
         public string Mobile { get; set; }
         public string Phone { get; set; }
