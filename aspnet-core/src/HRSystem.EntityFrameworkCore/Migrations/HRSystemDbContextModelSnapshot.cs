@@ -17,7 +17,7 @@ namespace HRSystem.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -63,7 +63,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpEditions");
+                    b.ToTable("AbpEditions", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.FeatureSetting", b =>
@@ -99,7 +99,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("FeatureSetting");
 
@@ -179,7 +179,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpAuditLogs");
+                    b.ToTable("AbpAuditLogs", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.PermissionSetting", b =>
@@ -215,7 +215,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("PermissionSetting");
 
@@ -255,7 +255,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpRoleClaims");
+                    b.ToTable("AbpRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserAccount", b =>
@@ -316,7 +316,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserName");
 
-                    b.ToTable("AbpUserAccounts");
+                    b.ToTable("AbpUserAccounts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserClaim", b =>
@@ -352,7 +352,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpUserClaims");
+                    b.ToTable("AbpUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLogin", b =>
@@ -391,7 +391,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "LoginProvider", "ProviderKey");
 
-                    b.ToTable("AbpUserLogins");
+                    b.ToTable("AbpUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLoginAttempt", b =>
@@ -440,7 +440,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenancyName", "UserNameOrEmailAddress", "Result");
 
-                    b.ToTable("AbpUserLoginAttempts");
+                    b.ToTable("AbpUserLoginAttempts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserOrganizationUnit", b =>
@@ -475,7 +475,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserOrganizationUnits");
+                    b.ToTable("AbpUserOrganizationUnits", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserRole", b =>
@@ -509,7 +509,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserRoles");
+                    b.ToTable("AbpUserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserToken", b =>
@@ -547,7 +547,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserTokens");
+                    b.ToTable("AbpUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Abp.BackgroundJobs.BackgroundJobInfo", b =>
@@ -593,7 +593,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("IsAbandoned", "NextTryTime");
 
-                    b.ToTable("AbpBackgroundJobs");
+                    b.ToTable("AbpBackgroundJobs", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Configuration.Setting", b =>
@@ -637,7 +637,7 @@ namespace HRSystem.Migrations
                     b.HasIndex("TenantId", "Name", "UserId")
                         .IsUnique();
 
-                    b.ToTable("AbpSettings");
+                    b.ToTable("AbpSettings", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityProperty", b =>
@@ -666,7 +666,7 @@ namespace HRSystem.Migrations
                         .IsUnique()
                         .HasFilter("[EntityFullName] IS NOT NULL AND [TenantId] IS NOT NULL");
 
-                    b.ToTable("AbpDynamicEntityProperties");
+                    b.ToTable("AbpDynamicEntityProperties", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityPropertyValue", b =>
@@ -694,7 +694,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("DynamicEntityPropertyId");
 
-                    b.ToTable("AbpDynamicEntityPropertyValues");
+                    b.ToTable("AbpDynamicEntityPropertyValues", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicProperty", b =>
@@ -727,7 +727,7 @@ namespace HRSystem.Migrations
                         .IsUnique()
                         .HasFilter("[PropertyName] IS NOT NULL AND [TenantId] IS NOT NULL");
 
-                    b.ToTable("AbpDynamicProperties");
+                    b.ToTable("AbpDynamicProperties", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicPropertyValue", b =>
@@ -752,7 +752,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("DynamicPropertyId");
 
-                    b.ToTable("AbpDynamicPropertyValues");
+                    b.ToTable("AbpDynamicPropertyValues", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChange", b =>
@@ -789,7 +789,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EntityTypeFullName", "EntityId");
 
-                    b.ToTable("AbpEntityChanges");
+                    b.ToTable("AbpEntityChanges", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChangeSet", b =>
@@ -842,7 +842,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpEntityChangeSets");
+                    b.ToTable("AbpEntityChangeSets", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityPropertyChange", b =>
@@ -885,7 +885,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EntityChangeId");
 
-                    b.ToTable("AbpEntityPropertyChanges");
+                    b.ToTable("AbpEntityPropertyChanges", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguage", b =>
@@ -941,7 +941,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpLanguages");
+                    b.ToTable("AbpLanguages", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguageText", b =>
@@ -991,7 +991,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "Source", "LanguageName", "Key");
 
-                    b.ToTable("AbpLanguageTexts");
+                    b.ToTable("AbpLanguageTexts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationInfo", b =>
@@ -1052,7 +1052,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpNotifications");
+                    b.ToTable("AbpNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationSubscriptionInfo", b =>
@@ -1095,7 +1095,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "NotificationName", "EntityTypeName", "EntityId", "UserId");
 
-                    b.ToTable("AbpNotificationSubscriptions");
+                    b.ToTable("AbpNotificationSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.TenantNotificationInfo", b =>
@@ -1145,7 +1145,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId");
 
-                    b.ToTable("AbpTenantNotifications");
+                    b.ToTable("AbpTenantNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.UserNotificationInfo", b =>
@@ -1177,7 +1177,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("UserId", "State", "CreationTime");
 
-                    b.ToTable("AbpUserNotifications");
+                    b.ToTable("AbpUserNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnit", b =>
@@ -1231,7 +1231,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "Code");
 
-                    b.ToTable("AbpOrganizationUnits");
+                    b.ToTable("AbpOrganizationUnits", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnitRole", b =>
@@ -1266,7 +1266,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "RoleId");
 
-                    b.ToTable("AbpOrganizationUnitRoles");
+                    b.ToTable("AbpOrganizationUnitRoles", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookEvent", b =>
@@ -1296,7 +1296,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookEvents");
+                    b.ToTable("AbpWebhookEvents", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSendAttempt", b =>
@@ -1330,7 +1330,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("WebhookEventId");
 
-                    b.ToTable("AbpWebhookSendAttempts");
+                    b.ToTable("AbpWebhookSendAttempts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSubscriptionInfo", b =>
@@ -1367,7 +1367,7 @@ namespace HRSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookSubscriptions");
+                    b.ToTable("AbpWebhookSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.Authorization.Roles.Role", b =>
@@ -1442,7 +1442,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "NormalizedName");
 
-                    b.ToTable("AbpRoles");
+                    b.ToTable("AbpRoles", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.Authorization.Users.User", b =>
@@ -1570,7 +1570,3626 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "NormalizedUserName");
 
-                    b.ToTable("AbpUsers");
+                    b.ToTable("AbpUsers", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Classes.EducationGrades.EducationGrade", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("Currency")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<double?>("MaxSalary")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("MinSalary")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EducationGrades", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Classes.Grades.Grade", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("Currency")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EducationGradeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("GradeCategory")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<double?>("MaxSalary")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("MinSalary")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("OrganizationLevelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EducationGradeId");
+
+                    b.HasIndex("OrganizationLevelId");
+
+                    b.ToTable("Grades", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmployeeCount")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("GradeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GradeId");
+
+                    b.ToTable("JobTitles", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.OrganizationLevel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrganizationLevels", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.JobDescription", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("JobTitleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("NodeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobTitleId");
+
+                    b.HasIndex("NodeId");
+
+                    b.ToTable("JobDescriptions", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.JobDesc.Classes.Positions.Position", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("HasManager")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("JobDescriptionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid?>("ManagerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ManagerJobTitleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Per")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("PositionWorkTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("WorkingHours")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("JobDescriptionId");
+
+                    b.HasIndex("ManagerId");
+
+                    b.HasIndex("ManagerJobTitleId");
+
+                    b.HasIndex("PositionWorkTypeId");
+
+                    b.ToTable("Positions", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.JobDesc.Indexes.PositionWorkTypes.PositionWorkType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PositionWorkTypes", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Node", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRoot")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ParentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("Nodes", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Attachments.Attachment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CertificateId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ChildrenId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ConvictionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DependentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("DriverLicenseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("EducationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ExperienceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FilePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("LanguageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid?>("MilitaryServiceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("PassportId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ResidencyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("SkillId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("SpouseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("TrainingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CertificateId");
+
+                    b.HasIndex("ChildrenId");
+
+                    b.HasIndex("ConvictionId");
+
+                    b.HasIndex("DependentId");
+
+                    b.HasIndex("DriverLicenseId");
+
+                    b.HasIndex("EducationId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("ExperienceId");
+
+                    b.HasIndex("LanguageId");
+
+                    b.HasIndex("MilitaryServiceId");
+
+                    b.HasIndex("PassportId");
+
+                    b.HasIndex("ResidencyId");
+
+                    b.HasIndex("SkillId");
+
+                    b.HasIndex("SpouseId");
+
+                    b.HasIndex("TrainingId");
+
+                    b.ToTable("Attachments", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.BankInformations.BankInformation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AccountName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AccountNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("BankId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("FromDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("ToDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BankId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("BankInformations", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Banks.Bank", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("NationalityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NationalityId");
+
+                    b.ToTable("Banks", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Certificates.Certificate", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateofIssuance")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Certificates", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Childrens.Children", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateofBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeathDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("DisabilityExist")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MaritialStatus")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("NationalityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("OrderInFamily")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("PassportExpireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PassportNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PlaceofBirthId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ResidencExpireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ResidencyNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("SpouseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("isDead")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isEmployed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isStudying")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("NationalityId");
+
+                    b.HasIndex("PlaceofBirthId");
+
+                    b.HasIndex("SpouseId");
+
+                    b.ToTable("Childrens", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Convictions.Conviction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ReleaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isConvicted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Convictions", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Custodies.Custodie", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("EmployeeCardId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeCardId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Custodies", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Dependents.Dependent", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ContactNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateofBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeathDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("KinshipLevel")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("KinshipTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("NationalityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PlaceofBirthId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("isDead")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("KinshipTypeId");
+
+                    b.HasIndex("NationalityId");
+
+                    b.HasIndex("PlaceofBirthId");
+
+                    b.ToTable("Dependents", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.DriverLicense", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("DriverLicenseTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("IssuanceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LegalCondition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PlaceofIssuanceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DriverLicenseTypeId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("PlaceofIssuanceId");
+
+                    b.ToTable("DriverLicenses", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Educations.Education", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("AmendmentDocumentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("AmendmentDocumentNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DateofIssuance")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("MajorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RankId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ScoreId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ScoreTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UniversityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("MajorId");
+
+                    b.HasIndex("RankId");
+
+                    b.HasIndex("ScoreId");
+
+                    b.HasIndex("ScoreTypeId");
+
+                    b.HasIndex("TypeId");
+
+                    b.HasIndex("UniversityId");
+
+                    b.ToTable("Educations", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AttendanceFormId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ContractType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndWorkingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("GradeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("JobDescriptionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("JobTitleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid?>("PositionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ProbationPeriodDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartWorkingDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttendanceFormId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("GradeId");
+
+                    b.HasIndex("JobDescriptionId");
+
+                    b.HasIndex("JobTitleId");
+
+                    b.HasIndex("PositionId");
+
+                    b.ToTable("EmployeeCards", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("BloodType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CivilRecordPlaceAndNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CountryofBirthId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateofBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Facebook")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FatherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FatherNameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstNameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IdNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastNameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MaritialStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Mobile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotherNameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("NationalityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PersonalRecordSource")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaceofBirthAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PlaceofBirthId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ReligionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SecondaryNationalityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("WebSite")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryofBirthId");
+
+                    b.HasIndex("NationalityId");
+
+                    b.HasIndex("PlaceofBirthId");
+
+                    b.HasIndex("ReligionId");
+
+                    b.HasIndex("SecondaryNationalityId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Employees", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Experiences.Experience", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CompanyLocation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyWebSite")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Industry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("JobTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LeaveReason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReferenceContact")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReferenceEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReferenceFullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReferenceJobTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Experiences", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Languages.Language", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("LanguageNameId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("ListeningId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ReadingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SpeakingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("WritingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("LanguageNameId");
+
+                    b.HasIndex("ListeningId");
+
+                    b.HasIndex("ReadingId");
+
+                    b.HasIndex("SpeakingId");
+
+                    b.HasIndex("WritingId");
+
+                    b.ToTable("HRLanguages", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.MilitaryServices.MilitaryService", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("Days")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DelayDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DelayReason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ExemptionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ExemptionReason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Granter")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("HoldDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsPermanentExemption")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("MilitaryServiceDocIssueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MilitaryServiceNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MilitaryStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Months")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ReserveStartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ServiceEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ServiceStartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Years")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("MilitaryServices", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Passports.Passport", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FatherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstNameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("IssuanceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastNameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PlaceofIssuanceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("PlaceofIssuanceId");
+
+                    b.ToTable("Passports", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Residences.Residency", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FatherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("IssuanceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("NationalityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ResidencyType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SecondName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("NationalityId");
+
+                    b.ToTable("Residencies", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Skills.Skill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("LevelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("SkillName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("LevelId");
+
+                    b.ToTable("Skills", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Spouses.Spouse", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateofBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeathDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DivorceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FatherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstContactNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("HasJob")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("IdNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("JobTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("MarrigeDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MotherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("NationalityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PassportExpireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PassportNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PlaceofBirthId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ResidencyExpireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ResidencyNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecondContactNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WorkAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WorkEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WorkPhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isDead")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isDivorced")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("NationalityId");
+
+                    b.HasIndex("PlaceofBirthId");
+
+                    b.ToTable("Spouses", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Trainings.Training", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CertificateIssuanceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CourseDurationPerHour")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CourseEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CourseName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CourseStartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Instructor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstructorPhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Specialize")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrainingCenter")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrainingCenterLocation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isActive")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Trainings", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.Cities.City", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.Countries.Country", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.DriverLicenseType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DriverLicenseTypes", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.EducationMajors.EducationMajor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EducationMajors", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.EducationTypes.EducationType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EducationTypes", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Ranks.Rank", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ranks", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.ScoreTypes.ScoreType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ScoreTypes", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Score", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Scores", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universities.University", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Universities", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.KinshipTypes.KinshipType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KinshipTypes", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.LanguageNames.LanguageName", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LanguageNames", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.Levels.Level", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Levels", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Nationality", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Nationalities", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Indexes.Religions.Religion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Religions", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms.AttendanceForm", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AttendanceForms", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards.AttendanceMonthlyCard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("ActualTotalWorkHours")
+                        .HasColumnType("float");
+
+                    b.Property<Guid?>("AttendanceRecordId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeCardId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<double>("TotalRequiredWorkHours")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("isCalculated")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttendanceRecordId");
+
+                    b.HasIndex("EmployeeCardId");
+
+                    b.ToTable("AttendanceMonthlyCards", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.AttendanceRecord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FromDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ToDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isCalculated")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AttendanceRecords", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.EntranceExitRecord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LogDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LogTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RecordType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isChecked")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("EntranceExitRecords", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.HourlyMission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isTransferd")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("HourlyMissions", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.NormalShift", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EntryTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExitTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("ShiftRangeEndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ShiftRangeStartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("WorkshopId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WorkshopId");
+
+                    b.ToTable("NormalShifts", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.TemporaryWorkshop", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FromDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("TempWorkshopId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ToDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("WorkshopId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TempWorkshopId");
+
+                    b.HasIndex("WorkshopId");
+
+                    b.ToTable("TemporaryWorkshops", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.TravelMissions.TravelMission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("FromDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ToDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isTransferd")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("TravelMissions", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Workshop", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AttendanceFormId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttendanceFormId");
+
+                    b.ToTable("Workshops", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Assignment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("AssigningDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("EmployeeCardId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("JobTitleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("PositionID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeCardId");
+
+                    b.HasIndex("JobTitleId");
+
+                    b.HasIndex("PositionID");
+
+                    b.ToTable("Assignments", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.ChangeableHolidays.ChangeableHoliday", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChangeableHolidays", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.CompanyHolidays.CompanyHoliday", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("DayOfWeek")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompanyHolidays", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.FixedHoliday", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("Day")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("Month")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NumberofDays")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FixedHolidays", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.LeaveRequest", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("EmployeeCardId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EndHour")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("LeaveRequestStatus")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("LeaveSettingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("RequestDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("StartHour")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isHourly")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeCardId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("LeaveSettingId");
+
+                    b.ToTable("LeaveRequests", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.LeaveSetting", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("WorkflowSettingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("isPaidLeave")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WorkflowSettingId");
+
+                    b.ToTable("LeaveSettings", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Promotions.Promotion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("EmployeeCardId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("JobTitleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("PositionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("PromotionDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeCardId");
+
+                    b.HasIndex("JobTitleId");
+
+                    b.HasIndex("PositionId");
+
+                    b.ToTable("Promotions", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Resignations.Resignation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("EmployeeCardId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("ResignationDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeCardId");
+
+                    b.ToTable("Resignations", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Transfers.Transfer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("DestinationJobTitleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DestinationPositionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("EmployeeCardId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("StartingDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DestinationJobTitleId");
+
+                    b.HasIndex("DestinationPositionId");
+
+                    b.HasIndex("EmployeeCardId");
+
+                    b.ToTable("Transfers", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards.BenefitCard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Formula")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid?>("MonthlyCardId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("isCalculatedInPayrollSystem")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MonthlyCardId");
+
+                    b.ToTable("BenefitCards", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards.DeductionCard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Formula")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid?>("MonthlyCardId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("isCalculatedInPayrollSystem")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MonthlyCardId");
+
+                    b.ToTable("DeductionCards", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.FinancialCards.FinancialCard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<double>("Salary")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("FinancialCards", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.MonthlyCard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Calculated")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeCardId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("FinalSalary")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid?>("MonthId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Salary")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TotalBenefits")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TotalDeductions")
+                        .HasColumnType("float");
+
+                    b.Property<double>("WorkDays")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeCardId");
+
+                    b.HasIndex("MonthId");
+
+                    b.ToTable("MonthlyCards", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.Months.Month", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("MonthName")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isCalculated")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Months", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.Workflows.Classes.Workflow.Workflow", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("CreatorId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CurrentUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("FirstUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<long>("TargetUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
+
+                    b.HasIndex("CurrentUserId");
+
+                    b.HasIndex("FirstUserId");
+
+                    b.HasIndex("TargetUserId");
+
+                    b.ToTable("Workflows", (string)null);
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings.WorkflowSetting", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Steps")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Title")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WorkflowSettings", (string)null);
                 });
 
             modelBuilder.Entity("HRSystem.MultiTenancy.Tenant", b =>
@@ -1634,7 +5253,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenancyName");
 
-                    b.ToTable("AbpTenants");
+                    b.ToTable("AbpTenants", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1646,7 +5265,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("EditionId", "Name");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator().HasValue("EditionFeatureSetting");
                 });
@@ -1657,7 +5276,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator().HasValue("TenantFeatureSetting");
                 });
@@ -1671,7 +5290,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator().HasValue("RolePermissionSetting");
                 });
@@ -1685,7 +5304,7 @@ namespace HRSystem.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator().HasValue("UserPermissionSetting");
                 });
@@ -1855,6 +5474,939 @@ namespace HRSystem.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
+            modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Classes.Grades.Grade", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.EducationGrades.EducationGrade", "EducationGrade")
+                        .WithMany()
+                        .HasForeignKey("EducationGradeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.OrganizationLevel", "OrganizationLevel")
+                        .WithMany()
+                        .HasForeignKey("OrganizationLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EducationGrade");
+
+                    b.Navigation("OrganizationLevel");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.Grades.Grade", null)
+                        .WithMany("JobTitles")
+                        .HasForeignKey("GradeId");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.JobDescription", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", "JobTitle")
+                        .WithMany()
+                        .HasForeignKey("JobTitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Node", "Node")
+                        .WithMany("JobDescriptions")
+                        .HasForeignKey("NodeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("JobTitle");
+
+                    b.Navigation("Node");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.JobDesc.Classes.Positions.Position", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Positions")
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.JobDescription", "JobDescription")
+                        .WithMany()
+                        .HasForeignKey("JobDescriptionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.JobDescription", "Manager")
+                        .WithMany()
+                        .HasForeignKey("ManagerId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", "ManagerJobTitle")
+                        .WithMany()
+                        .HasForeignKey("ManagerJobTitleId");
+
+                    b.HasOne("HRSystem.HR.Administrative.JobDesc.Indexes.PositionWorkTypes.PositionWorkType", "PositionWorkType")
+                        .WithMany()
+                        .HasForeignKey("PositionWorkTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("JobDescription");
+
+                    b.Navigation("Manager");
+
+                    b.Navigation("ManagerJobTitle");
+
+                    b.Navigation("PositionWorkType");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Node", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Node", "Parent")
+                        .WithMany("Childrens")
+                        .HasForeignKey("ParentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Attachments.Attachment", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Certificates.Certificate", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("CertificateId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Childrens.Children", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("ChildrenId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Convictions.Conviction", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("ConvictionId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Dependents.Dependent", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("DependentId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.DriverLicense", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("DriverLicenseId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Educations.Education", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("EducationId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Experiences.Experience", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("ExperienceId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Languages.Language", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("LanguageId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.MilitaryServices.MilitaryService", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("MilitaryServiceId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Passports.Passport", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("PassportId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Residences.Residency", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("ResidencyId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Skills.Skill", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("SkillId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Spouses.Spouse", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("SpouseId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Trainings.Training", null)
+                        .WithMany("Attachments")
+                        .HasForeignKey("TrainingId");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.BankInformations.BankInformation", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Banks.Bank", "Bank")
+                        .WithMany()
+                        .HasForeignKey("BankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Bank");
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Banks.Bank", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Nationality", "Nationality")
+                        .WithMany()
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Nationality");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Certificates.Certificate", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Cities.City", "PlaceofIssuance")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Certificates")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("PlaceofIssuance");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Childrens.Children", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Children")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Nationality", "Nationality")
+                        .WithMany()
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Cities.City", "PlaceofBirth")
+                        .WithMany()
+                        .HasForeignKey("PlaceofBirthId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Spouses.Spouse", "Spouse")
+                        .WithMany()
+                        .HasForeignKey("SpouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Nationality");
+
+                    b.Navigation("PlaceofBirth");
+
+                    b.Navigation("Spouse");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Convictions.Conviction", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Convictions")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Custodies.Custodie", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", null)
+                        .WithMany("Custodies")
+                        .HasForeignKey("EmployeeCardId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Dependents.Dependent", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Dependents")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.KinshipTypes.KinshipType", "KinshipType")
+                        .WithMany()
+                        .HasForeignKey("KinshipTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Nationality", "Nationality")
+                        .WithMany()
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Cities.City", "PlaceofBirth")
+                        .WithMany()
+                        .HasForeignKey("PlaceofBirthId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("KinshipType");
+
+                    b.Navigation("Nationality");
+
+                    b.Navigation("PlaceofBirth");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.DriverLicense", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.DriverLicenseType", "DriverLicenseType")
+                        .WithMany()
+                        .HasForeignKey("DriverLicenseTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("DriverLicense")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Cities.City", "PlaceofIssuance")
+                        .WithMany()
+                        .HasForeignKey("PlaceofIssuanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DriverLicenseType");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("PlaceofIssuance");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Educations.Education", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Countries.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Educations")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.EducationMajors.EducationMajor", "Major")
+                        .WithMany()
+                        .HasForeignKey("MajorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Ranks.Rank", "Rank")
+                        .WithMany()
+                        .HasForeignKey("RankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Scores.Score", "Score")
+                        .WithMany()
+                        .HasForeignKey("ScoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.ScoreTypes.ScoreType", "ScoreType")
+                        .WithMany()
+                        .HasForeignKey("ScoreTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.EducationTypes.EducationType", "Type")
+                        .WithMany()
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.EducationIndexes.Universities.University", "University")
+                        .WithMany()
+                        .HasForeignKey("UniversityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Major");
+
+                    b.Navigation("Rank");
+
+                    b.Navigation("Score");
+
+                    b.Navigation("ScoreType");
+
+                    b.Navigation("Type");
+
+                    b.Navigation("University");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", b =>
+                {
+                    b.HasOne("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms.AttendanceForm", "AttendanceForm")
+                        .WithMany()
+                        .HasForeignKey("AttendanceFormId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.Grades.Grade", "Grade")
+                        .WithMany()
+                        .HasForeignKey("GradeId");
+
+                    b.HasOne("HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.JobDescription", "JobDescription")
+                        .WithMany()
+                        .HasForeignKey("JobDescriptionId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", "JobTitle")
+                        .WithMany()
+                        .HasForeignKey("JobTitleId");
+
+                    b.HasOne("HRSystem.HR.Administrative.JobDesc.Classes.Positions.Position", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionId");
+
+                    b.Navigation("AttendanceForm");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Grade");
+
+                    b.Navigation("JobDescription");
+
+                    b.Navigation("JobTitle");
+
+                    b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Countries.Country", "CountryofBirth")
+                        .WithMany()
+                        .HasForeignKey("CountryofBirthId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Nationality", "Nationality")
+                        .WithMany()
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Cities.City", "PlaceofBirth")
+                        .WithMany()
+                        .HasForeignKey("PlaceofBirthId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Religions.Religion", "Religion")
+                        .WithMany()
+                        .HasForeignKey("ReligionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Nationality", "SecondaryNationality")
+                        .WithMany()
+                        .HasForeignKey("SecondaryNationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CountryofBirth");
+
+                    b.Navigation("Nationality");
+
+                    b.Navigation("PlaceofBirth");
+
+                    b.Navigation("Religion");
+
+                    b.Navigation("SecondaryNationality");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Experiences.Experience", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Experiences")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Languages.Language", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Languages")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.LanguageNames.LanguageName", "LanguageName")
+                        .WithMany()
+                        .HasForeignKey("LanguageNameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Levels.Level", "Listening")
+                        .WithMany()
+                        .HasForeignKey("ListeningId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Levels.Level", "Reading")
+                        .WithMany()
+                        .HasForeignKey("ReadingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Levels.Level", "Speaking")
+                        .WithMany()
+                        .HasForeignKey("SpeakingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Levels.Level", "Writing")
+                        .WithMany()
+                        .HasForeignKey("WritingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("LanguageName");
+
+                    b.Navigation("Listening");
+
+                    b.Navigation("Reading");
+
+                    b.Navigation("Speaking");
+
+                    b.Navigation("Writing");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.MilitaryServices.MilitaryService", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("MilitaryService")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Passports.Passport", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Passports")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Cities.City", "PlaceofIssuance")
+                        .WithMany()
+                        .HasForeignKey("PlaceofIssuanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("PlaceofIssuance");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Residences.Residency", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Residences")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Nationality", "Nationality")
+                        .WithMany()
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Nationality");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Skills.Skill", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Skills")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Levels.Level", "Level")
+                        .WithMany()
+                        .HasForeignKey("LevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Level");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Spouses.Spouse", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Spouse")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Nationalities.Nationality", "Nationality")
+                        .WithMany()
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Indexes.Cities.City", "PlaceofBirth")
+                        .WithMany()
+                        .HasForeignKey("PlaceofBirthId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Nationality");
+
+                    b.Navigation("PlaceofBirth");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Trainings.Training", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany("Trainings")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards.AttendanceMonthlyCard", b =>
+                {
+                    b.HasOne("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.AttendanceRecord", null)
+                        .WithMany("AttendanceMonthlyCards")
+                        .HasForeignKey("AttendanceRecordId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", "EmployeeCard")
+                        .WithMany()
+                        .HasForeignKey("EmployeeCardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmployeeCard");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.EntranceExitRecord", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.HourlyMission", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.NormalShift", b =>
+                {
+                    b.HasOne("HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Workshop", null)
+                        .WithMany("NormalShifts")
+                        .HasForeignKey("WorkshopId");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.TemporaryWorkshop", b =>
+                {
+                    b.HasOne("HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Workshop", "TempWorkshop")
+                        .WithMany()
+                        .HasForeignKey("TempWorkshopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Workshop", "Workshop")
+                        .WithMany()
+                        .HasForeignKey("WorkshopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TempWorkshop");
+
+                    b.Navigation("Workshop");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.TravelMissions.TravelMission", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Workshop", b =>
+                {
+                    b.HasOne("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms.AttendanceForm", null)
+                        .WithMany("Workshops")
+                        .HasForeignKey("AttendanceFormId");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Assignment", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", "EmployeeCard")
+                        .WithMany("Assignments")
+                        .HasForeignKey("EmployeeCardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", "JobTitle")
+                        .WithMany()
+                        .HasForeignKey("JobTitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.JobDesc.Classes.Positions.Position", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmployeeCard");
+
+                    b.Navigation("JobTitle");
+
+                    b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.LeaveRequest", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", null)
+                        .WithMany("LeaveRequests")
+                        .HasForeignKey("EmployeeCardId");
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.LeaveSetting", "LeaveSetting")
+                        .WithMany()
+                        .HasForeignKey("LeaveSettingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("LeaveSetting");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.LeaveSetting", b =>
+                {
+                    b.HasOne("HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings.WorkflowSetting", "WorkflowSetting")
+                        .WithMany()
+                        .HasForeignKey("WorkflowSettingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkflowSetting");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Promotions.Promotion", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", "EmployeeCard")
+                        .WithMany("Promotions")
+                        .HasForeignKey("EmployeeCardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", "JobTitle")
+                        .WithMany()
+                        .HasForeignKey("JobTitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.JobDesc.Classes.Positions.Position", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmployeeCard");
+
+                    b.Navigation("JobTitle");
+
+                    b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Resignations.Resignation", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", "EmployeeCard")
+                        .WithMany("Resignations")
+                        .HasForeignKey("EmployeeCardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmployeeCard");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.EmployeeServices.Classes.Transfers.Transfer", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", "DestinationJobTitle")
+                        .WithMany()
+                        .HasForeignKey("DestinationJobTitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.JobDesc.Classes.Positions.Position", "DestinationPosition")
+                        .WithMany()
+                        .HasForeignKey("DestinationPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", null)
+                        .WithMany("Transfers")
+                        .HasForeignKey("EmployeeCardId");
+
+                    b.Navigation("DestinationJobTitle");
+
+                    b.Navigation("DestinationPosition");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards.BenefitCard", b =>
+                {
+                    b.HasOne("HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.MonthlyCard", null)
+                        .WithMany("BenefitCards")
+                        .HasForeignKey("MonthlyCardId");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards.DeductionCard", b =>
+                {
+                    b.HasOne("HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.MonthlyCard", null)
+                        .WithMany("DeductionCards")
+                        .HasForeignKey("MonthlyCardId");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.FinancialCards.FinancialCard", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.MonthlyCard", b =>
+                {
+                    b.HasOne("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", "EmployeeCard")
+                        .WithMany()
+                        .HasForeignKey("EmployeeCardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.HR.Operational.PayrollSystem.Classes.Months.Month", null)
+                        .WithMany("MonthlyCards")
+                        .HasForeignKey("MonthId");
+
+                    b.Navigation("EmployeeCard");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.Workflows.Classes.Workflow.Workflow", b =>
+                {
+                    b.HasOne("HRSystem.Authorization.Users.User", "Creator")
+                        .WithMany()
+                        .HasForeignKey("CreatorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.Authorization.Users.User", "CurrentUser")
+                        .WithMany()
+                        .HasForeignKey("CurrentUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.Authorization.Users.User", "FirstUser")
+                        .WithMany()
+                        .HasForeignKey("FirstUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRSystem.Authorization.Users.User", "TargetUser")
+                        .WithMany()
+                        .HasForeignKey("TargetUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Creator");
+
+                    b.Navigation("CurrentUser");
+
+                    b.Navigation("FirstUser");
+
+                    b.Navigation("TargetUser");
+                });
+
             modelBuilder.Entity("HRSystem.MultiTenancy.Tenant", b =>
                 {
                     b.HasOne("HRSystem.Authorization.Users.User", "CreatorUser")
@@ -1951,6 +6503,165 @@ namespace HRSystem.Migrations
                     b.Navigation("Settings");
 
                     b.Navigation("Tokens");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Classes.Grades.Grade", b =>
+                {
+                    b.Navigation("JobTitles");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Node", b =>
+                {
+                    b.Navigation("Childrens");
+
+                    b.Navigation("JobDescriptions");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Certificates.Certificate", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Childrens.Children", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Convictions.Conviction", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Dependents.Dependent", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.DriverLicenses.DriverLicense", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Educations.Education", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.EmployeeCard", b =>
+                {
+                    b.Navigation("Assignments");
+
+                    b.Navigation("Custodies");
+
+                    b.Navigation("LeaveRequests");
+
+                    b.Navigation("Promotions");
+
+                    b.Navigation("Resignations");
+
+                    b.Navigation("Transfers");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Employees.Employee", b =>
+                {
+                    b.Navigation("Attachments");
+
+                    b.Navigation("Certificates");
+
+                    b.Navigation("Children");
+
+                    b.Navigation("Convictions");
+
+                    b.Navigation("Dependents");
+
+                    b.Navigation("DriverLicense");
+
+                    b.Navigation("Educations");
+
+                    b.Navigation("Experiences");
+
+                    b.Navigation("Languages");
+
+                    b.Navigation("MilitaryService");
+
+                    b.Navigation("Passports");
+
+                    b.Navigation("Positions");
+
+                    b.Navigation("Residences");
+
+                    b.Navigation("Skills");
+
+                    b.Navigation("Spouse");
+
+                    b.Navigation("Trainings");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Experiences.Experience", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Languages.Language", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.MilitaryServices.MilitaryService", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Passports.Passport", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Residences.Residency", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Skills.Skill", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Spouses.Spouse", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Administrative.Personal.Classes.Trainings.Training", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms.AttendanceForm", b =>
+                {
+                    b.Navigation("Workshops");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.AttendanceRecord", b =>
+                {
+                    b.Navigation("AttendanceMonthlyCards");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Workshop", b =>
+                {
+                    b.Navigation("NormalShifts");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.MonthlyCard", b =>
+                {
+                    b.Navigation("BenefitCards");
+
+                    b.Navigation("DeductionCards");
+                });
+
+            modelBuilder.Entity("HRSystem.HR.Operational.PayrollSystem.Classes.Months.Month", b =>
+                {
+                    b.Navigation("MonthlyCards");
                 });
 #pragma warning restore 612, 618
         }

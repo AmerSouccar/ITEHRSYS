@@ -1,0 +1,21 @@
+﻿using AutoMapper;
+using HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes.Dto;
+using HRSystem.HR.Administrative.Personal.Indexes.DriverLicenseTypes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using HRSystem.HR.Administrative.Personal.Indexes.Levels.Dto;
+
+namespace HRSystem.HR.Administrative.Personal.Indexes.Levels.Map
+{
+    public class LevelMapProfile :Profile
+    {
+        public LevelMapProfile()
+        {
+            CreateMap<Level, LevelDto>();
+            CreateMap<LevelDto, Level>();
+        }
+    }
+}

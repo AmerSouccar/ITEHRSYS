@@ -38,6 +38,21 @@ import { SidebarComponent } from './layout/sidebar.component';
 import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
+import { CityComponent } from './city/city.component';
+import { CreateCityDialogComponent } from './city/create-city-dialog/create-city-dialog.component';
+import { EditCityDialogComponent } from './city/edit-city-dialog/edit-city-dialog.component';
+import { CountryComponent } from './country/country.component';
+import { CreateCountryDialogComponent } from './country/create-country-dialog/create-country-dialog.component';
+import { EditCountryDialogComponent } from './country/edit-country-dialog/edit-country-dialog.component';
+import { ReligionComponent } from './religion/religion.component';
+import { CreateReligionDialogComponent } from './religion/create-religion-dialog/create-religion-dialog.component';
+import { EditReligionDialogComponent } from './religion/edit-religion-dialog/edit-religion-dialog.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { CreateEmployeeDialogComponent } from './employee/create-employee-dialog/create-employee-dialog.component';
+import { EditEmployeeDialogComponent } from './employee/edit-employee-dialog/edit-employee-dialog.component';
+import { NationalityComponent } from './nationality/nationality.component';
+import { CreateNationalityDialogComponent } from './nationality/create-nationality-dialog/create-nationality-dialog.component';
+import { EditNationalityDialogComponent } from './nationality/edit-nationality-dialog/edit-nationality-dialog.component';
 
 @NgModule({
     declarations: [
@@ -67,7 +82,22 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
         SidebarComponent,
         SidebarLogoComponent,
         SidebarUserPanelComponent,
-        SidebarMenuComponent
+        SidebarMenuComponent,
+        CityComponent,
+        CreateCityDialogComponent,
+        EditCityDialogComponent,
+        CountryComponent,
+        CreateCountryDialogComponent,
+        EditCountryDialogComponent,
+        ReligionComponent,
+        CreateReligionDialogComponent,
+        EditReligionDialogComponent,
+        EmployeeComponent,
+        CreateEmployeeDialogComponent,
+        EditEmployeeDialogComponent,
+        NationalityComponent,
+        CreateNationalityDialogComponent,
+        EditNationalityDialogComponent
     ],
     imports: [
         CommonModule,

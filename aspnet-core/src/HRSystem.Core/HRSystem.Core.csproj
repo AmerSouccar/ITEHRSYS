@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <VersionPrefix>1.0.0.0</VersionPrefix>
     <TargetFramework>net7.0</TargetFramework>
@@ -18,10 +18,13 @@
     <PackageReference Include="Abp.AutoMapper" Version="8.1.0" />
     <PackageReference Include="Abp.ZeroCore.EntityFrameworkCore" Version="8.1.0" />
     <PackageReference Include="Castle.Windsor.MsDependencyInjection" Version="3.4.0" />
+    <PackageReference Include="EPPlus" Version="6.2.7" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="HR\Administrative\Classes\Employees\Services\" />
-    <Folder Include="HR\Administrative\Enums\" />
-    <Folder Include="HR\Administrative\Indexes\Cities\Services\" />
+    <Folder Include="HR\Administrative\OrgChart\Indexes\" />
+    <Folder Include="HR\Operational\AttendanceSystem\Indexes\" />
+    <Folder Include="HR\Operational\EmployeeServices\Indexes\" />
+    <Folder Include="HR\Operational\PayrollSystem\Indexes\" />
+    <Folder Include="HR\Operational\Workflows\Indexes\" />
   </ItemGroup>
 </Project>

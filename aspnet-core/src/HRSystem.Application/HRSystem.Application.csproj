@@ -15,6 +15,18 @@
     <ProjectReference Include="..\HRSystem.Core\HRSystem.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="HR\" />
+    <Folder Include="HR\Administrative\Personal\Classes\Childrens\Dto\" />
+    <Folder Include="HR\Administrative\Personal\Classes\Childrens\Map\" />
+    <Folder Include="HR\Administrative\Personal\Classes\Childrens\Services\" />
+    <Folder Include="HR\Administrative\Personal\Classes\EmployeeCards\Dto\" />
+    <Folder Include="HR\Administrative\Personal\Classes\EmployeeCards\Map\" />
+    <Folder Include="HR\Administrative\Personal\Classes\EmployeeCards\Services\" />
+    <Folder Include="HR\Administrative\Personal\Classes\Spouses\Dto\" />
+    <Folder Include="HR\Administrative\Personal\Classes\Spouses\Map\" />
+    <Folder Include="HR\Administrative\Personal\Classes\Spouses\Services\" />
+    <Folder Include="HR\Operational\AttendanceSystem\Indexes\" />
+    <Folder Include="HR\Operational\EmployeeServices\Indexes\" />
+    <Folder Include="HR\Operational\PayrollSystem\Indexes\" />
+    <Folder Include="HR\Operational\Workflows\Indexes\" />
   </ItemGroup>
 </Project>
