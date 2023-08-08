@@ -36,12 +36,12 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Dto
         #region PlaceofBirth
         public Guid PlaceofBirthId { get; set; }
         #endregion
-        public DateTime DateofBirth { get; set; }
+        public string DateofBirth { get; set; }
         public int Age
         {
             get
             {
-                return DateTime.Now.Year - DateofBirth.Year;
+                return DateTime.Now.Year - Convert.ToDateTime(DateofBirth).Year;
             }
         }
         public string IdNumber { get; set; }

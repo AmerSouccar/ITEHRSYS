@@ -47,6 +47,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
             employee.UserId = newUser.Id;
             employee.User = newUser;
             var employeeId = await _employeeRepository.InsertAndGetIdAsync(employee);
+
             EmployeeCard employeeCard = new EmployeeCard()
             {
                 EmployeeId = employeeId,

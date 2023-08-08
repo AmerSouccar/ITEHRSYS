@@ -50,6 +50,9 @@ import { EditReligionDialogComponent } from './religion/edit-religion-dialog/edi
 import { EmployeeComponent } from './employee/employee.component';
 import { CreateEmployeeDialogComponent } from './employee/create-employee-dialog/create-employee-dialog.component';
 import { EditEmployeeDialogComponent } from './employee/edit-employee-dialog/edit-employee-dialog.component';
+import { NationalityComponent } from './nationality/nationality.component';
+import { CreateNationalityDialogComponent } from './nationality/create-nationality-dialog/create-nationality-dialog.component';
+import { EditNationalityDialogComponent } from './nationality/edit-nationality-dialog/edit-nationality-dialog.component';
 
 @NgModule({
     declarations: [
@@ -91,7 +94,10 @@ import { EditEmployeeDialogComponent } from './employee/edit-employee-dialog/edi
         EditReligionDialogComponent,
         EmployeeComponent,
         CreateEmployeeDialogComponent,
-        EditEmployeeDialogComponent
+        EditEmployeeDialogComponent,
+        NationalityComponent,
+        CreateNationalityDialogComponent,
+        EditNationalityDialogComponent
     ],
     imports: [
         CommonModule,

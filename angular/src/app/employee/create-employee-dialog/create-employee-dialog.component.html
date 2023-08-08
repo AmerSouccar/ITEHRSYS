@@ -7,8 +7,9 @@
   <abp-modal-header
     [title]="'CreateNewEmployee' | localize"
     (onCloseClick)="bsModalRef.hide()"
+    
   ></abp-modal-header>
-  <div class="modal-body">
+  <div class="modal-body" >
     <div class="form-group row required">
       <label class="col-md-2 col-form-label" for="name">
         {{ "First Name" | localize }}
@@ -97,47 +98,520 @@
 
 
       <div class="form-group row required">
-        <label class="col-md-2 col-form-label" for="fatherName">
-          {{ "Father Name" | localize }}
+            <label class="col-md-2 col-form-label" for="type">
+              {{ "Place of Birth" | localize }}
+            </label>
+          <div class="col-md-4">
+
+            <select [(ngModel)]="employee.placeofBirthId"  class="form-control" name="name" id="name">
+                <option  
+                 required
+                  *ngFor="let city of cities" [ngValue]="city.id"
+                  >
+                  {{city.name}}
+                </option>
+                </select>
+
+          </div>
+          <label class="col-md-2 col-form-label" for="dateofBirth">
+          {{ "Date of Birth" | localize }}
         </label>
         <div class="col-md-4">
           <input
-            type="text"
+            type="date"
             class="form-control"
-            name="fatherName"
-            id="fatherName"
-            maxlength="128"
+            name="dateofBirth"
+            id="dateofBirth"
             required
-            [(ngModel)]="employee.fatherName"
-            #fatherNameModel="ngModel"
-            #fatherNameModelEl
+            [(ngModel)]="employee.dateofBirth"
+            #dateofBirth="ngModel"
+            #dateofBirthEl
           />
           <abp-validation-summary
-            [control]="fatherNameModel"
-            [controlEl]="fatherNameModelEl"
+            [control]="dateofBirth"
+            [controlEl]="dateofBirthEl"
           ></abp-validation-summary>
         </div>
-        <label class="col-md-2 col-form-label" for="motherName">
-          {{ "Mother Name" | localize }}
-        </label>
-        <div class="col-md-4">
-          <input
-            type="text"
-            class="form-control"
-            name="motherName"
-            id="motherName"
-            maxlength="128"
-            required
-            [(ngModel)]="employee.motherName"
-            #motherNameModel="ngModel"
-            #motherNameEl
-          />
-          <abp-validation-summary
-            [control]="motherNameModel"
-            [controlEl]="motherNameEl"
-          ></abp-validation-summary>
-        </div>
-      </div>
+          </div>
+
+
+          <div class="form-group row required">
+
+            <label class="col-md-2 col-form-label" for="idNumber">
+              {{ "ID Number" | localize }}
+            </label>
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                name="idNumber"
+                id="idNumber"
+                required
+                [(ngModel)]="employee.idNumber"
+                #idNumber="ngModel"
+                #idNumberEl
+              />
+              <abp-validation-summary
+                [control]="idNumber"
+                [controlEl]="idNumberEl"
+              ></abp-validation-summary>
+            </div>
+
+
+            <label class="col-md-2 col-form-label" for="type">
+              {{ "Country of Birth" | localize }}
+            </label>
+          <div class="col-md-4">
+
+            <select [(ngModel)]="employee.countryofBirthId"  class="form-control" name="name" id="name">
+                <option  
+                 required
+                  *ngFor="let country of countries" [ngValue]="country.id"
+                  >
+                  {{country.name}}
+                </option>
+                </select>
+
+          </div>
+          </div>
+
+
+          <div class="form-group row required">
+            <label class="col-md-2 col-form-label" for="PersonalRecordSource">
+              {{ "PersonalRecordSource" | localize }}
+            </label>
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                name="PersonalRecordSource"
+                id="PersonalRecordSource"
+                maxlength="128"
+                required
+                [(ngModel)]="employee.personalRecordSource"
+                #PersonalRecordSource="ngModel"
+                #PersonalRecordSourceEl
+              />
+              <abp-validation-summary
+                [control]="PersonalRecordSource"
+                [controlEl]="PersonalRecordSourceEl"
+              ></abp-validation-summary>
+            </div>
+            <label class="col-md-2 col-form-label" for="CivilRecordPlaceAndNumber">
+              {{ "CivilRecordPlaceAndNumber" | localize }}
+            </label>
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                name="CivilRecordPlaceAndNumber"
+                id="CivilRecordPlaceAndNumber"
+                maxlength="128"
+                required
+                [(ngModel)]="employee.civilRecordPlaceAndNumber"
+                #CivilRecordPlaceAndNumber="ngModel"
+                #CivilRecordPlaceAndNumberEl
+              />
+              <abp-validation-summary
+                [control]="CivilRecordPlaceAndNumber"
+                [controlEl]="CivilRecordPlaceAndNumberEl"
+              ></abp-validation-summary>
+            </div>
+          </div>
+
+
+          <div class="form-group row required">
+
+            <label class="col-md-2 col-form-label" for="Gender">
+              {{ "Gender" | localize }}
+            </label>
+          <div class="col-md-4">
+
+            <select [(ngModel)]="employee.gender"  class="form-control" name="Gender" id="Gender">
+                <option  
+                   [ngValue]="0"
+                  >
+                  {{"Male" | localize}}
+                </option>
+                <option  
+                [ngValue]="1"
+               >
+               {{"Female" | localize}}
+             </option>
+                </select>
+
+          </div>
+
+
+            <label class="col-md-2 col-form-label" for="type">
+              {{ "Religion" | localize }}
+            </label>
+          <div class="col-md-4">
+
+            <select [(ngModel)]="employee.religionId"  class="form-control" name="Religion" id="Religion">
+                <option  
+                 required
+                  *ngFor="let religion of religions" [ngValue]="religion.id"
+                  >
+                  {{religion.name}}
+                </option>
+                </select>
+
+          </div>
+          </div>
+
+
+          <div class="form-group row required">
+            <label class="col-md-2 col-form-label" for="namear">
+              {{ "First Name Ar" | localize }}
+            </label>
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                name="namear"
+                id="namear"
+                maxlength="128"
+                required
+                [(ngModel)]="employee.firstNameAr"
+                #namearModel="ngModel"
+                #namearEl
+              />
+              <abp-validation-summary
+                [control]="namearModel"
+                [controlEl]="namearEl"
+              ></abp-validation-summary>
+            </div>
+            <label class="col-md-2 col-form-label" for="lastNamear">
+              {{ "Last Name Ar" | localize }}
+            </label>
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                name="lastNamear"
+                id="lastNamear"
+                maxlength="128"
+                required
+                [(ngModel)]="employee.lastNameAr"
+                #lastNamearModel="ngModel"
+                #lastNamearEl
+              />
+              <abp-validation-summary
+                [control]="lastNamearModel"
+                [controlEl]="lastNamearEl"
+              ></abp-validation-summary>
+            </div>
+          </div>
+      
+          <div class="form-group row required">
+              <label class="col-md-2 col-form-label" for="fatherNamear">
+                {{ "Father Name Ar" | localize }}
+              </label>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="fatherNamear"
+                  id="fatherNamear"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="employee.fatherNameAr"
+                  #fatherNamearModel="ngModel"
+                  #fatherNamearModelEl
+                />
+                <abp-validation-summary
+                  [control]="fatherNamearModel"
+                  [controlEl]="fatherNamearModelEl"
+                ></abp-validation-summary>
+              </div>
+              <label class="col-md-2 col-form-label" for="motherNamear">
+                {{ "Mother Name Ar" | localize }}
+              </label>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="motherNamear"
+                  id="motherNamear"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="employee.motherNameAr"
+                  #motherNamearModel="ngModel"
+                  #motherNamearEl
+                />
+                <abp-validation-summary
+                  [control]="motherNamearModel"
+                  [controlEl]="motherNamearEl"
+                ></abp-validation-summary>
+              </div>
+            </div>
+
+
+            <div class="form-group row required">
+
+              <label class="col-md-2 col-form-label" for="PlaceofBirthAr">
+                {{ "PlaceofBirthAr" | localize }}
+              </label>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="PlaceofBirthAr"
+                  id="PlaceofBirthAr"
+                  required
+                  [(ngModel)]="employee.placeofBirthAr"
+                  #PlaceofBirthAr="ngModel"
+                  #PlaceofBirthArEl
+                />
+                <abp-validation-summary
+                  [control]="PlaceofBirthAr"
+                  [controlEl]="PlaceofBirthArEl"
+                ></abp-validation-summary>
+              </div>
+  
+  
+              <label class="col-md-2 col-form-label" for="type">
+                {{ "Nationality" | localize }}
+              </label>
+            <div class="col-md-4">
+  
+              <select [(ngModel)]="employee.nationalityId"  class="form-control" name="Nationality" id="Nationality">
+                  <option  
+                   required
+                    *ngFor="let nationality of nationalities" [ngValue]="nationality.id"
+                    >
+                    {{nationality.name}}
+                  </option>
+                  </select>
+  
+            </div>
+            </div>
+
+
+            <div class="form-group row">
+
+              <label class="col-md-2 col-form-label" for="SecondNationality">
+                {{ "Second Nationality" | localize }}
+              </label>
+            <div class="col-md-4">
+  
+              <select [(ngModel)]="employee.secondaryNationalityId"  class="form-control" name="SecondNationality" id="SecondNationality">
+                  <option  
+                   
+                    *ngFor="let nationality of nationalities" [ngValue]="nationality.id"
+                    >
+                    {{nationality.name}}
+                  </option>
+                  </select>
+  
+            </div>
+
+              <label class="col-md-2 col-form-label required" for="MaritialStatus">
+                {{ "MaritialStatus" | localize }}
+              </label>
+            <div class="col-md-4">
+  
+              <select [(ngModel)]="employee.maritialStatus"  class="form-control" name="MaritialStatus" id="MaritialStatus">
+                  <option  
+                     [ngValue]="0"
+                    >
+                    {{"Single" | localize}}
+                  </option>
+                  <option  
+                  [ngValue]="1"
+                 >
+                 {{"Married" | localize}}
+               </option>
+               <option  
+               [ngValue]="2"
+              >
+              {{"Divorced" | localize}}
+            </option>
+            <option  
+            [ngValue]="3"
+           >
+           {{"Widow" | localize}}
+         </option>
+         <option  
+         [ngValue]="4"
+        >
+        {{"Engaged" | localize}}
+      </option>
+            
+                  </select>
+  
+            </div>
+            </div>
+
+
+            <div class="form-group row required">
+              <label class="col-md-2 col-form-label" for="Address">
+                {{ "Address" | localize }}
+              </label>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Address"
+                  id="Address"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="employee.address"
+                  #AddressModel="ngModel"
+                  #AddressEl
+                />
+                <abp-validation-summary
+                  [control]="AddressModel"
+                  [controlEl]="AddressEl"
+                ></abp-validation-summary>
+              </div>
+              <label class="col-md-2 col-form-label" for="Mobile">
+                {{ "Mobile" | localize }}
+              </label>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Mobile"
+                  id="Mobile"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="employee.mobile"
+                  #MobileModel="ngModel"
+                  #MobileEl
+                />
+                <abp-validation-summary
+                  [control]="MobileModel"
+                  [controlEl]="MobileEl"
+                ></abp-validation-summary>
+              </div>
+            </div>
+
+
+            <div class="form-group row required">
+              <label class="col-md-2 col-form-label" for="Email">
+                {{ "Email" | localize }}
+              </label>
+              <div class="col-md-4">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="Email"
+                  id="Email"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="employee.email"
+                  #EmailModel="ngModel"
+                  #EmailEl
+                />
+                <abp-validation-summary
+                  [control]="EmailModel"
+                  [controlEl]="EmailEl"
+                ></abp-validation-summary>
+              </div>
+              <label class="col-md-2 col-form-label" for="WebSite">
+                {{ "WebSite" | localize }}
+              </label>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="WebSite"
+                  id="WebSite"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="employee.webSite"
+                  #WebSiteModel="ngModel"
+                  #WebSiteEl
+                />
+                <abp-validation-summary
+                  [control]="WebSiteModel"
+                  [controlEl]="WebSiteEl"
+                ></abp-validation-summary>
+              </div>
+            </div>
+
+
+            <div class="form-group row required">
+
+              <label class="col-md-2 col-form-label" for="Facebook">
+                {{ "Facebook" | localize }}
+              </label>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Facebook"
+                  id="Facebook"
+                  required
+                  [(ngModel)]="employee.facebook"
+                  #Facebook="ngModel"
+                  #FacebookEl
+                />
+                <abp-validation-summary
+                  [control]="Facebook"
+                  [controlEl]="FacebookEl"
+                ></abp-validation-summary>
+              </div>
+  
+  
+              <label class="col-md-2 col-form-label" for="BloodType">
+                {{ "BloodType" | localize }}
+              </label>
+            <div class="col-md-4">
+  
+              <select [(ngModel)]="employee.bloodType"  class="form-control" name="BloodType" id="BloodType">
+                <option  
+                [ngValue]="0"
+               >
+               {{"Nothing" | localize}}
+             </option>
+             <option  
+                [ngValue]="1"
+               >
+               {{"A+" | localize}}
+             </option>
+             <option  
+                [ngValue]="2"
+               >
+               {{"A-" | localize}}
+             </option>
+             <option  
+                [ngValue]="3"
+               >
+               {{"B+" | localize}}
+             </option>
+             <option  
+                [ngValue]="4"
+               >
+               {{"B-" | localize}}
+             </option>
+             <option  
+                [ngValue]="5"
+               >
+               {{"AB+" | localize}}
+             </option>
+             <option  
+                [ngValue]="6"
+               >
+               {{"AB-" | localize}}
+             </option>
+             <option  
+                [ngValue]="7"
+               >
+               {{"O+" | localize}}
+             </option>
+             <option  
+                [ngValue]="8"
+               >
+               {{"O-" | localize}}
+             </option>
+                  </select>
+  
+            </div>
+            </div>
+
 
 
   </div>

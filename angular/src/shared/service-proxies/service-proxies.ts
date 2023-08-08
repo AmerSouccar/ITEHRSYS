@@ -9320,10 +9320,20 @@ export class JobDescriptionServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadJobDescriptionDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/JobDescription/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadJobDescriptionDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/JobDescription/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -9341,14 +9351,14 @@ export class JobDescriptionServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadJobDescriptionDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadJobDescriptionDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadJobDescriptionDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadJobDescriptionDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadJobDescriptionDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadJobDescriptionDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -9359,14 +9369,7 @@ export class JobDescriptionServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadJobDescriptionDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadJobDescriptionDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -12821,10 +12824,20 @@ export class NodeServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadNodeDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/Node/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadNodeDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Node/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -12842,14 +12855,14 @@ export class NodeServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadNodeDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadNodeDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadNodeDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadNodeDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadNodeDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadNodeDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -12860,14 +12873,7 @@ export class NodeServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadNodeDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadNodeDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -13401,10 +13407,20 @@ export class OrganizationLevelServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadOrganizationLevelDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/OrganizationLevel/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadOrganizationLevelDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/OrganizationLevel/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -13422,14 +13438,14 @@ export class OrganizationLevelServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadOrganizationLevelDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadOrganizationLevelDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadOrganizationLevelDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadOrganizationLevelDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadOrganizationLevelDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadOrganizationLevelDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -13440,14 +13456,7 @@ export class OrganizationLevelServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadOrganizationLevelDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadOrganizationLevelDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -13984,10 +13993,20 @@ export class PositionServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadPositionDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/Position/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadPositionDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Position/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -14005,14 +14024,14 @@ export class PositionServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadPositionDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadPositionDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadPositionDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadPositionDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadPositionDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadPositionDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -14023,14 +14042,7 @@ export class PositionServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadPositionDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadPositionDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -14274,10 +14286,20 @@ export class PositionWorkTypeServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadPositionWorkTypeDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/PositionWorkType/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadPositionWorkTypeDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/PositionWorkType/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -14295,14 +14317,14 @@ export class PositionWorkTypeServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadPositionWorkTypeDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadPositionWorkTypeDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadPositionWorkTypeDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadPositionWorkTypeDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadPositionWorkTypeDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadPositionWorkTypeDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -14313,14 +14335,7 @@ export class PositionWorkTypeServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadPositionWorkTypeDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadPositionWorkTypeDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -26264,7 +26279,7 @@ export class InsertEmployeeDto implements IInsertEmployeeDto {
     readonly fullName: string | undefined;
     readonly tripleName: string | undefined;
     placeofBirthId: string;
-    dateofBirth: moment.Moment;
+    dateofBirth: string | undefined;
     readonly age: number;
     idNumber: string | undefined;
     countryofBirthId: string;
@@ -26280,9 +26295,8 @@ export class InsertEmployeeDto implements IInsertEmployeeDto {
     readonly tripleNameAr: string | undefined;
     placeofBirthAr: string | undefined;
     nationalityId: string;
-    secondaryNationalityId: string;
+    secondaryNationalityId: string | undefined;
     maritialStatus: number;
-    photoPath: string | undefined;
     address: string | undefined;
     mobile: string | undefined;
     phone: string | undefined;
@@ -26310,7 +26324,7 @@ export class InsertEmployeeDto implements IInsertEmployeeDto {
             (<any>this).fullName = _data["fullName"];
             (<any>this).tripleName = _data["tripleName"];
             this.placeofBirthId = _data["placeofBirthId"];
-            this.dateofBirth = _data["dateofBirth"] ? moment(_data["dateofBirth"].toString()) : <any>undefined;
+            this.dateofBirth = _data["dateofBirth"];
             (<any>this).age = _data["age"];
             this.idNumber = _data["idNumber"];
             this.countryofBirthId = _data["countryofBirthId"];
@@ -26328,7 +26342,6 @@ export class InsertEmployeeDto implements IInsertEmployeeDto {
             this.nationalityId = _data["nationalityId"];
             this.secondaryNationalityId = _data["secondaryNationalityId"];
             this.maritialStatus = _data["maritialStatus"];
-            this.photoPath = _data["photoPath"];
             this.address = _data["address"];
             this.mobile = _data["mobile"];
             this.phone = _data["phone"];
@@ -26356,7 +26369,7 @@ export class InsertEmployeeDto implements IInsertEmployeeDto {
         data["fullName"] = this.fullName;
         data["tripleName"] = this.tripleName;
         data["placeofBirthId"] = this.placeofBirthId;
-        data["dateofBirth"] = this.dateofBirth ? this.dateofBirth.toISOString() : <any>undefined;
+        data["dateofBirth"] = this.dateofBirth;
         data["age"] = this.age;
         data["idNumber"] = this.idNumber;
         data["countryofBirthId"] = this.countryofBirthId;
@@ -26374,7 +26387,6 @@ export class InsertEmployeeDto implements IInsertEmployeeDto {
         data["nationalityId"] = this.nationalityId;
         data["secondaryNationalityId"] = this.secondaryNationalityId;
         data["maritialStatus"] = this.maritialStatus;
-        data["photoPath"] = this.photoPath;
         data["address"] = this.address;
         data["mobile"] = this.mobile;
         data["phone"] = this.phone;
@@ -26402,7 +26414,7 @@ export interface IInsertEmployeeDto {
     fullName: string | undefined;
     tripleName: string | undefined;
     placeofBirthId: string;
-    dateofBirth: moment.Moment;
+    dateofBirth: string | undefined;
     age: number;
     idNumber: string | undefined;
     countryofBirthId: string;
@@ -26418,9 +26430,8 @@ export interface IInsertEmployeeDto {
     tripleNameAr: string | undefined;
     placeofBirthAr: string | undefined;
     nationalityId: string;
-    secondaryNationalityId: string;
+    secondaryNationalityId: string | undefined;
     maritialStatus: number;
-    photoPath: string | undefined;
     address: string | undefined;
     mobile: string | undefined;
     phone: string | undefined;
@@ -34553,6 +34564,61 @@ export interface IReadJobDescriptionDto {
     description: string | undefined;
 }
 
+export class ReadJobDescriptionDtoPagedResultDto implements IReadJobDescriptionDtoPagedResultDto {
+    items: ReadJobDescriptionDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadJobDescriptionDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadJobDescriptionDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadJobDescriptionDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadJobDescriptionDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadJobDescriptionDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadJobDescriptionDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadJobDescriptionDtoPagedResultDto {
+    items: ReadJobDescriptionDto[] | undefined;
+    totalCount: number;
+}
+
 export class ReadJobTitleDto implements IReadJobTitleDto {
     id: string;
     name: string | undefined;
@@ -35414,6 +35480,61 @@ export interface IReadNodeDto {
     childrens: ReadNodeDto[] | undefined;
 }
 
+export class ReadNodeDtoPagedResultDto implements IReadNodeDtoPagedResultDto {
+    items: ReadNodeDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadNodeDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadNodeDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadNodeDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadNodeDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadNodeDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadNodeDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadNodeDtoPagedResultDto {
+    items: ReadNodeDto[] | undefined;
+    totalCount: number;
+}
+
 export class ReadNormalShiftDto implements IReadNormalShiftDto {
     id: string;
     entryTime: moment.Moment;
@@ -35518,6 +35639,61 @@ export class ReadOrganizationLevelDto implements IReadOrganizationLevelDto {
 export interface IReadOrganizationLevelDto {
     id: string;
     name: string | undefined;
+}
+
+export class ReadOrganizationLevelDtoPagedResultDto implements IReadOrganizationLevelDtoPagedResultDto {
+    items: ReadOrganizationLevelDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadOrganizationLevelDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadOrganizationLevelDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadOrganizationLevelDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadOrganizationLevelDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadOrganizationLevelDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadOrganizationLevelDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadOrganizationLevelDtoPagedResultDto {
+    items: ReadOrganizationLevelDto[] | undefined;
+    totalCount: number;
 }
 
 export class ReadPassportDto implements IReadPassportDto {
@@ -35765,6 +35941,61 @@ export interface IReadPositionDto {
     manager: ReadJobDescriptionDto;
 }
 
+export class ReadPositionDtoPagedResultDto implements IReadPositionDtoPagedResultDto {
+    items: ReadPositionDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadPositionDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadPositionDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadPositionDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadPositionDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadPositionDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadPositionDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadPositionDtoPagedResultDto {
+    items: ReadPositionDto[] | undefined;
+    totalCount: number;
+}
+
 export class ReadPositionWorkTypeDto implements IReadPositionWorkTypeDto {
     id: string;
     name: string | undefined;
@@ -35810,6 +36041,61 @@ export class ReadPositionWorkTypeDto implements IReadPositionWorkTypeDto {
 export interface IReadPositionWorkTypeDto {
     id: string;
     name: string | undefined;
+}
+
+export class ReadPositionWorkTypeDtoPagedResultDto implements IReadPositionWorkTypeDtoPagedResultDto {
+    items: ReadPositionWorkTypeDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadPositionWorkTypeDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadPositionWorkTypeDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadPositionWorkTypeDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadPositionWorkTypeDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadPositionWorkTypeDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadPositionWorkTypeDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadPositionWorkTypeDtoPagedResultDto {
+    items: ReadPositionWorkTypeDto[] | undefined;
+    totalCount: number;
 }
 
 export class ReadPromotionDto implements IReadPromotionDto {
