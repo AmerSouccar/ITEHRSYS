@@ -96,11 +96,85 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                                 '/app/religions',
                                 'far fa-circle'
                             ),
+                            new MenuItem(
+                                this.l('Nationality'),
+                                '/app/nationalities',
+                                'far fa-circle'
+                            ),
                         ]
                     ),
                    
                 ]),
+            ]),
+
+            new MenuItem(this.l('Organizational'), '', 'fas fa-circle', '', [
+                new MenuItem(this.l('Attendance'), '', 'fas fa-dot-circle', '', [
+                    new MenuItem(
+                        this.l('AttendanceForm'),
+                        '/app/attendanceForms',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('EntryExitRecords'),
+                        'https://aspnetboilerplate.com/Templates?ref=abptmpl',
+                        'far fa-circle'
+                    ),
+                   
+                ]),
+                new MenuItem(this.l('EmployeeServices'), '', 'fas fa-dot-circle', '', [
+                    new MenuItem(
+                        this.l('LeaveRequests'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('Services'),
+                        '',
+                        'fas fa-dot-circle',
+                        '',
+                        [
+                            new MenuItem(
+                                this.l('Country'),
+                                '/app/countries',
+                                'far fa-circle'
+                            ),
+                            new MenuItem(
+                                this.l('City'),
+                                '/app/cities',
+                                'far fa-circle'
+                            ),
+                            new MenuItem(
+                                this.l('Religion'),
+                                '/app/religions',
+                                'far fa-circle'
+                            ),
+                            new MenuItem(
+                                this.l('Nationality'),
+                                '/app/nationalities',
+                                'far fa-circle'
+                            ),
+                        ]
+                    ),
+                   
+                ]),
+
+                new MenuItem(this.l('Payroll'), '', 'fas fa-dot-circle', '', [
+                    new MenuItem(
+                        this.l('Month'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('FinancialCards'),
+                        'https://aspnetboilerplate.com/Templates?ref=abptmpl',
+                        'far fa-circle'
+                    ),
+                   
+                ]),
+
             ])
+
+            
         ];
     }
 

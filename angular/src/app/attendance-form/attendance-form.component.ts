@@ -1,65 +1,57 @@
 import { Component, Injector } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listing-component-base';
-import { EmployeeServiceProxy, ReadEmployeeDto, ReadEmployeeDtoPagedResultDto } from '@shared/service-proxies/service-proxies';
+import { AttendanceFormServiceProxy, ReadAttendanceFormDto, ReadAttendanceFormDtoPagedResultDto } from '@shared/service-proxies/service-proxies';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs';
-import { CreateEmployeeDialogComponent } from './create-employee-dialog/create-employee-dialog.component';
-import { EditEmployeeDialogComponent } from './edit-employee-dialog/edit-employee-dialog.component';
+import { CreateAttendanceFormDialogComponent } from './create-attendance-form-dialog/create-attendance-form-dialog.component';
+import { EditAttendanceFormDialogComponent } from './edit-attendance-form-dialog/edit-attendance-form-dialog.component';
 
-class PagedEmployeesRequestDto extends PagedRequestDto {
+class PagedAttendanceFormRequestDto extends PagedRequestDto {
 }
 
-
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html',
+  selector: 'app-attendance-form',
+  templateUrl: './attendance-form.component.html',
   animations: [appModuleAnimation()]
 })
-export class EmployeeComponent extends PagedListingComponentBase<ReadEmployeeDto> {
-  employees: ReadEmployeeDto[] = [];
-  selectedId:string;
-
-
-  selectId(event:any)
-  {
-    this.selectedId = event.id;
-  }
+export class AttendanceFormComponent extends PagedListingComponentBase<ReadAttendanceFormDto> {
+  attendanceForms: ReadAttendanceFormDto[] = [];
 
   constructor(
     injector: Injector,
-    private _employeeService: EmployeeServiceProxy,
+    private _attendanceFormService: AttendanceFormServiceProxy,
     private _modalService: BsModalService
   ) {
     super(injector);
   }
 
   list(
-    request: PagedEmployeesRequestDto,
+    request: PagedAttendanceFormRequestDto,
     pageNumber: number,
     finishedCallback: Function
   ): void {
-    this._employeeService
+    this._attendanceFormService
       .getAll(request.skipCount, request.maxResultCount)
       .pipe(
         finalize(() => {
           finishedCallback();
         })
       )
-      .subscribe((result: ReadEmployeeDtoPagedResultDto) => {
-        this.employees = result.items;
+      .subscribe((result: ReadAttendanceFormDtoPagedResultDto) => {
+        this.attendanceForms = result.items;
         this.showPaging(result, pageNumber);
       });
   }
 
-  delete(employee: ReadEmployeeDto): void {
+  delete(attendanceForm: ReadAttendanceFormDto): void {
     abp.message.confirm(
-      this.l('CityDeleteWarningMessage', employee.fullName),
+      this.l('AttendanceFormDeleteWarningMessage', attendanceForm.name),
       undefined,
       (result: boolean) => {
         if (result) {
-          this._employeeService
-            .delete(employee.id)
+          this._attendanceFormService
+            .delete(attendanceForm.id)
             .pipe(
               finalize(() => {
                 abp.notify.success(this.l('SuccessfullyDeleted'));
@@ -72,26 +64,26 @@ export class EmployeeComponent extends PagedListingComponentBase<ReadEmployeeDto
     );
   }
 
-  createEmployee(): void {
+  createAttendanceForm(): void {
     this.showCreateOrEditEmployeeDialog();
   }
 
-  editEmployee(employee: ReadEmployeeDto): void {
-    this.showCreateOrEditEmployeeDialog(employee.id);
+  editAttendanceForm(attendanceForm: ReadAttendanceFormDto): void {
+    this.showCreateOrEditEmployeeDialog(attendanceForm.id);
   }
 
   showCreateOrEditEmployeeDialog(id?: string): void {
     let createOrEditEmployeeDialog: BsModalRef;
     if (!id) {
       createOrEditEmployeeDialog = this._modalService.show(
-        CreateEmployeeDialogComponent,
+        CreateAttendanceFormDialogComponent,
         {
           class: 'modal-lg',
         }
       );
     } else {
       createOrEditEmployeeDialog = this._modalService.show(
-        EditEmployeeDialogComponent,
+        EditAttendanceFormDialogComponent,
         {
           class: 'modal-lg',
           initialState: {
@@ -107,3 +99,4 @@ export class EmployeeComponent extends PagedListingComponentBase<ReadEmployeeDto
   }
 
 }
+

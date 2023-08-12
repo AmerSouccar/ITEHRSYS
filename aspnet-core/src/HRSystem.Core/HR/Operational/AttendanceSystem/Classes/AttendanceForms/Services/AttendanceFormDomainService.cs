@@ -21,9 +21,9 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms.Servi
            await _attendanceFormRepository.DeleteAsync(id);
         }
 
-        public async Task<List<AttendanceForm>> GetAll()
+        public IQueryable<AttendanceForm> GetAll()
         {
-            return _attendanceFormRepository.GetAllIncluding(x => x.Workshops).ToList();
+            return _attendanceFormRepository.GetAllIncluding(x => x.Workshops);
         }
 
         public async Task<AttendanceForm> GetbyId(Guid id)

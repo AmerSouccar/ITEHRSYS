@@ -1,9 +1,13 @@
-﻿using HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HRSystem.HR.PaginationDto;
 
 namespace HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Services
 {
@@ -15,20 +19,29 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Services
         {
             _workshopDomainService = workshopDomainService;
         }
-
         public async Task Delete(Guid id)
         {
            await _workshopDomainService.Delete(id);
         }
 
-        public async Task<List<ReadWorkshopDto>> GetAll()
+        public PagedResultDto<ReadWorkshopDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadWorkshopDto>>(await _workshopDomainService.GetAll());
+            var workshops = _workshopDomainService.GetAll();
+            int total = workshops.Count();
+            workshops = workshops.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadWorkshopDto>>(workshops.ToList());
+            return new PagedResultDto<ReadWorkshopDto>(total, list);
         }
 
         public async Task<ReadWorkshopDto> GetbyId(Guid id)
         {
             return ObjectMapper.Map<ReadWorkshopDto>(await _workshopDomainService.GetbyId(id));
+        }
+
+        public async Task<UpdateWorkshopDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateWorkshopDto>(await _workshopDomainService.GetbyId(id));
         }
 
         public async Task<InsertWorkshopDto> Insert(InsertWorkshopDto workshop)

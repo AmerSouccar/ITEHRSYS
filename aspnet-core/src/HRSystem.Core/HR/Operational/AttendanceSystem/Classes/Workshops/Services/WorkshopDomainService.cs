@@ -22,9 +22,9 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Services
             await _workshopRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Workshop>> GetAll()
+        public IQueryable<Workshop> GetAll()
         {
-            return  _workshopRepository.GetAllIncluding(x=>x.NormalShifts).ToList();
+            return _workshopRepository.GetAllIncluding(x=>x.NormalShifts);
         }
 
         public async Task<Workshop> GetbyId(Guid id)

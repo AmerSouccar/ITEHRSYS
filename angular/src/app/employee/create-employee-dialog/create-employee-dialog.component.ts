@@ -38,7 +38,6 @@ ngOnInit(): void {
   .getAll(0, 1000)
   .pipe(
     finalize(() => {
-      finishedCallback();
     })
   )
   .subscribe((result: CityDtoPagedResultDto) => {
@@ -49,7 +48,6 @@ ngOnInit(): void {
   .getAll(0, 1000)
   .pipe(
     finalize(() => {
-      finishedCallback();
     })
   )
   .subscribe((result: CountryDtoPagedResultDto) => {
@@ -60,7 +58,6 @@ ngOnInit(): void {
   .getAll(0, 1000)
   .pipe(
     finalize(() => {
-      finishedCallback();
     })
   )
   .subscribe((result: ReligionDtoPagedResultDto) => {
@@ -72,7 +69,6 @@ ngOnInit(): void {
   .getAll(0, 1000)
   .pipe(
     finalize(() => {
-      finishedCallback();
     })
   )
   .subscribe((result: NationalityDtoPagedResultDto) => {
@@ -97,7 +93,5 @@ save(): void {
   );
 }
 }
-function finishedCallback() {
-  throw new Error('Function not implemented.');
-}
+
 

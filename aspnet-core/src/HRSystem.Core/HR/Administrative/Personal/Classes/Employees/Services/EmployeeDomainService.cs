@@ -38,7 +38,9 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
 
         public async Task<Employee> GetbyId(Guid id)
         {
-            return _employeeRepository.GetAllIncluding(x => x.PlaceofBirth, x => x.CountryofBirth, x => x.Religion, x => x.Nationality, x => x.SecondaryNationality, x => x.Attachments, x => x.Spouse, x => x.Children, x => x.Dependents, x => x.Educations, x => x.Trainings, x => x.Experiences, x => x.Skills, x => x.Languages, x => x.Certificates, x => x.MilitaryService, x => x.Passports, x => x.DriverLicense, x => x.Convictions, x => x.Residences, x => x.Positions, x => x.User).FirstOrDefault(x => x.Id == id);
+
+            //return _employeeRepository.GetAllIncluding(x => x.PlaceofBirth, x => x.CountryofBirth, x => x.Religion, x => x.Nationality, x => x.SecondaryNationality, x => x.Attachments, x => x.Spouse, x => x.Children, x => x.Dependents, x => x.Educations, x => x.Trainings, x => x.Experiences, x => x.Skills, x => x.Languages, x => x.Certificates, x => x.MilitaryService, x => x.Passports, x => x.DriverLicense, x => x.Convictions, x => x.Residences, x => x.Positions, x => x.User).FirstOrDefault(x => x.Id == id);
+            return _employeeRepository.GetAllIncluding(x => x.PlaceofBirth, x => x.CountryofBirth, x => x.Religion, x => x.Nationality, x => x.SecondaryNationality).FirstOrDefault(x => x.Id == id);
         }
 
         public async Task<Employee> Insert(Employee employee)

@@ -14,6 +14,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
     {
         public PagedResultDto<ReadEmployeeDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadEmployeeDto> GetbyId(Guid id);
+        public Task<UpdateEmployeeDto> GetForEdit(Guid id);
         public Task<InsertEmployeeDto> Insert(InsertEmployeeDto employee);
         public Task<UpdateEmployeeDto> Update(UpdateEmployeeDto employee);
         public Task Delete(Guid id);

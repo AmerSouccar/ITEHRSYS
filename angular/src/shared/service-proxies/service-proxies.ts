@@ -628,10 +628,20 @@ export class AttendanceFormServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadAttendanceFormDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/AttendanceForm/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadAttendanceFormDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/AttendanceForm/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -649,14 +659,14 @@ export class AttendanceFormServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadAttendanceFormDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadAttendanceFormDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadAttendanceFormDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadAttendanceFormDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadAttendanceFormDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadAttendanceFormDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -667,14 +677,7 @@ export class AttendanceFormServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadAttendanceFormDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadAttendanceFormDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -731,6 +734,62 @@ export class AttendanceFormServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ReadAttendanceFormDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateAttendanceFormDto> {
+        let url_ = this.baseUrl + "/api/services/app/AttendanceForm/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateAttendanceFormDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateAttendanceFormDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateAttendanceFormDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateAttendanceFormDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -7332,6 +7391,62 @@ export class EmployeeServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ReadEmployeeDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateEmployeeDto> {
+        let url_ = this.baseUrl + "/api/services/app/Employee/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateEmployeeDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateEmployeeDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateEmployeeDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateEmployeeDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -20586,10 +20701,20 @@ export class WorkshopServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadWorkshopDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/Workshop/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadWorkshopDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Workshop/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -20607,14 +20732,14 @@ export class WorkshopServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadWorkshopDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadWorkshopDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadWorkshopDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadWorkshopDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadWorkshopDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadWorkshopDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -20625,14 +20750,7 @@ export class WorkshopServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadWorkshopDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadWorkshopDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -20689,6 +20807,62 @@ export class WorkshopServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ReadWorkshopDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateWorkshopDto> {
+        let url_ = this.baseUrl + "/api/services/app/Workshop/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateWorkshopDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateWorkshopDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateWorkshopDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateWorkshopDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -31609,7 +31783,7 @@ export interface IReadAttachmentDto {
 export class ReadAttendanceFormDto implements IReadAttendanceFormDto {
     id: string;
     name: string | undefined;
-    workshops: ReadAttendanceFormDto[] | undefined;
+    workshops: ReadWorkshopDto[] | undefined;
 
     constructor(data?: IReadAttendanceFormDto) {
         if (data) {
@@ -31627,7 +31801,7 @@ export class ReadAttendanceFormDto implements IReadAttendanceFormDto {
             if (Array.isArray(_data["workshops"])) {
                 this.workshops = [] as any;
                 for (let item of _data["workshops"])
-                    this.workshops.push(ReadAttendanceFormDto.fromJS(item));
+                    this.workshops.push(ReadWorkshopDto.fromJS(item));
             }
         }
     }
@@ -31662,7 +31836,62 @@ export class ReadAttendanceFormDto implements IReadAttendanceFormDto {
 export interface IReadAttendanceFormDto {
     id: string;
     name: string | undefined;
-    workshops: ReadAttendanceFormDto[] | undefined;
+    workshops: ReadWorkshopDto[] | undefined;
+}
+
+export class ReadAttendanceFormDtoPagedResultDto implements IReadAttendanceFormDtoPagedResultDto {
+    items: ReadAttendanceFormDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadAttendanceFormDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadAttendanceFormDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadAttendanceFormDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadAttendanceFormDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadAttendanceFormDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadAttendanceFormDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadAttendanceFormDtoPagedResultDto {
+    items: ReadAttendanceFormDto[] | undefined;
+    totalCount: number;
 }
 
 export class ReadAttendanceMonthlyCardDto implements IReadAttendanceMonthlyCardDto {
@@ -37250,6 +37479,61 @@ export interface IReadWorkshopDto {
     normalShifts: ReadNormalShiftDto[] | undefined;
 }
 
+export class ReadWorkshopDtoPagedResultDto implements IReadWorkshopDtoPagedResultDto {
+    items: ReadWorkshopDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadWorkshopDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadWorkshopDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadWorkshopDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadWorkshopDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadWorkshopDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadWorkshopDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadWorkshopDtoPagedResultDto {
+    items: ReadWorkshopDto[] | undefined;
+    totalCount: number;
+}
+
 export class RegisterInput implements IRegisterInput {
     name: string;
     surname: string;
@@ -40796,7 +41080,7 @@ export class UpdateEmployeeDto implements IUpdateEmployeeDto {
     readonly fullName: string | undefined;
     readonly tripleName: string | undefined;
     placeofBirthId: string;
-    dateofBirth: moment.Moment;
+    dateofBirth: string | undefined;
     readonly age: number;
     idNumber: string | undefined;
     countryofBirthId: string;
@@ -40822,6 +41106,7 @@ export class UpdateEmployeeDto implements IUpdateEmployeeDto {
     webSite: string | undefined;
     facebook: string | undefined;
     bloodType: number;
+    userId: number;
 
     constructor(data?: IUpdateEmployeeDto) {
         if (data) {
@@ -40842,7 +41127,7 @@ export class UpdateEmployeeDto implements IUpdateEmployeeDto {
             (<any>this).fullName = _data["fullName"];
             (<any>this).tripleName = _data["tripleName"];
             this.placeofBirthId = _data["placeofBirthId"];
-            this.dateofBirth = _data["dateofBirth"] ? moment(_data["dateofBirth"].toString()) : <any>undefined;
+            this.dateofBirth = _data["dateofBirth"];
             (<any>this).age = _data["age"];
             this.idNumber = _data["idNumber"];
             this.countryofBirthId = _data["countryofBirthId"];
@@ -40868,6 +41153,7 @@ export class UpdateEmployeeDto implements IUpdateEmployeeDto {
             this.webSite = _data["webSite"];
             this.facebook = _data["facebook"];
             this.bloodType = _data["bloodType"];
+            this.userId = _data["userId"];
         }
     }
 
@@ -40888,7 +41174,7 @@ export class UpdateEmployeeDto implements IUpdateEmployeeDto {
         data["fullName"] = this.fullName;
         data["tripleName"] = this.tripleName;
         data["placeofBirthId"] = this.placeofBirthId;
-        data["dateofBirth"] = this.dateofBirth ? this.dateofBirth.toISOString() : <any>undefined;
+        data["dateofBirth"] = this.dateofBirth;
         data["age"] = this.age;
         data["idNumber"] = this.idNumber;
         data["countryofBirthId"] = this.countryofBirthId;
@@ -40914,6 +41200,7 @@ export class UpdateEmployeeDto implements IUpdateEmployeeDto {
         data["webSite"] = this.webSite;
         data["facebook"] = this.facebook;
         data["bloodType"] = this.bloodType;
+        data["userId"] = this.userId;
         return data;
     }
 
@@ -40934,7 +41221,7 @@ export interface IUpdateEmployeeDto {
     fullName: string | undefined;
     tripleName: string | undefined;
     placeofBirthId: string;
-    dateofBirth: moment.Moment;
+    dateofBirth: string | undefined;
     age: number;
     idNumber: string | undefined;
     countryofBirthId: string;
@@ -40960,6 +41247,7 @@ export interface IUpdateEmployeeDto {
     webSite: string | undefined;
     facebook: string | undefined;
     bloodType: number;
+    userId: number;
 }
 
 export class UpdateEntranceExitRecordDto implements IUpdateEntranceExitRecordDto {

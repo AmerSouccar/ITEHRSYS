@@ -5,7 +5,7 @@
   (ngSubmit)="save()"
 >
   <abp-modal-header
-    [title]="'EditNationality' | localize"
+    [title]="'CreateNewAttendanceForm' | localize"
     (onCloseClick)="bsModalRef.hide()"
   ></abp-modal-header>
   <div class="modal-body">
@@ -21,7 +21,7 @@
           id="name"
           maxlength="128"
           required
-          [(ngModel)]="nationality.name"
+          [(ngModel)]="attendanceForm.name"
           #nameModel="ngModel"
           #nameEl
         />

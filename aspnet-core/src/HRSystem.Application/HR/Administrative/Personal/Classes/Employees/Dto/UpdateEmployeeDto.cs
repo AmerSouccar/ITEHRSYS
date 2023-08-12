@@ -90,5 +90,6 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Dto
         public string WebSite { get; set; }
         public string Facebook { get; set; }
         public int BloodType { get; set; }
+        public long UserId { get; set; }
     }
 }

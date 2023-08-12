@@ -8,7 +8,7 @@
           <div class="col-6 text-right">
             <a href="javascript:;"
               class="btn bg-blue"
-              (click)="createNationality()">
+              (click)="createAttendanceForm()">
               <i class="fa fa-plus-square"></i>
               {{ "Create" | localize }}
             </a>
@@ -29,12 +29,12 @@
                 <thead class="bg-light">
                   <tr>
                     <th>{{ "Name" | localize }}</th>
-                    <th style="width: 200px;">{{ "Actions" | localize }}</th>
+                    <th style="width: 500px;">{{ "Actions" | localize }}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="
-                    let nationality of nationalities
+                    let attendanceForm of attendanceForms
                       | paginate
                         : {
                             id: 'server',
@@ -43,20 +43,26 @@
                             totalItems: totalItems
                           }
                   ">
-                    <td>{{ nationality.name }}</td>
+                    <td>{{ attendanceForm.name }}</td>
                     <td>
                       <button type="button"
                         class="btn btn-sm bg-secondary"
-                        (click)="editNationality(nationality)">
+                        (click)="editAttendanceForm(attendanceForm)">
                         <i class="fas fa-pencil-alt"></i>
                         {{ "Edit" | localize }}
                       </button>
                       <button type="button"
                         class="btn btn-sm bg-danger mx-2"
-                        (click)="delete(nationality)">
+                        (click)="delete(attendanceForm)">
                         <i class="fas fa-trash"></i>
                         {{ "Delete" | localize }}
                       </button>
+                      <button type="button"
+                      class="btn btn-sm bg-primary mx-2"
+                      >
+                      <i class="fas fa-circle"></i>
+                      {{ "Workshops" | localize }}
+                    </button>
                     </td>
                   </tr>
                 </tbody>

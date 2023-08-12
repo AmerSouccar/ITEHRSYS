@@ -9,7 +9,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms.Servi
 {
     public interface IAttendanceFormDomainService : IDomainService
     {
-        public Task<List<AttendanceForm>> GetAll();
+        public IQueryable<AttendanceForm> GetAll();
         public Task<AttendanceForm> GetbyId(Guid id);
         public Task<AttendanceForm> Insert(AttendanceForm attendanceForm);
         public Task<AttendanceForm> Update(AttendanceForm attendanceForm);

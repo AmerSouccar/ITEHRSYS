@@ -39,6 +39,11 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Services
             return ObjectMapper.Map<ReadEmployeeDto>(await _employeeDomainService.GetbyId(id));
         }
 
+        public async Task<UpdateEmployeeDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateEmployeeDto>(await _employeeDomainService.GetbyId(id));
+        }
+
         public async Task<InsertEmployeeDto> Insert(InsertEmployeeDto employee)
         {
             return ObjectMapper.Map<InsertEmployeeDto>(await _employeeDomainService.Insert(ObjectMapper.Map<Employee>(employee)));
