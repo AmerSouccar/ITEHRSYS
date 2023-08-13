@@ -23,9 +23,9 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.Se
             await _temporaryWorkshoprepository.DeleteAsync(id);
         }
 
-        public async Task<List<TemporaryWorkshop>> GetAll()
+        public IQueryable<TemporaryWorkshop> GetAll()
         {
-            return _temporaryWorkshoprepository.GetAllIncluding(x => x.Workshop, x => x.TempWorkshop).ToList();
+            return _temporaryWorkshoprepository.GetAllIncluding(x => x.Workshop, x => x.TempWorkshop);
         }
 
         public async Task<TemporaryWorkshop> GetbyId(Guid id)

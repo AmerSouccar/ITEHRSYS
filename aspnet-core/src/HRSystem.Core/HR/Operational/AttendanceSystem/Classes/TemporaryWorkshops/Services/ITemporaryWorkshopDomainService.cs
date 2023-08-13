@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.Se
 {
     public interface ITemporaryWorkshopDomainService :IDomainService
     {
-        public Task<List<TemporaryWorkshop>> GetAll();
+        public IQueryable<TemporaryWorkshop> GetAll();
         public Task<TemporaryWorkshop> GetbyId(Guid id);
         public Task<TemporaryWorkshop> Insert(TemporaryWorkshop temporaryWorkshop);
         public Task<TemporaryWorkshop> Update(TemporaryWorkshop temporaryWorkshop);

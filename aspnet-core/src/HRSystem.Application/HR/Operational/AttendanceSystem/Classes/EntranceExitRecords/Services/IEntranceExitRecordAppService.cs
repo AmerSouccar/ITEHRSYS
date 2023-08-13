@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.Dto;
+using HRSystem.HR.PaginationDto;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
 {
     public interface IEntranceExitRecordAppService : IApplicationService
     {
-        public Task<List<ReadEntranceExitRecordDto>> GetAll();
+        public PagedResultDto<ReadEntranceExitRecordDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadEntranceExitRecordDto> GetbyId(Guid id);
         public Task<InsertEntranceExitRecordDto> Insert(InsertEntranceExitRecordDto entranceExitRecord);
         public Task<UpdateEntranceExitRecordDto> Update(UpdateEntranceExitRecordDto entranceExitRecord);

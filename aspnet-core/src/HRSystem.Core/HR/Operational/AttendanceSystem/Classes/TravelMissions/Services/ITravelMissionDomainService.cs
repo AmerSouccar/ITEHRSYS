@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.TravelMissions.Servic
 {
     public interface ITravelMissionDomainService :IDomainService
     {
-        public Task<List<TravelMission>> GetAll();
+        public IQueryable<TravelMission> GetAll();
         public Task<TravelMission> GetbyId(Guid id);
         public Task<TravelMission> Insert(TravelMission travelMission);
         public Task<TravelMission> Update(TravelMission travelMission);

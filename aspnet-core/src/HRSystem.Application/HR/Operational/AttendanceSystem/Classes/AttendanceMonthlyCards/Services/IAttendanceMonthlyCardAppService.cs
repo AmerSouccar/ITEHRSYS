@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCard
 {
     public interface IAttendanceMonthlyCardAppService : IApplicationService
     {
-        public Task<List<ReadAttendanceMonthlyCardDto>> GetAll();
+        public PagedResultDto<ReadAttendanceMonthlyCardDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadAttendanceMonthlyCardDto> GetbyId(Guid id);
         public Task<InsertAttendanceMonthlyCardDto> Insert(InsertAttendanceMonthlyCardDto attendanceMonthlyCard);
         public Task<UpdateAttendanceMonthlyCardDto> Update(UpdateAttendanceMonthlyCardDto attendanceMonthlyCard);

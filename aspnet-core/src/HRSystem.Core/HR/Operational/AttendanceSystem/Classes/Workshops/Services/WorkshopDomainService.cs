@@ -27,6 +27,11 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Services
             return _workshopRepository.GetAllIncluding(x=>x.NormalShifts);
         }
 
+        public IQueryable<Workshop> GetAllById(Guid id)
+        {
+            return _workshopRepository.GetAllIncluding( x => x.NormalShifts).Where(x => x.AttendanceFormId == id);
+        }
+
         public async Task<Workshop> GetbyId(Guid id)
         {
             Workshop workshop = await _workshopRepository.GetAsync(id);

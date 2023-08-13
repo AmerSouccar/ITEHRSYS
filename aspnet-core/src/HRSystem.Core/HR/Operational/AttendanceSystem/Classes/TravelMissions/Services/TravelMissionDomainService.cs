@@ -22,9 +22,9 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.TravelMissions.Servic
             await _travelMissionRepository.DeleteAsync(id);
         }
 
-        public async Task<List<TravelMission>> GetAll()
+        public IQueryable<TravelMission> GetAll()
         {
-            return _travelMissionRepository.GetAllIncluding(x => x.Employee).ToList();
+            return _travelMissionRepository.GetAllIncluding(x => x.Employee);
         }
 
         public async Task<TravelMission> GetbyId(Guid id)

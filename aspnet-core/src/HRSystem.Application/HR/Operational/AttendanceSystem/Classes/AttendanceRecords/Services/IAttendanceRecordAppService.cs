@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
 {
     public interface IAttendanceRecordAppService : IApplicationService
     {
-        public Task<List<ReadAttendanceRecordDto>> GetAll();
+        public PagedResultDto<ReadAttendanceRecordDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadAttendanceRecordDto> GetbyId(Guid id);
         public Task<InsertAttendanceRecordDto> Insert(InsertAttendanceRecordDto attendanceRecord);
         public Task<UpdateAttendanceRecordDto> Update(UpdateAttendanceRecordDto attendanceRecord);

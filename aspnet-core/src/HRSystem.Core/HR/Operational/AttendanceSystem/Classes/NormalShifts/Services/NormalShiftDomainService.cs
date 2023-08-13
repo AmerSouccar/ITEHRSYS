@@ -3,6 +3,7 @@ using HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,9 +23,14 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Services
             await _normalShiftRepository.DeleteAsync(id);
         }
 
-        public async Task<List<NormalShift>> GetAll()
+        public  IQueryable<NormalShift> GetAll()
         {
-            return await  _normalShiftRepository.GetAllListAsync();
+            return _normalShiftRepository.GetAll();
+        }
+
+        public IQueryable<NormalShift> GetAllById(Guid id)
+        {
+            return _normalShiftRepository.GetAll().Where(x => x.WorkshopId == id);
         }
 
         public async Task<NormalShift> GetbyId(Guid id)

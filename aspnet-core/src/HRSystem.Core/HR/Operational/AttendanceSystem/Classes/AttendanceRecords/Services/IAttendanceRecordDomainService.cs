@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
 {
     public interface IAttendanceRecordDomainService :IDomainService
     {
-        public Task<List<AttendanceRecord>> GetAll();
+        public IQueryable <AttendanceRecord> GetAll();
         public Task<AttendanceRecord> GetbyId(Guid id);
         public Task<AttendanceRecord> Insert(AttendanceRecord attendanceRecord);
         public Task<AttendanceRecord> Update(AttendanceRecord attendanceRecord);

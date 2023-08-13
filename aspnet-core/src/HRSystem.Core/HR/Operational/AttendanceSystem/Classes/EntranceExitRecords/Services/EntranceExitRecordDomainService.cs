@@ -24,9 +24,9 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
             await _entranceExitRecordRepository.DeleteAsync(id);
         }
 
-        public async Task<List<EntranceExitRecord>> GetAll()
+        public IQueryable<EntranceExitRecord> GetAll()
         {
-            return _entranceExitRecordRepository.GetAllIncluding(x =>x.Employee).ToList();
+            return _entranceExitRecordRepository.GetAllIncluding(x =>x.Employee);
         }
 
         public async Task<EntranceExitRecord> GetbyId(Guid id)

@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.Servic
 {
     public interface IHourlyMissionAppService :IApplicationService
     {
-        public Task<List<ReadHourlyMissionDto>> GetAll();
+        public PagedResultDto<ReadHourlyMissionDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadHourlyMissionDto> GetbyId(Guid id);
         public Task<InsertHourlyMissionDto> Insert(InsertHourlyMissionDto hourlyMission);
         public Task<UpdateHourlyMissionDto> Update(UpdateHourlyMissionDto hourlyMission);

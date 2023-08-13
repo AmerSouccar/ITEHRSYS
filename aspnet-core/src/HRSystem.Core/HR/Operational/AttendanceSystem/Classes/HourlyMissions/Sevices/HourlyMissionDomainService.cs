@@ -22,9 +22,9 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.Sevice
            await _hourlyMissionRepository.DeleteAsync(id);
         }
 
-        public async Task<List<HourlyMission>> GetAll()
+        public IQueryable<HourlyMission> GetAll()
         {
-            return _hourlyMissionRepository.GetAllIncluding(x => x.Employee).ToList();
+            return _hourlyMissionRepository.GetAllIncluding(x => x.Employee);
         }
 
         public async Task<HourlyMission> GetbyId(Guid id)

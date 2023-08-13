@@ -1,10 +1,14 @@
-﻿using HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.Dto;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.Sevices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HRSystem.HR.PaginationDto;
 
 namespace HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.Services
 {
@@ -22,9 +26,14 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.Servic
             await _hourlyMissionDomainService.Delete(id);
         }
 
-        public async Task<List<ReadHourlyMissionDto>> GetAll()
+        public PagedResultDto<ReadHourlyMissionDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadHourlyMissionDto>>(await _hourlyMissionDomainService.GetAll());
+            var hourlyMissions = _hourlyMissionDomainService.GetAll();
+            int total = hourlyMissions.Count();
+            hourlyMissions = hourlyMissions.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadHourlyMissionDto>>(hourlyMissions.ToList());
+            return new PagedResultDto<ReadHourlyMissionDto>(total, list);
         }
 
         public async Task<ReadHourlyMissionDto> GetbyId(Guid id)

@@ -10,5 +10,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Dto
     public class InsertWorkshopDto : EntityDto<Guid>
     {
         public string Name { get; set; }
+        public Guid AttendanceFormId { get; set; }
+
     }
 }

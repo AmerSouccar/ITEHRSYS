@@ -34,6 +34,16 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Services
             return new PagedResultDto<ReadWorkshopDto>(total, list);
         }
 
+        public PagedResultDto<ReadWorkshopDto> GetAllById(Guid attendanceFormId, PagedGeneralResultRequestDto input)
+        {
+            var workshops = _workshopDomainService.GetAllById(attendanceFormId);
+            int total = workshops.Count();
+            workshops = workshops.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadWorkshopDto>>(workshops.ToList());
+            return new PagedResultDto<ReadWorkshopDto>(total, list);
+        }
+
         public async Task<ReadWorkshopDto> GetbyId(Guid id)
         {
             return ObjectMapper.Map<ReadWorkshopDto>(await _workshopDomainService.GetbyId(id));

@@ -15,5 +15,8 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.Months.Services
         public Task<Month> Insert(Month month);
         public Task<Month> Update(Month month);
         public Task Delete(Guid id);
+        public Task GenerateMonthlyCards(Guid id, List<Guid> employeeIds);
+        public Task CalculateMonth(Guid id);
+
     }
 }

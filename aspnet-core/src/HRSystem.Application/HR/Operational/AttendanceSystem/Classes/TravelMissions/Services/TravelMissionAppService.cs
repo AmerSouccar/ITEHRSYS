@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Operational.AttendanceSystem.Classes.TravelMissions.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.TravelMissions.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.TravelMissions.Servic
             await _travelMissiondomainService.Delete(id);
         }
 
-        public async Task<List<ReadTravelMissionDto>> GetAll()
+        public PagedResultDto<ReadTravelMissionDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<ReadTravelMissionDto>>(await _travelMissiondomainService.GetAll());
+            var travelMissions = _travelMissiondomainService.GetAll();
+            int total = travelMissions.Count();
+            travelMissions = travelMissions.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadTravelMissionDto>>(travelMissions.ToList());
+            return new PagedResultDto<ReadTravelMissionDto>(total, list);
         }
 
         public async Task<ReadTravelMissionDto> GetbyId(Guid id)

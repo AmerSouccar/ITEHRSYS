@@ -1,4 +1,8 @@
-﻿using HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +25,14 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.Se
             await _temporaryWorkshopdomainService.Delete(id);
         }
 
-        public async Task<List<ReadTemporaryWorkshopDto>> GetAll()
+        public PagedResultDto<ReadTemporaryWorkshopDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadTemporaryWorkshopDto>>(await _temporaryWorkshopdomainService.GetAll());
+            var temporaryWorkshops = _temporaryWorkshopdomainService.GetAll();
+            int total = temporaryWorkshops.Count();
+            temporaryWorkshops = temporaryWorkshops.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadTemporaryWorkshopDto>>(temporaryWorkshops.ToList());
+            return new PagedResultDto<ReadTemporaryWorkshopDto>(total, list);
         }
 
         public async Task<ReadTemporaryWorkshopDto> GetbyId(Guid id)

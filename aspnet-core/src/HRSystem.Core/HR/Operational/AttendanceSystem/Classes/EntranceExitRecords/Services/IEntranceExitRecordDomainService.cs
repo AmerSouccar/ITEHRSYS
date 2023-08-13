@@ -11,7 +11,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
 {
     public interface IEntranceExitRecordDomainService :IDomainService
     {
-        public Task<List<EntranceExitRecord>> GetAll();
+        public IQueryable<EntranceExitRecord> GetAll();
         public Task<EntranceExitRecord> GetbyId(Guid id);
         public Task<EntranceExitRecord> Insert(EntranceExitRecord entranceExitRecord);
         public Task<EntranceExitRecord> Update(EntranceExitRecord entranceExitRecord);

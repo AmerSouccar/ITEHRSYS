@@ -1,10 +1,14 @@
-﻿using HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.Dto;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HRSystem.HR.PaginationDto;
 
 namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.Services
 {
@@ -22,9 +26,14 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
             await _entranceExitRecord.Delete(id);
         }
 
-        public async Task<List<ReadEntranceExitRecordDto>> GetAll()
+        public PagedResultDto<ReadEntranceExitRecordDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadEntranceExitRecordDto>>(await _entranceExitRecord.GetAll());
+            var entranceExitRecords = _entranceExitRecord.GetAll();
+            int total = entranceExitRecords.Count();
+            entranceExitRecords = entranceExitRecords.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadEntranceExitRecordDto>>(entranceExitRecords.ToList());
+            return new PagedResultDto<ReadEntranceExitRecordDto>(total, list);
         }
 
         public async Task<ReadEntranceExitRecordDto> GetbyId(Guid id)

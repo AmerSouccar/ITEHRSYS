@@ -1,9 +1,13 @@
-﻿using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HRSystem.HR.PaginationDto;
 
 namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Services
 {
@@ -31,9 +35,14 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
             await _attendanceRecord.GenerateMonthlyCards(id,employeeCardsIds);
         }
 
-        public async Task<List<ReadAttendanceRecordDto>> GetAll()
+        public PagedResultDto<ReadAttendanceRecordDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadAttendanceRecordDto>>(await _attendanceRecord.GetAll());
+            var attendanceRecords = _attendanceRecord.GetAll();
+            int total = attendanceRecords.Count();
+            attendanceRecords = attendanceRecords.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadAttendanceRecordDto>>(attendanceRecords.ToList());
+            return new PagedResultDto<ReadAttendanceRecordDto>(total, list);
         }
 
         public async Task<ReadAttendanceRecordDto> GetbyId(Guid id)

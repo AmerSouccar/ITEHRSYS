@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,8 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Services
 {
     public interface INormalShiftAppService :IApplicationService
     {
-        public Task<List<ReadNormalShiftDto>> GetAll();
+        public PagedResultDto<ReadNormalShiftDto> GetAll(PagedGeneralResultRequestDto input);
+        public PagedResultDto<ReadNormalShiftDto> GetAllById(Guid WorkshopId,PagedGeneralResultRequestDto input);
         public Task<ReadNormalShiftDto> GetbyId(Guid id);
         public Task<InsertNormalShiftDto> Insert(InsertNormalShiftDto normalShift);
         public Task<UpdateNormalShiftDto> Update(UpdateNormalShiftDto normalShift);

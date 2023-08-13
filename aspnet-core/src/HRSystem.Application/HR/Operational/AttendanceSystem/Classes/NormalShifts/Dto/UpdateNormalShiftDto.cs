@@ -10,6 +10,8 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Dto
     public class UpdateNormalShiftDto :EntityDto<Guid>
     {
         public DateTime EntryTime { get; set; }
+        public Guid WorkshopId { get; set; }
+
         public DateTime ExitTime { get; set; }
         public DateTime ShiftRangeStartTime { get; set; }
         public DateTime ShiftRangeEndTime { get; set; }

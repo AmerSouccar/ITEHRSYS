@@ -9,7 +9,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCard
 {
     public interface IAttendanceMonthlyCardDomainService : IDomainService
     {
-        public Task<List<AttendanceMonthlyCard>> GetAll();
+        public IQueryable<AttendanceMonthlyCard> GetAll();
         public Task<AttendanceMonthlyCard> GetbyId(Guid id);
         public Task<AttendanceMonthlyCard> Insert(AttendanceMonthlyCard attendanceMonthlyCard);
         public Task<AttendanceMonthlyCard> Update(AttendanceMonthlyCard attendanceMonthlyCard);

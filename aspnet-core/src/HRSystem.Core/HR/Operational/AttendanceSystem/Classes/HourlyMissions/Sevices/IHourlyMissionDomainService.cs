@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.HourlyMissions.Sevice
 {
     public interface IHourlyMissionDomainService : IDomainService
     {
-        public Task<List<HourlyMission>> GetAll();
+        public IQueryable<HourlyMission> GetAll();
         public Task<HourlyMission> GetbyId(Guid id);
         public Task<HourlyMission> Insert(HourlyMission hourlyMission);
         public Task<HourlyMission> Update(HourlyMission hourlyMission);

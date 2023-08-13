@@ -17,9 +17,19 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.Months.Services
             _monthRepository = monthRepository;
         }
 
+        public Task CalculateMonth(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task Delete(Guid id)
         {
            await _monthRepository.DeleteAsync(id);
+        }
+
+        public Task GenerateMonthlyCards(Guid id, List<Guid> employeeIds)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<List<Month>> GetAll()

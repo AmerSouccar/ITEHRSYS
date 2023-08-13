@@ -1,4 +1,8 @@
-﻿using HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +25,24 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Services
             await _normalShiftdomainService.Delete(id);
         }
 
-        public async Task<List<ReadNormalShiftDto>> GetAll()
+        public PagedResultDto<ReadNormalShiftDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadNormalShiftDto>>(await _normalShiftdomainService.GetAll());
+            var normalshifts = _normalShiftdomainService.GetAll();
+            int total = normalshifts.Count();
+            normalshifts = normalshifts.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadNormalShiftDto>>(normalshifts.ToList());
+            return new PagedResultDto<ReadNormalShiftDto>(total, list);
+        }
+
+        public PagedResultDto<ReadNormalShiftDto> GetAllById(Guid WorkshopId, PagedGeneralResultRequestDto input)
+        {
+            var workshops = _normalShiftdomainService.GetAllById(WorkshopId);
+            int total = workshops.Count();
+            workshops = workshops.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadNormalShiftDto>>(workshops.ToList());
+            return new PagedResultDto<ReadNormalShiftDto>(total, list);
         }
 
         public async Task<ReadNormalShiftDto> GetbyId(Guid id)

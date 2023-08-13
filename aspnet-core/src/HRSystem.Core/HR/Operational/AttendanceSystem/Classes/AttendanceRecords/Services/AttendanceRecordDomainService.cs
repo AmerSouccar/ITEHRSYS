@@ -270,9 +270,9 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
             }
         }
 
-        public async Task<List<AttendanceRecord>> GetAll()
+        public  IQueryable<AttendanceRecord> GetAll()
         {
-            return _attendanceRecordRepository.GetAllIncluding(x => x.AttendanceMonthlyCards).ToList();
+            return _attendanceRecordRepository.GetAllIncluding(x => x.AttendanceMonthlyCards);
         }
 
         public async Task<AttendanceRecord> GetbyId(Guid id)

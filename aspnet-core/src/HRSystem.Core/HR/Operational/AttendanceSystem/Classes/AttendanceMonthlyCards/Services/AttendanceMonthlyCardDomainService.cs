@@ -21,9 +21,9 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCard
             await _attendanceMonthlyCardRepository.DeleteAsync(id);
         }
 
-        public async Task<List<AttendanceMonthlyCard>> GetAll()
+        public  IQueryable<AttendanceMonthlyCard> GetAll()
         {
-            return _attendanceMonthlyCardRepository.GetAllIncluding(x => x.EmployeeCard).ToList();
+            return _attendanceMonthlyCardRepository.GetAllIncluding(x => x.EmployeeCard);
         }
 
         public async Task<AttendanceMonthlyCard> GetbyId(Guid id)

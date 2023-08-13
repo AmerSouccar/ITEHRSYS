@@ -1,4 +1,8 @@
-﻿using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms.Dto;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCards.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +25,14 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCard
             await _attendanceMonthlyCard.Delete(id);
         }
 
-        public async Task<List<ReadAttendanceMonthlyCardDto>> GetAll()
+        public PagedResultDto<ReadAttendanceMonthlyCardDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadAttendanceMonthlyCardDto>>(await _attendanceMonthlyCard.GetAll());
+            var attendanceMonthlyCards = _attendanceMonthlyCard.GetAll();
+            int total = attendanceMonthlyCards.Count();
+            attendanceMonthlyCards = attendanceMonthlyCards.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadAttendanceMonthlyCardDto>>(attendanceMonthlyCards.ToList());
+            return new PagedResultDto<ReadAttendanceMonthlyCardDto>(total, list);
         }
 
         public async Task<ReadAttendanceMonthlyCardDto> GetbyId(Guid id)

@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.TemporaryWorkshops.Se
 {
     public interface ITemporaryWorkshopAppService :IApplicationService
     {
-        public Task<List<ReadTemporaryWorkshopDto>> GetAll();
+        public PagedResultDto<ReadTemporaryWorkshopDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadTemporaryWorkshopDto> GetbyId(Guid id);
         public Task<InsertTemporaryWorkshopDto> Insert(InsertTemporaryWorkshopDto temporaryWorkshop);
         public Task<UpdateTemporaryWorkshopDto> Update(UpdateTemporaryWorkshopDto temporaryWorkshop);
