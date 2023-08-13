@@ -14,6 +14,7 @@ import { ReligionComponent } from './religion/religion.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { NationalityComponent } from './nationality/nationality.component';
 import { AttendanceFormComponent } from './attendance-form/attendance-form.component';
+import { WorkshopComponent } from './workshop/workshop.component';
 
 @NgModule({
     imports: [
@@ -34,6 +35,7 @@ import { AttendanceFormComponent } from './attendance-form/attendance-form.compo
                     { path: 'employees', component: EmployeeComponent, canActivate: [AppRouteGuard] },
                     { path: 'nationalities', component: NationalityComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForms', component: AttendanceFormComponent, canActivate: [AppRouteGuard] },
+                    { path: 'attendanceForm/:id/workshops', component:WorkshopComponent ,  canActivate: [AppRouteGuard] },
                 ]
             }
         ])

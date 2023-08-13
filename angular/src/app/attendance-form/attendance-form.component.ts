@@ -6,6 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs';
 import { CreateAttendanceFormDialogComponent } from './create-attendance-form-dialog/create-attendance-form-dialog.component';
 import { EditAttendanceFormDialogComponent } from './edit-attendance-form-dialog/edit-attendance-form-dialog.component';
+import { Router } from '@angular/router';
 
 class PagedAttendanceFormRequestDto extends PagedRequestDto {
 }
@@ -21,7 +22,8 @@ export class AttendanceFormComponent extends PagedListingComponentBase<ReadAtten
   constructor(
     injector: Injector,
     private _attendanceFormService: AttendanceFormServiceProxy,
-    private _modalService: BsModalService
+    private _modalService: BsModalService,
+    private router : Router
   ) {
     super(injector);
   }
@@ -96,6 +98,11 @@ export class AttendanceFormComponent extends PagedListingComponentBase<ReadAtten
     createOrEditEmployeeDialog.content.onSave.subscribe(() => {
       this.refresh();
     });
+  }
+
+  onWorkshopButtonClick(event)
+  {
+    this.router.navigateByUrl('app/attendanceForm/' + event.id +'/workshops');
   }
 
 }

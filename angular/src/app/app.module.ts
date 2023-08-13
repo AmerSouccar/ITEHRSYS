@@ -56,6 +56,9 @@ import { EditNationalityDialogComponent } from './nationality/edit-nationality-d
 import { AttendanceFormComponent } from './attendance-form/attendance-form.component';
 import { CreateAttendanceFormDialogComponent } from './attendance-form/create-attendance-form-dialog/create-attendance-form-dialog.component';
 import { EditAttendanceFormDialogComponent } from './attendance-form/edit-attendance-form-dialog/edit-attendance-form-dialog.component';
+import { WorkshopComponent } from './workshop/workshop.component';
+import { CreateWorkshopDialogComponent } from './workshop/create-workshop-dialog/create-workshop-dialog.component';
+import { EditWorkshopDialogComponent } from './workshop/edit-workshop-dialog/edit-workshop-dialog.component';
 
 @NgModule({
     declarations: [
@@ -103,7 +106,10 @@ import { EditAttendanceFormDialogComponent } from './attendance-form/edit-attend
         EditNationalityDialogComponent,
         AttendanceFormComponent,
         CreateAttendanceFormDialogComponent,
-        EditAttendanceFormDialogComponent
+        EditAttendanceFormDialogComponent,
+        WorkshopComponent,
+        CreateWorkshopDialogComponent,
+        EditWorkshopDialogComponent
     ],
     imports: [
         CommonModule,
