@@ -17,6 +17,20 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
             _leaveRequestsRepository = leaveRequestsRepository;
         }
 
+        public async Task AcceptLeaveRequest(Guid id)
+        {
+            var leaveRequest = await _leaveRequestsRepository.GetAsync(id);
+            leaveRequest.LeaveRequestStatus = Enums.LeaveRequestStatus.Accepted;
+            await _leaveRequestsRepository.UpdateAsync(leaveRequest);
+        }
+
+        public async Task RejectLeaveRequest(Guid id)
+        {
+            var leaveRequest = await _leaveRequestsRepository.GetAsync(id);
+            leaveRequest.LeaveRequestStatus = Enums.LeaveRequestStatus.Rejected;
+            await _leaveRequestsRepository.UpdateAsync(leaveRequest);
+        }
+
         public async Task Delete(Guid id)
         {
             await _leaveRequestsRepository.DeleteAsync(id);
@@ -42,7 +56,6 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
             return await _leaveRequestsRepository.InsertAsync(leaveRequest);
 
         }
-
         public async Task<LeaveRequest> Update(LeaveRequest leaveRequest)
         {
             return await _leaveRequestsRepository.UpdateAsync(leaveRequest);

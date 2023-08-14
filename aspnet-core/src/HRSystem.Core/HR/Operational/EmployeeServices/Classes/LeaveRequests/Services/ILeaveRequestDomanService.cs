@@ -12,6 +12,8 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
     {
         public Task<List<LeaveRequest>> GetAll();
         public Task<LeaveRequest> GetbyId(Guid id);
+        public Task AcceptLeaveRequest(Guid id);
+        public Task RejectLeaveRequest(Guid id);
         public Task<LeaveRequest> Insert(LeaveRequest leaveRequest);
         public Task<LeaveRequest> Update(LeaveRequest leaveRequest);
         public Task Delete(Guid id);

@@ -16,6 +16,11 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
             _leaveRequestDomanService = leaveRequestDomanService;
         }
 
+        public async Task AcceptLeaveRequest(Guid id)
+        {
+            await _leaveRequestDomanService.AcceptLeaveRequest(id);
+        }
+
         public async Task Delete(Guid id)
         {
            await _leaveRequestDomanService.Delete(id);
@@ -34,6 +39,11 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
         public async Task<InsertLeaveRequestDto> Insert(InsertLeaveRequestDto leaveRequest)
         {
             return ObjectMapper.Map<InsertLeaveRequestDto>(await _leaveRequestDomanService.Insert(ObjectMapper.Map<LeaveRequest>(leaveRequest)));
+        }
+
+        public async Task RejectLeaveRequest(Guid id)
+        {
+            await _leaveRequestDomanService.RejectLeaveRequest(id);
         }
 
         public async Task<UpdateLeaveRequestDto> Update(UpdateLeaveRequestDto leaveRequest)
