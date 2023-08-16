@@ -75,7 +75,8 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
                     foreach(var employeeCard in record.AttendanceMonthlyCards)
                     {
                         await _attendanceMonthlyCardRepository.EnsurePropertyLoadedAsync(employeeCard, x => x.EmployeeCard);
-                        await _employeeCardRepository.EnsurePropertyLoadedAsync(employeeCard.EmployeeCard, x => x.Employee);
+                        var empC = employeeCard.EmployeeCard;
+                        await _employeeCardRepository.EnsurePropertyLoadedAsync(empC, x => x.Employee);
                         var employee = employeeCard.EmployeeCard.Employee;
 
                         if (employee != null)

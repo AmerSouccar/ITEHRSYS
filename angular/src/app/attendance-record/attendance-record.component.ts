@@ -141,8 +141,9 @@ export class AttendanceRecordComponent extends PagedListingComponentBase<ReadAtt
   }
 
   onCalculateMonthButtonClick(event){
-    this._attendanceRecordService.calculateMonth(event.id);
-    // this.refresh();
+    this._attendanceRecordService.calculateMonth(event.id).subscribe(() => {
+       this.refresh();
+    });
   }
 
 }
