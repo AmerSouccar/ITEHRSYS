@@ -3,12 +3,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-6">
-            <h1>{{ "Attendance Forms" | localize }}</h1>
+            <h1>{{ "AttendanceRecords" | localize }}</h1>
           </div>
           <div class="col-6 text-right">
             <a href="javascript:;"
               class="btn bg-blue"
-              (click)="createAttendanceForm()">
+              (click)="createAttendanceRecord()">
               <i class="fa fa-plus-square"></i>
               {{ "Create" | localize }}
             </a>
@@ -28,13 +28,17 @@
                 [busy]="isTableLoading">
                 <thead class="bg-light">
                   <tr>
-                    <th>{{ "Name" | localize }}</th>
+                    <th>{{ "Year" | localize }}</th>
+                    <th>{{ "Month" | localize }}</th>
+                    <th>{{ "FromDate" | localize }}</th>
+                    <th>{{ "ToDate" | localize }}</th>
+                    <th>{{ "Calculated" | localize }}</th>
                     <th style="width: 500px;">{{ "Actions" | localize }}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="
-                    let attendanceForm of attendanceForms
+                    let attendanceRecord of attendanceRecords
                       | paginate
                         : {
                             id: 'server',
@@ -43,25 +47,40 @@
                             totalItems: totalItems
                           }
                   ">
-                    <td>{{ attendanceForm.name }}</td>
+                    <td>{{ attendanceRecord.year }} </td>
+                    <td>{{ attendanceRecord.month + 1 }} </td>
+                    <td>{{ attendanceRecord.fromDate | date: 'dd / MM / yyyy' }}</td>
+                    <td>{{ attendanceRecord.toDate | date: 'dd / MM / yyyy' }}</td>
+                    <td>{{ attendanceRecord.isCalculated? 'Yes' : 'No' }}</td>
                     <td>
                       <button type="button"
                         class="btn btn-sm bg-secondary"
-                        (click)="editAttendanceForm(attendanceForm)">
+                        (click)="editAttendanceRecord(attendanceRecord)">
                         <i class="fas fa-pencil-alt"></i>
                         {{ "Edit" | localize }}
                       </button>
                       <button type="button"
                         class="btn btn-sm bg-danger mx-2"
-                        (click)="delete(attendanceForm)">
+                        (click)="delete(attendanceRecord)">
                         <i class="fas fa-trash"></i>
                         {{ "Delete" | localize }}
                       </button>
                       <button type="button"
                       class="btn btn-sm bg-primary mx-2"
-                      (click)="onWorkshopButtonClick(attendanceForm)">
-                      {{ "Workshops" | localize }}
+                      (click)="delete(attendanceRecord)">
+                      {{ "Cards" | localize }}
                     </button>
+                      <button type="button"
+                        class="btn btn-sm bg-primary mx-2"
+                        (click)="delete(attendanceRecord)">
+                        {{ "Generate" | localize }}
+                      </button>
+                      <button type="button"
+                        class="btn btn-sm bg-primary mx-2"
+                        (click)="onCalculateMonthButtonClick(attendanceRecord)">
+                        {{ "Calculate" | localize }}
+                      </button>
+    
                     </td>
                   </tr>
                 </tbody>

@@ -977,10 +977,20 @@ export class AttendanceMonthlyCardServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadAttendanceMonthlyCardDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/AttendanceMonthlyCard/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadAttendanceMonthlyCardDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/AttendanceMonthlyCard/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -998,14 +1008,14 @@ export class AttendanceMonthlyCardServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadAttendanceMonthlyCardDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadAttendanceMonthlyCardDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadAttendanceMonthlyCardDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadAttendanceMonthlyCardDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadAttendanceMonthlyCardDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadAttendanceMonthlyCardDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1016,14 +1026,7 @@ export class AttendanceMonthlyCardServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadAttendanceMonthlyCardDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadAttendanceMonthlyCardDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1376,10 +1379,20 @@ export class AttendanceRecordServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadAttendanceRecordDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/AttendanceRecord/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadAttendanceRecordDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/AttendanceRecord/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1397,14 +1410,14 @@ export class AttendanceRecordServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadAttendanceRecordDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadAttendanceRecordDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadAttendanceRecordDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadAttendanceRecordDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadAttendanceRecordDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadAttendanceRecordDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1415,14 +1428,7 @@ export class AttendanceRecordServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadAttendanceRecordDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadAttendanceRecordDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -7634,10 +7640,20 @@ export class EntranceExitRecordServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadEntranceExitRecordDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/EntranceExitRecord/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadEntranceExitRecordDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/EntranceExitRecord/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -7655,14 +7671,14 @@ export class EntranceExitRecordServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadEntranceExitRecordDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadEntranceExitRecordDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadEntranceExitRecordDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadEntranceExitRecordDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadEntranceExitRecordDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadEntranceExitRecordDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -7673,14 +7689,7 @@ export class EntranceExitRecordServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadEntranceExitRecordDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadEntranceExitRecordDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -9145,10 +9154,20 @@ export class HourlyMissionServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadHourlyMissionDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/HourlyMission/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadHourlyMissionDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/HourlyMission/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -9166,14 +9185,14 @@ export class HourlyMissionServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadHourlyMissionDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadHourlyMissionDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadHourlyMissionDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadHourlyMissionDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadHourlyMissionDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadHourlyMissionDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -9184,14 +9203,7 @@ export class HourlyMissionServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadHourlyMissionDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadHourlyMissionDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -10851,6 +10863,58 @@ export class LeaveRequestServiceProxy {
      * @param id (optional) 
      * @return Success
      */
+    acceptLeaveRequest(id: string | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/LeaveRequest/AcceptLeaveRequest?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processAcceptLeaveRequest(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processAcceptLeaveRequest(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<void>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<void>;
+        }));
+    }
+
+    protected processAcceptLeaveRequest(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return _observableOf(null as any);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
     delete(id: string | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/LeaveRequest/Delete?";
         if (id === null)
@@ -11060,6 +11124,58 @@ export class LeaveRequestServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = InsertLeaveRequestDto.fromJS(resultData200);
             return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    rejectLeaveRequest(id: string | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/LeaveRequest/RejectLeaveRequest?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processRejectLeaveRequest(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processRejectLeaveRequest(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<void>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<void>;
+        }));
+    }
+
+    protected processRejectLeaveRequest(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return _observableOf(null as any);
             }));
         } else if (status !== 200 && status !== 204) {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
@@ -13232,10 +13348,20 @@ export class NormalShiftServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadNormalShiftDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/NormalShift/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadNormalShiftDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/NormalShift/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -13253,14 +13379,14 @@ export class NormalShiftServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadNormalShiftDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadNormalShiftDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadNormalShiftDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadNormalShiftDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadNormalShiftDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadNormalShiftDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -13271,14 +13397,73 @@ export class NormalShiftServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadNormalShiftDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadNormalShiftDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param workshopId (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getAllById(workshopId: string | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadNormalShiftDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/NormalShift/GetAllById?";
+        if (workshopId === null)
+            throw new Error("The parameter 'workshopId' cannot be null.");
+        else if (workshopId !== undefined)
+            url_ += "WorkshopId=" + encodeURIComponent("" + workshopId) + "&";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllById(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllById(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ReadNormalShiftDtoPagedResultDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ReadNormalShiftDtoPagedResultDto>;
+        }));
+    }
+
+    protected processGetAllById(response: HttpResponseBase): Observable<ReadNormalShiftDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ReadNormalShiftDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -17556,10 +17741,20 @@ export class TemporaryWorkshopServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadTemporaryWorkshopDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/TemporaryWorkshop/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadTemporaryWorkshopDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/TemporaryWorkshop/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -17577,14 +17772,14 @@ export class TemporaryWorkshopServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadTemporaryWorkshopDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadTemporaryWorkshopDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadTemporaryWorkshopDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadTemporaryWorkshopDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadTemporaryWorkshopDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadTemporaryWorkshopDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -17595,14 +17790,7 @@ export class TemporaryWorkshopServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadTemporaryWorkshopDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadTemporaryWorkshopDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -18914,10 +19102,20 @@ export class TravelMissionServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadTravelMissionDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/TravelMission/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadTravelMissionDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/TravelMission/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -18935,14 +19133,14 @@ export class TravelMissionServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadTravelMissionDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadTravelMissionDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadTravelMissionDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadTravelMissionDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadTravelMissionDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadTravelMissionDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -18953,14 +19151,7 @@ export class TravelMissionServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadTravelMissionDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadTravelMissionDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -20740,6 +20931,72 @@ export class WorkshopServiceProxy {
     }
 
     protected processGetAll(response: HttpResponseBase): Observable<ReadWorkshopDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ReadWorkshopDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param attendanceFormId (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getAllById(attendanceFormId: string | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadWorkshopDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Workshop/GetAllById?";
+        if (attendanceFormId === null)
+            throw new Error("The parameter 'attendanceFormId' cannot be null.");
+        else if (attendanceFormId !== undefined)
+            url_ += "attendanceFormId=" + encodeURIComponent("" + attendanceFormId) + "&";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllById(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllById(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ReadWorkshopDtoPagedResultDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ReadWorkshopDtoPagedResultDto>;
+        }));
+    }
+
+    protected processGetAllById(response: HttpResponseBase): Observable<ReadWorkshopDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -27706,10 +27963,11 @@ export interface IInsertNodeDto {
 
 export class InsertNormalShiftDto implements IInsertNormalShiftDto {
     id: string;
-    entryTime: moment.Moment;
-    exitTime: moment.Moment;
-    shiftRangeStartTime: moment.Moment;
-    shiftRangeEndTime: moment.Moment;
+    entryTime: string | undefined;
+    workshopId: string;
+    exitTime: string | undefined;
+    shiftRangeStartTime: string | undefined;
+    shiftRangeEndTime: string | undefined;
 
     constructor(data?: IInsertNormalShiftDto) {
         if (data) {
@@ -27723,10 +27981,11 @@ export class InsertNormalShiftDto implements IInsertNormalShiftDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.entryTime = _data["entryTime"] ? moment(_data["entryTime"].toString()) : <any>undefined;
-            this.exitTime = _data["exitTime"] ? moment(_data["exitTime"].toString()) : <any>undefined;
-            this.shiftRangeStartTime = _data["shiftRangeStartTime"] ? moment(_data["shiftRangeStartTime"].toString()) : <any>undefined;
-            this.shiftRangeEndTime = _data["shiftRangeEndTime"] ? moment(_data["shiftRangeEndTime"].toString()) : <any>undefined;
+            this.entryTime = _data["entryTime"];
+            this.workshopId = _data["workshopId"];
+            this.exitTime = _data["exitTime"];
+            this.shiftRangeStartTime = _data["shiftRangeStartTime"];
+            this.shiftRangeEndTime = _data["shiftRangeEndTime"];
         }
     }
 
@@ -27740,10 +27999,11 @@ export class InsertNormalShiftDto implements IInsertNormalShiftDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["entryTime"] = this.entryTime ? this.entryTime.toISOString() : <any>undefined;
-        data["exitTime"] = this.exitTime ? this.exitTime.toISOString() : <any>undefined;
-        data["shiftRangeStartTime"] = this.shiftRangeStartTime ? this.shiftRangeStartTime.toISOString() : <any>undefined;
-        data["shiftRangeEndTime"] = this.shiftRangeEndTime ? this.shiftRangeEndTime.toISOString() : <any>undefined;
+        data["entryTime"] = this.entryTime;
+        data["workshopId"] = this.workshopId;
+        data["exitTime"] = this.exitTime;
+        data["shiftRangeStartTime"] = this.shiftRangeStartTime;
+        data["shiftRangeEndTime"] = this.shiftRangeEndTime;
         return data;
     }
 
@@ -27757,10 +28017,11 @@ export class InsertNormalShiftDto implements IInsertNormalShiftDto {
 
 export interface IInsertNormalShiftDto {
     id: string;
-    entryTime: moment.Moment;
-    exitTime: moment.Moment;
-    shiftRangeStartTime: moment.Moment;
-    shiftRangeEndTime: moment.Moment;
+    entryTime: string | undefined;
+    workshopId: string;
+    exitTime: string | undefined;
+    shiftRangeStartTime: string | undefined;
+    shiftRangeEndTime: string | undefined;
 }
 
 export class InsertOrganizationLevelDto implements IInsertOrganizationLevelDto {
@@ -28815,6 +29076,7 @@ export interface IInsertWorkflowSettingDto {
 export class InsertWorkshopDto implements IInsertWorkshopDto {
     id: string;
     name: string | undefined;
+    attendanceFormId: string;
 
     constructor(data?: IInsertWorkshopDto) {
         if (data) {
@@ -28829,6 +29091,7 @@ export class InsertWorkshopDto implements IInsertWorkshopDto {
         if (_data) {
             this.id = _data["id"];
             this.name = _data["name"];
+            this.attendanceFormId = _data["attendanceFormId"];
         }
     }
 
@@ -28843,6 +29106,7 @@ export class InsertWorkshopDto implements IInsertWorkshopDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
+        data["attendanceFormId"] = this.attendanceFormId;
         return data;
     }
 
@@ -28857,6 +29121,7 @@ export class InsertWorkshopDto implements IInsertWorkshopDto {
 export interface IInsertWorkshopDto {
     id: string;
     name: string | undefined;
+    attendanceFormId: string;
 }
 
 export class Int64EntityDto implements IInt64EntityDto {
@@ -30712,6 +30977,8 @@ export class NormalShift implements INormalShift {
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
     entryTime: moment.Moment;
+    workshopId: string;
+    workshop: Workshop;
     exitTime: moment.Moment;
     shiftRangeStartTime: moment.Moment;
     shiftRangeEndTime: moment.Moment;
@@ -30741,6 +31008,8 @@ export class NormalShift implements INormalShift {
             this.deleterUserId = _data["deleterUserId"];
             this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
             this.entryTime = _data["entryTime"] ? moment(_data["entryTime"].toString()) : <any>undefined;
+            this.workshopId = _data["workshopId"];
+            this.workshop = _data["workshop"] ? Workshop.fromJS(_data["workshop"]) : <any>undefined;
             this.exitTime = _data["exitTime"] ? moment(_data["exitTime"].toString()) : <any>undefined;
             this.shiftRangeStartTime = _data["shiftRangeStartTime"] ? moment(_data["shiftRangeStartTime"].toString()) : <any>undefined;
             this.shiftRangeEndTime = _data["shiftRangeEndTime"] ? moment(_data["shiftRangeEndTime"].toString()) : <any>undefined;
@@ -30770,6 +31039,8 @@ export class NormalShift implements INormalShift {
         data["deleterUserId"] = this.deleterUserId;
         data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
         data["entryTime"] = this.entryTime ? this.entryTime.toISOString() : <any>undefined;
+        data["workshopId"] = this.workshopId;
+        data["workshop"] = this.workshop ? this.workshop.toJSON() : <any>undefined;
         data["exitTime"] = this.exitTime ? this.exitTime.toISOString() : <any>undefined;
         data["shiftRangeStartTime"] = this.shiftRangeStartTime ? this.shiftRangeStartTime.toISOString() : <any>undefined;
         data["shiftRangeEndTime"] = this.shiftRangeEndTime ? this.shiftRangeEndTime.toISOString() : <any>undefined;
@@ -30795,6 +31066,8 @@ export interface INormalShift {
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
     entryTime: moment.Moment;
+    workshopId: string;
+    workshop: Workshop;
     exitTime: moment.Moment;
     shiftRangeStartTime: moment.Moment;
     shiftRangeEndTime: moment.Moment;
@@ -31953,6 +32226,61 @@ export interface IReadAttendanceMonthlyCardDto {
     isCalculated: boolean;
 }
 
+export class ReadAttendanceMonthlyCardDtoPagedResultDto implements IReadAttendanceMonthlyCardDtoPagedResultDto {
+    items: ReadAttendanceMonthlyCardDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadAttendanceMonthlyCardDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadAttendanceMonthlyCardDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadAttendanceMonthlyCardDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadAttendanceMonthlyCardDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadAttendanceMonthlyCardDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadAttendanceMonthlyCardDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadAttendanceMonthlyCardDtoPagedResultDto {
+    items: ReadAttendanceMonthlyCardDto[] | undefined;
+    totalCount: number;
+}
+
 export class ReadAttendanceRecordDto implements IReadAttendanceRecordDto {
     id: string;
     year: number;
@@ -32034,6 +32362,61 @@ export interface IReadAttendanceRecordDto {
     note: string | undefined;
     attendanceMonthlyCards: ReadAttendanceMonthlyCardDto[] | undefined;
     isCalculated: boolean;
+}
+
+export class ReadAttendanceRecordDtoPagedResultDto implements IReadAttendanceRecordDtoPagedResultDto {
+    items: ReadAttendanceRecordDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadAttendanceRecordDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadAttendanceRecordDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadAttendanceRecordDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadAttendanceRecordDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadAttendanceRecordDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadAttendanceRecordDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadAttendanceRecordDtoPagedResultDto {
+    items: ReadAttendanceRecordDto[] | undefined;
+    totalCount: number;
 }
 
 export class ReadBankDto implements IReadBankDto {
@@ -34225,6 +34608,61 @@ export interface IReadEntranceExitRecordDto {
     isChecked: boolean;
 }
 
+export class ReadEntranceExitRecordDtoPagedResultDto implements IReadEntranceExitRecordDtoPagedResultDto {
+    items: ReadEntranceExitRecordDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadEntranceExitRecordDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadEntranceExitRecordDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadEntranceExitRecordDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadEntranceExitRecordDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadEntranceExitRecordDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadEntranceExitRecordDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadEntranceExitRecordDtoPagedResultDto {
+    items: ReadEntranceExitRecordDto[] | undefined;
+    totalCount: number;
+}
+
 export class ReadExperienceDto implements IReadExperienceDto {
     id: string;
     employeeId: string;
@@ -34724,6 +35162,61 @@ export interface IReadHourlyMissionDto {
     notes: string | undefined;
     isTransferd: boolean;
     status: Status;
+}
+
+export class ReadHourlyMissionDtoPagedResultDto implements IReadHourlyMissionDtoPagedResultDto {
+    items: ReadHourlyMissionDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadHourlyMissionDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadHourlyMissionDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadHourlyMissionDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadHourlyMissionDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadHourlyMissionDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadHourlyMissionDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadHourlyMissionDtoPagedResultDto {
+    items: ReadHourlyMissionDto[] | undefined;
+    totalCount: number;
 }
 
 export class ReadJobDescriptionDto implements IReadJobDescriptionDto {
@@ -35766,10 +36259,11 @@ export interface IReadNodeDtoPagedResultDto {
 
 export class ReadNormalShiftDto implements IReadNormalShiftDto {
     id: string;
-    entryTime: moment.Moment;
-    exitTime: moment.Moment;
-    shiftRangeStartTime: moment.Moment;
-    shiftRangeEndTime: moment.Moment;
+    entryTime: string | undefined;
+    workshopId: string;
+    exitTime: string | undefined;
+    shiftRangeStartTime: string | undefined;
+    shiftRangeEndTime: string | undefined;
 
     constructor(data?: IReadNormalShiftDto) {
         if (data) {
@@ -35783,10 +36277,11 @@ export class ReadNormalShiftDto implements IReadNormalShiftDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.entryTime = _data["entryTime"] ? moment(_data["entryTime"].toString()) : <any>undefined;
-            this.exitTime = _data["exitTime"] ? moment(_data["exitTime"].toString()) : <any>undefined;
-            this.shiftRangeStartTime = _data["shiftRangeStartTime"] ? moment(_data["shiftRangeStartTime"].toString()) : <any>undefined;
-            this.shiftRangeEndTime = _data["shiftRangeEndTime"] ? moment(_data["shiftRangeEndTime"].toString()) : <any>undefined;
+            this.entryTime = _data["entryTime"];
+            this.workshopId = _data["workshopId"];
+            this.exitTime = _data["exitTime"];
+            this.shiftRangeStartTime = _data["shiftRangeStartTime"];
+            this.shiftRangeEndTime = _data["shiftRangeEndTime"];
         }
     }
 
@@ -35800,10 +36295,11 @@ export class ReadNormalShiftDto implements IReadNormalShiftDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["entryTime"] = this.entryTime ? this.entryTime.toISOString() : <any>undefined;
-        data["exitTime"] = this.exitTime ? this.exitTime.toISOString() : <any>undefined;
-        data["shiftRangeStartTime"] = this.shiftRangeStartTime ? this.shiftRangeStartTime.toISOString() : <any>undefined;
-        data["shiftRangeEndTime"] = this.shiftRangeEndTime ? this.shiftRangeEndTime.toISOString() : <any>undefined;
+        data["entryTime"] = this.entryTime;
+        data["workshopId"] = this.workshopId;
+        data["exitTime"] = this.exitTime;
+        data["shiftRangeStartTime"] = this.shiftRangeStartTime;
+        data["shiftRangeEndTime"] = this.shiftRangeEndTime;
         return data;
     }
 
@@ -35817,10 +36313,66 @@ export class ReadNormalShiftDto implements IReadNormalShiftDto {
 
 export interface IReadNormalShiftDto {
     id: string;
-    entryTime: moment.Moment;
-    exitTime: moment.Moment;
-    shiftRangeStartTime: moment.Moment;
-    shiftRangeEndTime: moment.Moment;
+    entryTime: string | undefined;
+    workshopId: string;
+    exitTime: string | undefined;
+    shiftRangeStartTime: string | undefined;
+    shiftRangeEndTime: string | undefined;
+}
+
+export class ReadNormalShiftDtoPagedResultDto implements IReadNormalShiftDtoPagedResultDto {
+    items: ReadNormalShiftDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadNormalShiftDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadNormalShiftDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadNormalShiftDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadNormalShiftDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadNormalShiftDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadNormalShiftDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadNormalShiftDtoPagedResultDto {
+    items: ReadNormalShiftDto[] | undefined;
+    totalCount: number;
 }
 
 export class ReadOrganizationLevelDto implements IReadOrganizationLevelDto {
@@ -37058,6 +37610,61 @@ export interface IReadTemporaryWorkshopDto {
     tempWorkshopId: string;
 }
 
+export class ReadTemporaryWorkshopDtoPagedResultDto implements IReadTemporaryWorkshopDtoPagedResultDto {
+    items: ReadTemporaryWorkshopDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadTemporaryWorkshopDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadTemporaryWorkshopDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadTemporaryWorkshopDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadTemporaryWorkshopDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadTemporaryWorkshopDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadTemporaryWorkshopDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadTemporaryWorkshopDtoPagedResultDto {
+    items: ReadTemporaryWorkshopDto[] | undefined;
+    totalCount: number;
+}
+
 export class ReadTrainingDto implements IReadTrainingDto {
     id: string;
 
@@ -37294,6 +37901,61 @@ export interface IReadTravelMissionDto {
     status: Status;
 }
 
+export class ReadTravelMissionDtoPagedResultDto implements IReadTravelMissionDtoPagedResultDto {
+    items: ReadTravelMissionDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadTravelMissionDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadTravelMissionDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadTravelMissionDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadTravelMissionDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadTravelMissionDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadTravelMissionDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadTravelMissionDtoPagedResultDto {
+    items: ReadTravelMissionDto[] | undefined;
+    totalCount: number;
+}
+
 export class ReadWorkflowDto implements IReadWorkflowDto {
     id: string;
     date: moment.Moment;
@@ -37423,6 +38085,7 @@ export interface IReadWorkflowSettingDto {
 export class ReadWorkshopDto implements IReadWorkshopDto {
     id: string;
     name: string | undefined;
+    attendanceFormId: string;
     normalShifts: ReadNormalShiftDto[] | undefined;
 
     constructor(data?: IReadWorkshopDto) {
@@ -37438,6 +38101,7 @@ export class ReadWorkshopDto implements IReadWorkshopDto {
         if (_data) {
             this.id = _data["id"];
             this.name = _data["name"];
+            this.attendanceFormId = _data["attendanceFormId"];
             if (Array.isArray(_data["normalShifts"])) {
                 this.normalShifts = [] as any;
                 for (let item of _data["normalShifts"])
@@ -37457,6 +38121,7 @@ export class ReadWorkshopDto implements IReadWorkshopDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
+        data["attendanceFormId"] = this.attendanceFormId;
         if (Array.isArray(this.normalShifts)) {
             data["normalShifts"] = [];
             for (let item of this.normalShifts)
@@ -37476,6 +38141,7 @@ export class ReadWorkshopDto implements IReadWorkshopDto {
 export interface IReadWorkshopDto {
     id: string;
     name: string | undefined;
+    attendanceFormId: string;
     normalShifts: ReadNormalShiftDto[] | undefined;
 }
 
@@ -42341,10 +43007,11 @@ export interface IUpdateNodeDto {
 
 export class UpdateNormalShiftDto implements IUpdateNormalShiftDto {
     id: string;
-    entryTime: moment.Moment;
-    exitTime: moment.Moment;
-    shiftRangeStartTime: moment.Moment;
-    shiftRangeEndTime: moment.Moment;
+    workshopId: string;
+    entryTime: string | undefined;
+    exitTime: string | undefined;
+    shiftRangeStartTime: string | undefined;
+    shiftRangeEndTime: string | undefined;
 
     constructor(data?: IUpdateNormalShiftDto) {
         if (data) {
@@ -42358,10 +43025,11 @@ export class UpdateNormalShiftDto implements IUpdateNormalShiftDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.entryTime = _data["entryTime"] ? moment(_data["entryTime"].toString()) : <any>undefined;
-            this.exitTime = _data["exitTime"] ? moment(_data["exitTime"].toString()) : <any>undefined;
-            this.shiftRangeStartTime = _data["shiftRangeStartTime"] ? moment(_data["shiftRangeStartTime"].toString()) : <any>undefined;
-            this.shiftRangeEndTime = _data["shiftRangeEndTime"] ? moment(_data["shiftRangeEndTime"].toString()) : <any>undefined;
+            this.workshopId = _data["workshopId"];
+            this.entryTime = _data["entryTime"];
+            this.exitTime = _data["exitTime"];
+            this.shiftRangeStartTime = _data["shiftRangeStartTime"];
+            this.shiftRangeEndTime = _data["shiftRangeEndTime"];
         }
     }
 
@@ -42375,10 +43043,11 @@ export class UpdateNormalShiftDto implements IUpdateNormalShiftDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["entryTime"] = this.entryTime ? this.entryTime.toISOString() : <any>undefined;
-        data["exitTime"] = this.exitTime ? this.exitTime.toISOString() : <any>undefined;
-        data["shiftRangeStartTime"] = this.shiftRangeStartTime ? this.shiftRangeStartTime.toISOString() : <any>undefined;
-        data["shiftRangeEndTime"] = this.shiftRangeEndTime ? this.shiftRangeEndTime.toISOString() : <any>undefined;
+        data["workshopId"] = this.workshopId;
+        data["entryTime"] = this.entryTime;
+        data["exitTime"] = this.exitTime;
+        data["shiftRangeStartTime"] = this.shiftRangeStartTime;
+        data["shiftRangeEndTime"] = this.shiftRangeEndTime;
         return data;
     }
 
@@ -42392,10 +43061,11 @@ export class UpdateNormalShiftDto implements IUpdateNormalShiftDto {
 
 export interface IUpdateNormalShiftDto {
     id: string;
-    entryTime: moment.Moment;
-    exitTime: moment.Moment;
-    shiftRangeStartTime: moment.Moment;
-    shiftRangeEndTime: moment.Moment;
+    workshopId: string;
+    entryTime: string | undefined;
+    exitTime: string | undefined;
+    shiftRangeStartTime: string | undefined;
+    shiftRangeEndTime: string | undefined;
 }
 
 export class UpdateOrganizationLevelDto implements IUpdateOrganizationLevelDto {
@@ -43450,6 +44120,7 @@ export interface IUpdateWorkflowSettingDto {
 export class UpdateWorkshopDto implements IUpdateWorkshopDto {
     id: string;
     name: string | undefined;
+    attendanceFormId: string;
 
     constructor(data?: IUpdateWorkshopDto) {
         if (data) {
@@ -43464,6 +44135,7 @@ export class UpdateWorkshopDto implements IUpdateWorkshopDto {
         if (_data) {
             this.id = _data["id"];
             this.name = _data["name"];
+            this.attendanceFormId = _data["attendanceFormId"];
         }
     }
 
@@ -43478,6 +44150,7 @@ export class UpdateWorkshopDto implements IUpdateWorkshopDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
+        data["attendanceFormId"] = this.attendanceFormId;
         return data;
     }
 
@@ -43492,6 +44165,7 @@ export class UpdateWorkshopDto implements IUpdateWorkshopDto {
 export interface IUpdateWorkshopDto {
     id: string;
     name: string | undefined;
+    attendanceFormId: string;
 }
 
 export class User implements IUser {
@@ -44376,6 +45050,8 @@ export class Workshop implements IWorkshop {
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
     name: string | undefined;
+    attendanceFormId: string;
+    attendanceForm: AttendanceForm;
     normalShifts: NormalShift[] | undefined;
 
     constructor(data?: IWorkshop) {
@@ -44403,6 +45079,8 @@ export class Workshop implements IWorkshop {
             this.deleterUserId = _data["deleterUserId"];
             this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
             this.name = _data["name"];
+            this.attendanceFormId = _data["attendanceFormId"];
+            this.attendanceForm = _data["attendanceForm"] ? AttendanceForm.fromJS(_data["attendanceForm"]) : <any>undefined;
             if (Array.isArray(_data["normalShifts"])) {
                 this.normalShifts = [] as any;
                 for (let item of _data["normalShifts"])
@@ -44434,6 +45112,8 @@ export class Workshop implements IWorkshop {
         data["deleterUserId"] = this.deleterUserId;
         data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
         data["name"] = this.name;
+        data["attendanceFormId"] = this.attendanceFormId;
+        data["attendanceForm"] = this.attendanceForm ? this.attendanceForm.toJSON() : <any>undefined;
         if (Array.isArray(this.normalShifts)) {
             data["normalShifts"] = [];
             for (let item of this.normalShifts)
@@ -44461,6 +45141,8 @@ export interface IWorkshop {
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
     name: string | undefined;
+    attendanceFormId: string;
+    attendanceForm: AttendanceForm;
     normalShifts: NormalShift[] | undefined;
 }
 

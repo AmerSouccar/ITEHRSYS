@@ -9,11 +9,11 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Dto
 {
     public class InsertNormalShiftDto :EntityDto<Guid>
     {
-        public DateTime EntryTime { get; set; }
+        public string EntryTime { get; set; }
         public Guid WorkshopId { get; set; }
 
-        public DateTime ExitTime { get; set; }
-        public DateTime ShiftRangeStartTime { get; set; }
-        public DateTime ShiftRangeEndTime { get; set; }
+        public string ExitTime { get; set; }
+        public string ShiftRangeStartTime { get; set; }
+        public string ShiftRangeEndTime { get; set; }
     }
 }

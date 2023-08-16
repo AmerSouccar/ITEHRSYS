@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceForms.Dto;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts;
 using HRSystem.HR.Operational.AttendanceSystem.Classes.NormalShifts.Dto;
 using System;
@@ -15,7 +16,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.Workshops.Dto
     {
         public string Name { get; set; }
         public Guid AttendanceFormId { get; set; }
-        public AttendanceForm AttendanceForm { get; set; }
+        //public ReadAttendanceFormDto AttendanceForm { get; set; }
         public List<ReadNormalShiftDto> NormalShifts { get; set; }
     }
 }

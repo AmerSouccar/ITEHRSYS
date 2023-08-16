@@ -35,7 +35,7 @@ export class CreateWorkshopDialogComponent extends AppComponentBase {
     ///////// add form Id in back end
     this.saving = true;
     this.workshop.attendanceFormId = this.id;
-    this._phaseService.create(this.phase).subscribe(
+    this._workshopService.insert(this.workshop).subscribe(
       () => {
         this.notify.info(this.l('SavedSuccessfully'));
         this.bsModalRef.hide();

@@ -115,6 +115,11 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                         'far fa-circle'
                     ),
                     new MenuItem(
+                        this.l('AttendanceRecord'),
+                        '/app/attendanceRecords',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
                         this.l('EntryExitRecords'),
                         'https://aspnetboilerplate.com/Templates?ref=abptmpl',
                         'far fa-circle'

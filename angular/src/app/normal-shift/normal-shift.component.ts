@@ -2,31 +2,29 @@ import { Component, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listing-component-base';
-import { AttendanceFormServiceProxy, ReadAttendanceFormDto, ReadWorkshopDto, ReadWorkshopDtoPagedResultDto, WorkshopServiceProxy } from '@shared/service-proxies/service-proxies';
+import { NormalShiftServiceProxy, ReadNormalShiftDto, ReadNormalShiftDtoPagedResultDto } from '@shared/service-proxies/service-proxies';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Subscription, finalize } from 'rxjs';
-import { CreateWorkshopDialogComponent } from './create-workshop-dialog/create-workshop-dialog.component';
-import { EditWorkshopDialogComponent } from './edit-workshop-dialog/edit-workshop-dialog.component';
+import { CreateNormalShiftDialogComponent } from './create-normal-shift-dialog/create-normal-shift-dialog.component';
+import { EditNormalShiftDialogComponent } from './edit-normal-shift-dialog/edit-normal-shift-dialog.component';
 
-class PagedWorkshopsRequestDto extends PagedRequestDto {
+class PagedNormalShiftsRequestDto extends PagedRequestDto {
 }
 
 @Component({
-  selector: 'app-workshop',
-  templateUrl: './workshop.component.html',
+  selector: 'app-normal-shift',
+  templateUrl: './normal-shift.component.html',
   animations: [appModuleAnimation()]
 })
-export class WorkshopComponent extends PagedListingComponentBase<ReadWorkshopDto> {
-  workshops: ReadWorkshopDto[] = [];
-  attendanceForm : ReadAttendanceFormDto;
+export class NormalShiftComponent extends PagedListingComponentBase<ReadNormalShiftDto> {
+  normalShifts: ReadNormalShiftDto[] = [];
   private routeSub: Subscription;
 
 
 
   constructor(
     injector: Injector,
-    private _workshopService: WorkshopServiceProxy,
-    private _attendanceFormService: AttendanceFormServiceProxy,
+    private _normalShiftService: NormalShiftServiceProxy,
     private _modalService: BsModalService,
     private route: ActivatedRoute,
     private router : Router
@@ -39,7 +37,7 @@ export class WorkshopComponent extends PagedListingComponentBase<ReadWorkshopDto
   }
 
   list(
-    request: PagedWorkshopsRequestDto,
+    request: PagedNormalShiftsRequestDto,
     pageNumber: number,
     finishedCallback: Function
   ): void {
@@ -47,27 +45,27 @@ export class WorkshopComponent extends PagedListingComponentBase<ReadWorkshopDto
     this.routeSub = this.route.params.subscribe(params => {
       id =  params['id'];
     });
-    this._workshopService
+    this._normalShiftService
       .getAllById(id,request.skipCount, request.maxResultCount)
       .pipe(
         finalize(() => {
           finishedCallback();
         })
       )
-      .subscribe((result: ReadWorkshopDtoPagedResultDto) => {
-        this.workshops = result.items;
+      .subscribe((result: ReadNormalShiftDtoPagedResultDto) => {
+        this.normalShifts = result.items;
         this.showPaging(result, pageNumber);
       });
   }
 
-  delete(workshop: ReadWorkshopDto): void {
+  delete(normalShift: ReadNormalShiftDto): void {
     abp.message.confirm(
-      this.l('WorkshopDeleteWarningMessage', workshop.name),
+      this.l('WorkshopDeleteWarningMessage', normalShift.id),
       undefined,
       (result: boolean) => {
         if (result) {
-          this._workshopService
-            .delete(workshop.id)
+          this._normalShiftService
+            .delete(normalShift.id)
             .pipe(
               finalize(() => {
                 abp.notify.success(this.l('SuccessfullyDeleted'));
@@ -80,7 +78,7 @@ export class WorkshopComponent extends PagedListingComponentBase<ReadWorkshopDto
     );
   }
 
-  createWorkshop(): void {
+  createNormalShift(): void {
     let id;
     this.routeSub = this.route.params.subscribe(params => {
       id =  params['id'];
@@ -88,14 +86,14 @@ export class WorkshopComponent extends PagedListingComponentBase<ReadWorkshopDto
     this.showCreateWithId(id);
   }
 
-  editWorkshop(workshop: ReadWorkshopDto): void {
-    this.showCreateOrEditPhaseDialog(workshop.id);
+  editNormalShift(normalShift: ReadNormalShiftDto): void {
+    this.showCreateOrEditPhaseDialog(normalShift.id);
   }
 
   private showCreateWithId(id?: string): void {
     let showCreateOnlyWithId: BsModalRef;
     showCreateOnlyWithId = this._modalService.show(
-      CreateWorkshopDialogComponent,
+      CreateNormalShiftDialogComponent,
       {
         class: 'modal-lg',
         initialState: {
@@ -113,14 +111,14 @@ export class WorkshopComponent extends PagedListingComponentBase<ReadWorkshopDto
     let showCreateOrEditProjectDialog: BsModalRef;
     if (!id) {
       showCreateOrEditProjectDialog = this._modalService.show(
-        CreateWorkshopDialogComponent,
+        CreateNormalShiftDialogComponent,
         {
           class: 'modal-lg',
         }
       );
     } else {
       showCreateOrEditProjectDialog = this._modalService.show(
-        EditWorkshopDialogComponent,
+        EditNormalShiftDialogComponent,
         {
           class: 'modal-lg',
           initialState: {

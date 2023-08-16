@@ -20,6 +20,8 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.NationalityServiceProxy,
         ApiServiceProxies.AttendanceFormServiceProxy,
         ApiServiceProxies.WorkshopServiceProxy,
+        ApiServiceProxies.NormalShiftServiceProxy,
+        ApiServiceProxies.AttendanceRecordServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

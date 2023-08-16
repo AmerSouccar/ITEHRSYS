@@ -59,6 +59,12 @@ import { EditAttendanceFormDialogComponent } from './attendance-form/edit-attend
 import { WorkshopComponent } from './workshop/workshop.component';
 import { CreateWorkshopDialogComponent } from './workshop/create-workshop-dialog/create-workshop-dialog.component';
 import { EditWorkshopDialogComponent } from './workshop/edit-workshop-dialog/edit-workshop-dialog.component';
+import { NormalShiftComponent } from './normal-shift/normal-shift.component';
+import { CreateNormalShiftDialogComponent } from './normal-shift/create-normal-shift-dialog/create-normal-shift-dialog.component';
+import { EditNormalShiftDialogComponent } from './normal-shift/edit-normal-shift-dialog/edit-normal-shift-dialog.component';
+import { AttendanceRecordComponent } from './attendance-record/attendance-record.component';
+import { CreateAttendanceRecordDialogComponent } from './attendance-record/create-attendance-record-dialog/create-attendance-record-dialog.component';
+import { EditAttendanceRecordDialogComponent } from './attendance-record/edit-attendance-record-dialog/edit-attendance-record-dialog.component';
 
 @NgModule({
     declarations: [
@@ -109,7 +115,13 @@ import { EditWorkshopDialogComponent } from './workshop/edit-workshop-dialog/edi
         EditAttendanceFormDialogComponent,
         WorkshopComponent,
         CreateWorkshopDialogComponent,
-        EditWorkshopDialogComponent
+        EditWorkshopDialogComponent,
+        NormalShiftComponent,
+        CreateNormalShiftDialogComponent,
+        EditNormalShiftDialogComponent,
+        AttendanceRecordComponent,
+        CreateAttendanceRecordDialogComponent,
+        EditAttendanceRecordDialogComponent
     ],
     imports: [
         CommonModule,

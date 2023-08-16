@@ -15,6 +15,8 @@ import { EmployeeComponent } from './employee/employee.component';
 import { NationalityComponent } from './nationality/nationality.component';
 import { AttendanceFormComponent } from './attendance-form/attendance-form.component';
 import { WorkshopComponent } from './workshop/workshop.component';
+import { NormalShiftComponent } from './normal-shift/normal-shift.component';
+import { AttendanceRecordComponent } from './attendance-record/attendance-record.component';
 
 @NgModule({
     imports: [
@@ -36,6 +38,8 @@ import { WorkshopComponent } from './workshop/workshop.component';
                     { path: 'nationalities', component: NationalityComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForms', component: AttendanceFormComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForm/:id/workshops', component:WorkshopComponent ,  canActivate: [AppRouteGuard] },
+                    { path: 'workshop/:id/normalshifts', component:NormalShiftComponent ,  canActivate: [AppRouteGuard] },
+                    { path: 'attendanceRecords', component: AttendanceRecordComponent, canActivate: [AppRouteGuard] },
                 ]
             }
         ])

@@ -1,0 +1,106 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateNewNormalShift' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="entryTime">
+        {{ "EntryTime" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="time"
+          class="form-control"
+          name="entryTime"
+          id="entryTime"
+          maxlength="128"
+          required
+          [(ngModel)]="normalShift.entryTime"
+          #entryTimeModel="ngModel"
+          #entryTimeEl
+        />
+        <abp-validation-summary
+          [control]="entryTimeModel"
+          [controlEl]="entryTimeEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+    <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="shiftRangeStartTime">
+          {{ "ShiftRangeStartTime" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="time"
+            class="form-control"
+            name="shiftRangeStartTime"
+            id="shiftRangeStartTime"
+            maxlength="128"
+            required
+            [(ngModel)]="normalShift.shiftRangeStartTime"
+            #shiftRangeStartTimeModel="ngModel"
+            #shiftRangeStartTimeEl
+          />
+          <abp-validation-summary
+            [control]="shiftRangeStartTimeModel"
+            [controlEl]="shiftRangeStartTimeEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="shiftRangeEndTime">
+          {{ "shiftRangeEndTime" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="time"
+            class="form-control"
+            name="shiftRangeEndTime"
+            id="shiftRangeEndTime"
+            maxlength="128"
+            required
+            [(ngModel)]="normalShift.shiftRangeEndTime"
+            #shiftRangeEndTimeModel="ngModel"
+            #shiftRangeEndTimeEl
+          />
+          <abp-validation-summary
+            [control]="shiftRangeEndTimeModel"
+            [controlEl]="shiftRangeEndTimeEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="exitTime">
+          {{ "ExitTime" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="time"
+            class="form-control"
+            name="exitTime"
+            id="exitTime"
+            maxlength="128"
+            required
+            [(ngModel)]="normalShift.exitTime"
+            #exitTimeModel="ngModel"
+            #exitTimeEl
+          />
+          <abp-validation-summary
+            [control]="exitTimeModel"
+            [controlEl]="exitTimeEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>
