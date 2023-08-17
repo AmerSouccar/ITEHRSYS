@@ -71,6 +71,7 @@ import { EditEmployeeCardComponent } from './employee-card/edit-employee-card/ed
 import { EntranceExitRecordComponent } from './entrance-exit-record/entrance-exit-record.component';
 import { CreateEntranceExitRecordDialogComponent } from './entrance-exit-record/create-entrance-exit-record-dialog/create-entrance-exit-record-dialog.component';
 import { EditEntranceExitRecordDialogComponent } from './entrance-exit-record/edit-entrance-exit-record-dialog/edit-entrance-exit-record-dialog.component';
+import { ImportFromExcelDialogComponent } from './entrance-exit-record/import-from-excel-dialog/import-from-excel-dialog.component';
 
 @NgModule({
     declarations: [
@@ -133,7 +134,8 @@ import { EditEntranceExitRecordDialogComponent } from './entrance-exit-record/ed
         EditEmployeeCardComponent,
         EntranceExitRecordComponent,
         CreateEntranceExitRecordDialogComponent,
-        EditEntranceExitRecordDialogComponent
+        EditEntranceExitRecordDialogComponent,
+        ImportFromExcelDialogComponent
     ],
     imports: [
         CommonModule,

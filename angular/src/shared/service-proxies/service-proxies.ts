@@ -8064,6 +8064,62 @@ export class EntranceExitRecordServiceProxy {
     }
 
     /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateEntranceExitRecordDto> {
+        let url_ = this.baseUrl + "/api/services/app/EntranceExitRecord/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateEntranceExitRecordDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateEntranceExitRecordDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateEntranceExitRecordDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateEntranceExitRecordDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param file (optional) 
      * @return Success
      */
@@ -27181,11 +27237,10 @@ export interface IInsertEmployeeDto {
 
 export class InsertEntranceExitRecordDto implements IInsertEntranceExitRecordDto {
     id: string;
-    logDate: moment.Moment;
-    readonly day: string | undefined;
+    logDate: string | undefined;
     employeeId: string;
-    logTime: moment.Moment;
-    recordType: LogType;
+    logTime: string | undefined;
+    recordType: number;
     notes: string | undefined;
     isChecked: boolean;
 
@@ -27201,10 +27256,9 @@ export class InsertEntranceExitRecordDto implements IInsertEntranceExitRecordDto
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.logDate = _data["logDate"] ? moment(_data["logDate"].toString()) : <any>undefined;
-            (<any>this).day = _data["day"];
+            this.logDate = _data["logDate"];
             this.employeeId = _data["employeeId"];
-            this.logTime = _data["logTime"] ? moment(_data["logTime"].toString()) : <any>undefined;
+            this.logTime = _data["logTime"];
             this.recordType = _data["recordType"];
             this.notes = _data["notes"];
             this.isChecked = _data["isChecked"];
@@ -27221,10 +27275,9 @@ export class InsertEntranceExitRecordDto implements IInsertEntranceExitRecordDto
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["logDate"] = this.logDate ? this.logDate.toISOString() : <any>undefined;
-        data["day"] = this.day;
+        data["logDate"] = this.logDate;
         data["employeeId"] = this.employeeId;
-        data["logTime"] = this.logTime ? this.logTime.toISOString() : <any>undefined;
+        data["logTime"] = this.logTime;
         data["recordType"] = this.recordType;
         data["notes"] = this.notes;
         data["isChecked"] = this.isChecked;
@@ -27241,11 +27294,10 @@ export class InsertEntranceExitRecordDto implements IInsertEntranceExitRecordDto
 
 export interface IInsertEntranceExitRecordDto {
     id: string;
-    logDate: moment.Moment;
-    day: string | undefined;
+    logDate: string | undefined;
     employeeId: string;
-    logTime: moment.Moment;
-    recordType: LogType;
+    logTime: string | undefined;
+    recordType: number;
     notes: string | undefined;
     isChecked: boolean;
 }
@@ -30731,11 +30783,6 @@ export class LevelDtoPagedResultDto implements ILevelDtoPagedResultDto {
 export interface ILevelDtoPagedResultDto {
     items: LevelDto[] | undefined;
     totalCount: number;
-}
-
-export enum LogType {
-    _0 = 0,
-    _1 = 1,
 }
 
 export enum MaritialStatus {
@@ -35012,12 +35059,12 @@ export interface IReadEmployeeDtoPagedResultDto {
 
 export class ReadEntranceExitRecordDto implements IReadEntranceExitRecordDto {
     id: string;
-    logDate: moment.Moment;
+    logDate: string | undefined;
     readonly day: string | undefined;
     employeeId: string;
     employee: ReadEmployeeDto;
-    logTime: moment.Moment;
-    recordType: LogType;
+    logTime: string | undefined;
+    recordType: number;
     notes: string | undefined;
     isChecked: boolean;
 
@@ -35033,11 +35080,11 @@ export class ReadEntranceExitRecordDto implements IReadEntranceExitRecordDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.logDate = _data["logDate"] ? moment(_data["logDate"].toString()) : <any>undefined;
+            this.logDate = _data["logDate"];
             (<any>this).day = _data["day"];
             this.employeeId = _data["employeeId"];
             this.employee = _data["employee"] ? ReadEmployeeDto.fromJS(_data["employee"]) : <any>undefined;
-            this.logTime = _data["logTime"] ? moment(_data["logTime"].toString()) : <any>undefined;
+            this.logTime = _data["logTime"];
             this.recordType = _data["recordType"];
             this.notes = _data["notes"];
             this.isChecked = _data["isChecked"];
@@ -35054,11 +35101,11 @@ export class ReadEntranceExitRecordDto implements IReadEntranceExitRecordDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["logDate"] = this.logDate ? this.logDate.toISOString() : <any>undefined;
+        data["logDate"] = this.logDate;
         data["day"] = this.day;
         data["employeeId"] = this.employeeId;
         data["employee"] = this.employee ? this.employee.toJSON() : <any>undefined;
-        data["logTime"] = this.logTime ? this.logTime.toISOString() : <any>undefined;
+        data["logTime"] = this.logTime;
         data["recordType"] = this.recordType;
         data["notes"] = this.notes;
         data["isChecked"] = this.isChecked;
@@ -35075,12 +35122,12 @@ export class ReadEntranceExitRecordDto implements IReadEntranceExitRecordDto {
 
 export interface IReadEntranceExitRecordDto {
     id: string;
-    logDate: moment.Moment;
+    logDate: string | undefined;
     day: string | undefined;
     employeeId: string;
     employee: ReadEmployeeDto;
-    logTime: moment.Moment;
-    recordType: LogType;
+    logTime: string | undefined;
+    recordType: number;
     notes: string | undefined;
     isChecked: boolean;
 }
@@ -42478,11 +42525,10 @@ export interface IUpdateEmployeeDto {
 
 export class UpdateEntranceExitRecordDto implements IUpdateEntranceExitRecordDto {
     id: string;
-    logDate: moment.Moment;
-    readonly day: string | undefined;
+    logDate: string | undefined;
     employeeId: string;
-    logTime: moment.Moment;
-    recordType: LogType;
+    logTime: string | undefined;
+    recordType: number;
     notes: string | undefined;
     isChecked: boolean;
 
@@ -42498,10 +42544,9 @@ export class UpdateEntranceExitRecordDto implements IUpdateEntranceExitRecordDto
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.logDate = _data["logDate"] ? moment(_data["logDate"].toString()) : <any>undefined;
-            (<any>this).day = _data["day"];
+            this.logDate = _data["logDate"];
             this.employeeId = _data["employeeId"];
-            this.logTime = _data["logTime"] ? moment(_data["logTime"].toString()) : <any>undefined;
+            this.logTime = _data["logTime"];
             this.recordType = _data["recordType"];
             this.notes = _data["notes"];
             this.isChecked = _data["isChecked"];
@@ -42518,10 +42563,9 @@ export class UpdateEntranceExitRecordDto implements IUpdateEntranceExitRecordDto
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["logDate"] = this.logDate ? this.logDate.toISOString() : <any>undefined;
-        data["day"] = this.day;
+        data["logDate"] = this.logDate;
         data["employeeId"] = this.employeeId;
-        data["logTime"] = this.logTime ? this.logTime.toISOString() : <any>undefined;
+        data["logTime"] = this.logTime;
         data["recordType"] = this.recordType;
         data["notes"] = this.notes;
         data["isChecked"] = this.isChecked;
@@ -42538,11 +42582,10 @@ export class UpdateEntranceExitRecordDto implements IUpdateEntranceExitRecordDto
 
 export interface IUpdateEntranceExitRecordDto {
     id: string;
-    logDate: moment.Moment;
-    day: string | undefined;
+    logDate: string | undefined;
     employeeId: string;
-    logTime: moment.Moment;
-    recordType: LogType;
+    logTime: string | undefined;
+    recordType: number;
     notes: string | undefined;
     isChecked: boolean;
 }

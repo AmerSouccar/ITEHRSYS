@@ -41,6 +41,11 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
            return ObjectMapper.Map<ReadEntranceExitRecordDto>(await _entranceExitRecord.GetbyId(id));
         }
 
+        public async Task<UpdateEntranceExitRecordDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateEntranceExitRecordDto>(await _entranceExitRecord.GetbyId(id));
+        }
+
         public void ImportDataFromExcel(IFormFile file)
         {
             _entranceExitRecord?.ImportDataFromExcel(file);

@@ -20,6 +20,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using System.IO;
+using OfficeOpenXml;
 
 namespace HRSystem.Web.Host.Startup
 {
@@ -127,6 +128,7 @@ namespace HRSystem.Web.Host.Startup
         
         private void ConfigureSwagger(IServiceCollection services)
         {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc(_apiVersion, new OpenApiInfo

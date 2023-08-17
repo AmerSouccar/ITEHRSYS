@@ -12,18 +12,18 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.D
 {
     public class ReadEntranceExitRecordDto :EntityDto<Guid>
     {
-        public DateTime LogDate { get; set; }
+        public string LogDate { get; set; }
         public string Day
         {
             get
             {
-                return this.LogDate.Day.ToString();
+                return Convert.ToDateTime(this.LogDate).Day.ToString();
             }
         }
         public Guid EmployeeId { get; set; }
         public ReadEmployeeDto Employee { get; set; }
-        public DateTime LogTime { get; set; }
-        public LogType RecordType { get; set; }
+        public string LogTime { get; set; }
+        public int RecordType { get; set; }
         public string Notes { get; set; }
         public bool isChecked { get; set; }
     }

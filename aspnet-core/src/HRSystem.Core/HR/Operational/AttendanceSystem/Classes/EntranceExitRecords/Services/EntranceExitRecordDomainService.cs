@@ -39,7 +39,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
             return entranceExitRecord;
         }
 
-        public void ImportDataFromExcel(IFormFile file)
+        public async void ImportDataFromExcel(IFormFile file)
         {
             using (var stream = file.OpenReadStream())
             {
@@ -54,13 +54,30 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
 
                     for (int row = startRow + 1; row <= endRow; row++) // Start from 2nd row (skipping headers)
                     {
-                        List<string> rowData = new List<string>();
+                        //List<string> rowData = new List<string>();
 
-                        for (int col = startColumn; col <= endColumn; col++)
+                        //for (int col = startColumn; col <= endColumn; col++)
+                        //{
+                        //    var cellValue = worksheet.Cells[row, col].Value?.ToString();
+                        //    rowData.Add(cellValue);
+                        //}
+
+                        var recType = Enums.LogType.Entrance;
+                        if(Convert.ToInt32(worksheet.Cells[row, 2].Value) == 1)
+                            recType = Enums.LogType.Exit;
+
+                        EntranceExitRecord entranceExitRecord = new EntranceExitRecord()
                         {
-                            var cellValue = worksheet.Cells[row, col].Value?.ToString();
-                            rowData.Add(cellValue);
-                        }
+                            EmployeeId = Guid.Parse(worksheet.Cells[row, 1].Value?.ToString()),
+                            RecordType = recType,
+                            LogDate = Convert.ToDateTime(worksheet.Cells[row, 3].Value),
+                            LogTime = Convert.ToDateTime(worksheet.Cells[row, 4].Value),
+                            Notes = "Imported From Excel",
+                            isChecked = false
+                        };
+
+                        await _entranceExitRecordRepository.InsertAsync(entranceExitRecord);
+
                     }
                 }
             }

@@ -15,6 +15,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.S
     {
         public PagedResultDto<ReadEntranceExitRecordDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadEntranceExitRecordDto> GetbyId(Guid id);
+        public Task<UpdateEntranceExitRecordDto> GetForEdit(Guid id);
         public Task<InsertEntranceExitRecordDto> Insert(InsertEntranceExitRecordDto entranceExitRecord);
         public Task<UpdateEntranceExitRecordDto> Update(UpdateEntranceExitRecordDto entranceExitRecord);
         public Task Delete(Guid id);

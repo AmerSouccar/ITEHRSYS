@@ -1,1 +1,122 @@
-<p>create-entrance-exit-record-dialog works!</p>
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateEntranceExitRecord' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row">
+        <label class="col-md-12 col-form-label" for="type">
+          {{ "Employee" | localize }}
+        </label>
+      <div class="col-md-12">
+
+        <select [(ngModel)]="record.employeeId"  class="form-control" name="name" id="name">
+            <option  
+             required
+              *ngFor="let employee of employees" [ngValue]="employee.id"
+              >
+              {{employee.tripleName}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+    <div class="form-group row required">
+        <label class="col-md-12 col-form-label" for="LogDate">
+          {{ "LogDate" | localize }}
+        </label>
+        <div class="col-md-12">
+          <input
+            type="date"
+            class="form-control"
+            name="LogDate"
+            id="LogDate"
+            maxlength="128"
+            required
+            [(ngModel)]="record.logDate"
+            #LogDateModel="ngModel"
+            #LogDateEl
+          />
+          <abp-validation-summary
+            [control]="LogDateModel"
+            [controlEl]="LogDateEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+      <div class="form-group row required">
+        <label class="col-md-12 col-form-label" for="LogTime">
+          {{ "LogTime" | localize }}
+        </label>
+        <div class="col-md-12">
+          <input
+            type="time"
+            class="form-control"
+            name="LogTime"
+            id="LogTime"
+            maxlength="128"
+            required
+            [(ngModel)]="record.logTime"
+            #LogTimeModel="ngModel"
+            #LogTimeEl
+          />
+          <abp-validation-summary
+            [control]="LogTimeModel"
+            [controlEl]="LogTimeEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-12 col-form-label" for="recordType">
+          {{ "RecordType" | localize }}
+        </label>
+      <div class="col-md-12">
+
+        <select [(ngModel)]="record.recordType"  class="form-control" name="recordType" id="recordType">
+            <option  
+             [ngValue]="0"
+              >
+              Entrance
+            </option>
+            <option  
+             [ngValue]="1"
+              >
+              Exit
+            </option>
+            </select>
+
+      </div>
+    </div>
+    <div class="form-group row required">
+        <label class="col-md-12 col-form-label" for="Notes">
+          {{ "Notes" | localize }}
+        </label>
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            name="Notes"
+            id="Notes"
+            maxlength="128"
+            required
+            [(ngModel)]="record.notes"
+            #NotesModel="ngModel"
+            #NotesEl
+          />
+          <abp-validation-summary
+            [control]="NotesModel"
+            [controlEl]="NotesEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

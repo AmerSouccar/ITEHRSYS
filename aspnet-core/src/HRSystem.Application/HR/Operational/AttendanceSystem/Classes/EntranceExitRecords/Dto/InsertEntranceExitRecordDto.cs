@@ -11,17 +11,10 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.EntranceExitRecords.D
 {
     public class InsertEntranceExitRecordDto :EntityDto<Guid>
     {
-        public DateTime LogDate { get; set; }
-        public string Day
-        {
-            get
-            {
-                return this.LogDate.Day.ToString();
-            }
-        }
+        public string LogDate { get; set; }
         public Guid EmployeeId { get; set; }
-        public DateTime LogTime { get; set; }
-        public LogType RecordType { get; set; }
+        public string LogTime { get; set; }
+        public int RecordType { get; set; }
         public string Notes { get; set; }
         public bool isChecked { get; set; }
     }

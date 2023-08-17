@@ -6,6 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs';
 import { CreateEntranceExitRecordDialogComponent } from './create-entrance-exit-record-dialog/create-entrance-exit-record-dialog.component';
 import { EditEntranceExitRecordDialogComponent } from './edit-entrance-exit-record-dialog/edit-entrance-exit-record-dialog.component';
+import { ImportFromExcelDialogComponent } from './import-from-excel-dialog/import-from-excel-dialog.component';
 
 class PagedEntraneExitRecordsRequestDto extends PagedRequestDto {
 }
@@ -68,8 +69,26 @@ export class EntranceExitRecordComponent extends PagedListingComponentBase<ReadE
     this.showCreateOrEditEmployeeDialog();
   }
 
+  importFromExcel() : void{
+
+  }
+
   editRecord(record: ReadEntranceExitRecordDto): void {
     this.showCreateOrEditEmployeeDialog(record.id);
+  }
+
+
+  showImportDialog():void{
+    let importDialog: BsModalRef;
+    importDialog = this._modalService.show(
+      ImportFromExcelDialogComponent,
+      {
+        class: 'modal-lg',
+      }
+    )
+    importDialog.content.onSave.subscribe(() => {
+      this.refresh();
+    });
   }
 
   showCreateOrEditEmployeeDialog(id?: string): void {
