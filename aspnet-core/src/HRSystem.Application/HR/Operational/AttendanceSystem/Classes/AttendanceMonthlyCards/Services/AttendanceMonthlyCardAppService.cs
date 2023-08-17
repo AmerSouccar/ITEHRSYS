@@ -35,6 +35,16 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCard
             return new PagedResultDto<ReadAttendanceMonthlyCardDto>(total, list);
         }
 
+        public PagedResultDto<ReadAttendanceMonthlyCardDto> GetAllbyId(Guid id, PagedGeneralResultRequestDto input)
+        {
+            var attendanceMonthlyCards = _attendanceMonthlyCard.GetAllbyId(id);
+            int total = attendanceMonthlyCards.Count();
+            attendanceMonthlyCards = attendanceMonthlyCards.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadAttendanceMonthlyCardDto>>(attendanceMonthlyCards.ToList());
+            return new PagedResultDto<ReadAttendanceMonthlyCardDto>(total, list);
+        }
+
         public async Task<ReadAttendanceMonthlyCardDto> GetbyId(Guid id)
         {
            return ObjectMapper.Map<ReadAttendanceMonthlyCardDto>(await _attendanceMonthlyCard.GetbyId(id));

@@ -23,7 +23,12 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCard
 
         public  IQueryable<AttendanceMonthlyCard> GetAll()
         {
-            return _attendanceMonthlyCardRepository.GetAllIncluding(x => x.EmployeeCard);
+            return _attendanceMonthlyCardRepository.GetAllIncluding(x => x.EmployeeCard.Employee);
+        }
+
+        public IQueryable<AttendanceMonthlyCard> GetAllbyId(Guid id)
+        {
+            return _attendanceMonthlyCardRepository.GetAllIncluding(x => x.EmployeeCard.Employee).Where(x => x.AttendanceRecordId == id);
         }
 
         public async Task<AttendanceMonthlyCard> GetbyId(Guid id)

@@ -75,6 +75,10 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
                     foreach(var employeeCard in record.AttendanceMonthlyCards)
                     {
                         await _attendanceMonthlyCardRepository.EnsurePropertyLoadedAsync(employeeCard, x => x.EmployeeCard);
+                        //if(employeeCard.isCalculated)
+                        //{
+                        //    continue;
+                        //}
                         var empC = employeeCard.EmployeeCard;
                         await _employeeCardRepository.EnsurePropertyLoadedAsync(empC, x => x.Employee);
                         var employee = employeeCard.EmployeeCard.Employee;
@@ -144,6 +148,10 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
                             await _employeeCardRepository.EnsurePropertyLoadedAsync(employeeCard.EmployeeCard, x => x.AttendanceForm);
 
                             var attendanceForm = employeeCard.EmployeeCard.AttendanceForm;
+                            if(attendanceForm == null)
+                            {
+                                continue;
+                            }
                             await _attendanceFormRepository.EnsureCollectionLoadedAsync(attendanceForm,x => x.Workshops);
 
                             foreach(var eeRecord in entranceExitRecords)
@@ -238,6 +246,9 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
                         }
                     }
                 }
+                var notCalculated = record.AttendanceMonthlyCards.Any(x => x.isCalculated == false);
+                record.isCalculated = !notCalculated;
+                await _attendanceRecordRepository.UpdateAsync(record);
             }
         }
 
@@ -276,6 +287,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
             return _attendanceRecordRepository.GetAllIncluding(x => x.AttendanceMonthlyCards);
         }
 
+      
         public async Task<AttendanceRecord> GetbyId(Guid id)
         {
             AttendanceRecord attendanceRecord = await _attendanceRecordRepository.GetAsync(id);

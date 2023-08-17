@@ -72,7 +72,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     ),
                     new MenuItem(
                         this.l('Employee Card'),
-                        'https://aspnetboilerplate.com/Templates?ref=abptmpl',
+                        '/app/employee-cards',
                         'far fa-circle'
                     ),
                     new MenuItem(
@@ -121,12 +121,37 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     ),
                     new MenuItem(
                         this.l('EntryExitRecords'),
-                        'https://aspnetboilerplate.com/Templates?ref=abptmpl',
+                        '/app/entrance-exit-records',
                         'far fa-circle'
                     ),
                    
                 ]),
                 new MenuItem(this.l('EmployeeServices'), '', 'fas fa-dot-circle', '', [
+                    new MenuItem(
+                        this.l('Assignments'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('ChangeableHolidays'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('CompanyHolidays'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('FixedHolidays'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('LeaveSettings'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
                     new MenuItem(
                         this.l('LeaveRequests'),
                         '/app/employees',
@@ -139,25 +164,16 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                         '',
                         [
                             new MenuItem(
-                                this.l('Country'),
+                                this.l('LeaveRequestService'),
                                 '/app/countries',
                                 'far fa-circle'
                             ),
                             new MenuItem(
-                                this.l('City'),
+                                this.l('AcceptLeaveRequest'),
                                 '/app/cities',
                                 'far fa-circle'
                             ),
-                            new MenuItem(
-                                this.l('Religion'),
-                                '/app/religions',
-                                'far fa-circle'
-                            ),
-                            new MenuItem(
-                                this.l('Nationality'),
-                                '/app/nationalities',
-                                'far fa-circle'
-                            ),
+                           
                         ]
                     ),
                    

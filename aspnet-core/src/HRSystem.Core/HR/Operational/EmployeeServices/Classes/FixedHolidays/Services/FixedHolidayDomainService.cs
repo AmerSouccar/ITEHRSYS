@@ -10,6 +10,12 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.Service
     public class FixedHolidayDomainService : IFixedHolidayDomainService
     {
         private readonly IRepository<FixedHoliday,Guid> _fixedHolidayRepository;
+
+        public FixedHolidayDomainService(IRepository<FixedHoliday, Guid> fixedHolidayRepository)
+        {
+            _fixedHolidayRepository = fixedHolidayRepository;
+        }
+
         public async Task Delete(Guid id)
         {
             await _fixedHolidayRepository.DeleteAsync(id);

@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using HRSystem.HR.Administrative.Personal.Classes.EmployeeCards;
+using HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,6 +17,13 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCard
         public EmployeeCard EmployeeCard { get; set; }
         public Guid EmployeeCardId { get; set; }
         #endregion
+
+        #region AttendanceRecord
+        [ForeignKey("AttendanceRecordId")]
+        public AttendanceRecord AttendanceRecord { get; set; }
+        public Guid AttendanceRecordId { get; set; }
+        #endregion
+
         public double TotalRequiredWorkHours { get; set; }
         public double ActualTotalWorkHours { get; set; }
         public bool isCalculated { get; set; }

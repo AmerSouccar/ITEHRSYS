@@ -3,12 +3,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-6">
-            <h1>{{ "AttendanceRecords" | localize }}</h1>
+            <h1>{{ "Employee Cards" | localize }}</h1>
           </div>
           <div class="col-6 text-right">
             <a href="javascript:;"
               class="btn bg-blue"
-              (click)="createAttendanceRecord()">
+              (click)="createRecord()">
               <i class="fa fa-plus-square"></i>
               {{ "Create" | localize }}
             </a>
@@ -28,17 +28,17 @@
                 [busy]="isTableLoading">
                 <thead class="bg-light">
                   <tr>
-                    <th>{{ "Year" | localize }}</th>
-                    <th>{{ "Month" | localize }}</th>
-                    <th>{{ "FromDate" | localize }}</th>
-                    <th>{{ "ToDate" | localize }}</th>
-                    <th>{{ "Calculated" | localize }}</th>
-                    <th style="width: 500px;">{{ "Actions" | localize }}</th>
+                    <th>{{ "Employee" | localize }}</th>
+                    <th>{{ "Log Date" | localize }}</th>
+                    <th>{{ "Day" | localize }}</th>
+                    <th>{{ "LogTime" | localize }}</th>
+                    <th>{{ "RecordType" | localize }}</th>
+                    <th style="width: 250px;">{{ "Actions" | localize }}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="
-                    let attendanceRecord of attendanceRecords
+                    let record of records
                       | paginate
                         : {
                             id: 'server',
@@ -47,47 +47,20 @@
                             totalItems: totalItems
                           }
                   ">
-                    <td>{{ attendanceRecord.year }} </td>
-                    <td>{{ attendanceRecord.month + 1 }} </td>
-                    <td>{{ attendanceRecord.fromDate | date: 'dd / MM / yyyy' }}</td>
-                    <td>{{ attendanceRecord.toDate | date: 'dd / MM / yyyy' }}</td>
-                    <td>{{ attendanceRecord.isCalculated? 'Yes' : 'No' }}</td>
+                    <td>{{ record.employee.tripleName }}</td>
+                    <td>{{ record.logDate | date : "dd / MM / yyyy" }}</td>
+                    <td>{{ record.day }}</td>
+                    <td>{{ record.logTime | date: "hh : mm" }}</td>
+                    <td>{{ record.logType == 0 ? "Entrance" : "Exit" }}</td>
                     <td>
-                      <!-- <button type="button"
+                      <button type="button"
                         class="btn btn-sm bg-secondary"
-                        (click)="editAttendanceRecord(attendanceRecord)">
+                        (click)="editRecord(record)">
                         <i class="fas fa-pencil-alt"></i>
                         {{ "Edit" | localize }}
-                      </button> -->
-                      <button type="button"
-                        class="btn btn-sm bg-danger mx-2"
-                        (click)="delete(attendanceRecord)">
-                        <i class="fas fa-trash"></i>
-                        {{ "Delete" | localize }}
                       </button>
-                      <button type="button"
-                      class="btn btn-sm bg-primary mx-2"
-                      (click)="onCardsButtonClick(attendanceRecord)">
-                      {{ "Cards" | localize }}
-                    </button>
-                      <button type="button"
-                        class="btn btn-sm bg-primary mx-2"
-                        (click)="delete(attendanceRecord)">
-                        {{ "Generate" | localize }}
-                      </button>
-                      <button type="button" *ngIf="!attendanceRecord.isCalculated"
-                        class="btn btn-sm bg-primary mx-2"
-                        (click)="onCalculateMonthButtonClick(attendanceRecord)">
-                        {{ "Calculate" | localize }}
-                      </button>
-                      <button type="button" *ngIf="attendanceRecord.isCalculated"
-                      disabled
-                      class="btn btn-sm bg-success mx-2"
-                      >
-                      {{ "Calculated" | localize }}
-                      <i class="fas fa-check"></i>
-                    </button>
-    
+                     
+                      
                     </td>
                   </tr>
                 </tbody>

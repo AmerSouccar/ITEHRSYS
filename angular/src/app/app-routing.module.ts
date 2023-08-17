@@ -17,6 +17,8 @@ import { AttendanceFormComponent } from './attendance-form/attendance-form.compo
 import { WorkshopComponent } from './workshop/workshop.component';
 import { NormalShiftComponent } from './normal-shift/normal-shift.component';
 import { AttendanceRecordComponent } from './attendance-record/attendance-record.component';
+import { AttendanceMonthlyCardComponent } from './attendance-monthly-card/attendance-monthly-card.component';
+import { EmployeeCardComponent } from './employee-card/employee-card.component';
 
 @NgModule({
     imports: [
@@ -35,11 +37,15 @@ import { AttendanceRecordComponent } from './attendance-record/attendance-record
                     { path: 'countries', component: CountryComponent, canActivate: [AppRouteGuard] },
                     { path: 'religions', component: ReligionComponent, canActivate: [AppRouteGuard] },
                     { path: 'employees', component: EmployeeComponent, canActivate: [AppRouteGuard] },
+                    { path: 'employee-cards', component: EmployeeCardComponent, canActivate: [AppRouteGuard] },
                     { path: 'nationalities', component: NationalityComponent, canActivate: [AppRouteGuard] },
+                    { path: 'entrance-exit-records', component: NationalityComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForms', component: AttendanceFormComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForm/:id/workshops', component:WorkshopComponent ,  canActivate: [AppRouteGuard] },
                     { path: 'workshop/:id/normalshifts', component:NormalShiftComponent ,  canActivate: [AppRouteGuard] },
                     { path: 'attendanceRecords', component: AttendanceRecordComponent, canActivate: [AppRouteGuard] },
+                    { path: 'attendanceRecord/:id/monthlyCards', component:AttendanceMonthlyCardComponent ,  canActivate: [AppRouteGuard] },
+
                 ]
             }
         ])

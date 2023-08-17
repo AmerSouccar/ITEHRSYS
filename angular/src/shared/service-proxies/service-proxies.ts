@@ -1039,6 +1039,72 @@ export class AttendanceMonthlyCardServiceProxy {
 
     /**
      * @param id (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getAllbyId(id: string | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadAttendanceMonthlyCardDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/AttendanceMonthlyCard/GetAllbyId?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllbyId(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllbyId(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ReadAttendanceMonthlyCardDtoPagedResultDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ReadAttendanceMonthlyCardDtoPagedResultDto>;
+        }));
+    }
+
+    protected processGetAllbyId(response: HttpResponseBase): Observable<ReadAttendanceMonthlyCardDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ReadAttendanceMonthlyCardDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
      * @return Success
      */
     getbyId(id: string | undefined): Observable<ReadAttendanceMonthlyCardDto> {
@@ -7565,6 +7631,247 @@ export class EmployeeServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = UpdateEmployeeDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+}
+
+@Injectable()
+export class EmployeeCardServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadEmployeeCardDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/EmployeeCard/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAll(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAll(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ReadEmployeeCardDtoPagedResultDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ReadEmployeeCardDtoPagedResultDto>;
+        }));
+    }
+
+    protected processGetAll(response: HttpResponseBase): Observable<ReadEmployeeCardDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ReadEmployeeCardDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getbyId(id: string | undefined): Observable<ReadEmployeeCardDto> {
+        let url_ = this.baseUrl + "/api/services/app/EmployeeCard/GetbyId?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetbyId(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetbyId(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ReadEmployeeCardDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ReadEmployeeCardDto>;
+        }));
+    }
+
+    protected processGetbyId(response: HttpResponseBase): Observable<ReadEmployeeCardDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ReadEmployeeCardDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateEmployeeCardDto> {
+        let url_ = this.baseUrl + "/api/services/app/EmployeeCard/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateEmployeeCardDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateEmployeeCardDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateEmployeeCardDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateEmployeeCardDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    update(body: UpdateEmployeeCardDto | undefined): Observable<UpdateEmployeeCardDto> {
+        let url_ = this.baseUrl + "/api/services/app/EmployeeCard/Update";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdate(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateEmployeeCardDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateEmployeeCardDto>;
+        }));
+    }
+
+    protected processUpdate(response: HttpResponseBase): Observable<UpdateEmployeeCardDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateEmployeeCardDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -32169,6 +32476,7 @@ export interface IReadAttendanceFormDtoPagedResultDto {
 
 export class ReadAttendanceMonthlyCardDto implements IReadAttendanceMonthlyCardDto {
     id: string;
+    employeeCard: ReadEmployeeCardDto;
     employeeCardId: string;
     totalRequiredWorkHours: number;
     actualTotalWorkHours: number;
@@ -32186,6 +32494,7 @@ export class ReadAttendanceMonthlyCardDto implements IReadAttendanceMonthlyCardD
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.employeeCard = _data["employeeCard"] ? ReadEmployeeCardDto.fromJS(_data["employeeCard"]) : <any>undefined;
             this.employeeCardId = _data["employeeCardId"];
             this.totalRequiredWorkHours = _data["totalRequiredWorkHours"];
             this.actualTotalWorkHours = _data["actualTotalWorkHours"];
@@ -32203,6 +32512,7 @@ export class ReadAttendanceMonthlyCardDto implements IReadAttendanceMonthlyCardD
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["employeeCard"] = this.employeeCard ? this.employeeCard.toJSON() : <any>undefined;
         data["employeeCardId"] = this.employeeCardId;
         data["totalRequiredWorkHours"] = this.totalRequiredWorkHours;
         data["actualTotalWorkHours"] = this.actualTotalWorkHours;
@@ -32220,6 +32530,7 @@ export class ReadAttendanceMonthlyCardDto implements IReadAttendanceMonthlyCardD
 
 export interface IReadAttendanceMonthlyCardDto {
     id: string;
+    employeeCard: ReadEmployeeCardDto;
     employeeCardId: string;
     totalRequiredWorkHours: number;
     actualTotalWorkHours: number;
@@ -34080,6 +34391,172 @@ export class ReadEducationGradeDtoPagedResultDto implements IReadEducationGradeD
 
 export interface IReadEducationGradeDtoPagedResultDto {
     items: ReadEducationGradeDto[] | undefined;
+    totalCount: number;
+}
+
+export class ReadEmployeeCardDto implements IReadEmployeeCardDto {
+    id: string;
+    employeeId: string;
+    employee: ReadEmployeeDto;
+    readonly fatherName: string | undefined;
+    jobDescriptionId: string | undefined;
+    jobDescription: ReadJobDescriptionDto;
+    positionId: string | undefined;
+    position: ReadPositionDto;
+    jobTitleId: string | undefined;
+    jobTitle: ReadJobTitleDto;
+    gradeId: string | undefined;
+    grade: ReadGradeDto;
+    attendanceFormId: string | undefined;
+    attendanceForm: ReadAttendanceFormDto;
+    startWorkingDate: string | undefined;
+    endWorkingDate: string | undefined;
+    probationPeriodDate: string | undefined;
+    contractType: number;
+
+    constructor(data?: IReadEmployeeCardDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.employeeId = _data["employeeId"];
+            this.employee = _data["employee"] ? ReadEmployeeDto.fromJS(_data["employee"]) : <any>undefined;
+            (<any>this).fatherName = _data["fatherName"];
+            this.jobDescriptionId = _data["jobDescriptionId"];
+            this.jobDescription = _data["jobDescription"] ? ReadJobDescriptionDto.fromJS(_data["jobDescription"]) : <any>undefined;
+            this.positionId = _data["positionId"];
+            this.position = _data["position"] ? ReadPositionDto.fromJS(_data["position"]) : <any>undefined;
+            this.jobTitleId = _data["jobTitleId"];
+            this.jobTitle = _data["jobTitle"] ? ReadJobTitleDto.fromJS(_data["jobTitle"]) : <any>undefined;
+            this.gradeId = _data["gradeId"];
+            this.grade = _data["grade"] ? ReadGradeDto.fromJS(_data["grade"]) : <any>undefined;
+            this.attendanceFormId = _data["attendanceFormId"];
+            this.attendanceForm = _data["attendanceForm"] ? ReadAttendanceFormDto.fromJS(_data["attendanceForm"]) : <any>undefined;
+            this.startWorkingDate = _data["startWorkingDate"];
+            this.endWorkingDate = _data["endWorkingDate"];
+            this.probationPeriodDate = _data["probationPeriodDate"];
+            this.contractType = _data["contractType"];
+        }
+    }
+
+    static fromJS(data: any): ReadEmployeeCardDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadEmployeeCardDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["employeeId"] = this.employeeId;
+        data["employee"] = this.employee ? this.employee.toJSON() : <any>undefined;
+        data["fatherName"] = this.fatherName;
+        data["jobDescriptionId"] = this.jobDescriptionId;
+        data["jobDescription"] = this.jobDescription ? this.jobDescription.toJSON() : <any>undefined;
+        data["positionId"] = this.positionId;
+        data["position"] = this.position ? this.position.toJSON() : <any>undefined;
+        data["jobTitleId"] = this.jobTitleId;
+        data["jobTitle"] = this.jobTitle ? this.jobTitle.toJSON() : <any>undefined;
+        data["gradeId"] = this.gradeId;
+        data["grade"] = this.grade ? this.grade.toJSON() : <any>undefined;
+        data["attendanceFormId"] = this.attendanceFormId;
+        data["attendanceForm"] = this.attendanceForm ? this.attendanceForm.toJSON() : <any>undefined;
+        data["startWorkingDate"] = this.startWorkingDate;
+        data["endWorkingDate"] = this.endWorkingDate;
+        data["probationPeriodDate"] = this.probationPeriodDate;
+        data["contractType"] = this.contractType;
+        return data;
+    }
+
+    clone(): ReadEmployeeCardDto {
+        const json = this.toJSON();
+        let result = new ReadEmployeeCardDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadEmployeeCardDto {
+    id: string;
+    employeeId: string;
+    employee: ReadEmployeeDto;
+    fatherName: string | undefined;
+    jobDescriptionId: string | undefined;
+    jobDescription: ReadJobDescriptionDto;
+    positionId: string | undefined;
+    position: ReadPositionDto;
+    jobTitleId: string | undefined;
+    jobTitle: ReadJobTitleDto;
+    gradeId: string | undefined;
+    grade: ReadGradeDto;
+    attendanceFormId: string | undefined;
+    attendanceForm: ReadAttendanceFormDto;
+    startWorkingDate: string | undefined;
+    endWorkingDate: string | undefined;
+    probationPeriodDate: string | undefined;
+    contractType: number;
+}
+
+export class ReadEmployeeCardDtoPagedResultDto implements IReadEmployeeCardDtoPagedResultDto {
+    items: ReadEmployeeCardDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadEmployeeCardDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadEmployeeCardDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadEmployeeCardDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadEmployeeCardDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadEmployeeCardDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadEmployeeCardDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadEmployeeCardDtoPagedResultDto {
+    items: ReadEmployeeCardDto[] | undefined;
     totalCount: number;
 }
 
@@ -41735,6 +42212,89 @@ export interface IUpdateEducationGradeDto {
     maxSalary: number | undefined;
     currency: number | undefined;
     description: string | undefined;
+}
+
+export class UpdateEmployeeCardDto implements IUpdateEmployeeCardDto {
+    id: string;
+    employeeId: string;
+    jobDescriptionId: string | undefined;
+    positionId: string | undefined;
+    jobTitleId: string | undefined;
+    gradeId: string | undefined;
+    attendanceFormId: string | undefined;
+    startWorkingDate: string | undefined;
+    endWorkingDate: string | undefined;
+    probationPeriodDate: string | undefined;
+    contractType: number;
+
+    constructor(data?: IUpdateEmployeeCardDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.employeeId = _data["employeeId"];
+            this.jobDescriptionId = _data["jobDescriptionId"];
+            this.positionId = _data["positionId"];
+            this.jobTitleId = _data["jobTitleId"];
+            this.gradeId = _data["gradeId"];
+            this.attendanceFormId = _data["attendanceFormId"];
+            this.startWorkingDate = _data["startWorkingDate"];
+            this.endWorkingDate = _data["endWorkingDate"];
+            this.probationPeriodDate = _data["probationPeriodDate"];
+            this.contractType = _data["contractType"];
+        }
+    }
+
+    static fromJS(data: any): UpdateEmployeeCardDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateEmployeeCardDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["employeeId"] = this.employeeId;
+        data["jobDescriptionId"] = this.jobDescriptionId;
+        data["positionId"] = this.positionId;
+        data["jobTitleId"] = this.jobTitleId;
+        data["gradeId"] = this.gradeId;
+        data["attendanceFormId"] = this.attendanceFormId;
+        data["startWorkingDate"] = this.startWorkingDate;
+        data["endWorkingDate"] = this.endWorkingDate;
+        data["probationPeriodDate"] = this.probationPeriodDate;
+        data["contractType"] = this.contractType;
+        return data;
+    }
+
+    clone(): UpdateEmployeeCardDto {
+        const json = this.toJSON();
+        let result = new UpdateEmployeeCardDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IUpdateEmployeeCardDto {
+    id: string;
+    employeeId: string;
+    jobDescriptionId: string | undefined;
+    positionId: string | undefined;
+    jobTitleId: string | undefined;
+    gradeId: string | undefined;
+    attendanceFormId: string | undefined;
+    startWorkingDate: string | undefined;
+    endWorkingDate: string | undefined;
+    probationPeriodDate: string | undefined;
+    contractType: number;
 }
 
 export class UpdateEmployeeDto implements IUpdateEmployeeDto {

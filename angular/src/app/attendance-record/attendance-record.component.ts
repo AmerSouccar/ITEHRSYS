@@ -132,18 +132,24 @@ export class AttendanceRecordComponent extends PagedListingComponentBase<ReadAtt
 
   }
 
-  onAttendanceRecordButtonClick(event){
-    // this.router.navigateByUrl('app/workshop/' + event.id +'/normalshifts');
+  onCardsButtonClick(event){
+     this.router.navigateByUrl('app/attendanceRecord/' + event.id +'/monthlyCards');
   }
 
   onGenerateMonthButtonClick(event){
-
+    // open new window that have all employees
+    // check employees
+    // generate
   }
 
   onCalculateMonthButtonClick(event){
-    this._attendanceRecordService.calculateMonth(event.id).subscribe(() => {
-       this.refresh();
-    });
+    this._attendanceRecordService.calculateMonth(event.id).pipe(
+      finalize(() => {
+        abp.notify.success(this.l('Calculated!'));
+        this.refresh();
+      })
+    )
+    .subscribe(() => {});
   }
 
 }

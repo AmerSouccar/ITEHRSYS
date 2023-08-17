@@ -13,6 +13,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCard
     public interface IAttendanceMonthlyCardAppService : IApplicationService
     {
         public PagedResultDto<ReadAttendanceMonthlyCardDto> GetAll(PagedGeneralResultRequestDto input);
+        public PagedResultDto<ReadAttendanceMonthlyCardDto> GetAllbyId(Guid id ,PagedGeneralResultRequestDto input);
         public Task<ReadAttendanceMonthlyCardDto> GetbyId(Guid id);
         public Task<InsertAttendanceMonthlyCardDto> Insert(InsertAttendanceMonthlyCardDto attendanceMonthlyCard);
         public Task<UpdateAttendanceMonthlyCardDto> Update(UpdateAttendanceMonthlyCardDto attendanceMonthlyCard);

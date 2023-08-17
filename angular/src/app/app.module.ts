@@ -65,6 +65,12 @@ import { EditNormalShiftDialogComponent } from './normal-shift/edit-normal-shift
 import { AttendanceRecordComponent } from './attendance-record/attendance-record.component';
 import { CreateAttendanceRecordDialogComponent } from './attendance-record/create-attendance-record-dialog/create-attendance-record-dialog.component';
 import { EditAttendanceRecordDialogComponent } from './attendance-record/edit-attendance-record-dialog/edit-attendance-record-dialog.component';
+import { AttendanceMonthlyCardComponent } from './attendance-monthly-card/attendance-monthly-card.component';
+import { EmployeeCardComponent } from './employee-card/employee-card.component';
+import { EditEmployeeCardComponent } from './employee-card/edit-employee-card/edit-employee-card.component';
+import { EntranceExitRecordComponent } from './entrance-exit-record/entrance-exit-record.component';
+import { CreateEntranceExitRecordDialogComponent } from './entrance-exit-record/create-entrance-exit-record-dialog/create-entrance-exit-record-dialog.component';
+import { EditEntranceExitRecordDialogComponent } from './entrance-exit-record/edit-entrance-exit-record-dialog/edit-entrance-exit-record-dialog.component';
 
 @NgModule({
     declarations: [
@@ -121,7 +127,13 @@ import { EditAttendanceRecordDialogComponent } from './attendance-record/edit-at
         EditNormalShiftDialogComponent,
         AttendanceRecordComponent,
         CreateAttendanceRecordDialogComponent,
-        EditAttendanceRecordDialogComponent
+        EditAttendanceRecordDialogComponent,
+        AttendanceMonthlyCardComponent,
+        EmployeeCardComponent,
+        EditEmployeeCardComponent,
+        EntranceExitRecordComponent,
+        CreateEntranceExitRecordDialogComponent,
+        EditEntranceExitRecordDialogComponent
     ],
     imports: [
         CommonModule,

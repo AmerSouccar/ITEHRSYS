@@ -1,5 +1,5 @@
 ﻿using Abp.Application.Services.Dto;
-using HRSystem.HR.Administrative.Personal.Classes.EmployeeCards;
+using HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +11,7 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceMonthlyCard
 {
     public class ReadAttendanceMonthlyCardDto :EntityDto<Guid>
     {
-        //public EmployeeCard EmployeeCard { get; set; }
+        public ReadEmployeeCardDto EmployeeCard { get; set; }
         public Guid EmployeeCardId { get; set; }
         public double TotalRequiredWorkHours { get; set; }
         public double ActualTotalWorkHours { get; set; }

@@ -1,0 +1,35 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'EditEmployeeCard' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row">
+        <label class="col-md-12 col-form-label" for="type">
+          {{ "Attendance Form" | localize }}
+        </label>
+      <div class="col-md-12">
+
+        <select [(ngModel)]="employeeCard.attendanceFormId"  class="form-control" name="name" id="name">
+            <option  
+             required
+              *ngFor="let attendanceForm of attendanceForms" [ngValue]="attendanceForm.id"
+              >
+              {{attendanceForm.name}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

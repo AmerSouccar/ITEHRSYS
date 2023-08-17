@@ -67,7 +67,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees.Dto
         {
             get
             {
-                return FirstName + " " + FatherName + "" + LastName;
+                return FirstName + " " + FatherName + " " + LastName;
             }
 
         }
