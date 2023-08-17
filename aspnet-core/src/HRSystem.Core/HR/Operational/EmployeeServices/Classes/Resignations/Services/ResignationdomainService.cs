@@ -22,9 +22,9 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Resignations.Services
             await _resignationRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Resignation>> GetAll()
+        public IQueryable<Resignation> GetAll()
         {
-            return _resignationRepository.GetAllIncluding(x => x.EmployeeCard).ToList();
+            return _resignationRepository.GetAllIncluding(x => x.EmployeeCard);
         }
 
         public async Task<Resignation> GetbyId(Guid id)

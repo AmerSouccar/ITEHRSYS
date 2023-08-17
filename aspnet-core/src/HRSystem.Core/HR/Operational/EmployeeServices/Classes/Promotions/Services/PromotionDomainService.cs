@@ -22,9 +22,9 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Promotions.Services
             await _promotionRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Promotion>> GetAll()
+        public IQueryable<Promotion> GetAll()
         {
-            return _promotionRepository.GetAllIncluding(x => x.JobTitle, x => x.Position, x => x.EmployeeCard).ToList();
+            return _promotionRepository.GetAllIncluding(x => x.JobTitle, x => x.Position, x => x.EmployeeCard);
         }
 
         public async Task<Promotion> GetbyId(Guid id)

@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.Service
 {
     public interface IFixedHolidayAppService :IApplicationService
     {
-        public Task<List<ReadFixedHolidayDto>> GetAll();
+        public PagedResultDto<ReadFixedHolidayDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadFixedHolidayDto> GetbyId(Guid id);
         public Task<InsertFixedHolidayDto> Insert(InsertFixedHolidayDto fixedHoliday);
         public Task<UpdateFixedHolidayDto> Update(UpdateFixedHolidayDto fixedHoliday);

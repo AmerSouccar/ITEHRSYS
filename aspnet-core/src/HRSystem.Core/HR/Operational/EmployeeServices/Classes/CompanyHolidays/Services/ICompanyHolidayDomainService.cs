@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.CompanyHolidays.Servi
 {
     public interface ICompanyHolidayDomainService :IDomainService
     {
-        public Task<List<CompanyHoliday>> GetAll();
+        public IQueryable<CompanyHoliday> GetAll();
         public Task<CompanyHoliday> GetbyId(Guid id);
         public Task<CompanyHoliday> Insert(CompanyHoliday companyHoliday);
         public Task<CompanyHoliday> Update(CompanyHoliday companyHoliday);

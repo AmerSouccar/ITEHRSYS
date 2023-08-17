@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +29,14 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
            await _leaveRequestDomanService.Delete(id);
         }
 
-        public async Task<List<ReadLeaveRequestDto>> GetAll()
+        public PagedResultDto<ReadLeaveRequestDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadLeaveRequestDto>>(await _leaveRequestDomanService.GetAll());
+            var holidays = _leaveRequestDomanService.GetAll();
+            int total = holidays.Count();
+            holidays = holidays.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadLeaveRequestDto>>(holidays.ToList());
+            return new PagedResultDto<ReadLeaveRequestDto>(total, list);
         }
 
         public async Task<ReadLeaveRequestDto> GetbyId(Guid id)

@@ -21,9 +21,9 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.ChangeableHolidays.Se
             await _changeableHolidayRepository.DeleteAsync(id);
         }
 
-        public async Task<List<ChangeableHoliday>> GetAll()
+        public IQueryable<ChangeableHoliday> GetAll()
         {
-            return await _changeableHolidayRepository.GetAllListAsync();
+            return _changeableHolidayRepository.GetAll();
         }
 
         public Task<ChangeableHoliday> GetbyId(Guid id)

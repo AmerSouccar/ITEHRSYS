@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Transfers.Services
 {
     public interface ITransferDomainService :IDomainService
     {
-        public Task<List<Transfer>> GetAll();
+        public IQueryable<Transfer> GetAll();
         public Task<Transfer> GetbyId(Guid id);
         public Task<Transfer> Insert(Transfer transfer);
         public Task<Transfer> Update(Transfer transfer);

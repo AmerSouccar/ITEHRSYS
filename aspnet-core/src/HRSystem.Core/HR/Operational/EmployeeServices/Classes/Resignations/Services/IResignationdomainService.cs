@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Resignations.Services
 {
     public interface IResignationdomainService :IDomainService
     {
-        public Task<List<Resignation>> GetAll();
+        public IQueryable<Resignation> GetAll();
         public Task<Resignation> GetbyId(Guid id);
         public Task<Resignation> Insert(Resignation resignation);
         public Task<Resignation> Update(Resignation resignation);

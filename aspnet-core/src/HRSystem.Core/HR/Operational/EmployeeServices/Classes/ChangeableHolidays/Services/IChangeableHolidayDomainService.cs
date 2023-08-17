@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.ChangeableHolidays.Se
 {
     public interface IChangeableHolidayDomainService :IDomainService
     {
-        public Task<List<ChangeableHoliday>> GetAll();
+        public IQueryable<ChangeableHoliday> GetAll();
         public Task<ChangeableHoliday> GetbyId(Guid id);
         public Task<ChangeableHoliday> Insert(ChangeableHoliday changeableHoliday);
         public Task<ChangeableHoliday> Update(ChangeableHoliday changeableHoliday);

@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
 {
     public interface ILeaveRequestAppService : IApplicationService
     {
-        public Task<List<ReadLeaveRequestDto>> GetAll();
+        public PagedResultDto<ReadLeaveRequestDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadLeaveRequestDto> GetbyId(Guid id);
         public Task AcceptLeaveRequest(Guid id);
         public Task RejectLeaveRequest(Guid id);

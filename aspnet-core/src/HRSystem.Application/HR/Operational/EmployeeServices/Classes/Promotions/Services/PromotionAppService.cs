@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Operational.EmployeeServices.Classes.Promotions.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Promotions.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Promotions.Services
             await _promotionDomainService.Delete(id);
         }
 
-        public async Task<List<ReadPromotionDto>> GetAll()
+        public PagedResultDto<ReadPromotionDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<ReadPromotionDto>>(await _promotionDomainService.GetAll());
+            var promotions = _promotionDomainService.GetAll();
+            int total = promotions.Count();
+            promotions = promotions.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadPromotionDto>>(promotions.ToList());
+            return new PagedResultDto<ReadPromotionDto>(total, list);
         }
 
         public async Task<ReadPromotionDto> GetbyId(Guid id)

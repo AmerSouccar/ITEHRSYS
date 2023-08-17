@@ -72,6 +72,8 @@ import { EntranceExitRecordComponent } from './entrance-exit-record/entrance-exi
 import { CreateEntranceExitRecordDialogComponent } from './entrance-exit-record/create-entrance-exit-record-dialog/create-entrance-exit-record-dialog.component';
 import { EditEntranceExitRecordDialogComponent } from './entrance-exit-record/edit-entrance-exit-record-dialog/edit-entrance-exit-record-dialog.component';
 import { ImportFromExcelDialogComponent } from './entrance-exit-record/import-from-excel-dialog/import-from-excel-dialog.component';
+import { AssignmentComponent } from './assignment/assignment.component';
+import { CreateAssignmentDialogComponent } from './assignment/create-assignment-dialog/create-assignment-dialog.component';
 
 @NgModule({
     declarations: [
@@ -135,7 +137,9 @@ import { ImportFromExcelDialogComponent } from './entrance-exit-record/import-fr
         EntranceExitRecordComponent,
         CreateEntranceExitRecordDialogComponent,
         EditEntranceExitRecordDialogComponent,
-        ImportFromExcelDialogComponent
+        ImportFromExcelDialogComponent,
+        AssignmentComponent,
+        CreateAssignmentDialogComponent
     ],
     imports: [
         CommonModule,

@@ -89,21 +89,21 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
                             double actualHours = 0;
                             bool holidayConfirmed = false;
 
-                            var companyHolidays = await _companyHolidayDomainService.GetAll();
+                            var companyHolidays = _companyHolidayDomainService.GetAll();
                             if (!holidayConfirmed && companyHolidays.Any(x => x.DayOfWeek.ToString() == dt.Day.ToString()))
                             {
                                 requiredHours += 8;
                                 actualHours += 8;
                                 holidayConfirmed = true;
                             }
-                            var fixedHolidays = await _fixedHolidayDomainService.GetAll();
+                            var fixedHolidays = _fixedHolidayDomainService.GetAll();
                             if(!holidayConfirmed && fixedHolidays.Any(x => x.Month.ToString() == dt.Month.ToString() && x.Day.ToString() == dt.Day.ToString()))
                             {
                                 requiredHours += 8;
                                 actualHours += 8;
                                 holidayConfirmed = true;
                             }
-                            var changeableHolidays = await _changeableHolidayDomainService.GetAll();
+                            var changeableHolidays = _changeableHolidayDomainService.GetAll();
                             if (!holidayConfirmed && changeableHolidays.Any(x => x.StartDate <= dt && x.EndDate >= dt))
                             {
                                 requiredHours += 8;

@@ -36,9 +36,9 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
             await _leaveRequestsRepository.DeleteAsync(id);
         }
 
-        public async Task<List<LeaveRequest>> GetAll()
+        public IQueryable<LeaveRequest> GetAll()
         {
-            return _leaveRequestsRepository.GetAllIncluding(x => x.LeaveSetting).ToList();
+            return _leaveRequestsRepository.GetAllIncluding(x => x.LeaveSetting);
         }
 
         public async Task<LeaveRequest> GetbyId(Guid id)

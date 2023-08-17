@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Promotions.Services
 {
     public interface IPromotionDomainService :IDomainService
     {
-        public Task<List<Promotion>> GetAll();
+        public IQueryable<Promotion> GetAll();
         public Task<Promotion> GetbyId(Guid id);
         public Task<Promotion> Insert(Promotion promotion);
         public Task<Promotion> Update(Promotion promotion);

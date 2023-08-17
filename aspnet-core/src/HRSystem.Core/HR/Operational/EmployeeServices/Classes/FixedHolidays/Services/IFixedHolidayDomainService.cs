@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.Service
 {
     public interface IFixedHolidayDomainService : IDomainService
     {
-        public Task<List<FixedHoliday>> GetAll();
+        public IQueryable<FixedHoliday> GetAll();
         public Task<FixedHoliday> GetbyId(Guid id);
         public Task<FixedHoliday> Insert(FixedHoliday fixedHoliday);
         public Task<FixedHoliday> Update(FixedHoliday fixedHoliday);

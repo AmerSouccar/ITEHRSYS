@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Operational.EmployeeServices.Classes.Transfers.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Transfers.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Transfers.Services
            await _transferdomainService.Delete(id);
         }
 
-        public async Task<List<ReadTransferDto>> GetAll()
+        public PagedResultDto<ReadTransferDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadTransferDto>>(await _transferdomainService.GetAll());
+            var transfers = _transferdomainService.GetAll();
+            int total = transfers.Count();
+            transfers = transfers.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadTransferDto>>(transfers.ToList());
+            return new PagedResultDto<ReadTransferDto>(total, list);
         }
 
         public async Task<ReadTransferDto> GetbyId(Guid id)

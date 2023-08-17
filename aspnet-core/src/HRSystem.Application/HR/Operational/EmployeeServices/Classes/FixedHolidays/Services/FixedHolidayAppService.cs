@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.Service
             await _fixedHolidaydomainService.Delete(id);
         }
 
-        public async Task<List<ReadFixedHolidayDto>> GetAll()
+        public PagedResultDto<ReadFixedHolidayDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadFixedHolidayDto>>(await _fixedHolidaydomainService.GetAll());
+            var holidays = _fixedHolidaydomainService.GetAll();
+            int total = holidays.Count();
+            holidays = holidays.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadFixedHolidayDto>>(holidays.ToList());
+            return new PagedResultDto<ReadFixedHolidayDto>(total, list);
         }
 
         public async Task<ReadFixedHolidayDto> GetbyId(Guid id)

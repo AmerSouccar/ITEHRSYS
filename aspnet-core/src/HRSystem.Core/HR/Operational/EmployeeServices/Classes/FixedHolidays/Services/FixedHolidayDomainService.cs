@@ -21,9 +21,9 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.Service
             await _fixedHolidayRepository.DeleteAsync(id);
         }
 
-        public async Task<List<FixedHoliday>> GetAll()
+        public IQueryable<FixedHoliday> GetAll()
         {
-            return await _fixedHolidayRepository.GetAllListAsync();
+            return  _fixedHolidayRepository.GetAll();
         }
 
         public Task<FixedHoliday> GetbyId(Guid id)

@@ -22,9 +22,9 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Services
             await _assignmentRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Assignment>> GetAll()
+        public IQueryable<Assignment> GetAll()
         {
-            return _assignmentRepository.GetAllIncluding(x => x.JobTitle, x => x.Position, x => x.EmployeeCard).ToList();
+            return _assignmentRepository.GetAllIncluding(x => x.JobTitle, x => x.Position, x => x.EmployeeCard);
         }
 
         public async Task<Assignment> GetbyId(Guid id)

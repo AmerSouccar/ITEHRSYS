@@ -22,9 +22,9 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Transfers.Services
             await _transferRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Transfer>> GetAll()
+        public IQueryable<Transfer> GetAll()
         {
-            return _transferRepository.GetAllIncluding(x => x.DestinationJobTitle, x => x.DestinationPosition).ToList();
+            return _transferRepository.GetAllIncluding(x => x.DestinationJobTitle, x => x.DestinationPosition);
         }
 
         public async Task<Transfer> GetbyId(Guid id)

@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.Service
 {
     public interface ILeaveSettingDomainService :IDomainService
     {
-        public Task<List<LeaveSetting>> GetAll();
+        public IQueryable<LeaveSetting> GetAll();
         public Task<LeaveSetting> GetbyId(Guid id);
         public Task<LeaveSetting> Insert(LeaveSetting leaveSetting);
         public Task<LeaveSetting> Update(LeaveSetting leaveSetting);

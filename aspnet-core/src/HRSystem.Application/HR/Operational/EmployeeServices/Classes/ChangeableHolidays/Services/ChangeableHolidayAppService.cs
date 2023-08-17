@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Operational.EmployeeServices.Classes.ChangeableHolidays.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.ChangeableHolidays.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.ChangeableHolidays.Se
             await _changeableHolidaydomainService.Delete(id);
         }
 
-        public async Task<List<ReadChangeableHolidayDto>> GetAll()
+        public PagedResultDto<ReadChangeableHolidayDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadChangeableHolidayDto>>(await _changeableHolidaydomainService.GetAll());
+            var changeableHolidays = _changeableHolidaydomainService.GetAll();
+            int total = changeableHolidays.Count();
+            changeableHolidays = changeableHolidays.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadChangeableHolidayDto>>(changeableHolidays.ToList());
+            return new PagedResultDto<ReadChangeableHolidayDto>(total, list);
         }
 
         public async Task<ReadChangeableHolidayDto> GetbyId(Guid id)

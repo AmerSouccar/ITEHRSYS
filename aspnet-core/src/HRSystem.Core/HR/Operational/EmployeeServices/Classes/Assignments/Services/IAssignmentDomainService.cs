@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Services
 {
     public interface IAssignmentDomainService :IDomainService
     {
-        public Task<List<Assignment>> GetAll();
+        public IQueryable<Assignment> GetAll();
         public Task<Assignment> GetbyId(Guid id);
         public Task<Assignment> Insert(Assignment assignment);
         public Task<Assignment> Update(Assignment assignment);

@@ -23,9 +23,9 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.Service
             await _leaveSettingRepository.DeleteAsync(id);
         }
 
-        public async Task<List<LeaveSetting>> GetAll()
+        public IQueryable<LeaveSetting> GetAll()
         {
-            return _leaveSettingRepository.GetAllIncluding(x => x.WorkflowSetting).ToList();
+            return _leaveSettingRepository.GetAllIncluding(x => x.WorkflowSetting);
         }
 
         public async Task<LeaveSetting> GetbyId(Guid id)

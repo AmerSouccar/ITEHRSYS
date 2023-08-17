@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Dto;
 using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.Service
 {
     public interface ILeaveSettingAppService : IApplicationService
     {
-        public Task<List<ReadLeaveSettingDto>> GetAll();
+        public PagedResultDto<ReadLeaveSettingDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadLeaveSettingDto> GetbyId(Guid id);
         public Task<InsertLeaveSettingDto> Insert(InsertLeaveSettingDto leaveSetting);
         public Task<UpdateLeaveSettingDto> Update(UpdateLeaveSettingDto leaveSetting);

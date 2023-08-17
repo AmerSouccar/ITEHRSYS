@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Operational.EmployeeServices.Classes.Resignations.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Resignations.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Resignations.Services
             await _resignationdomainservice.Delete(id);
         }
 
-        public async Task<List<ReadResignationDto>> GetAll()
+        public PagedResultDto<ReadResignationDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadResignationDto>>(await _resignationdomainservice.GetAll());
+            var resignitions = _resignationdomainservice.GetAll();
+            int total = resignitions.Count();
+            resignitions = resignitions.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadResignationDto>>(resignitions.ToList());
+            return new PagedResultDto<ReadResignationDto>(total, list);
         }
 
         public async Task<ReadResignationDto> GetbyId(Guid id)

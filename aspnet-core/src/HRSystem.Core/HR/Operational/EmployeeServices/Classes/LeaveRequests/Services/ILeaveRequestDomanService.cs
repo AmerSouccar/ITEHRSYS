@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
 {
     public interface ILeaveRequestDomanService :IDomainService
     {
-        public Task<List<LeaveRequest>> GetAll();
+        public IQueryable<LeaveRequest> GetAll();
         public Task<LeaveRequest> GetbyId(Guid id);
         public Task AcceptLeaveRequest(Guid id);
         public Task RejectLeaveRequest(Guid id);
