@@ -210,7 +210,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     // ),
                     new MenuItem(
                         this.l('LeaveSettings'),
-                        '/app/employees',
+                        '/app/leave-settings',
                         'far fa-circle'
                     ),
                     new MenuItem(

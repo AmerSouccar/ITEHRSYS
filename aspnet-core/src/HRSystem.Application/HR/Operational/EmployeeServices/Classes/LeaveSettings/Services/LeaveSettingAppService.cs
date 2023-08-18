@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Dto;
 using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.Dto;
 using HRSystem.HR.PaginationDto;
 using System;
@@ -37,6 +38,11 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.Service
         public async Task<ReadLeaveSettingDto> GetbyId(Guid id)
         {
             return ObjectMapper.Map<ReadLeaveSettingDto>(await _leaveSettingDomainService.GetbyId(id));
+        }
+
+        public async Task<UpdateLeaveSettingDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateLeaveSettingDto>(await _leaveSettingDomainService.GetbyId(id));
         }
 
         public async Task<InsertLeaveSettingDto> Insert(InsertLeaveSettingDto leaveSetting)

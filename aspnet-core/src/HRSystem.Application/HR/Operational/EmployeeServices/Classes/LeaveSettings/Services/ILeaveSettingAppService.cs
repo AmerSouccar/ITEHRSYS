@@ -15,6 +15,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.Service
     {
         public PagedResultDto<ReadLeaveSettingDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadLeaveSettingDto> GetbyId(Guid id);
+        public Task<UpdateLeaveSettingDto> GetForEdit(Guid id);
         public Task<InsertLeaveSettingDto> Insert(InsertLeaveSettingDto leaveSetting);
         public Task<UpdateLeaveSettingDto> Update(UpdateLeaveSettingDto leaveSetting);
         public Task Delete(Guid id);

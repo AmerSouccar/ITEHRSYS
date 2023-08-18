@@ -34,6 +34,7 @@ import { CompanyHolidayComponent } from './company-holiday/company-holiday.compo
 import { FixedHolidayComponent } from './fixed-holiday/fixed-holiday.component';
 import { WorkflowComponent } from './workflow/workflow.component';
 import { WorkflowSettingsComponent } from './workflow-settings/workflow-settings.component';
+import { LeaveSettingComponent } from './leave-setting/leave-setting.component';
 
 @NgModule({
     imports: [
@@ -68,6 +69,8 @@ import { WorkflowSettingsComponent } from './workflow-settings/workflow-settings
                     { path: 'positions', component: PositionComponent, canActivate: [AppRouteGuard] },
                     { path: 'organization-levels', component: OrgLevelComponent, canActivate: [AppRouteGuard] },
                     { path: 'entrance-exit-records', component: EntranceExitRecordComponent, canActivate: [AppRouteGuard] },
+                    { path: 'leave-settings', component: LeaveSettingComponent, canActivate: [AppRouteGuard] },
+                    // { path: 'leave-requests', component: LeaveSettingComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForms', component: AttendanceFormComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForm/:id/workshops', component:WorkshopComponent ,  canActivate: [AppRouteGuard] },
                     { path: 'workshop/:id/normalshifts', component:NormalShiftComponent ,  canActivate: [AppRouteGuard] },

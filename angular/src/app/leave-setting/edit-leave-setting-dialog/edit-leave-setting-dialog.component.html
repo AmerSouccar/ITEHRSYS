@@ -1,0 +1,121 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'EditLeaveSetting' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="name">
+        {{ "Name" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="name"
+          maxlength="128"
+          required
+          [(ngModel)]="leaveSetting.name"
+          #nameModel="ngModel"
+          #nameEl
+        />
+        <abp-validation-summary
+          [control]="nameModel"
+          [controlEl]="nameEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+
+    <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="balance">
+          {{ "Balance" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="number"
+            class="form-control"
+            name="balance"
+            id="balance"
+            maxlength="128"
+            required
+            [(ngModel)]="leaveSetting.balance"
+            #balanceModel="ngModel"
+            #balanceEl
+          />
+          <abp-validation-summary
+            [control]="balanceModel"
+            [controlEl]="balanceEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+      <div class="col-md-9">
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            name="isActive"
+            id="isActive"
+            [(ngModel)]="leaveSetting.isPaidLeave"
+          />
+          <label class="custom-control-label mt-2" for="isActive">isPaidLeave</label>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="workflowSettingId">
+          {{ "Workflow Setting" | localize }}
+        </label>
+      <div class="col-md-9">
+
+        <select [(ngModel)]="leaveSetting.workflowSettingId"  class="form-control" name="workflowSettingId" id="workflowSettingId">
+            <option  
+             required
+              *ngFor="let workflowSetting of workflowSettings" [ngValue]="workflowSetting.id"
+              >
+              {{workflowSetting.title}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+    <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="Description">
+          {{ "Description" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="text"
+            class="form-control"
+            name="Description"
+            id="Description"
+            maxlength="128"
+            required
+            [(ngModel)]="leaveSetting.description"
+            #DescriptionModel="ngModel"
+            #DescriptionEl
+          />
+          <abp-validation-summary
+            [control]="DescriptionModel"
+            [controlEl]="DescriptionEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>
