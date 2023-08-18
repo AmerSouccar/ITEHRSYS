@@ -83,6 +83,15 @@ import { EditEducationalGradeDialogComponent } from './educational-grade/edit-ed
 import { GradeComponent } from './grade/grade.component';
 import { CreateGradeDialogComponent } from './grade/create-grade-dialog/create-grade-dialog.component';
 import { EditGradeDialogComponent } from './grade/edit-grade-dialog/edit-grade-dialog.component';
+import { JobTitleComponent } from './job-title/job-title.component';
+import { CreateJobTitleDialogComponent } from './job-title/create-job-title-dialog/create-job-title-dialog.component';
+import { EditJobTitleDialogComponent } from './job-title/edit-job-title-dialog/edit-job-title-dialog.component';
+import { OrgLevelComponent } from './org-level/org-level.component';
+import { CreateOrgLevelDialogComponent } from './org-level/create-org-level-dialog/create-org-level-dialog.component';
+import { EditOrgLevelDialogComponent } from './org-level/edit-org-level-dialog/edit-org-level-dialog.component';
+import { JobDescriptionComponent } from './job-description/job-description.component';
+import { CreateJobDescriptionDialogComponent } from './job-description/create-job-description-dialog/create-job-description-dialog.component';
+import { EditJobDescriptionDialogComponent } from './job-description/edit-job-description-dialog/edit-job-description-dialog.component';
 
 @NgModule({
     declarations: [
@@ -157,7 +166,16 @@ import { EditGradeDialogComponent } from './grade/edit-grade-dialog/edit-grade-d
         EditEducationalGradeDialogComponent,
         GradeComponent,
         CreateGradeDialogComponent,
-        EditGradeDialogComponent
+        EditGradeDialogComponent,
+        JobTitleComponent,
+        CreateJobTitleDialogComponent,
+        EditJobTitleDialogComponent,
+        OrgLevelComponent,
+        CreateOrgLevelDialogComponent,
+        EditOrgLevelDialogComponent,
+        JobDescriptionComponent,
+        CreateJobDescriptionDialogComponent,
+        EditJobDescriptionDialogComponent
     ],
     imports: [
         CommonModule,

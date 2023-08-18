@@ -13,6 +13,7 @@ namespace HRSystem.HR.Administrative.Grades.Classes.JobTitles.Services
     public interface IJobTitleAppService : IApplicationService
     {
         public PagedResultDto<ReadJobTitleDto>GetAll(PagedGeneralResultRequestDto input);
+        public PagedResultDto<ReadJobTitleDto>GetAllbyId(Guid id, PagedGeneralResultRequestDto input);
         public Task<ReadJobTitleDto> GetbyId(Guid id);
         public Task<UpdateJobTitleDto> GetForEdit(Guid id);
         public Task<InsertJobTitleDto> Insert(InsertJobTitleDto jobTitle);

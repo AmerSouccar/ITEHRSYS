@@ -3,12 +3,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-6">
-            <h1>{{ "Grades" | localize }}</h1>
+            <h1>{{ "Organization Levels" | localize }}</h1>
           </div>
           <div class="col-6 text-right">
             <a href="javascript:;"
               class="btn bg-blue"
-              (click)="createGrade()">
+              (click)="createNationality()">
               <i class="fa fa-plus-square"></i>
               {{ "Create" | localize }}
             </a>
@@ -29,18 +29,12 @@
                 <thead class="bg-light">
                   <tr>
                     <th>{{ "Name" | localize }}</th>
-                    <th>{{ "ORGLevel" | localize }}</th>
-                    <th>{{ "Education Grade" | localize }}</th>
-                    <th>{{ "Min Salary" | localize }}</th>
-                    <th>{{ "Max Salary" | localize }}</th>
-                    <th>{{ "Currency" | localize }}</th>
-                    <th>{{ "Grade Category" | localize }}</th>
-                    <th style="width: 300px;">{{ "Actions" | localize }}</th>
+                    <th style="width: 200px;">{{ "Actions" | localize }}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="
-                    let grade of grades
+                    let orgLevel of orgLevels
                       | paginate
                         : {
                             id: 'server',
@@ -49,36 +43,20 @@
                             totalItems: totalItems
                           }
                   ">
-                    <td>{{ grade.name }}</td>
-                    <td>{{ grade.organizationLevel.name }}</td>
-                    <td>{{ grade.educationGrade.name }}</td>
-                    <td>{{ grade.minSalary }}</td>
-                    <td>{{ grade.maxSalary }}</td>
-                    <td *ngIf="grade.currency == 0">{{ "SYP" | localize }}</td>
-                    <td *ngIf="grade.currency == 1">{{ "USD" | localize }}</td>
-                    <td *ngIf="grade.currency == 2">{{ "EUR" | localize }}</td>
-                    <td *ngIf="grade.gradeCategory == 0">{{ "High" | localize }}</td>
-                    <td *ngIf="grade.gradeCategory == 1">{{ "Middle" | localize }}</td>
-                    <td *ngIf="grade.gradeCategory == 2">{{ "Basic" | localize }}</td>
-                    <td *ngIf="grade.gradeCategory == 3">{{ "NA" | localize }}</td>
+                    <td>{{ orgLevel.name }}</td>
                     <td>
                       <button type="button"
                         class="btn btn-sm bg-secondary"
-                        (click)="editGrade(grade)">
+                        (click)="editNationality(orgLevel)">
                         <i class="fas fa-pencil-alt"></i>
                         {{ "Edit" | localize }}
                       </button>
                       <button type="button"
                         class="btn btn-sm bg-danger mx-2"
-                        (click)="delete(grade)">
+                        (click)="delete(orgLevel)">
                         <i class="fas fa-trash"></i>
                         {{ "Delete" | localize }}
                       </button>
-                      <button type="button"
-                      class="btn btn-sm bg-primary mx-2"
-                      (click)="onJobTitleButtonClick(grade)">
-                      {{ "Job Titles" | localize }}
-                    </button>
                     </td>
                   </tr>
                 </tbody>

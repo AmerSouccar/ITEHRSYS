@@ -10345,6 +10345,72 @@ export class JobTitleServiceProxy {
 
     /**
      * @param id (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getAllbyId(id: string | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadJobTitleDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/JobTitle/GetAllbyId?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllbyId(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllbyId(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ReadJobTitleDtoPagedResultDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ReadJobTitleDtoPagedResultDto>;
+        }));
+    }
+
+    protected processGetAllbyId(response: HttpResponseBase): Observable<ReadJobTitleDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ReadJobTitleDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
      * @return Success
      */
     getbyId(id: string | undefined): Observable<ReadJobTitleDto> {
@@ -28193,6 +28259,7 @@ export class InsertJobTitleDto implements IInsertJobTitleDto {
     order: number;
     employeeCount: number;
     description: string | undefined;
+    gradeId: string;
 
     constructor(data?: IInsertJobTitleDto) {
         if (data) {
@@ -28210,6 +28277,7 @@ export class InsertJobTitleDto implements IInsertJobTitleDto {
             this.order = _data["order"];
             this.employeeCount = _data["employeeCount"];
             this.description = _data["description"];
+            this.gradeId = _data["gradeId"];
         }
     }
 
@@ -28227,6 +28295,7 @@ export class InsertJobTitleDto implements IInsertJobTitleDto {
         data["order"] = this.order;
         data["employeeCount"] = this.employeeCount;
         data["description"] = this.description;
+        data["gradeId"] = this.gradeId;
         return data;
     }
 
@@ -28244,6 +28313,7 @@ export interface IInsertJobTitleDto {
     order: number;
     employeeCount: number;
     description: string | undefined;
+    gradeId: string;
 }
 
 export class InsertLanguageDto implements IInsertLanguageDto {
@@ -30188,6 +30258,8 @@ export class JobTitle implements IJobTitle {
     order: number;
     employeeCount: number;
     description: string | undefined;
+    gradeId: string;
+    grade: Grade;
 
     constructor(data?: IJobTitle) {
         if (data) {
@@ -30217,6 +30289,8 @@ export class JobTitle implements IJobTitle {
             this.order = _data["order"];
             this.employeeCount = _data["employeeCount"];
             this.description = _data["description"];
+            this.gradeId = _data["gradeId"];
+            this.grade = _data["grade"] ? Grade.fromJS(_data["grade"]) : <any>undefined;
         }
     }
 
@@ -30246,6 +30320,8 @@ export class JobTitle implements IJobTitle {
         data["order"] = this.order;
         data["employeeCount"] = this.employeeCount;
         data["description"] = this.description;
+        data["gradeId"] = this.gradeId;
+        data["grade"] = this.grade ? this.grade.toJSON() : <any>undefined;
         return data;
     }
 
@@ -30271,6 +30347,8 @@ export interface IJobTitle {
     order: number;
     employeeCount: number;
     description: string | undefined;
+    gradeId: string;
+    grade: Grade;
 }
 
 export enum KinshipLevel {
@@ -36530,6 +36608,8 @@ export class ReadJobTitleDto implements IReadJobTitleDto {
     order: number;
     employeeCount: number;
     description: string | undefined;
+    gradeId: string;
+    grade: ReadGradeDto;
 
     constructor(data?: IReadJobTitleDto) {
         if (data) {
@@ -36547,6 +36627,8 @@ export class ReadJobTitleDto implements IReadJobTitleDto {
             this.order = _data["order"];
             this.employeeCount = _data["employeeCount"];
             this.description = _data["description"];
+            this.gradeId = _data["gradeId"];
+            this.grade = _data["grade"] ? ReadGradeDto.fromJS(_data["grade"]) : <any>undefined;
         }
     }
 
@@ -36564,6 +36646,8 @@ export class ReadJobTitleDto implements IReadJobTitleDto {
         data["order"] = this.order;
         data["employeeCount"] = this.employeeCount;
         data["description"] = this.description;
+        data["gradeId"] = this.gradeId;
+        data["grade"] = this.grade ? this.grade.toJSON() : <any>undefined;
         return data;
     }
 
@@ -36581,6 +36665,8 @@ export interface IReadJobTitleDto {
     order: number;
     employeeCount: number;
     description: string | undefined;
+    gradeId: string;
+    grade: ReadGradeDto;
 }
 
 export class ReadJobTitleDtoPagedResultDto implements IReadJobTitleDtoPagedResultDto {
@@ -43928,6 +44014,7 @@ export class UpdateJobTitleDto implements IUpdateJobTitleDto {
     order: number;
     employeeCount: number;
     description: string | undefined;
+    gradeId: string;
 
     constructor(data?: IUpdateJobTitleDto) {
         if (data) {
@@ -43945,6 +44032,7 @@ export class UpdateJobTitleDto implements IUpdateJobTitleDto {
             this.order = _data["order"];
             this.employeeCount = _data["employeeCount"];
             this.description = _data["description"];
+            this.gradeId = _data["gradeId"];
         }
     }
 
@@ -43962,6 +44050,7 @@ export class UpdateJobTitleDto implements IUpdateJobTitleDto {
         data["order"] = this.order;
         data["employeeCount"] = this.employeeCount;
         data["description"] = this.description;
+        data["gradeId"] = this.gradeId;
         return data;
     }
 
@@ -43979,6 +44068,7 @@ export interface IUpdateJobTitleDto {
     order: number;
     employeeCount: number;
     description: string | undefined;
+    gradeId: string;
 }
 
 export class UpdateLanguageDto implements IUpdateLanguageDto {

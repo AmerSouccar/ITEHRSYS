@@ -26,6 +26,11 @@ namespace HRSystem.HR.Administrative.Grades.Classes.JobTitles.Services
             return  _jobTitleRepository.GetAll();
         }
 
+        public IQueryable<JobTitle> GetAllbyId(Guid id)
+        {
+            return _jobTitleRepository.GetAll().Where(x => x.GradeId == id);
+        }
+
         public async Task<JobTitle> GetbyId(Guid id)
         {
             return await _jobTitleRepository.GetAsync(id);

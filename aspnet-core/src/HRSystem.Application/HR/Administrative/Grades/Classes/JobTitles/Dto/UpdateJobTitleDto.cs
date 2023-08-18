@@ -13,6 +13,8 @@ namespace HRSystem.HR.Administrative.Grades.Classes.JobTitles.Dto
         public int Order { get; set; }
         public int EmployeeCount { get; set; }
         public string Description { get; set; }
+        public Guid GradeId { get; set; }
+
 
         //public List<BenefitCard> BenefitCards { get; set; }
         //public List<DeductionCard> DeductionCards { get; set; }

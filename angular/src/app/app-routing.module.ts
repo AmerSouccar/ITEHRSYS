@@ -24,6 +24,8 @@ import { AssignmentComponent } from './assignment/assignment.component';
 import { NodesComponent } from './nodes/nodes.component';
 import { EducationalGradeComponent } from './educational-grade/educational-grade.component';
 import { GradeComponent } from './grade/grade.component';
+import { JobTitleComponent } from './job-title/job-title.component';
+import { OrgLevelComponent } from './org-level/org-level.component';
 
 @NgModule({
     imports: [
@@ -48,12 +50,14 @@ import { GradeComponent } from './grade/grade.component';
                     { path: 'nationalities', component: NationalityComponent, canActivate: [AppRouteGuard] },
                     { path: 'education-grades', component: EducationalGradeComponent, canActivate: [AppRouteGuard] },
                     { path: 'grades', component: GradeComponent, canActivate: [AppRouteGuard] },
+                    { path: 'organization-levels', component: OrgLevelComponent, canActivate: [AppRouteGuard] },
                     { path: 'entrance-exit-records', component: EntranceExitRecordComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForms', component: AttendanceFormComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForm/:id/workshops', component:WorkshopComponent ,  canActivate: [AppRouteGuard] },
                     { path: 'workshop/:id/normalshifts', component:NormalShiftComponent ,  canActivate: [AppRouteGuard] },
                     { path: 'attendanceRecords', component: AttendanceRecordComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceRecord/:id/monthlyCards', component:AttendanceMonthlyCardComponent ,  canActivate: [AppRouteGuard] },
+                    { path: 'grade/:id/jobTitles', component:JobTitleComponent ,  canActivate: [AppRouteGuard] },
 
                 ]
             }

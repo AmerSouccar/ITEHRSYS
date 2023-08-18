@@ -34,6 +34,16 @@ namespace HRSystem.HR.Administrative.Grades.Classes.JobTitles.Services
             return new PagedResultDto<ReadJobTitleDto>(total, list);
         }
 
+        public PagedResultDto<ReadJobTitleDto> GetAllbyId(Guid id,PagedGeneralResultRequestDto input)
+        {
+            var jobTitles = _jobTitleDomainService.GetAllbyId(id);
+            int total = jobTitles.Count();
+            jobTitles = jobTitles.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadJobTitleDto>>(jobTitles.ToList());
+            return new PagedResultDto<ReadJobTitleDto>(total, list);
+        }
+
         public async Task<ReadJobTitleDto> GetbyId(Guid id)
         {
             return ObjectMapper.Map<ReadJobTitleDto>(await _jobTitleDomainService.GetbyId(id));

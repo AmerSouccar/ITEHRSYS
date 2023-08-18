@@ -123,11 +123,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                         '/app/grades',
                         'far fa-circle'
                     ),
-                    new MenuItem(
-                        this.l('Job Title'),
-                        '/app/employees',
-                        'far fa-circle'
-                    ),
+                    
                     new MenuItem(
                         this.l('Indexes'),
                         '',
@@ -136,7 +132,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                         [
                             new MenuItem(
                                 this.l('OrgLevels'),
-                                '/app/countries',
+                                '/app/organization-levels',
                                 'far fa-circle'
                             ),
                            
@@ -154,11 +150,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                         '/app/employees',
                         'far fa-circle'
                     ),
-                    new MenuItem(
-                        this.l('Job Title'),
-                        '/app/employees',
-                        'far fa-circle'
-                    ),
+                  
                     new MenuItem(
                         this.l('Indexes'),
                         '',

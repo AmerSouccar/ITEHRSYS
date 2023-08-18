@@ -1,61 +1,58 @@
 import { Component, Injector } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listing-component-base';
-import { GradeServiceProxy, ReadGradeDto, ReadGradeDtoPagedResultDto } from '@shared/service-proxies/service-proxies';
+import { OrganizationLevelServiceProxy, ReadOrganizationLevelDto, ReadOrganizationLevelDtoPagedResultDto } from '@shared/service-proxies/service-proxies';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs';
-import { CreateGradeDialogComponent } from './create-grade-dialog/create-grade-dialog.component';
-import { EditGradeDialogComponent } from './edit-grade-dialog/edit-grade-dialog.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { CreateOrgLevelDialogComponent } from './create-org-level-dialog/create-org-level-dialog.component';
+import { EditOrgLevelDialogComponent } from './edit-org-level-dialog/edit-org-level-dialog.component';
 
-class PagedGradeRequestDto extends PagedRequestDto {
+class PagedOrgLevelRequestDto extends PagedRequestDto {
 }
 
 @Component({
-  selector: 'app-grade',
-  templateUrl: './grade.component.html',
+  selector: 'app-org-level',
+  templateUrl: './org-level.component.html',
   animations: [appModuleAnimation()]
 })
-export class GradeComponent extends PagedListingComponentBase<ReadGradeDto> {
-  grades: ReadGradeDto[] = [];
+export class OrgLevelComponent extends PagedListingComponentBase<ReadOrganizationLevelDto> {
+  orgLevels: ReadOrganizationLevelDto[] = [];
 
 
   constructor(
     injector: Injector,
-    private _gradeService: GradeServiceProxy,
-    private _modalService: BsModalService,
-    private route: ActivatedRoute,
-    private router : Router
+    private _orgLevelService: OrganizationLevelServiceProxy,
+    private _modalService: BsModalService
   ) {
     super(injector);
   }
 
   list(
-    request: PagedGradeRequestDto,
+    request: PagedOrgLevelRequestDto,
     pageNumber: number,
     finishedCallback: Function
   ): void {
-    this._gradeService
+    this._orgLevelService
       .getAll(request.skipCount, request.maxResultCount)
       .pipe(
         finalize(() => {
           finishedCallback();
         })
       )
-      .subscribe((result: ReadGradeDtoPagedResultDto) => {
-        this.grades = result.items;
+      .subscribe((result: ReadOrganizationLevelDtoPagedResultDto) => {
+        this.orgLevels = result.items;
         this.showPaging(result, pageNumber);
       });
   }
 
-  delete(grade: ReadGradeDto): void {
+  delete(orgLevel: ReadOrganizationLevelDto): void {
     abp.message.confirm(
-      this.l('GradeDeleteWarningMessage', grade.name),
+      this.l('OrganizationLevelDeleteWarningMessage', orgLevel.name),
       undefined,
       (result: boolean) => {
         if (result) {
-          this._gradeService
-            .delete(grade.id)
+          this._orgLevelService
+            .delete(orgLevel.id)
             .pipe(
               finalize(() => {
                 abp.notify.success(this.l('SuccessfullyDeleted'));
@@ -68,26 +65,26 @@ export class GradeComponent extends PagedListingComponentBase<ReadGradeDto> {
     );
   }
 
-  createGrade(): void {
+  createNationality(): void {
     this.showCreateOrEditCountryDialog();
   }
 
-  editGrade(grade: ReadGradeDto): void {
-    this.showCreateOrEditCountryDialog(grade.id);
+  editNationality(orgLevel: ReadOrganizationLevelDto): void {
+    this.showCreateOrEditCountryDialog(orgLevel.id);
   }
 
   showCreateOrEditCountryDialog(id?: string): void {
     let createOrEditCountryDialog: BsModalRef;
     if (!id) {
       createOrEditCountryDialog = this._modalService.show(
-        CreateGradeDialogComponent,
+        CreateOrgLevelDialogComponent,
         {
           class: 'modal-lg',
         }
       );
     } else {
       createOrEditCountryDialog = this._modalService.show(
-        EditGradeDialogComponent,
+        EditOrgLevelDialogComponent,
         {
           class: 'modal-lg',
           initialState: {
@@ -101,10 +98,5 @@ export class GradeComponent extends PagedListingComponentBase<ReadGradeDto> {
       this.refresh();
     });
   }
-
-
-  onJobTitleButtonClick(event){
-    this.router.navigateByUrl('app/grade/' + event.id +'/jobTitles');
- }
 
 }
