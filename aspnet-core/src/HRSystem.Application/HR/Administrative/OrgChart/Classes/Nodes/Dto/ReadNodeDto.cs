@@ -14,11 +14,10 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Dto
     {
         public string Name { get; set; }
         public int Type { get; set; }
-        public Guid ParentId { get; set; }
+        public Guid? ParentId { get; set; }
         public ReadNodeDto? Parent { get; set; }
         public string Code { get; set; }
         public bool IsRoot { get; set; }
         //public List<ReadJobDescriptionDto> JobDescriptions { get; set; }
-        public List<ReadNodeDto> Childrens { get; set; }
     }
 }

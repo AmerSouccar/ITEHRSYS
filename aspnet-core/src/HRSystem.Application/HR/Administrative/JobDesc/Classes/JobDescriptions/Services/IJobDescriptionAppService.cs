@@ -14,6 +14,7 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.Services
     {
         public PagedResultDto<ReadJobDescriptionDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadJobDescriptionDto> GetbyId(Guid id);
+        public Task<UpdateJobDescriptionDto> GetForEdit(Guid id);
         public Task<InsertJobDescriptionDto> Insert(InsertJobDescriptionDto jobDescription);
         public Task<UpdateJobDescriptionDto> Update(UpdateJobDescriptionDto jobDescription);
         public Task Delete(Guid id);

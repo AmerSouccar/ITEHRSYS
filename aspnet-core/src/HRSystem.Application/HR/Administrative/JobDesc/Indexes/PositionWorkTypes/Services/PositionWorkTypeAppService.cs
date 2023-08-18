@@ -39,6 +39,11 @@ namespace HRSystem.HR.Administrative.JobDesc.Indexes.PositionWorkTypes.Services
             return ObjectMapper.Map<ReadPositionWorkTypeDto>(await _positionWorkTypeDomainService.GetbyId(id));
         }
 
+        public async Task<UpdatePositionWorkTypeDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdatePositionWorkTypeDto>(await _positionWorkTypeDomainService.GetbyId(id));
+        }
+
         public async Task<InsertPositionWorkTypeDto> InsertAsync(InsertPositionWorkTypeDto positionWorkType)
         {
             return ObjectMapper.Map<InsertPositionWorkTypeDto>(await _positionWorkTypeDomainService.InsertAsync(ObjectMapper.Map<PositionWorkType>(positionWorkType)));

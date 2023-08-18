@@ -39,6 +39,11 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Services
             return ObjectMapper.Map<ReadPositionDto>(await _positionDomainService.GetbyId(id));
         }
 
+        public async Task<UpdatePositionDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdatePositionDto>(await _positionDomainService.GetbyId(id));
+        }
+
         public async Task<InsertPositionDto> Insert(InsertPositionDto position)
         {
             return ObjectMapper.Map<InsertPositionDto>(await _positionDomainService.Insert(ObjectMapper.Map<Position>(position)));

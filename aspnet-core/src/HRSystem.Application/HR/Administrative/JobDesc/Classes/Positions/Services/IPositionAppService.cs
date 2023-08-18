@@ -14,6 +14,7 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Services
     {
         public PagedResultDto<ReadPositionDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadPositionDto> GetbyId(Guid id);
+        public Task<UpdatePositionDto> GetForEdit(Guid id);
         public Task<InsertPositionDto> Insert(InsertPositionDto position);
         public Task<UpdatePositionDto> Update(UpdatePositionDto position);
         public Task Delete(Guid id);

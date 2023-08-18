@@ -6604,6 +6604,62 @@ export class EducationGradeServiceProxy {
     }
 
     /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateEducationGradeDto> {
+        let url_ = this.baseUrl + "/api/services/app/EducationGrade/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateEducationGradeDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateEducationGradeDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateEducationGradeDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateEducationGradeDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param body (optional) 
      * @return Success
      */
@@ -9353,6 +9409,62 @@ export class GradeServiceProxy {
     }
 
     /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateGradeDto> {
+        let url_ = this.baseUrl + "/api/services/app/Grade/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateGradeDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateGradeDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateGradeDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateGradeDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param body (optional) 
      * @return Success
      */
@@ -9939,6 +10051,62 @@ export class JobDescriptionServiceProxy {
     }
 
     /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateJobDescriptionDto> {
+        let url_ = this.baseUrl + "/api/services/app/JobDescription/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateJobDescriptionDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateJobDescriptionDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateJobDescriptionDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateJobDescriptionDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param body (optional) 
      * @return Success
      */
@@ -10221,6 +10389,62 @@ export class JobTitleServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ReadJobTitleDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateJobTitleDto> {
+        let url_ = this.baseUrl + "/api/services/app/JobTitle/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateJobTitleDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateJobTitleDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateJobTitleDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateJobTitleDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -13553,6 +13777,62 @@ export class NodeServiceProxy {
     }
 
     /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateNodeDto> {
+        let url_ = this.baseUrl + "/api/services/app/Node/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateNodeDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateNodeDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateNodeDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateNodeDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param body (optional) 
      * @return Success
      */
@@ -14205,6 +14485,62 @@ export class OrganizationLevelServiceProxy {
     }
 
     /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateOrganizationLevelDto> {
+        let url_ = this.baseUrl + "/api/services/app/OrganizationLevel/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateOrganizationLevelDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateOrganizationLevelDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateOrganizationLevelDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateOrganizationLevelDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param body (optional) 
      * @return Success
      */
@@ -14791,6 +15127,62 @@ export class PositionServiceProxy {
     }
 
     /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdatePositionDto> {
+        let url_ = this.baseUrl + "/api/services/app/Position/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdatePositionDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdatePositionDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdatePositionDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdatePositionDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param body (optional) 
      * @return Success
      */
@@ -15073,6 +15465,62 @@ export class PositionWorkTypeServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ReadPositionWorkTypeDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdatePositionWorkTypeDto> {
+        let url_ = this.baseUrl + "/api/services/app/PositionWorkType/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdatePositionWorkTypeDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdatePositionWorkTypeDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdatePositionWorkTypeDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdatePositionWorkTypeDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -24580,7 +25028,7 @@ export class Employee implements IEmployee {
     placeofBirthAr: string | undefined;
     nationalityId: string;
     nationality: Nationality;
-    secondaryNationalityId: string;
+    secondaryNationalityId: string | undefined;
     secondaryNationality: Nationality;
     maritialStatus: MaritialStatus;
     photoPath: string | undefined;
@@ -24947,7 +25395,7 @@ export interface IEmployee {
     placeofBirthAr: string | undefined;
     nationalityId: string;
     nationality: Nationality;
-    secondaryNationalityId: string;
+    secondaryNationalityId: string | undefined;
     secondaryNationality: Nationality;
     maritialStatus: MaritialStatus;
     photoPath: string | undefined;
@@ -28276,10 +28724,9 @@ export class InsertNodeDto implements IInsertNodeDto {
     id: string;
     name: string | undefined;
     type: number;
-    parentId: string;
+    parentId: string | undefined;
     code: string | undefined;
     isRoot: boolean;
-    childrens: InsertNodeDto[] | undefined;
 
     constructor(data?: IInsertNodeDto) {
         if (data) {
@@ -28298,11 +28745,6 @@ export class InsertNodeDto implements IInsertNodeDto {
             this.parentId = _data["parentId"];
             this.code = _data["code"];
             this.isRoot = _data["isRoot"];
-            if (Array.isArray(_data["childrens"])) {
-                this.childrens = [] as any;
-                for (let item of _data["childrens"])
-                    this.childrens.push(InsertNodeDto.fromJS(item));
-            }
         }
     }
 
@@ -28321,11 +28763,6 @@ export class InsertNodeDto implements IInsertNodeDto {
         data["parentId"] = this.parentId;
         data["code"] = this.code;
         data["isRoot"] = this.isRoot;
-        if (Array.isArray(this.childrens)) {
-            data["childrens"] = [];
-            for (let item of this.childrens)
-                data["childrens"].push(item.toJSON());
-        }
         return data;
     }
 
@@ -28341,10 +28778,9 @@ export interface IInsertNodeDto {
     id: string;
     name: string | undefined;
     type: number;
-    parentId: string;
+    parentId: string | undefined;
     code: string | undefined;
     isRoot: boolean;
-    childrens: InsertNodeDto[] | undefined;
 }
 
 export class InsertNormalShiftDto implements IInsertNormalShiftDto {
@@ -31219,7 +31655,7 @@ export class Node implements INode {
     deletionTime: moment.Moment | undefined;
     name: string | undefined;
     type: NodeType;
-    parentId: string;
+    parentId: string | undefined;
     parent: Node;
     code: string | undefined;
     isRoot: boolean;
@@ -31330,7 +31766,7 @@ export interface INode {
     deletionTime: moment.Moment | undefined;
     name: string | undefined;
     type: NodeType;
-    parentId: string;
+    parentId: string | undefined;
     parent: Node;
     code: string | undefined;
     isRoot: boolean;
@@ -37008,7 +37444,7 @@ export class ReadNodeDto implements IReadNodeDto {
     id: string;
     name: string | undefined;
     type: number;
-    parentId: string;
+    parentId: string | undefined;
     parent: ReadNodeDto;
     code: string | undefined;
     isRoot: boolean;
@@ -37076,7 +37512,7 @@ export interface IReadNodeDto {
     id: string;
     name: string | undefined;
     type: number;
-    parentId: string;
+    parentId: string | undefined;
     parent: ReadNodeDto;
     code: string | undefined;
     isRoot: boolean;
@@ -44059,10 +44495,9 @@ export class UpdateNodeDto implements IUpdateNodeDto {
     id: string;
     name: string | undefined;
     type: number;
-    parentId: string;
+    parentId: string | undefined;
     code: string | undefined;
     isRoot: boolean;
-    childrens: UpdateNodeDto[] | undefined;
 
     constructor(data?: IUpdateNodeDto) {
         if (data) {
@@ -44081,11 +44516,6 @@ export class UpdateNodeDto implements IUpdateNodeDto {
             this.parentId = _data["parentId"];
             this.code = _data["code"];
             this.isRoot = _data["isRoot"];
-            if (Array.isArray(_data["childrens"])) {
-                this.childrens = [] as any;
-                for (let item of _data["childrens"])
-                    this.childrens.push(UpdateNodeDto.fromJS(item));
-            }
         }
     }
 
@@ -44104,11 +44534,6 @@ export class UpdateNodeDto implements IUpdateNodeDto {
         data["parentId"] = this.parentId;
         data["code"] = this.code;
         data["isRoot"] = this.isRoot;
-        if (Array.isArray(this.childrens)) {
-            data["childrens"] = [];
-            for (let item of this.childrens)
-                data["childrens"].push(item.toJSON());
-        }
         return data;
     }
 
@@ -44124,10 +44549,9 @@ export interface IUpdateNodeDto {
     id: string;
     name: string | undefined;
     type: number;
-    parentId: string;
+    parentId: string | undefined;
     code: string | undefined;
     isRoot: boolean;
-    childrens: UpdateNodeDto[] | undefined;
 }
 
 export class UpdateNormalShiftDto implements IUpdateNormalShiftDto {

@@ -18,7 +18,7 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes
         public NodeType Type { get; set; }
         #region Parent
         [ForeignKey("Parent")]
-        public Guid ParentId { get; set; }
+        public Guid? ParentId { get; set; }
         public Node? Parent { get; set; }
         #endregion
         public string Code { get; set; }

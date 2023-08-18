@@ -45,6 +45,11 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Services
 
         }
 
+        public async Task<UpdateNodeDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateNodeDto>(await _nodeDomainService.GetbyId(id));
+        }
+
         public async Task<InsertNodeDto> Insert(InsertNodeDto insertNodeDto)
         {
             return ObjectMapper.Map<InsertNodeDto>(await _nodeDomainService.Insert(ObjectMapper.Map<Node>(insertNodeDto)));

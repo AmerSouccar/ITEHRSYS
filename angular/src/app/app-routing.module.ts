@@ -20,6 +20,8 @@ import { AttendanceRecordComponent } from './attendance-record/attendance-record
 import { AttendanceMonthlyCardComponent } from './attendance-monthly-card/attendance-monthly-card.component';
 import { EmployeeCardComponent } from './employee-card/employee-card.component';
 import { EntranceExitRecordComponent } from './entrance-exit-record/entrance-exit-record.component';
+import { AssignmentComponent } from './assignment/assignment.component';
+import { NodesComponent } from './nodes/nodes.component';
 
 @NgModule({
     imports: [
@@ -38,6 +40,8 @@ import { EntranceExitRecordComponent } from './entrance-exit-record/entrance-exi
                     { path: 'countries', component: CountryComponent, canActivate: [AppRouteGuard] },
                     { path: 'religions', component: ReligionComponent, canActivate: [AppRouteGuard] },
                     { path: 'employees', component: EmployeeComponent, canActivate: [AppRouteGuard] },
+                    { path: 'assignments', component: AssignmentComponent, canActivate: [AppRouteGuard] },
+                    { path: 'nodes', component: NodesComponent, canActivate: [AppRouteGuard] },
                     { path: 'employee-cards', component: EmployeeCardComponent, canActivate: [AppRouteGuard] },
                     { path: 'nationalities', component: NationalityComponent, canActivate: [AppRouteGuard] },
                     { path: 'entrance-exit-records', component: EntranceExitRecordComponent, canActivate: [AppRouteGuard] },

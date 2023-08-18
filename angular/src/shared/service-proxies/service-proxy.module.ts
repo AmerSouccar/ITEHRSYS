@@ -26,6 +26,7 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.AttendanceMonthlyCardServiceProxy,
         ApiServiceProxies.EntranceExitRecordServiceProxy,
         ApiServiceProxies.AssignmentServiceProxy,
+        ApiServiceProxies.NodeServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

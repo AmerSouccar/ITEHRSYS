@@ -14,6 +14,7 @@ namespace HRSystem.HR.Administrative.JobDesc.Indexes.PositionWorkTypes.Services
     {
         PagedResultDto<ReadPositionWorkTypeDto> GetAll(PagedGeneralResultRequestDto input);
         Task<ReadPositionWorkTypeDto> GetbyId(Guid id);
+        Task<UpdatePositionWorkTypeDto> GetForEdit(Guid id);
         Task<InsertPositionWorkTypeDto> InsertAsync(InsertPositionWorkTypeDto positionWorkType);
         Task<UpdatePositionWorkTypeDto> UpdateAsync(UpdatePositionWorkTypeDto positionWorkType);
         Task DeleteAsync(Guid id);

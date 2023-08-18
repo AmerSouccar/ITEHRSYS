@@ -105,6 +105,75 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     ),
                    
                 ]),
+                new MenuItem(this.l('OrgChart'), '', 'fas fa-dot-circle', '', [
+                    new MenuItem(
+                        this.l('Nodes'),
+                        '/app/nodes',
+                        'far fa-circle'
+                    ),
+                ]),
+                new MenuItem(this.l('Grades'), '', 'fas fa-dot-circle', '', [
+                    new MenuItem(
+                        this.l('Educational Grade'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('Grade'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('Job Title'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('Indexes'),
+                        '',
+                        'fas fa-dot-circle',
+                        '',
+                        [
+                            new MenuItem(
+                                this.l('OrgLevels'),
+                                '/app/countries',
+                                'far fa-circle'
+                            ),
+                           
+                        ]
+                    ),
+                ]),
+                new MenuItem(this.l('Job Descriptions'), '', 'fas fa-dot-circle', '', [
+                    new MenuItem(
+                        this.l('Job Description'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('Position'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('Job Title'),
+                        '/app/employees',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('Indexes'),
+                        '',
+                        'fas fa-dot-circle',
+                        '',
+                        [
+                            new MenuItem(
+                                this.l('Position Type'),
+                                '/app/countries',
+                                'far fa-circle'
+                            ),
+                           
+                        ]
+                    ),
+                ]),
             ]),
 
             new MenuItem(this.l('Organizational'), '', 'fas fa-circle', '', [
@@ -129,7 +198,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                 new MenuItem(this.l('EmployeeServices'), '', 'fas fa-dot-circle', '', [
                     new MenuItem(
                         this.l('Assignments'),
-                        '/app/employees',
+                        '/app/assignments',
                         'far fa-circle'
                     ),
                     new MenuItem(

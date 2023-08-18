@@ -108,7 +108,7 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees
         #endregion
         #region SecondaryNationality
         [ForeignKey("SecondaryNationality")]
-        public Guid SecondaryNationalityId { get; set; }
+        public Guid? SecondaryNationalityId { get; set; }
         public Nationality? SecondaryNationality { get; set; }
         #endregion
         public MaritialStatus MaritialStatus { get; set; }
@@ -117,8 +117,8 @@ namespace HRSystem.HR.Administrative.Personal.Classes.Employees
         public string Mobile { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public string WebSite { get; set; }
-        public string Facebook { get; set; }
+        public string? WebSite { get; set; }
+        public string? Facebook { get; set; }
         public List<Attachment> Attachments { get; set; }
         public List<Spouse> Spouse { get; set; }
         public List<Children> Children { get; set; }

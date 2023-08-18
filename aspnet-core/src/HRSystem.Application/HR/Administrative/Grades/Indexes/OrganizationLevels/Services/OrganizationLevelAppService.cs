@@ -40,6 +40,11 @@ namespace HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.Services
             return ObjectMapper.Map<ReadOrganizationLevelDto>(await _organizationLevelDomainService.GetbyId(id));
         }
 
+        public async Task<UpdateOrganizationLevelDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateOrganizationLevelDto>(await _organizationLevelDomainService.GetbyId(id));
+        }
+
         public async Task<InsertOrganizationLevelDto> Insert(InsertOrganizationLevelDto organizationLevel)
         {
            return ObjectMapper.Map<InsertOrganizationLevelDto>(await _organizationLevelDomainService.Insert(ObjectMapper.Map<OrganizationLevel>(organizationLevel)));

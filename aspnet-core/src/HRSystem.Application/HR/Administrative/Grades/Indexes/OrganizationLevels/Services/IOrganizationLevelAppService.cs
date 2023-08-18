@@ -14,6 +14,7 @@ namespace HRSystem.HR.Administrative.Grades.Indexes.OrganizationLevels.Services
     {
         public PagedResultDto<ReadOrganizationLevelDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadOrganizationLevelDto> GetbyId(Guid id);
+        public Task<UpdateOrganizationLevelDto> GetForEdit(Guid id);
         public Task<InsertOrganizationLevelDto> Insert(InsertOrganizationLevelDto organizationLevel);
         public Task<UpdateOrganizationLevelDto> Update(UpdateOrganizationLevelDto organizationLevel);
         public Task Delete(Guid id);

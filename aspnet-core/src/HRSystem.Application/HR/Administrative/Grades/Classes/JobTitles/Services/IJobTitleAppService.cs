@@ -14,6 +14,7 @@ namespace HRSystem.HR.Administrative.Grades.Classes.JobTitles.Services
     {
         public PagedResultDto<ReadJobTitleDto>GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadJobTitleDto> GetbyId(Guid id);
+        public Task<UpdateJobTitleDto> GetForEdit(Guid id);
         public Task<InsertJobTitleDto> Insert(InsertJobTitleDto jobTitle);
         public Task<UpdateJobTitleDto> Update(UpdateJobTitleDto jobTitle);
         public Task Delete(Guid id);

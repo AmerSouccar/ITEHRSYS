@@ -39,6 +39,11 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.Services
            return ObjectMapper.Map<ReadJobDescriptionDto>(await _jobDescriptionDomainService.GetbyId(id));
         }
 
+        public async Task<UpdateJobDescriptionDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateJobDescriptionDto>(await _jobDescriptionDomainService.GetbyId(id));
+        }
+
         public async Task<InsertJobDescriptionDto> Insert(InsertJobDescriptionDto jobDescription)
         {
             return ObjectMapper.Map<InsertJobDescriptionDto>(await _jobDescriptionDomainService.Insert(ObjectMapper.Map<JobDescription>(jobDescription)));

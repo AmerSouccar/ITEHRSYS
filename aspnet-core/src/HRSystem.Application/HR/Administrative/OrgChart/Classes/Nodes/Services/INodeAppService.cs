@@ -14,6 +14,7 @@ namespace HRSystem.HR.Administrative.OrgChart.Classes.Nodes.Services
     {
         public PagedResultDto<ReadNodeDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadNodeDto> GetbyId(Guid id);
+        public Task<UpdateNodeDto> GetForEdit(Guid id);
         public Task<InsertNodeDto> Insert(InsertNodeDto insertNodeDto);
         public Task<UpdateNodeDto> Update(UpdateNodeDto updateNodeDto);
         public Task Delete(Guid id);

@@ -39,6 +39,11 @@ namespace HRSystem.HR.Administrative.Grades.Classes.Grades.Services
             return ObjectMapper.Map<ReadGradeDto>(await _gradeDomainService.GetbyId(id));
         }
 
+        public async Task<UpdateGradeDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateGradeDto>(await _gradeDomainService.GetbyId(id));
+        }
+
         public async Task<InsertGradeDto> Insert(InsertGradeDto grade)
         {
             return ObjectMapper.Map<InsertGradeDto>(await _gradeDomainService.Insert(ObjectMapper.Map<Grade>(grade)));

@@ -15,6 +15,7 @@ namespace HRSystem.HR.Administrative.Grades.Classes.EducationGrades.Services
     {
         public PagedResultDto<ReadEducationGradeDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadEducationGradeDto> GetbyId(Guid id);
+        public Task<UpdateEducationGradeDto> GetForEdit(Guid id);
         public Task<InsertEducationGradeDto> Insert(InsertEducationGradeDto educationGrade);
         public Task<UpdateEducationGradeDto> Update(UpdateEducationGradeDto educationGrade);
         public Task Delete(Guid id);
