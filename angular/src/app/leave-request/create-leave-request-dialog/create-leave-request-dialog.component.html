@@ -1,0 +1,213 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateNewLeaveRequest' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="leaveSettingId">
+          {{ "Leave Setting" | localize }}
+        </label>
+      <div class="col-md-9">
+
+        <select [(ngModel)]="leaveRequest.leaveSettingId"  class="form-control" name="leaveSettingId" id="leaveSettingId">
+            <option  
+             required
+              *ngFor="let leaveSetting of leaveSettings" [ngValue]="leaveSetting.id"
+              >
+              {{leaveSetting.name}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="employeeId">
+          {{ "Employee" | localize }}
+        </label>
+      <div class="col-md-9">
+
+        <select [(ngModel)]="leaveRequest.employeeId"  class="form-control" name="employeeId" id="employeeId">
+            <option  
+             required
+              *ngFor="let employee of employees" [ngValue]="employee.id"
+              >
+              {{employee.tripleName}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="requestDate">
+        {{ "RequestDate" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="date"
+          class="form-control"
+          name="requestDate"
+          id="requestDate"
+          maxlength="128"
+          required
+          [(ngModel)]="leaveRequest.requestDate"
+          #requestDateModel="ngModel"
+          #requestDateEl
+        />
+        <abp-validation-summary
+          [control]="requestDateModel"
+          [controlEl]="requestDateEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+    <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="startDate">
+          {{ "StartDate" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="date"
+            class="form-control"
+            name="startDate"
+            id="startDate"
+            maxlength="128"
+            required
+            [(ngModel)]="leaveRequest.startDate"
+            #startDateModel="ngModel"
+            #startDateEl
+          />
+          <abp-validation-summary
+            [control]="startDateModel"
+            [controlEl]="startDateEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="endDate">
+          {{ "EndDate" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="date"
+            class="form-control"
+            name="endDate"
+            id="endDate"
+            maxlength="128"
+            required
+            [(ngModel)]="leaveRequest.endDate"
+            #endDateModel="ngModel"
+            #endDateEl
+          />
+          <abp-validation-summary
+            [control]="endDateModel"
+            [controlEl]="endDateEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            name="isActive"
+            id="isActive"
+            [(ngModel)]="leaveRequest.isHourly"
+          />
+          <label class="custom-control-label mt-2" for="isActive">isHourly</label>
+        </div>
+      </div>
+
+
+      <div class="form-group row required" *ngIf="leaveRequest.isHourly">
+        <label class="col-md-3 col-form-label" for="startHour">
+          {{ "StartHour" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="time"
+            class="form-control"
+            name="startHour"
+            id="startHour"
+            maxlength="128"
+            required
+            [(ngModel)]="leaveRequest.startHour"
+            #startHourModel="ngModel"
+            #startHourEl
+          />
+          <abp-validation-summary
+            [control]="startHourModel"
+            [controlEl]="startHourEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+      <div class="form-group row required" *ngIf="leaveRequest.isHourly">
+        <label class="col-md-3 col-form-label" for="endHour">
+          {{ "EndHour" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="time"
+            class="form-control"
+            name="endHour"
+            id="endHour"
+            maxlength="128"
+            required
+            [(ngModel)]="leaveRequest.endHour"
+            #endHourModel="ngModel"
+            #endHourEl
+          />
+          <abp-validation-summary
+            [control]="endHourModel"
+            [controlEl]="endHourEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+    
+
+    <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="Description">
+          {{ "Description" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="text"
+            class="form-control"
+            name="Description"
+            id="Description"
+            maxlength="128"
+            required
+            [(ngModel)]="leaveRequest.description"
+            #DescriptionModel="ngModel"
+            #DescriptionEl
+          />
+          <abp-validation-summary
+            [control]="DescriptionModel"
+            [controlEl]="DescriptionEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

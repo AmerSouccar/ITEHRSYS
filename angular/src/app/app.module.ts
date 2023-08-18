@@ -116,6 +116,9 @@ import { EditWorkflowSettingsDialogComponent } from './workflow-settings/edit-wo
 import { LeaveSettingComponent } from './leave-setting/leave-setting.component';
 import { CreateLeaveSettingDialogComponent } from './leave-setting/create-leave-setting-dialog/create-leave-setting-dialog.component';
 import { EditLeaveSettingDialogComponent } from './leave-setting/edit-leave-setting-dialog/edit-leave-setting-dialog.component';
+import { LeaveRequestComponent } from './leave-request/leave-request.component';
+import { CreateLeaveRequestDialogComponent } from './leave-request/create-leave-request-dialog/create-leave-request-dialog.component';
+import { EditLeaveRequestDialogComponent } from './leave-request/edit-leave-request-dialog/edit-leave-request-dialog.component';
 
 @NgModule({
     declarations: [
@@ -224,6 +227,9 @@ import { EditLeaveSettingDialogComponent } from './leave-setting/edit-leave-sett
         LeaveSettingComponent,
         CreateLeaveSettingDialogComponent,
         EditLeaveSettingDialogComponent,
+        LeaveRequestComponent,
+        CreateLeaveRequestDialogComponent,
+        EditLeaveRequestDialogComponent,
         
     ],
     imports: [

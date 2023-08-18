@@ -38,7 +38,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
 
         public IQueryable<LeaveRequest> GetAll()
         {
-            return _leaveRequestsRepository.GetAllIncluding(x => x.LeaveSetting);
+            return _leaveRequestsRepository.GetAllIncluding(x => x.LeaveSetting,x => x.Employee);
         }
 
         public async Task<LeaveRequest> GetbyId(Guid id)
@@ -53,11 +53,17 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
 
         public async Task<LeaveRequest> Insert(LeaveRequest leaveRequest)
         {
+            if (leaveRequest.EndHour < leaveRequest.StartHour)
+                leaveRequest.EndDate.AddDays(1);
+            leaveRequest.LeaveRequestStatus = Enums.LeaveRequestStatus.Accepted;
             return await _leaveRequestsRepository.InsertAsync(leaveRequest);
 
         }
         public async Task<LeaveRequest> Update(LeaveRequest leaveRequest)
         {
+            if (leaveRequest.EndHour < leaveRequest.StartHour)
+                leaveRequest.EndDate.AddDays(1);
+            leaveRequest.LeaveRequestStatus = Enums.LeaveRequestStatus.Accepted;
             return await _leaveRequestsRepository.UpdateAsync(leaveRequest);
 
         }

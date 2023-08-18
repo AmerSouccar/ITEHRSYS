@@ -11,24 +11,24 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Dto
     {
         public Guid LeaveSettingId { get; set; }
         public Guid EmployeeId { get; set; }
-        public DateTime RequestDate { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public string RequestDate { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
         public bool isHourly { get; set; }
-        public DateTime? StartHour { get; set; }
-        public DateTime? EndHour { get; set; }
+        public string? StartHour { get; set; }
+        public string? EndHour { get; set; }
         public double LeaveRequestBalance
         {
             get
             {
                 if (isHourly)
                 {
-                    double spentHours = EndDate.Subtract(StartDate).TotalHours;
+                    double spentHours = Convert.ToDateTime(EndDate).Subtract(Convert.ToDateTime(StartDate)).TotalHours;
                     double spentDays = spentHours / 8;
                     return spentDays;
                 }
                 else
-                    return EndDate.Subtract(StartDate).TotalDays;
+                    return Convert.ToDateTime(EndDate).Subtract(Convert.ToDateTime(StartDate)).TotalDays;
             }
         }
         public string Description { get; set; }
