@@ -33,6 +33,7 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.JobDescriptionServiceProxy,
         ApiServiceProxies.PositionServiceProxy,
         ApiServiceProxies.OrganizationLevelServiceProxy,
+        ApiServiceProxies.JobDescriptionServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

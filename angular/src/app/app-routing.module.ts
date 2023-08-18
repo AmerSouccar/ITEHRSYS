@@ -26,6 +26,7 @@ import { EducationalGradeComponent } from './educational-grade/educational-grade
 import { GradeComponent } from './grade/grade.component';
 import { JobTitleComponent } from './job-title/job-title.component';
 import { OrgLevelComponent } from './org-level/org-level.component';
+import { JobDescriptionComponent } from './job-description/job-description.component';
 
 @NgModule({
     imports: [
@@ -50,6 +51,7 @@ import { OrgLevelComponent } from './org-level/org-level.component';
                     { path: 'nationalities', component: NationalityComponent, canActivate: [AppRouteGuard] },
                     { path: 'education-grades', component: EducationalGradeComponent, canActivate: [AppRouteGuard] },
                     { path: 'grades', component: GradeComponent, canActivate: [AppRouteGuard] },
+                    { path: 'job-descriptions', component: JobDescriptionComponent, canActivate: [AppRouteGuard] },
                     { path: 'organization-levels', component: OrgLevelComponent, canActivate: [AppRouteGuard] },
                     { path: 'entrance-exit-records', component: EntranceExitRecordComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForms', component: AttendanceFormComponent, canActivate: [AppRouteGuard] },

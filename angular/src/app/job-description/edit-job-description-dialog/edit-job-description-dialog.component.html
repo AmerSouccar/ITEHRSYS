@@ -1,1 +1,101 @@
-<p>edit-job-description-dialog works!</p>
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'EditJobDescription' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="name">
+        {{ "Name" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="name"
+          maxlength="128"
+          required
+          [(ngModel)]="jobDescription.name"
+          #nameModel="ngModel"
+          #nameEl
+        />
+        <abp-validation-summary
+          [control]="nameModel"
+          [controlEl]="nameEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+
+      <div class="form-group row" >
+        <label class="col-md-3 col-form-label" for="jobTitleId">
+          {{ "Job Title" | localize }}
+        </label>
+      <div class="col-md-9" >
+
+        <select [(ngModel)]="jobDescription.jobTitleId"  class="form-control" name="jobTitleId" id="jobTitleId">
+            <option  
+             
+              *ngFor="let jobTitle of jobTitles" [ngValue]="jobTitle.id"
+              >
+              {{jobTitle.name}}
+            </option>
+            </select>
+
+      </div>
+      </div>
+
+      <div class="form-group row" >
+        <label class="col-md-3 col-form-label" for="nodeId">
+          {{ "Node" | localize }}
+        </label>
+      <div class="col-md-9" >
+
+        <select [(ngModel)]="jobDescription.nodeId"  class="form-control" name="nodeId" id="nodeId">
+            <option  
+             
+              *ngFor="let node of nodes" [ngValue]="node.id"
+              >
+              {{node.name}}
+            </option>
+            </select>
+
+      </div>
+      </div>
+
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="description">
+          {{ "Description" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="description"
+            maxlength="128"
+            required
+            [(ngModel)]="jobDescription.description"
+            #descriptionModel="ngModel"
+            #descriptionEl
+          />
+          <abp-validation-summary
+            [control]="descriptionModel"
+            [controlEl]="descriptionEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

@@ -142,7 +142,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                 new MenuItem(this.l('Job Descriptions'), '', 'fas fa-dot-circle', '', [
                     new MenuItem(
                         this.l('Job Description'),
-                        '/app/employees',
+                        '/app/job-descriptions',
                         'far fa-circle'
                     ),
                     new MenuItem(
