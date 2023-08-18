@@ -22,6 +22,8 @@ import { EmployeeCardComponent } from './employee-card/employee-card.component';
 import { EntranceExitRecordComponent } from './entrance-exit-record/entrance-exit-record.component';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { NodesComponent } from './nodes/nodes.component';
+import { EducationalGradeComponent } from './educational-grade/educational-grade.component';
+import { GradeComponent } from './grade/grade.component';
 
 @NgModule({
     imports: [
@@ -44,6 +46,8 @@ import { NodesComponent } from './nodes/nodes.component';
                     { path: 'nodes', component: NodesComponent, canActivate: [AppRouteGuard] },
                     { path: 'employee-cards', component: EmployeeCardComponent, canActivate: [AppRouteGuard] },
                     { path: 'nationalities', component: NationalityComponent, canActivate: [AppRouteGuard] },
+                    { path: 'education-grades', component: EducationalGradeComponent, canActivate: [AppRouteGuard] },
+                    { path: 'grades', component: GradeComponent, canActivate: [AppRouteGuard] },
                     { path: 'entrance-exit-records', component: EntranceExitRecordComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForms', component: AttendanceFormComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForm/:id/workshops', component:WorkshopComponent ,  canActivate: [AppRouteGuard] },

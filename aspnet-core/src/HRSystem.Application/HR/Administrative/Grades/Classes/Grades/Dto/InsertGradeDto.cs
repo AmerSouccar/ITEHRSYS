@@ -27,7 +27,7 @@ namespace HRSystem.HR.Administrative.Grades.Classes.Grades.Dto
         //public LatnessForm LatnessForm { get; set; }
         //public OvertimeForm OvertimeForm { get; set; }
         //public AbsenceForm AbsenceForm { get; set; }
-        public List<ReadJobTitleDto> JobTitles { get; set; }
+        //public List<ReadJobTitleDto> JobTitles { get; set; }
         //public List<BenefitCard> BenefitCards { get; set; }
         //public List<DeductionCard> DeductionCards { get; set; 
     }

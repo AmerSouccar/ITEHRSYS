@@ -1,0 +1,158 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'EditEducationGrade' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="name">
+        {{ "Name" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="name"
+          maxlength="128"
+          required
+          [(ngModel)]="educationGrade.name"
+          #nameModel="ngModel"
+          #nameEl
+        />
+        <abp-validation-summary
+          [control]="nameModel"
+          [controlEl]="nameEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+    <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="order">
+          {{ "Order" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="number"
+            class="form-control"
+            name="order"
+            id="order"
+            maxlength="128"
+            required
+            [(ngModel)]="educationGrade.order"
+            #orderModel="ngModel"
+            #orderEl
+          />
+          <abp-validation-summary
+            [control]="orderModel"
+            [controlEl]="orderEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="minSalary">
+          {{ "Min Salary" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="number"
+            class="form-control"
+            name="minSalary"
+            id="minSalary"
+            maxlength="128"
+            required
+            [(ngModel)]="educationGrade.minSalary"
+            #minSalaryModel="ngModel"
+            #minSalaryEl
+          />
+          <abp-validation-summary
+            [control]="minSalaryModel"
+            [controlEl]="minSalaryEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="maxSalary">
+          {{ "Max Salary" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="number"
+            class="form-control"
+            name="maxSalary"
+            id="maxSalary"
+            maxlength="128"
+            required
+            [(ngModel)]="educationGrade.maxSalary"
+            #maxSalaryModel="ngModel"
+            #maxSalaryEl
+          />
+          <abp-validation-summary
+            [control]="maxSalaryModel"
+            [controlEl]="maxSalaryEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="currency">
+          {{ "Currency" | localize }}
+        </label>
+      <div class="col-md-9" >
+
+        <select [(ngModel)]="educationGrade.currency"  class="form-control" name="currency" id="currency">
+            <option  [ngValue]="0">
+              {{"SYP" | localize}}
+            </option>
+            <option  [ngValue]="1">
+                {{"USD" | localize}}
+              </option>
+              <option  [ngValue]="2">
+                {{"EUR" | localize}}
+              </option>
+            </select>
+
+      </div>
+      </div>
+
+
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="description">
+          {{ "Description" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="description"
+            maxlength="128"
+            required
+            [(ngModel)]="educationGrade.description"
+            #descriptionModel="ngModel"
+            #descriptionEl
+          />
+          <abp-validation-summary
+            [control]="descriptionModel"
+            [controlEl]="descriptionEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

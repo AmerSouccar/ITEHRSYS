@@ -115,12 +115,12 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                 new MenuItem(this.l('Grades'), '', 'fas fa-dot-circle', '', [
                     new MenuItem(
                         this.l('Educational Grade'),
-                        '/app/employees',
+                        '/app/education-grades',
                         'far fa-circle'
                     ),
                     new MenuItem(
                         this.l('Grade'),
-                        '/app/employees',
+                        '/app/grades',
                         'far fa-circle'
                     ),
                     new MenuItem(

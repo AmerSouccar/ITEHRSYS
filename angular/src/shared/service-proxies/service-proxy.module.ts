@@ -27,6 +27,12 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.EntranceExitRecordServiceProxy,
         ApiServiceProxies.AssignmentServiceProxy,
         ApiServiceProxies.NodeServiceProxy,
+        ApiServiceProxies.EducationGradeServiceProxy,
+        ApiServiceProxies.GradeServiceProxy,
+        ApiServiceProxies.JobTitleServiceProxy,
+        ApiServiceProxies.JobDescriptionServiceProxy,
+        ApiServiceProxies.PositionServiceProxy,
+        ApiServiceProxies.OrganizationLevelServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

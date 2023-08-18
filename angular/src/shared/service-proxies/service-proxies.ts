@@ -27995,7 +27995,6 @@ export class InsertGradeDto implements IInsertGradeDto {
     maxSalary: number | undefined;
     currency: number | undefined;
     gradeCategory: number;
-    jobTitles: ReadJobTitleDto[] | undefined;
 
     constructor(data?: IInsertGradeDto) {
         if (data) {
@@ -28016,11 +28015,6 @@ export class InsertGradeDto implements IInsertGradeDto {
             this.maxSalary = _data["maxSalary"];
             this.currency = _data["currency"];
             this.gradeCategory = _data["gradeCategory"];
-            if (Array.isArray(_data["jobTitles"])) {
-                this.jobTitles = [] as any;
-                for (let item of _data["jobTitles"])
-                    this.jobTitles.push(ReadJobTitleDto.fromJS(item));
-            }
         }
     }
 
@@ -28041,11 +28035,6 @@ export class InsertGradeDto implements IInsertGradeDto {
         data["maxSalary"] = this.maxSalary;
         data["currency"] = this.currency;
         data["gradeCategory"] = this.gradeCategory;
-        if (Array.isArray(this.jobTitles)) {
-            data["jobTitles"] = [];
-            for (let item of this.jobTitles)
-                data["jobTitles"].push(item.toJSON());
-        }
         return data;
     }
 
@@ -28066,7 +28055,6 @@ export interface IInsertGradeDto {
     maxSalary: number | undefined;
     currency: number | undefined;
     gradeCategory: number;
-    jobTitles: ReadJobTitleDto[] | undefined;
 }
 
 export class InsertHourlyMissionDto implements IInsertHourlyMissionDto {
@@ -36161,7 +36149,6 @@ export class ReadGradeDto implements IReadGradeDto {
     maxSalary: number | undefined;
     currency: number | undefined;
     gradeCategory: number;
-    jobTitles: ReadJobTitleDto[] | undefined;
 
     constructor(data?: IReadGradeDto) {
         if (data) {
@@ -36184,11 +36171,6 @@ export class ReadGradeDto implements IReadGradeDto {
             this.maxSalary = _data["maxSalary"];
             this.currency = _data["currency"];
             this.gradeCategory = _data["gradeCategory"];
-            if (Array.isArray(_data["jobTitles"])) {
-                this.jobTitles = [] as any;
-                for (let item of _data["jobTitles"])
-                    this.jobTitles.push(ReadJobTitleDto.fromJS(item));
-            }
         }
     }
 
@@ -36211,11 +36193,6 @@ export class ReadGradeDto implements IReadGradeDto {
         data["maxSalary"] = this.maxSalary;
         data["currency"] = this.currency;
         data["gradeCategory"] = this.gradeCategory;
-        if (Array.isArray(this.jobTitles)) {
-            data["jobTitles"] = [];
-            for (let item of this.jobTitles)
-                data["jobTitles"].push(item.toJSON());
-        }
         return data;
     }
 
@@ -36238,7 +36215,6 @@ export interface IReadGradeDto {
     maxSalary: number | undefined;
     currency: number | undefined;
     gradeCategory: number;
-    jobTitles: ReadJobTitleDto[] | undefined;
 }
 
 export class ReadGradeDtoPagedResultDto implements IReadGradeDtoPagedResultDto {
@@ -37448,7 +37424,6 @@ export class ReadNodeDto implements IReadNodeDto {
     parent: ReadNodeDto;
     code: string | undefined;
     isRoot: boolean;
-    childrens: ReadNodeDto[] | undefined;
 
     constructor(data?: IReadNodeDto) {
         if (data) {
@@ -37468,11 +37443,6 @@ export class ReadNodeDto implements IReadNodeDto {
             this.parent = _data["parent"] ? ReadNodeDto.fromJS(_data["parent"]) : <any>undefined;
             this.code = _data["code"];
             this.isRoot = _data["isRoot"];
-            if (Array.isArray(_data["childrens"])) {
-                this.childrens = [] as any;
-                for (let item of _data["childrens"])
-                    this.childrens.push(ReadNodeDto.fromJS(item));
-            }
         }
     }
 
@@ -37492,11 +37462,6 @@ export class ReadNodeDto implements IReadNodeDto {
         data["parent"] = this.parent ? this.parent.toJSON() : <any>undefined;
         data["code"] = this.code;
         data["isRoot"] = this.isRoot;
-        if (Array.isArray(this.childrens)) {
-            data["childrens"] = [];
-            for (let item of this.childrens)
-                data["childrens"].push(item.toJSON());
-        }
         return data;
     }
 
@@ -37516,7 +37481,6 @@ export interface IReadNodeDto {
     parent: ReadNodeDto;
     code: string | undefined;
     isRoot: boolean;
-    childrens: ReadNodeDto[] | undefined;
 }
 
 export class ReadNodeDtoPagedResultDto implements IReadNodeDtoPagedResultDto {
@@ -43766,7 +43730,6 @@ export class UpdateGradeDto implements IUpdateGradeDto {
     maxSalary: number | undefined;
     currency: number | undefined;
     gradeCategory: number;
-    jobTitles: ReadJobTitleDto[] | undefined;
 
     constructor(data?: IUpdateGradeDto) {
         if (data) {
@@ -43787,11 +43750,6 @@ export class UpdateGradeDto implements IUpdateGradeDto {
             this.maxSalary = _data["maxSalary"];
             this.currency = _data["currency"];
             this.gradeCategory = _data["gradeCategory"];
-            if (Array.isArray(_data["jobTitles"])) {
-                this.jobTitles = [] as any;
-                for (let item of _data["jobTitles"])
-                    this.jobTitles.push(ReadJobTitleDto.fromJS(item));
-            }
         }
     }
 
@@ -43812,11 +43770,6 @@ export class UpdateGradeDto implements IUpdateGradeDto {
         data["maxSalary"] = this.maxSalary;
         data["currency"] = this.currency;
         data["gradeCategory"] = this.gradeCategory;
-        if (Array.isArray(this.jobTitles)) {
-            data["jobTitles"] = [];
-            for (let item of this.jobTitles)
-                data["jobTitles"].push(item.toJSON());
-        }
         return data;
     }
 
@@ -43837,7 +43790,6 @@ export interface IUpdateGradeDto {
     maxSalary: number | undefined;
     currency: number | undefined;
     gradeCategory: number;
-    jobTitles: ReadJobTitleDto[] | undefined;
 }
 
 export class UpdateHourlyMissionDto implements IUpdateHourlyMissionDto {

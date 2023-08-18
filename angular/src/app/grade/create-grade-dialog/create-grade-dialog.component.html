@@ -1,0 +1,178 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateNewGrade' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="name">
+        {{ "Name" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="name"
+          maxlength="128"
+          required
+          [(ngModel)]="grade.name"
+          #nameModel="ngModel"
+          #nameEl
+        />
+        <abp-validation-summary
+          [control]="nameModel"
+          [controlEl]="nameEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="organizationLevelId">
+          {{ "OrgLevel" | localize }}
+        </label>
+      <div class="col-md-9">
+
+        <select [(ngModel)]="grade.organizationLevelId"  class="form-control" name="organizationLevelId" id="organizationLevelId">
+            <option  
+             required
+              *ngFor="let orgLevel of orgLevels" [ngValue]="orgLevel.id"
+              >
+              {{orgLevel.name}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="educationGradeId">
+          {{ "Education Grade" | localize }}
+        </label>
+      <div class="col-md-9">
+
+        <select [(ngModel)]="grade.educationGradeId"  class="form-control" name="educationGradeId" id="educationGradeId">
+            <option  
+             required
+              *ngFor="let educationGrade of educationGrades" [ngValue]="educationGrade.id"
+              >
+              {{educationGrade.name}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+   
+
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="minSalary">
+          {{ "Min Salary" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="number"
+            class="form-control"
+            name="minSalary"
+            id="minSalary"
+            maxlength="128"
+            required
+            [(ngModel)]="grade.minSalary"
+            #minSalaryModel="ngModel"
+            #minSalaryEl
+          />
+          <abp-validation-summary
+            [control]="minSalaryModel"
+            [controlEl]="minSalaryEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="maxSalary">
+          {{ "Max Salary" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="number"
+            class="form-control"
+            name="maxSalary"
+            id="maxSalary"
+            maxlength="128"
+            required
+            [(ngModel)]="grade.maxSalary"
+            #maxSalaryModel="ngModel"
+            #maxSalaryEl
+          />
+          <abp-validation-summary
+            [control]="maxSalaryModel"
+            [controlEl]="maxSalaryEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="currency">
+          {{ "Currency" | localize }}
+        </label>
+      <div class="col-md-9" >
+
+        <select [(ngModel)]="grade.currency"  class="form-control" name="currency" id="currency">
+            <option  [ngValue]="0">
+              {{"SYP" | localize}}
+            </option>
+            <option  [ngValue]="1">
+                {{"USD" | localize}}
+              </option>
+              <option  [ngValue]="2">
+                {{"EUR" | localize}}
+              </option>
+            </select>
+
+      </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="GradeCategory">
+          {{ "GradeCategory" | localize }}
+        </label>
+      <div class="col-md-9" >
+
+        <select [(ngModel)]="grade.gradeCategory"  class="form-control" name="GradeCategory" id="GradeCategory">
+            <option  [ngValue]="0">
+              {{"High" | localize}}
+            </option>
+            <option  [ngValue]="1">
+                {{"Middle" | localize}}
+              </option>
+              <option  [ngValue]="2">
+                {{"Basic" | localize}}
+              </option>
+              <option  [ngValue]="3">
+                {{"NA" | localize}}
+              </option>
+            </select>
+
+      </div>
+      </div>
+
+
+    
+
+
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

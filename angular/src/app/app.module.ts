@@ -77,6 +77,12 @@ import { CreateAssignmentDialogComponent } from './assignment/create-assignment-
 import { NodesComponent } from './nodes/nodes.component';
 import { CreateNodesDialogComponent } from './nodes/create-nodes-dialog/create-nodes-dialog.component';
 import { EditNodesDialogComponent } from './nodes/edit-nodes-dialog/edit-nodes-dialog.component';
+import { EducationalGradeComponent } from './educational-grade/educational-grade.component';
+import { CreateEducationalGradeDialogComponent } from './educational-grade/create-educational-grade-dialog/create-educational-grade-dialog.component';
+import { EditEducationalGradeDialogComponent } from './educational-grade/edit-educational-grade-dialog/edit-educational-grade-dialog.component';
+import { GradeComponent } from './grade/grade.component';
+import { CreateGradeDialogComponent } from './grade/create-grade-dialog/create-grade-dialog.component';
+import { EditGradeDialogComponent } from './grade/edit-grade-dialog/edit-grade-dialog.component';
 
 @NgModule({
     declarations: [
@@ -145,7 +151,13 @@ import { EditNodesDialogComponent } from './nodes/edit-nodes-dialog/edit-nodes-d
         CreateAssignmentDialogComponent,
         NodesComponent,
         CreateNodesDialogComponent,
-        EditNodesDialogComponent
+        EditNodesDialogComponent,
+        EducationalGradeComponent,
+        CreateEducationalGradeDialogComponent,
+        EditEducationalGradeDialogComponent,
+        GradeComponent,
+        CreateGradeDialogComponent,
+        EditGradeDialogComponent
     ],
     imports: [
         CommonModule,
