@@ -28,13 +28,10 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Dto
         public double WorkingHours { get; set; }
         public HoursPer Per { get; set; }
         public bool HasManager { get; set; }
-        #region ManagerJobTitle
-        public Guid? ManagerJobTitleId { get; set; }
-        public ReadJobTitleDto? ManagerJobTitle { get; set; }
-        #endregion
+     
         #region Manager
         public Guid? ManagerId { get; set; }
-        public ReadJobDescriptionDto? Manager { get; set; }
+        public ReadPositionDto? Manager { get; set; }
         #endregion
     }
 }

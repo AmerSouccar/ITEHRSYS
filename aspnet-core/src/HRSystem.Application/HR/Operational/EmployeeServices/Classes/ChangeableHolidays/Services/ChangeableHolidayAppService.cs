@@ -39,6 +39,11 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.ChangeableHolidays.Se
            return ObjectMapper.Map<ReadChangeableHolidayDto>(await _changeableHolidaydomainService.GetbyId(id));
         }
 
+        public async Task<UpdateChangeableHolidayDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateChangeableHolidayDto>(await _changeableHolidaydomainService.GetbyId(id));
+        }
+
         public async Task<InsertChangeableHolidayDto> Insert(InsertChangeableHolidayDto changeableHoliday)
         {
             return ObjectMapper.Map<InsertChangeableHolidayDto>(await _changeableHolidaydomainService.Insert(ObjectMapper.Map<ChangeableHoliday>(changeableHoliday)));

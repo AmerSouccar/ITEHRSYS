@@ -13,7 +13,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Dto
         public Guid PositionID { get; set; }
 
         public Guid EmployeeCardId { get; set; }
-        public DateTime AssigningDate { get; set; }
+        public string AssigningDate { get; set; }
         public string Description { get; set; }
     }
 }

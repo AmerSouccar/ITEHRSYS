@@ -147,7 +147,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     ),
                     new MenuItem(
                         this.l('Position'),
-                        '/app/employees',
+                        '/app/positions',
                         'far fa-circle'
                     ),
                   
@@ -159,7 +159,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                         [
                             new MenuItem(
                                 this.l('Position Type'),
-                                '/app/countries',
+                                '/app/position-work-types',
                                 'far fa-circle'
                             ),
                            
@@ -195,19 +195,19 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     ),
                     new MenuItem(
                         this.l('ChangeableHolidays'),
-                        '/app/employees',
+                        '/app/changeable-holidays',
                         'far fa-circle'
                     ),
                     new MenuItem(
                         this.l('CompanyHolidays'),
-                        '/app/employees',
+                        '/app/company-holidays',
                         'far fa-circle'
                     ),
-                    new MenuItem(
-                        this.l('FixedHolidays'),
-                        '/app/employees',
-                        'far fa-circle'
-                    ),
+                    // new MenuItem(
+                    //     this.l('FixedHolidays'),
+                    //     '/app/fixed-holidays',
+                    //     'far fa-circle'
+                    // ),
                     new MenuItem(
                         this.l('LeaveSettings'),
                         '/app/employees',
@@ -218,6 +218,21 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                         '/app/employees',
                         'far fa-circle'
                     ),
+                      // new MenuItem(
+                    //     this.l('Promotions'),
+                    //     '/app/promotions',
+                    //     'far fa-circle'
+                    // ),
+                    // new MenuItem(
+                    //     this.l('Resignations'),
+                    //     '/app/resignations',
+                    //     'far fa-circle'
+                    // ),
+                    // new MenuItem(
+                    //     this.l('Transfers'),
+                    //     '/app/transfers',
+                    //     'far fa-circle'
+                    // ),
                     new MenuItem(
                         this.l('Services'),
                         '',

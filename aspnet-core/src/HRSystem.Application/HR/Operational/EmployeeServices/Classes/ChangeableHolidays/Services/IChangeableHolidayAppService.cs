@@ -14,6 +14,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.ChangeableHolidays.Se
     {
         public PagedResultDto<ReadChangeableHolidayDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadChangeableHolidayDto> GetbyId(Guid id);
+        public Task<UpdateChangeableHolidayDto> GetForEdit(Guid id);
         public Task<InsertChangeableHolidayDto> Insert(InsertChangeableHolidayDto changeableHoliday);
         public Task<UpdateChangeableHolidayDto> Update(UpdateChangeableHolidayDto changeableHoliday);
         public Task Delete(Guid id);

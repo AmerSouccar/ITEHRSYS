@@ -24,7 +24,12 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Services
 
         public IQueryable<Position> GetAll()
         {
-            return _positionRepository.GetAllIncluding(x => x.JobDescription, x => x.PositionWorkType, x => x.ManagerJobTitle, x => x.Manager);
+            return _positionRepository.GetAllIncluding(x => x.Employee,x => x.JobDescription.Node, x => x.PositionWorkType, x => x.Manager.Employee);
+        }
+
+        public IQueryable<Position> GetAllEmptyPositions()
+        {
+            return _positionRepository.GetAllIncluding(x => x.Employee,x => x.JobDescription.Node, x => x.PositionWorkType, x => x.Manager.Employee).Where(x => x.EmployeeId == null);
         }
 
         public async Task<Position> GetbyId(Guid id)
@@ -34,7 +39,6 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Services
             {
                 await _positionRepository.EnsurePropertyLoadedAsync(position, x => x.JobDescription);
                 await _positionRepository.EnsurePropertyLoadedAsync(position, x => x.PositionWorkType);
-                await _positionRepository.EnsurePropertyLoadedAsync(position, x => x.ManagerJobTitle);
                 await _positionRepository.EnsurePropertyLoadedAsync(position, x => x.Manager);
             }
             return position;

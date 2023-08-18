@@ -14,6 +14,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.Service
     {
         public PagedResultDto<ReadFixedHolidayDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadFixedHolidayDto> GetbyId(Guid id);
+        public Task<UpdateFixedHolidayDto> GetForEdit(Guid id);
         public Task<InsertFixedHolidayDto> Insert(InsertFixedHolidayDto fixedHoliday);
         public Task<UpdateFixedHolidayDto> Update(UpdateFixedHolidayDto fixedHoliday);
         public Task Delete(Guid id);

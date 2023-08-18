@@ -1,0 +1,142 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateNewPosition' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="jobDescription">
+          {{ "Job Description" | localize }}
+        </label>
+      <div class="col-md-9">
+
+        <select [(ngModel)]="position.jobDescriptionId"  class="form-control" name="jobDescription" id="jobDescription">
+            <option  
+             required
+              *ngFor="let jobDescription of jobDescriptions" [ngValue]="jobDescription.id"
+              >
+              {{jobDescription.name}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="workType">
+          {{ "Work Type" | localize }}
+        </label>
+      <div class="col-md-9">
+
+        <select [(ngModel)]="position.positionWorkTypeId"  class="form-control" name="workType" id="workType">
+            <option  
+             required
+              *ngFor="let workType of workTypes" [ngValue]="workType.id"
+              >
+              {{workType.name}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+    <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="workingHours">
+          {{ "Working Hours" | localize }}
+        </label>
+        <div class="col-md-3">
+          <input
+            type="number"
+            class="form-control"
+            name="workingHours"
+            id="workingHours"
+            maxlength="128"
+            required
+            [(ngModel)]="position.workingHours"
+            #workingHoursModel="ngModel"
+            #workingHoursEl
+          />
+          <abp-validation-summary
+            [control]="workingHoursModel"
+            [controlEl]="workingHoursEl"
+          ></abp-validation-summary>
+        </div>
+        <label class="col-md-3 col-form-label" for="per">
+            {{ "Per" | localize }}
+          </label>
+        <div class="col-md-3">
+  
+          <select [(ngModel)]="position.per"  class="form-control" name="per" id="per">
+              <option  
+               [ngValue]="0"
+                >
+                {{"Day" | localize}}
+              </option>
+              <option  
+               [ngValue]="1"
+                >
+                {{"Week" | localize}}
+              </option>
+              <option  
+               [ngValue]="2"
+                >
+                {{"Month" | localize}}
+              </option>
+              <option  
+               [ngValue]="3"
+                >
+                {{"Year" | localize}}
+              </option>
+              </select>
+  
+        </div>
+      </div>
+
+
+      <div class="col-md-9">
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            name="hasManager"
+            id="hasManager"
+            [(ngModel)]="position.hasManager"
+          />
+          <label class="custom-control-label mt-2" for="hasManager">Has Manager</label>
+        </div>
+      </div>
+
+
+      <div class="form-group row" *ngIf="position.hasManager">
+        <label class="col-md-3 col-form-label" for="Manager">
+          {{ "Manager" | localize }}
+        </label>
+      <div class="col-md-9">
+
+        <select [(ngModel)]="position.managerId"  class="form-control" name="Manager" id="Manager">
+            <option  
+             required
+              *ngFor="let managerPosition of managerPositions" [ngValue]="managerPosition.id"
+              >
+              {{managerPosition.jobDescription?.name + ' - ' + managerPosition.employee?.tripleName}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+
+   
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

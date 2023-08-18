@@ -1,0 +1,101 @@
+<div [@routerTransition]>
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6">
+            <h1>{{ "Positions" | localize }}</h1>
+          </div>
+          <div class="col-6 text-right">
+            <a href="javascript:;"
+              class="btn bg-blue"
+              (click)="createPosition()">
+              <i class="fa fa-plus-square"></i>
+              {{ "Create" | localize }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content px-2">
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-header">
+         
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered"
+                [busy]="isTableLoading">
+                <thead class="bg-light">
+                  <tr>
+                    <th>{{ "Job Description" | localize }}</th>
+                    <th>{{ "Work Type" | localize }}</th>
+                    <th>{{ "Working Hours" | localize }}</th>
+                    <th>{{ "Manager" | localize }}</th>
+                    <th style="width: 200px;">{{ "Actions" | localize }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="
+                    let position of positions
+                      | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: pageSize,
+                            currentPage: pageNumber,
+                            totalItems: totalItems
+                          }
+                  ">
+                    <td>{{ position.jobDescription?.name }}</td>
+                    <td>{{ position.positionWorkType?.name }}</td>    
+                    <td *ngIf="position.per == 0">{{ position.workingHours + ' Hours Per Day' }}</td>
+                    <td *ngIf="position.per == 1">{{ position.workingHours + ' Hours Per Week' }}</td>
+                    <td *ngIf="position.per == 2">{{ position.workingHours + ' Hours Per Month' }}</td>
+                    <td *ngIf="position.per == 3">{{ position.workingHours + ' Hours Per Year' }}</td>
+                    <td *ngIf="position.manager != null">{{ position.manager?.jobDescription?.name + ' - ' + position.manager?.employee?.tripleName }}</td>
+                    <td *ngIf="position.manager == null">{{ "No Manager" | localize }}</td>
+                    <td>
+                      <button type="button"
+                        class="btn btn-sm bg-secondary"
+                        (click)="editPosition(position)">
+                        <i class="fas fa-pencil-alt"></i>
+                        {{ "Edit" | localize }}
+                      </button>
+                      <button type="button"
+                        class="btn btn-sm bg-danger mx-2"
+                        (click)="delete(position)">
+                        <i class="fas fa-trash"></i>
+                        {{ "Delete" | localize }}
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer table-card-footer bg-light border-top">
+            <div class="row">
+              <div class="col-sm-4 col-12 text-sm-left text-center">
+                <button class="btn btn-secondary"
+                  (click)="refresh()">
+                  <i class="fas fa-redo-alt"></i>
+                </button>
+              </div>
+              <div class="col-sm-4 col-12 text-center">
+                <p class="mb-0 my-2">
+                  {{ "TotalRecordsCount" | localize: totalItems }}
+                </p>
+              </div>
+              <div class="col-sm-4 col-12">
+                <div class="float-sm-right m-auto">
+                  <abp-pagination-controls id="server"
+                    (pageChange)="getDataPage($event)">
+                  </abp-pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>

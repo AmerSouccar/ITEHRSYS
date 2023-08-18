@@ -17,9 +17,8 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Dto
         public Guid JobDescriptionId { get; set; }
         public Guid PositionWorkTypeId { get; set; }
         public double WorkingHours { get; set; }
-        public HoursPer Per { get; set; }
+        public int Per { get; set; }
         public bool HasManager { get; set; }
-        public Guid? ManagerJobTitleId { get; set; }
         public Guid? ManagerId { get; set; }
     }
 }

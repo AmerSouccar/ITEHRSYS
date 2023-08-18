@@ -10,8 +10,8 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.FixedHolidays.Dto
     public class UpdateFixedHolidayDto :EntityDto<Guid>
     {
         public string Name { get; set; }
-        public DateTime Day { get; set; }
-        public DateTime Month { get; set; }
+        public string Day { get; set; }
+        public string Month { get; set; }
         public int NumberofDays { get; set; }
     }
 }

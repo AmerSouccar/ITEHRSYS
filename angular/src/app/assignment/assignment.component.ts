@@ -40,6 +40,7 @@ export class AssignmentComponent extends PagedListingComponentBase<ReadAssignmen
       )
       .subscribe((result: ReadAssignmentDtoPagedResultDto) => {
         this.assignments = result.items;
+        console.log(result.items);
         this.showPaging(result, pageNumber);
       });
   }

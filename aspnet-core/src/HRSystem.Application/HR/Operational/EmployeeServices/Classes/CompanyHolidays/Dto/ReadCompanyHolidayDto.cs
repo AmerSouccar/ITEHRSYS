@@ -9,7 +9,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.CompanyHolidays.Dto
 {
     public class ReadCompanyHolidayDto :EntityDto<Guid>
     {
-        public DayOfWeek DayOfWeek { get; set; }
+        public int DayOfWeek { get; set; }
 
     }
 }

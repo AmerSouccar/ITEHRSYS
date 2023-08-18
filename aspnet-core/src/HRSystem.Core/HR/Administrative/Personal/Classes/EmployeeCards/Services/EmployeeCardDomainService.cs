@@ -23,7 +23,13 @@ namespace HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.Services
 
         public IQueryable<EmployeeCard> GetAll()
         {
-            return _employeeCardRepository.GetAllIncluding(x => x.JobDescription, x => x.Employee, x => x.Position, x => x.JobTitle, x => x.Grade, x => x.Custodies, x => x.Assignments, x => x.Transfers, x => x.Resignations, x => x.Promotions, x => x.LeaveRequests);
+            //return _employeeCardRepository.GetAllIncluding(x => x.JobDescription, x => x.Employee, x => x.Position, x => x.JobTitle, x => x.Grade, x => x.Custodies, x => x.Assignments, x => x.Transfers, x => x.Resignations, x => x.Promotions, x => x.LeaveRequests);
+            return _employeeCardRepository.GetAllIncluding(x => x.JobDescription, x => x.Employee, x => x.Position, x => x.JobTitle, x => x.Grade);
+        }
+
+        public IQueryable<EmployeeCard> GetAllForDropDown()
+        {
+            return _employeeCardRepository.GetAllIncluding(x => x.Employee);
         }
 
         public async Task<EmployeeCard> GetbyId(Guid id)

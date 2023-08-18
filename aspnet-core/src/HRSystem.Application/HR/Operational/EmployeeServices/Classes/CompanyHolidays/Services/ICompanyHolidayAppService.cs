@@ -14,6 +14,7 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.CompanyHolidays.Servi
     {
         public PagedResultDto<ReadCompanyHolidayDto> GetAll(PagedGeneralResultRequestDto input);
         public Task<ReadCompanyHolidayDto> GetbyId(Guid id);
+        public Task<UpdateCompanyHolidayDto> GetForEdit(Guid id);
         public Task<InsertCompanyHolidayDto> Insert(InsertCompanyHolidayDto companyHoliday);
         public Task<UpdateCompanyHolidayDto> Update(UpdateCompanyHolidayDto companyHoliday);
         public Task Delete(Guid id);

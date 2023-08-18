@@ -1,0 +1,64 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'EditCompanyHoliday' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="type">
+          {{ "Day of Week" | localize }}
+        </label>
+      <div class="col-md-9">
+
+        <select [(ngModel)]="companyHoliday.dayOfWeek"  class="form-control" name="name" id="name">
+            <option  
+              [ngValue]="0"
+              >
+              {{ "Sunday" | localize }}
+            </option>
+            <option  
+            [ngValue]="1"
+            >
+            {{ "Monday" | localize }}
+          </option>
+          <option  
+          [ngValue]="2"
+          >
+          {{ "Tuesday" | localize }}
+        </option>
+        <option  
+        [ngValue]="3"
+        >
+        {{ "Wednesday" | localize }}
+      </option>
+      <option  
+      [ngValue]="4"
+      >
+      {{ "Thursday" | localize }}
+    </option>
+    <option  
+    [ngValue]="5"
+    >
+    {{ "Friday" | localize }}
+  </option>
+  <option  
+  [ngValue]="6"
+  >
+  {{ "Saturday" | localize }}
+</option>
+            </select>
+
+      </div>
+    </div>
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

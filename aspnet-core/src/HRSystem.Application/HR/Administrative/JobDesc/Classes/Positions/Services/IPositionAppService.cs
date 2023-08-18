@@ -13,6 +13,7 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Services
     public interface IPositionAppService :IApplicationService
     {
         public PagedResultDto<ReadPositionDto> GetAll(PagedGeneralResultRequestDto input);
+        public PagedResultDto<ReadPositionDto> GetAllEmptyPositions(PagedGeneralResultRequestDto input);
         public Task<ReadPositionDto> GetbyId(Guid id);
         public Task<UpdatePositionDto> GetForEdit(Guid id);
         public Task<InsertPositionDto> Insert(InsertPositionDto position);

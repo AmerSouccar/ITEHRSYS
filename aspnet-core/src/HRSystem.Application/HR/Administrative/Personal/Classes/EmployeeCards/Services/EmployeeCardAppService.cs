@@ -35,6 +35,16 @@ namespace HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.Services
             return new PagedResultDto<ReadEmployeeCardDto>(total, list);
         }
 
+        public PagedResultDto<ReadEmployeeCardDto> GetAllForDropdown(PagedGeneralResultRequestDto input)
+        {
+            var employeeCards = _employeeCardDomainService.GetAllForDropDown();
+            int total = employeeCards.Count();
+            employeeCards = employeeCards.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadEmployeeCardDto>>(employeeCards.ToList());
+            return new PagedResultDto<ReadEmployeeCardDto>(total, list);
+        }
+
         public async Task<ReadEmployeeCardDto> GetbyId(Guid id)
         {
             return ObjectMapper.Map<ReadEmployeeCardDto>(await _employeeCardDomainService.GetbyId(id));

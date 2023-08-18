@@ -34,6 +34,16 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions.Services
             return new PagedResultDto<ReadPositionDto>(total, list);
         }
 
+        public PagedResultDto<ReadPositionDto> GetAllEmptyPositions(PagedGeneralResultRequestDto input)
+        {
+            var positions = _positionDomainService.GetAllEmptyPositions();
+            int total = positions.Count();
+            positions = positions.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadPositionDto>>(positions.ToList());
+            return new PagedResultDto<ReadPositionDto>(total, list);
+        }
+
         public async Task<ReadPositionDto> GetbyId(Guid id)
         {
             return ObjectMapper.Map<ReadPositionDto>(await _positionDomainService.GetbyId(id));

@@ -1704,7 +1704,7 @@ namespace HRSystem.Migrations
                     b.Property<int>("EmployeeCount")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("GradeId")
+                    b.Property<Guid>("GradeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -1851,9 +1851,6 @@ namespace HRSystem.Migrations
                     b.Property<Guid?>("ManagerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ManagerJobTitleId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("Per")
                         .HasColumnType("int");
 
@@ -1870,8 +1867,6 @@ namespace HRSystem.Migrations
                     b.HasIndex("JobDescriptionId");
 
                     b.HasIndex("ManagerId");
-
-                    b.HasIndex("ManagerJobTitleId");
 
                     b.HasIndex("PositionWorkTypeId");
 
@@ -5495,9 +5490,13 @@ namespace HRSystem.Migrations
 
             modelBuilder.Entity("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", b =>
                 {
-                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.Grades.Grade", null)
+                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.Grades.Grade", "Grade")
                         .WithMany("JobTitles")
-                        .HasForeignKey("GradeId");
+                        .HasForeignKey("GradeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Grade");
                 });
 
             modelBuilder.Entity("HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.JobDescription", b =>
@@ -5531,13 +5530,9 @@ namespace HRSystem.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HRSystem.HR.Administrative.JobDesc.Classes.JobDescriptions.JobDescription", "Manager")
+                    b.HasOne("HRSystem.HR.Administrative.JobDesc.Classes.Positions.Position", "Manager")
                         .WithMany()
                         .HasForeignKey("ManagerId");
-
-                    b.HasOne("HRSystem.HR.Administrative.Grades.Classes.JobTitles.JobTitle", "ManagerJobTitle")
-                        .WithMany()
-                        .HasForeignKey("ManagerJobTitleId");
 
                     b.HasOne("HRSystem.HR.Administrative.JobDesc.Indexes.PositionWorkTypes.PositionWorkType", "PositionWorkType")
                         .WithMany()
@@ -5550,8 +5545,6 @@ namespace HRSystem.Migrations
                     b.Navigation("JobDescription");
 
                     b.Navigation("Manager");
-
-                    b.Navigation("ManagerJobTitle");
 
                     b.Navigation("PositionWorkType");
                 });

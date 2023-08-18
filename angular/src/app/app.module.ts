@@ -92,6 +92,21 @@ import { EditOrgLevelDialogComponent } from './org-level/edit-org-level-dialog/e
 import { JobDescriptionComponent } from './job-description/job-description.component';
 import { CreateJobDescriptionDialogComponent } from './job-description/create-job-description-dialog/create-job-description-dialog.component';
 import { EditJobDescriptionDialogComponent } from './job-description/edit-job-description-dialog/edit-job-description-dialog.component';
+import { PositionWorkTypeComponent } from './position-work-type/position-work-type.component';
+import { CreatePositionWorkTypeDialogComponent } from './position-work-type/create-position-work-type-dialog/create-position-work-type-dialog.component';
+import { EditPositionWorkTypeDialogComponent } from './position-work-type/edit-position-work-type-dialog/edit-position-work-type-dialog.component';
+import { PositionComponent } from './position/position.component';
+import { CreatePositionDialogComponent } from './position/create-position-dialog/create-position-dialog.component';
+import { EditPositionDialogComponent } from './position/edit-position-dialog/edit-position-dialog.component';
+import { ChangeableHolidayComponent } from './changeable-holiday/changeable-holiday.component';
+import { CreateChangeableHolidayDialogComponent } from './changeable-holiday/create-changeable-holiday-dialog/create-changeable-holiday-dialog.component';
+import { EditChangeableHolidayDialogComponent } from './changeable-holiday/edit-changeable-holiday-dialog/edit-changeable-holiday-dialog.component';
+import { CompanyHolidayComponent } from './company-holiday/company-holiday.component';
+import { CreateCompanyHolidayDialogComponent } from './company-holiday/create-company-holiday-dialog/create-company-holiday-dialog.component';
+import { EditCompanyHolidayDialogComponent } from './company-holiday/edit-company-holiday-dialog/edit-company-holiday-dialog.component';
+import { FixedHolidayComponent } from './fixed-holiday/fixed-holiday.component';
+import { CreateFixedHolidayDialogComponent } from './fixed-holiday/create-fixed-holiday-dialog/create-fixed-holiday-dialog.component';
+import { EditFixedHolidayDialogComponent } from './fixed-holiday/edit-fixed-holiday-dialog/edit-fixed-holiday-dialog.component';
 
 @NgModule({
     declarations: [
@@ -175,7 +190,23 @@ import { EditJobDescriptionDialogComponent } from './job-description/edit-job-de
         EditOrgLevelDialogComponent,
         JobDescriptionComponent,
         CreateJobDescriptionDialogComponent,
-        EditJobDescriptionDialogComponent
+        EditJobDescriptionDialogComponent,
+        PositionWorkTypeComponent,
+        CreatePositionWorkTypeDialogComponent,
+        EditPositionWorkTypeDialogComponent,
+        PositionComponent,
+        CreatePositionDialogComponent,
+        EditPositionDialogComponent,
+        ChangeableHolidayComponent,
+        CreateChangeableHolidayDialogComponent,
+        EditChangeableHolidayDialogComponent,
+        CompanyHolidayComponent,
+        CreateCompanyHolidayDialogComponent,
+        EditCompanyHolidayDialogComponent,
+        FixedHolidayComponent,
+        CreateFixedHolidayDialogComponent,
+        EditFixedHolidayDialogComponent,
+        
     ],
     imports: [
         CommonModule,

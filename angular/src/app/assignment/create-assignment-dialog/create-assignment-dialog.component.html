@@ -1,1 +1,122 @@
-<p>create-assignment-dialog works!</p>
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateNewAssignment' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    
+    <div class="form-group row">
+        <label class="col-md-12 col-form-label" for="type">
+          {{ "Employee" | localize }}
+        </label>
+      <div class="col-md-12">
+
+        <select [(ngModel)]="assignment.employeeCardId"  class="form-control" name="employeeCardId" id="employeeCardId">
+            <option  
+             required
+              *ngFor="let employeeCard of employeeCards" [ngValue]="employeeCard.id"
+              >
+              {{employeeCard.employee?.tripleName}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-12 col-form-label" for="jobTitleId">
+          {{ "Job Title" | localize }}
+        </label>
+      <div class="col-md-12">
+
+        <select [(ngModel)]="assignment.jobTitleId"  class="form-control" name="jobTitleId" id="jobTitleId">
+            <option  
+             required
+              *ngFor="let jobTitle of jobTitles" [ngValue]="jobTitle.id"
+              >
+              {{jobTitle.name}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-12 col-form-label" for="positionID">
+          {{ "Position" | localize }}
+        </label>
+      <div class="col-md-12">
+
+        <select [(ngModel)]="assignment.positionID"  class="form-control" name="positionID" id="positionID">
+            <option  
+             required
+              *ngFor="let position of positions" [ngValue]="position.id"
+              >
+              {{position.jobDescription?.name + ' - ' + position.jobDescription?.node?.name}}
+            </option>
+            </select>
+
+      </div>
+    </div>
+
+
+    <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="Date">
+          {{ "Assigning Date" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="date"
+            class="form-control"
+            name="Date"
+            id="Date"
+            maxlength="128"
+            required
+            [(ngModel)]="assignment.assigningDate"
+            #nameModel="ngModel"
+            #nameEl
+          />
+          <abp-validation-summary
+            [control]="nameModel"
+            [controlEl]="nameEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="Description">
+          {{ "Description" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="text"
+            class="form-control"
+            name="Description"
+            id="Description"
+            maxlength="128"
+            required
+            [(ngModel)]="assignment.description"
+            #DescriptionModel="ngModel"
+            #DescriptionEl
+          />
+          <abp-validation-summary
+            [control]="DescriptionModel"
+            [controlEl]="DescriptionEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

@@ -39,6 +39,11 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.CompanyHolidays.Servi
             return ObjectMapper.Map<ReadCompanyHolidayDto>(await _companyHolidaydomainService.GetbyId(id));
         }
 
+        public async Task<UpdateCompanyHolidayDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateCompanyHolidayDto>(await _companyHolidaydomainService.GetbyId(id));
+        }
+
         public async Task<InsertCompanyHolidayDto> Insert(InsertCompanyHolidayDto companyHoliday)
         {
             return ObjectMapper.Map<InsertCompanyHolidayDto>(await _companyHolidaydomainService.Insert(ObjectMapper.Map<CompanyHoliday>(companyHoliday)));

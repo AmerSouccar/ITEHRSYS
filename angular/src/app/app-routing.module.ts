@@ -27,6 +27,11 @@ import { GradeComponent } from './grade/grade.component';
 import { JobTitleComponent } from './job-title/job-title.component';
 import { OrgLevelComponent } from './org-level/org-level.component';
 import { JobDescriptionComponent } from './job-description/job-description.component';
+import { PositionWorkTypeComponent } from './position-work-type/position-work-type.component';
+import { PositionComponent } from './position/position.component';
+import { ChangeableHolidayComponent } from './changeable-holiday/changeable-holiday.component';
+import { CompanyHolidayComponent } from './company-holiday/company-holiday.component';
+import { FixedHolidayComponent } from './fixed-holiday/fixed-holiday.component';
 
 @NgModule({
     imports: [
@@ -51,7 +56,12 @@ import { JobDescriptionComponent } from './job-description/job-description.compo
                     { path: 'nationalities', component: NationalityComponent, canActivate: [AppRouteGuard] },
                     { path: 'education-grades', component: EducationalGradeComponent, canActivate: [AppRouteGuard] },
                     { path: 'grades', component: GradeComponent, canActivate: [AppRouteGuard] },
+                    { path: 'changeable-holidays', component: ChangeableHolidayComponent, canActivate: [AppRouteGuard] },
+                    { path: 'company-holidays', component: CompanyHolidayComponent, canActivate: [AppRouteGuard] },
+                    { path: 'fixed-holidays', component: FixedHolidayComponent, canActivate: [AppRouteGuard] },
                     { path: 'job-descriptions', component: JobDescriptionComponent, canActivate: [AppRouteGuard] },
+                    { path: 'position-work-types', component: PositionWorkTypeComponent, canActivate: [AppRouteGuard] },
+                    { path: 'positions', component: PositionComponent, canActivate: [AppRouteGuard] },
                     { path: 'organization-levels', component: OrgLevelComponent, canActivate: [AppRouteGuard] },
                     { path: 'entrance-exit-records', component: EntranceExitRecordComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForms', component: AttendanceFormComponent, canActivate: [AppRouteGuard] },

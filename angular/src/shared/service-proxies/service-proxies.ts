@@ -3027,6 +3027,62 @@ export class ChangeableHolidayServiceProxy {
     }
 
     /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateChangeableHolidayDto> {
+        let url_ = this.baseUrl + "/api/services/app/ChangeableHoliday/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateChangeableHolidayDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateChangeableHolidayDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateChangeableHolidayDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateChangeableHolidayDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param body (optional) 
      * @return Success
      */
@@ -3895,6 +3951,62 @@ export class CompanyHolidayServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ReadCompanyHolidayDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateCompanyHolidayDto> {
+        let url_ = this.baseUrl + "/api/services/app/CompanyHoliday/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateCompanyHolidayDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateCompanyHolidayDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateCompanyHolidayDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateCompanyHolidayDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -7780,6 +7892,67 @@ export class EmployeeCardServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getAllForDropdown(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadEmployeeCardDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/EmployeeCard/GetAllForDropdown?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllForDropdown(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllForDropdown(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ReadEmployeeCardDtoPagedResultDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ReadEmployeeCardDtoPagedResultDto>;
+        }));
+    }
+
+    protected processGetAllForDropdown(response: HttpResponseBase): Observable<ReadEmployeeCardDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ReadEmployeeCardDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param id (optional) 
      * @return Success
      */
@@ -9105,6 +9278,62 @@ export class FixedHolidayServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ReadFixedHolidayDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateFixedHolidayDto> {
+        let url_ = this.baseUrl + "/api/services/app/FixedHoliday/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateFixedHolidayDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateFixedHolidayDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateFixedHolidayDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateFixedHolidayDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -15115,6 +15344,67 @@ export class PositionServiceProxy {
     }
 
     protected processGetAll(response: HttpResponseBase): Observable<ReadPositionDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ReadPositionDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getAllEmptyPositions(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadPositionDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Position/GetAllEmptyPositions?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllEmptyPositions(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllEmptyPositions(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ReadPositionDtoPagedResultDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ReadPositionDtoPagedResultDto>;
+        }));
+    }
+
+    protected processGetAllEmptyPositions(response: HttpResponseBase): Observable<ReadPositionDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -26400,7 +26690,7 @@ export class InsertAssignmentDto implements IInsertAssignmentDto {
     jobTitleId: string;
     positionID: string;
     employeeCardId: string;
-    assigningDate: moment.Moment;
+    assigningDate: string | undefined;
     description: string | undefined;
 
     constructor(data?: IInsertAssignmentDto) {
@@ -26418,7 +26708,7 @@ export class InsertAssignmentDto implements IInsertAssignmentDto {
             this.jobTitleId = _data["jobTitleId"];
             this.positionID = _data["positionID"];
             this.employeeCardId = _data["employeeCardId"];
-            this.assigningDate = _data["assigningDate"] ? moment(_data["assigningDate"].toString()) : <any>undefined;
+            this.assigningDate = _data["assigningDate"];
             this.description = _data["description"];
         }
     }
@@ -26436,7 +26726,7 @@ export class InsertAssignmentDto implements IInsertAssignmentDto {
         data["jobTitleId"] = this.jobTitleId;
         data["positionID"] = this.positionID;
         data["employeeCardId"] = this.employeeCardId;
-        data["assigningDate"] = this.assigningDate ? this.assigningDate.toISOString() : <any>undefined;
+        data["assigningDate"] = this.assigningDate;
         data["description"] = this.description;
         return data;
     }
@@ -26454,7 +26744,7 @@ export interface IInsertAssignmentDto {
     jobTitleId: string;
     positionID: string;
     employeeCardId: string;
-    assigningDate: moment.Moment;
+    assigningDate: string | undefined;
     description: string | undefined;
 }
 
@@ -26882,8 +27172,8 @@ export interface IInsertCertificateDto {
 export class InsertChangeableHolidayDto implements IInsertChangeableHolidayDto {
     id: string;
     name: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    startDate: string | undefined;
+    endDate: string | undefined;
 
     constructor(data?: IInsertChangeableHolidayDto) {
         if (data) {
@@ -26898,8 +27188,8 @@ export class InsertChangeableHolidayDto implements IInsertChangeableHolidayDto {
         if (_data) {
             this.id = _data["id"];
             this.name = _data["name"];
-            this.startDate = _data["startDate"] ? moment(_data["startDate"].toString()) : <any>undefined;
-            this.endDate = _data["endDate"] ? moment(_data["endDate"].toString()) : <any>undefined;
+            this.startDate = _data["startDate"];
+            this.endDate = _data["endDate"];
         }
     }
 
@@ -26914,8 +27204,8 @@ export class InsertChangeableHolidayDto implements IInsertChangeableHolidayDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
-        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
-        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["startDate"] = this.startDate;
+        data["endDate"] = this.endDate;
         return data;
     }
 
@@ -26930,8 +27220,8 @@ export class InsertChangeableHolidayDto implements IInsertChangeableHolidayDto {
 export interface IInsertChangeableHolidayDto {
     id: string;
     name: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    startDate: string | undefined;
+    endDate: string | undefined;
 }
 
 export class InsertChildrenDto implements IInsertChildrenDto {
@@ -27996,8 +28286,8 @@ export interface IInsertFinancialCardDto {
 export class InsertFixedHolidayDto implements IInsertFixedHolidayDto {
     id: string;
     name: string | undefined;
-    day: moment.Moment;
-    month: moment.Moment;
+    day: string | undefined;
+    month: string | undefined;
     numberofDays: number;
 
     constructor(data?: IInsertFixedHolidayDto) {
@@ -28013,8 +28303,8 @@ export class InsertFixedHolidayDto implements IInsertFixedHolidayDto {
         if (_data) {
             this.id = _data["id"];
             this.name = _data["name"];
-            this.day = _data["day"] ? moment(_data["day"].toString()) : <any>undefined;
-            this.month = _data["month"] ? moment(_data["month"].toString()) : <any>undefined;
+            this.day = _data["day"];
+            this.month = _data["month"];
             this.numberofDays = _data["numberofDays"];
         }
     }
@@ -28030,8 +28320,8 @@ export class InsertFixedHolidayDto implements IInsertFixedHolidayDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
-        data["day"] = this.day ? this.day.toISOString() : <any>undefined;
-        data["month"] = this.month ? this.month.toISOString() : <any>undefined;
+        data["day"] = this.day;
+        data["month"] = this.month;
         data["numberofDays"] = this.numberofDays;
         return data;
     }
@@ -28047,8 +28337,8 @@ export class InsertFixedHolidayDto implements IInsertFixedHolidayDto {
 export interface IInsertFixedHolidayDto {
     id: string;
     name: string | undefined;
-    day: moment.Moment;
-    month: moment.Moment;
+    day: string | undefined;
+    month: string | undefined;
     numberofDays: number;
 }
 
@@ -29043,9 +29333,8 @@ export class InsertPositionDto implements IInsertPositionDto {
     jobDescriptionId: string;
     positionWorkTypeId: string;
     workingHours: number;
-    per: HoursPer;
+    per: number;
     hasManager: boolean;
-    managerJobTitleId: string | undefined;
     managerId: string | undefined;
 
     constructor(data?: IInsertPositionDto) {
@@ -29065,7 +29354,6 @@ export class InsertPositionDto implements IInsertPositionDto {
             this.workingHours = _data["workingHours"];
             this.per = _data["per"];
             this.hasManager = _data["hasManager"];
-            this.managerJobTitleId = _data["managerJobTitleId"];
             this.managerId = _data["managerId"];
         }
     }
@@ -29085,7 +29373,6 @@ export class InsertPositionDto implements IInsertPositionDto {
         data["workingHours"] = this.workingHours;
         data["per"] = this.per;
         data["hasManager"] = this.hasManager;
-        data["managerJobTitleId"] = this.managerJobTitleId;
         data["managerId"] = this.managerId;
         return data;
     }
@@ -29103,9 +29390,8 @@ export interface IInsertPositionDto {
     jobDescriptionId: string;
     positionWorkTypeId: string;
     workingHours: number;
-    per: HoursPer;
+    per: number;
     hasManager: boolean;
-    managerJobTitleId: string | undefined;
     managerId: string | undefined;
 }
 
@@ -32313,10 +32599,8 @@ export class Position implements IPosition {
     workingHours: number;
     per: HoursPer;
     hasManager: boolean;
-    managerJobTitleId: string | undefined;
-    managerJobTitle: JobTitle;
     managerId: string | undefined;
-    manager: JobDescription;
+    manager: Position;
     employeeId: string | undefined;
     employee: Employee;
 
@@ -32351,10 +32635,8 @@ export class Position implements IPosition {
             this.workingHours = _data["workingHours"];
             this.per = _data["per"];
             this.hasManager = _data["hasManager"];
-            this.managerJobTitleId = _data["managerJobTitleId"];
-            this.managerJobTitle = _data["managerJobTitle"] ? JobTitle.fromJS(_data["managerJobTitle"]) : <any>undefined;
             this.managerId = _data["managerId"];
-            this.manager = _data["manager"] ? JobDescription.fromJS(_data["manager"]) : <any>undefined;
+            this.manager = _data["manager"] ? Position.fromJS(_data["manager"]) : <any>undefined;
             this.employeeId = _data["employeeId"];
             this.employee = _data["employee"] ? Employee.fromJS(_data["employee"]) : <any>undefined;
         }
@@ -32389,8 +32671,6 @@ export class Position implements IPosition {
         data["workingHours"] = this.workingHours;
         data["per"] = this.per;
         data["hasManager"] = this.hasManager;
-        data["managerJobTitleId"] = this.managerJobTitleId;
-        data["managerJobTitle"] = this.managerJobTitle ? this.managerJobTitle.toJSON() : <any>undefined;
         data["managerId"] = this.managerId;
         data["manager"] = this.manager ? this.manager.toJSON() : <any>undefined;
         data["employeeId"] = this.employeeId;
@@ -32423,10 +32703,8 @@ export interface IPosition {
     workingHours: number;
     per: HoursPer;
     hasManager: boolean;
-    managerJobTitleId: string | undefined;
-    managerJobTitle: JobTitle;
     managerId: string | undefined;
-    manager: JobDescription;
+    manager: Position;
     employeeId: string | undefined;
     employee: Employee;
 }
@@ -32825,9 +33103,12 @@ export interface IRankDtoPagedResultDto {
 export class ReadAssignmentDto implements IReadAssignmentDto {
     id: string;
     jobTitleId: string;
+    jobTitle: ReadJobTitleDto;
     positionID: string;
+    position: ReadPositionDto;
     employeeCardId: string;
-    assigningDate: moment.Moment;
+    employeeCard: ReadEmployeeCardDto;
+    assigningDate: string | undefined;
     description: string | undefined;
 
     constructor(data?: IReadAssignmentDto) {
@@ -32843,9 +33124,12 @@ export class ReadAssignmentDto implements IReadAssignmentDto {
         if (_data) {
             this.id = _data["id"];
             this.jobTitleId = _data["jobTitleId"];
+            this.jobTitle = _data["jobTitle"] ? ReadJobTitleDto.fromJS(_data["jobTitle"]) : <any>undefined;
             this.positionID = _data["positionID"];
+            this.position = _data["position"] ? ReadPositionDto.fromJS(_data["position"]) : <any>undefined;
             this.employeeCardId = _data["employeeCardId"];
-            this.assigningDate = _data["assigningDate"] ? moment(_data["assigningDate"].toString()) : <any>undefined;
+            this.employeeCard = _data["employeeCard"] ? ReadEmployeeCardDto.fromJS(_data["employeeCard"]) : <any>undefined;
+            this.assigningDate = _data["assigningDate"];
             this.description = _data["description"];
         }
     }
@@ -32861,9 +33145,12 @@ export class ReadAssignmentDto implements IReadAssignmentDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["jobTitleId"] = this.jobTitleId;
+        data["jobTitle"] = this.jobTitle ? this.jobTitle.toJSON() : <any>undefined;
         data["positionID"] = this.positionID;
+        data["position"] = this.position ? this.position.toJSON() : <any>undefined;
         data["employeeCardId"] = this.employeeCardId;
-        data["assigningDate"] = this.assigningDate ? this.assigningDate.toISOString() : <any>undefined;
+        data["employeeCard"] = this.employeeCard ? this.employeeCard.toJSON() : <any>undefined;
+        data["assigningDate"] = this.assigningDate;
         data["description"] = this.description;
         return data;
     }
@@ -32879,9 +33166,12 @@ export class ReadAssignmentDto implements IReadAssignmentDto {
 export interface IReadAssignmentDto {
     id: string;
     jobTitleId: string;
+    jobTitle: ReadJobTitleDto;
     positionID: string;
+    position: ReadPositionDto;
     employeeCardId: string;
-    assigningDate: moment.Moment;
+    employeeCard: ReadEmployeeCardDto;
+    assigningDate: string | undefined;
     description: string | undefined;
 }
 
@@ -33797,8 +34087,8 @@ export interface IReadCertificateDtoPagedResultDto {
 export class ReadChangeableHolidayDto implements IReadChangeableHolidayDto {
     id: string;
     name: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    startDate: string | undefined;
+    endDate: string | undefined;
 
     constructor(data?: IReadChangeableHolidayDto) {
         if (data) {
@@ -33813,8 +34103,8 @@ export class ReadChangeableHolidayDto implements IReadChangeableHolidayDto {
         if (_data) {
             this.id = _data["id"];
             this.name = _data["name"];
-            this.startDate = _data["startDate"] ? moment(_data["startDate"].toString()) : <any>undefined;
-            this.endDate = _data["endDate"] ? moment(_data["endDate"].toString()) : <any>undefined;
+            this.startDate = _data["startDate"];
+            this.endDate = _data["endDate"];
         }
     }
 
@@ -33829,8 +34119,8 @@ export class ReadChangeableHolidayDto implements IReadChangeableHolidayDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
-        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
-        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["startDate"] = this.startDate;
+        data["endDate"] = this.endDate;
         return data;
     }
 
@@ -33845,8 +34135,8 @@ export class ReadChangeableHolidayDto implements IReadChangeableHolidayDto {
 export interface IReadChangeableHolidayDto {
     id: string;
     name: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    startDate: string | undefined;
+    endDate: string | undefined;
 }
 
 export class ReadChangeableHolidayDtoPagedResultDto implements IReadChangeableHolidayDtoPagedResultDto {
@@ -36105,8 +36395,8 @@ export interface IReadFinancialCardDto {
 export class ReadFixedHolidayDto implements IReadFixedHolidayDto {
     id: string;
     name: string | undefined;
-    day: moment.Moment;
-    month: moment.Moment;
+    day: string | undefined;
+    month: string | undefined;
     numberofDays: number;
 
     constructor(data?: IReadFixedHolidayDto) {
@@ -36122,8 +36412,8 @@ export class ReadFixedHolidayDto implements IReadFixedHolidayDto {
         if (_data) {
             this.id = _data["id"];
             this.name = _data["name"];
-            this.day = _data["day"] ? moment(_data["day"].toString()) : <any>undefined;
-            this.month = _data["month"] ? moment(_data["month"].toString()) : <any>undefined;
+            this.day = _data["day"];
+            this.month = _data["month"];
             this.numberofDays = _data["numberofDays"];
         }
     }
@@ -36139,8 +36429,8 @@ export class ReadFixedHolidayDto implements IReadFixedHolidayDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
-        data["day"] = this.day ? this.day.toISOString() : <any>undefined;
-        data["month"] = this.month ? this.month.toISOString() : <any>undefined;
+        data["day"] = this.day;
+        data["month"] = this.month;
         data["numberofDays"] = this.numberofDays;
         return data;
     }
@@ -36156,8 +36446,8 @@ export class ReadFixedHolidayDto implements IReadFixedHolidayDto {
 export interface IReadFixedHolidayDto {
     id: string;
     name: string | undefined;
-    day: moment.Moment;
-    month: moment.Moment;
+    day: string | undefined;
+    month: string | undefined;
     numberofDays: number;
 }
 
@@ -38011,10 +38301,8 @@ export class ReadPositionDto implements IReadPositionDto {
     workingHours: number;
     per: HoursPer;
     hasManager: boolean;
-    managerJobTitleId: string | undefined;
-    managerJobTitle: ReadJobTitleDto;
     managerId: string | undefined;
-    manager: ReadJobDescriptionDto;
+    manager: ReadPositionDto;
 
     constructor(data?: IReadPositionDto) {
         if (data) {
@@ -38035,10 +38323,8 @@ export class ReadPositionDto implements IReadPositionDto {
             this.workingHours = _data["workingHours"];
             this.per = _data["per"];
             this.hasManager = _data["hasManager"];
-            this.managerJobTitleId = _data["managerJobTitleId"];
-            this.managerJobTitle = _data["managerJobTitle"] ? ReadJobTitleDto.fromJS(_data["managerJobTitle"]) : <any>undefined;
             this.managerId = _data["managerId"];
-            this.manager = _data["manager"] ? ReadJobDescriptionDto.fromJS(_data["manager"]) : <any>undefined;
+            this.manager = _data["manager"] ? ReadPositionDto.fromJS(_data["manager"]) : <any>undefined;
         }
     }
 
@@ -38059,8 +38345,6 @@ export class ReadPositionDto implements IReadPositionDto {
         data["workingHours"] = this.workingHours;
         data["per"] = this.per;
         data["hasManager"] = this.hasManager;
-        data["managerJobTitleId"] = this.managerJobTitleId;
-        data["managerJobTitle"] = this.managerJobTitle ? this.managerJobTitle.toJSON() : <any>undefined;
         data["managerId"] = this.managerId;
         data["manager"] = this.manager ? this.manager.toJSON() : <any>undefined;
         return data;
@@ -38083,10 +38367,8 @@ export interface IReadPositionDto {
     workingHours: number;
     per: HoursPer;
     hasManager: boolean;
-    managerJobTitleId: string | undefined;
-    managerJobTitle: ReadJobTitleDto;
     managerId: string | undefined;
-    manager: ReadJobDescriptionDto;
+    manager: ReadPositionDto;
 }
 
 export class ReadPositionDtoPagedResultDto implements IReadPositionDtoPagedResultDto {
@@ -42064,7 +42346,7 @@ export class UpdateAssignmentDto implements IUpdateAssignmentDto {
     jobTitleId: string;
     positionID: string;
     employeeCardId: string;
-    assigningDate: moment.Moment;
+    assigningDate: string | undefined;
     description: string | undefined;
 
     constructor(data?: IUpdateAssignmentDto) {
@@ -42082,7 +42364,7 @@ export class UpdateAssignmentDto implements IUpdateAssignmentDto {
             this.jobTitleId = _data["jobTitleId"];
             this.positionID = _data["positionID"];
             this.employeeCardId = _data["employeeCardId"];
-            this.assigningDate = _data["assigningDate"] ? moment(_data["assigningDate"].toString()) : <any>undefined;
+            this.assigningDate = _data["assigningDate"];
             this.description = _data["description"];
         }
     }
@@ -42100,7 +42382,7 @@ export class UpdateAssignmentDto implements IUpdateAssignmentDto {
         data["jobTitleId"] = this.jobTitleId;
         data["positionID"] = this.positionID;
         data["employeeCardId"] = this.employeeCardId;
-        data["assigningDate"] = this.assigningDate ? this.assigningDate.toISOString() : <any>undefined;
+        data["assigningDate"] = this.assigningDate;
         data["description"] = this.description;
         return data;
     }
@@ -42118,7 +42400,7 @@ export interface IUpdateAssignmentDto {
     jobTitleId: string;
     positionID: string;
     employeeCardId: string;
-    assigningDate: moment.Moment;
+    assigningDate: string | undefined;
     description: string | undefined;
 }
 
@@ -42546,8 +42828,8 @@ export interface IUpdateCertificateDto {
 export class UpdateChangeableHolidayDto implements IUpdateChangeableHolidayDto {
     id: string;
     name: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    startDate: string | undefined;
+    endDate: string | undefined;
 
     constructor(data?: IUpdateChangeableHolidayDto) {
         if (data) {
@@ -42562,8 +42844,8 @@ export class UpdateChangeableHolidayDto implements IUpdateChangeableHolidayDto {
         if (_data) {
             this.id = _data["id"];
             this.name = _data["name"];
-            this.startDate = _data["startDate"] ? moment(_data["startDate"].toString()) : <any>undefined;
-            this.endDate = _data["endDate"] ? moment(_data["endDate"].toString()) : <any>undefined;
+            this.startDate = _data["startDate"];
+            this.endDate = _data["endDate"];
         }
     }
 
@@ -42578,8 +42860,8 @@ export class UpdateChangeableHolidayDto implements IUpdateChangeableHolidayDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
-        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
-        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["startDate"] = this.startDate;
+        data["endDate"] = this.endDate;
         return data;
     }
 
@@ -42594,8 +42876,8 @@ export class UpdateChangeableHolidayDto implements IUpdateChangeableHolidayDto {
 export interface IUpdateChangeableHolidayDto {
     id: string;
     name: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    startDate: string | undefined;
+    endDate: string | undefined;
 }
 
 export class UpdateChildrenDto implements IUpdateChildrenDto {
@@ -43751,8 +44033,8 @@ export interface IUpdateFinancialCardDto {
 export class UpdateFixedHolidayDto implements IUpdateFixedHolidayDto {
     id: string;
     name: string | undefined;
-    day: moment.Moment;
-    month: moment.Moment;
+    day: string | undefined;
+    month: string | undefined;
     numberofDays: number;
 
     constructor(data?: IUpdateFixedHolidayDto) {
@@ -43768,8 +44050,8 @@ export class UpdateFixedHolidayDto implements IUpdateFixedHolidayDto {
         if (_data) {
             this.id = _data["id"];
             this.name = _data["name"];
-            this.day = _data["day"] ? moment(_data["day"].toString()) : <any>undefined;
-            this.month = _data["month"] ? moment(_data["month"].toString()) : <any>undefined;
+            this.day = _data["day"];
+            this.month = _data["month"];
             this.numberofDays = _data["numberofDays"];
         }
     }
@@ -43785,8 +44067,8 @@ export class UpdateFixedHolidayDto implements IUpdateFixedHolidayDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
-        data["day"] = this.day ? this.day.toISOString() : <any>undefined;
-        data["month"] = this.month ? this.month.toISOString() : <any>undefined;
+        data["day"] = this.day;
+        data["month"] = this.month;
         data["numberofDays"] = this.numberofDays;
         return data;
     }
@@ -43802,8 +44084,8 @@ export class UpdateFixedHolidayDto implements IUpdateFixedHolidayDto {
 export interface IUpdateFixedHolidayDto {
     id: string;
     name: string | undefined;
-    day: moment.Moment;
-    month: moment.Moment;
+    day: string | undefined;
+    month: string | undefined;
     numberofDays: number;
 }
 
@@ -44798,9 +45080,8 @@ export class UpdatePositionDto implements IUpdatePositionDto {
     jobDescriptionId: string;
     positionWorkTypeId: string;
     workingHours: number;
-    per: HoursPer;
+    per: number;
     hasManager: boolean;
-    managerJobTitleId: string | undefined;
     managerId: string | undefined;
 
     constructor(data?: IUpdatePositionDto) {
@@ -44820,7 +45101,6 @@ export class UpdatePositionDto implements IUpdatePositionDto {
             this.workingHours = _data["workingHours"];
             this.per = _data["per"];
             this.hasManager = _data["hasManager"];
-            this.managerJobTitleId = _data["managerJobTitleId"];
             this.managerId = _data["managerId"];
         }
     }
@@ -44840,7 +45120,6 @@ export class UpdatePositionDto implements IUpdatePositionDto {
         data["workingHours"] = this.workingHours;
         data["per"] = this.per;
         data["hasManager"] = this.hasManager;
-        data["managerJobTitleId"] = this.managerJobTitleId;
         data["managerId"] = this.managerId;
         return data;
     }
@@ -44858,9 +45137,8 @@ export interface IUpdatePositionDto {
     jobDescriptionId: string;
     positionWorkTypeId: string;
     workingHours: number;
-    per: HoursPer;
+    per: number;
     hasManager: boolean;
-    managerJobTitleId: string | undefined;
     managerId: string | undefined;
 }
 

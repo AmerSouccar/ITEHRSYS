@@ -1,0 +1,87 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateNewChangeableHoliday' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="name">
+        {{ "Name" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="name"
+          maxlength="128"
+          required
+          [(ngModel)]="changeableHoliday.name"
+          #nameModel="ngModel"
+          #nameEl
+        />
+        <abp-validation-summary
+          [control]="nameModel"
+          [controlEl]="nameEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+    <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="startDate">
+          {{ "Start Date" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="date"
+            class="form-control"
+            name="startDate"
+            id="startDate"
+            maxlength="128"
+            required
+            [(ngModel)]="changeableHoliday.startDate"
+            #startDateModel="ngModel"
+            #startDateEl
+          />
+          <abp-validation-summary
+            [control]="startDateModel"
+            [controlEl]="startDateEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="endDate">
+          {{ "End Date" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="date"
+            class="form-control"
+            name="endDate"
+            id="endDate"
+            maxlength="128"
+            required
+            [(ngModel)]="changeableHoliday.endDate"
+            #endDateModel="ngModel"
+            #endDateEl
+          />
+          <abp-validation-summary
+            [control]="endDateModel"
+            [controlEl]="endDateEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

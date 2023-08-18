@@ -28,15 +28,10 @@ namespace HRSystem.HR.Administrative.JobDesc.Classes.Positions
         public double WorkingHours { get; set; }
         public HoursPer Per { get; set; }
         public bool HasManager { get; set; }
-        #region ManagerJobTitle
-        [ForeignKey("ManagerJobTitle")]
-        public Guid? ManagerJobTitleId { get; set; }
-        public JobTitle? ManagerJobTitle { get; set; }
-        #endregion
         #region Manager
         [ForeignKey("Manager")]
         public Guid? ManagerId { get; set; }
-        public JobDescription? Manager { get; set; }
+        public Position? Manager { get; set; }
         #endregion
         #region Employee
         [ForeignKey("Employee")]
