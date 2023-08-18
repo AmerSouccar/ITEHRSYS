@@ -9,7 +9,7 @@ namespace HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings.Dto
 {
     public class ReadWorkflowSettingDto :EntityDto<Guid>
     {
-        public int Title { get; set; }
+        public string Title { get; set; }
         public int Steps { get; set; }
     }
 }

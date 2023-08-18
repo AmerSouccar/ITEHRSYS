@@ -269,6 +269,20 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                    
                 ]),
 
+                new MenuItem(this.l('Workflows'), '', 'fas fa-dot-circle', '', [
+                    new MenuItem(
+                        this.l('Workflow'),
+                        '/app/workflows',
+                        'far fa-circle'
+                    ),
+                    new MenuItem(
+                        this.l('WorkflowSettings'),
+                        '/app/workflow-settings',
+                        'far fa-circle'
+                    ),
+                   
+                ]),
+
             ])
 
             

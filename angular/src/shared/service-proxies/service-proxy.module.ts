@@ -38,6 +38,10 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.ChangeableHolidayServiceProxy,
         ApiServiceProxies.CompanyHolidayServiceProxy,
         ApiServiceProxies.FixedHolidayServiceProxy,
+        ApiServiceProxies.WorkflowServiceProxy,
+        ApiServiceProxies.WorkflowSettingServiceProxy,
+        ApiServiceProxies.LeaveRequestServiceProxy,
+        ApiServiceProxies.LeaveSettingServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

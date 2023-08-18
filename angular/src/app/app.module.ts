@@ -107,6 +107,12 @@ import { EditCompanyHolidayDialogComponent } from './company-holiday/edit-compan
 import { FixedHolidayComponent } from './fixed-holiday/fixed-holiday.component';
 import { CreateFixedHolidayDialogComponent } from './fixed-holiday/create-fixed-holiday-dialog/create-fixed-holiday-dialog.component';
 import { EditFixedHolidayDialogComponent } from './fixed-holiday/edit-fixed-holiday-dialog/edit-fixed-holiday-dialog.component';
+import { WorkflowComponent } from './workflow/workflow.component';
+import { CreateWorkflowDialogComponent } from './workflow/create-workflow-dialog/create-workflow-dialog.component';
+import { EditWorkflowDialogComponent } from './workflow/edit-workflow-dialog/edit-workflow-dialog.component';
+import { WorkflowSettingsComponent } from './workflow-settings/workflow-settings.component';
+import { CreateWorkflowSettingsDialogComponent } from './workflow-settings/create-workflow-settings-dialog/create-workflow-settings-dialog.component';
+import { EditWorkflowSettingsDialogComponent } from './workflow-settings/edit-workflow-settings-dialog/edit-workflow-settings-dialog.component';
 
 @NgModule({
     declarations: [
@@ -206,6 +212,12 @@ import { EditFixedHolidayDialogComponent } from './fixed-holiday/edit-fixed-holi
         FixedHolidayComponent,
         CreateFixedHolidayDialogComponent,
         EditFixedHolidayDialogComponent,
+        WorkflowComponent,
+        CreateWorkflowDialogComponent,
+        EditWorkflowDialogComponent,
+        WorkflowSettingsComponent,
+        CreateWorkflowSettingsDialogComponent,
+        EditWorkflowSettingsDialogComponent,
         
     ],
     imports: [

@@ -32,6 +32,8 @@ import { PositionComponent } from './position/position.component';
 import { ChangeableHolidayComponent } from './changeable-holiday/changeable-holiday.component';
 import { CompanyHolidayComponent } from './company-holiday/company-holiday.component';
 import { FixedHolidayComponent } from './fixed-holiday/fixed-holiday.component';
+import { WorkflowComponent } from './workflow/workflow.component';
+import { WorkflowSettingsComponent } from './workflow-settings/workflow-settings.component';
 
 @NgModule({
     imports: [
@@ -56,6 +58,8 @@ import { FixedHolidayComponent } from './fixed-holiday/fixed-holiday.component';
                     { path: 'nationalities', component: NationalityComponent, canActivate: [AppRouteGuard] },
                     { path: 'education-grades', component: EducationalGradeComponent, canActivate: [AppRouteGuard] },
                     { path: 'grades', component: GradeComponent, canActivate: [AppRouteGuard] },
+                    { path: 'workflows', component: WorkflowComponent, canActivate: [AppRouteGuard] },
+                    { path: 'workflow-settings', component: WorkflowSettingsComponent, canActivate: [AppRouteGuard] },
                     { path: 'changeable-holidays', component: ChangeableHolidayComponent, canActivate: [AppRouteGuard] },
                     { path: 'company-holidays', component: CompanyHolidayComponent, canActivate: [AppRouteGuard] },
                     { path: 'fixed-holidays', component: FixedHolidayComponent, canActivate: [AppRouteGuard] },

@@ -21506,10 +21506,20 @@ export class WorkflowServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadWorkflowDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/Workflow/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadWorkflowDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Workflow/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -21527,14 +21537,14 @@ export class WorkflowServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadWorkflowDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadWorkflowDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadWorkflowDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadWorkflowDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadWorkflowDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadWorkflowDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -21545,14 +21555,7 @@ export class WorkflowServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadWorkflowDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadWorkflowDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -21796,10 +21799,20 @@ export class WorkflowSettingServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadWorkflowSettingDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/WorkflowSetting/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadWorkflowSettingDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/WorkflowSetting/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -21817,14 +21830,14 @@ export class WorkflowSettingServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadWorkflowSettingDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadWorkflowSettingDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadWorkflowSettingDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadWorkflowSettingDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadWorkflowSettingDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadWorkflowSettingDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -21835,14 +21848,7 @@ export class WorkflowSettingServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadWorkflowSettingDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadWorkflowSettingDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -21899,6 +21905,62 @@ export class WorkflowSettingServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ReadWorkflowSettingDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateWorkflowSettingDto> {
+        let url_ = this.baseUrl + "/api/services/app/WorkflowSetting/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateWorkflowSettingDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateWorkflowSettingDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateWorkflowSettingDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateWorkflowSettingDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -24196,16 +24258,6 @@ export interface ICustodie {
     startDate: moment.Moment;
     endDate: moment.Moment | undefined;
     notes: string | undefined;
-}
-
-export enum DayOfWeek {
-    _0 = 0,
-    _1 = 1,
-    _2 = 2,
-    _3 = 3,
-    _4 = 4,
-    _5 = 5,
-    _6 = 6,
 }
 
 export class Dependent implements IDependent {
@@ -27345,7 +27397,7 @@ export interface IInsertChildrenDto {
 
 export class InsertCompanyHolidayDto implements IInsertCompanyHolidayDto {
     id: string;
-    dayOfWeek: DayOfWeek;
+    dayOfWeek: number;
 
     constructor(data?: IInsertCompanyHolidayDto) {
         if (data) {
@@ -27387,7 +27439,7 @@ export class InsertCompanyHolidayDto implements IInsertCompanyHolidayDto {
 
 export interface IInsertCompanyHolidayDto {
     id: string;
-    dayOfWeek: DayOfWeek;
+    dayOfWeek: number;
 }
 
 export class InsertConvictionDto implements IInsertConvictionDto {
@@ -28761,7 +28813,6 @@ export class InsertLeaveSettingDto implements IInsertLeaveSettingDto {
     name: string | undefined;
     balance: number;
     isPaidLeave: boolean;
-    employeeId: string;
     workflowSettingId: string;
     description: string | undefined;
 
@@ -28780,7 +28831,6 @@ export class InsertLeaveSettingDto implements IInsertLeaveSettingDto {
             this.name = _data["name"];
             this.balance = _data["balance"];
             this.isPaidLeave = _data["isPaidLeave"];
-            this.employeeId = _data["employeeId"];
             this.workflowSettingId = _data["workflowSettingId"];
             this.description = _data["description"];
         }
@@ -28799,7 +28849,6 @@ export class InsertLeaveSettingDto implements IInsertLeaveSettingDto {
         data["name"] = this.name;
         data["balance"] = this.balance;
         data["isPaidLeave"] = this.isPaidLeave;
-        data["employeeId"] = this.employeeId;
         data["workflowSettingId"] = this.workflowSettingId;
         data["description"] = this.description;
         return data;
@@ -28818,7 +28867,6 @@ export interface IInsertLeaveSettingDto {
     name: string | undefined;
     balance: number;
     isPaidLeave: boolean;
-    employeeId: string;
     workflowSettingId: string;
     description: string | undefined;
 }
@@ -30115,10 +30163,10 @@ export interface IInsertTravelMissionDto {
 
 export class InsertWorkflowDto implements IInsertWorkflowDto {
     id: string;
-    date: moment.Moment;
+    date: string | undefined;
     description: string | undefined;
-    status: WorkflowStatus;
-    type: WorkflowType;
+    status: number;
+    type: number;
     creatorId: number;
     firstUserId: number;
     currentUserId: number;
@@ -30136,7 +30184,7 @@ export class InsertWorkflowDto implements IInsertWorkflowDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.date = _data["date"] ? moment(_data["date"].toString()) : <any>undefined;
+            this.date = _data["date"];
             this.description = _data["description"];
             this.status = _data["status"];
             this.type = _data["type"];
@@ -30157,7 +30205,7 @@ export class InsertWorkflowDto implements IInsertWorkflowDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
+        data["date"] = this.date;
         data["description"] = this.description;
         data["status"] = this.status;
         data["type"] = this.type;
@@ -30178,10 +30226,10 @@ export class InsertWorkflowDto implements IInsertWorkflowDto {
 
 export interface IInsertWorkflowDto {
     id: string;
-    date: moment.Moment;
+    date: string | undefined;
     description: string | undefined;
-    status: WorkflowStatus;
-    type: WorkflowType;
+    status: number;
+    type: number;
     creatorId: number;
     firstUserId: number;
     currentUserId: number;
@@ -30190,7 +30238,7 @@ export interface IInsertWorkflowDto {
 
 export class InsertWorkflowSettingDto implements IInsertWorkflowSettingDto {
     id: string;
-    title: number;
+    title: string | undefined;
     steps: number;
 
     constructor(data?: IInsertWorkflowSettingDto) {
@@ -30235,7 +30283,7 @@ export class InsertWorkflowSettingDto implements IInsertWorkflowSettingDto {
 
 export interface IInsertWorkflowSettingDto {
     id: string;
-    title: number;
+    title: string | undefined;
     steps: number;
 }
 
@@ -34394,7 +34442,7 @@ export interface IReadChildrenDtoPagedResultDto {
 
 export class ReadCompanyHolidayDto implements IReadCompanyHolidayDto {
     id: string;
-    dayOfWeek: DayOfWeek;
+    dayOfWeek: number;
 
     constructor(data?: IReadCompanyHolidayDto) {
         if (data) {
@@ -34436,7 +34484,7 @@ export class ReadCompanyHolidayDto implements IReadCompanyHolidayDto {
 
 export interface IReadCompanyHolidayDto {
     id: string;
-    dayOfWeek: DayOfWeek;
+    dayOfWeek: number;
 }
 
 export class ReadCompanyHolidayDtoPagedResultDto implements IReadCompanyHolidayDtoPagedResultDto {
@@ -37319,8 +37367,6 @@ export class ReadLeaveSettingDto implements IReadLeaveSettingDto {
     name: string | undefined;
     balance: number;
     isPaidLeave: boolean;
-    employeeId: string;
-    employee: ReadEmployeeDto;
     workflowSettingId: string;
     workflowSetting: ReadWorkflowSettingDto;
     description: string | undefined;
@@ -37340,8 +37386,6 @@ export class ReadLeaveSettingDto implements IReadLeaveSettingDto {
             this.name = _data["name"];
             this.balance = _data["balance"];
             this.isPaidLeave = _data["isPaidLeave"];
-            this.employeeId = _data["employeeId"];
-            this.employee = _data["employee"] ? ReadEmployeeDto.fromJS(_data["employee"]) : <any>undefined;
             this.workflowSettingId = _data["workflowSettingId"];
             this.workflowSetting = _data["workflowSetting"] ? ReadWorkflowSettingDto.fromJS(_data["workflowSetting"]) : <any>undefined;
             this.description = _data["description"];
@@ -37361,8 +37405,6 @@ export class ReadLeaveSettingDto implements IReadLeaveSettingDto {
         data["name"] = this.name;
         data["balance"] = this.balance;
         data["isPaidLeave"] = this.isPaidLeave;
-        data["employeeId"] = this.employeeId;
-        data["employee"] = this.employee ? this.employee.toJSON() : <any>undefined;
         data["workflowSettingId"] = this.workflowSettingId;
         data["workflowSetting"] = this.workflowSetting ? this.workflowSetting.toJSON() : <any>undefined;
         data["description"] = this.description;
@@ -37382,8 +37424,6 @@ export interface IReadLeaveSettingDto {
     name: string | undefined;
     balance: number;
     isPaidLeave: boolean;
-    employeeId: string;
-    employee: ReadEmployeeDto;
     workflowSettingId: string;
     workflowSetting: ReadWorkflowSettingDto;
     description: string | undefined;
@@ -39772,14 +39812,18 @@ export interface IReadTravelMissionDtoPagedResultDto {
 
 export class ReadWorkflowDto implements IReadWorkflowDto {
     id: string;
-    date: moment.Moment;
+    date: string | undefined;
     description: string | undefined;
-    status: WorkflowStatus;
-    type: WorkflowType;
+    status: number;
+    type: number;
     creatorId: number;
+    creator: UserDto;
     firstUserId: number;
+    firstUser: UserDto;
     currentUserId: number;
+    currentUser: UserDto;
     targetUserId: number;
+    targetUser: UserDto;
 
     constructor(data?: IReadWorkflowDto) {
         if (data) {
@@ -39793,14 +39837,18 @@ export class ReadWorkflowDto implements IReadWorkflowDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.date = _data["date"] ? moment(_data["date"].toString()) : <any>undefined;
+            this.date = _data["date"];
             this.description = _data["description"];
             this.status = _data["status"];
             this.type = _data["type"];
             this.creatorId = _data["creatorId"];
+            this.creator = _data["creator"] ? UserDto.fromJS(_data["creator"]) : <any>undefined;
             this.firstUserId = _data["firstUserId"];
+            this.firstUser = _data["firstUser"] ? UserDto.fromJS(_data["firstUser"]) : <any>undefined;
             this.currentUserId = _data["currentUserId"];
+            this.currentUser = _data["currentUser"] ? UserDto.fromJS(_data["currentUser"]) : <any>undefined;
             this.targetUserId = _data["targetUserId"];
+            this.targetUser = _data["targetUser"] ? UserDto.fromJS(_data["targetUser"]) : <any>undefined;
         }
     }
 
@@ -39814,14 +39862,18 @@ export class ReadWorkflowDto implements IReadWorkflowDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
+        data["date"] = this.date;
         data["description"] = this.description;
         data["status"] = this.status;
         data["type"] = this.type;
         data["creatorId"] = this.creatorId;
+        data["creator"] = this.creator ? this.creator.toJSON() : <any>undefined;
         data["firstUserId"] = this.firstUserId;
+        data["firstUser"] = this.firstUser ? this.firstUser.toJSON() : <any>undefined;
         data["currentUserId"] = this.currentUserId;
+        data["currentUser"] = this.currentUser ? this.currentUser.toJSON() : <any>undefined;
         data["targetUserId"] = this.targetUserId;
+        data["targetUser"] = this.targetUser ? this.targetUser.toJSON() : <any>undefined;
         return data;
     }
 
@@ -39835,19 +39887,78 @@ export class ReadWorkflowDto implements IReadWorkflowDto {
 
 export interface IReadWorkflowDto {
     id: string;
-    date: moment.Moment;
+    date: string | undefined;
     description: string | undefined;
-    status: WorkflowStatus;
-    type: WorkflowType;
+    status: number;
+    type: number;
     creatorId: number;
+    creator: UserDto;
     firstUserId: number;
+    firstUser: UserDto;
     currentUserId: number;
+    currentUser: UserDto;
     targetUserId: number;
+    targetUser: UserDto;
+}
+
+export class ReadWorkflowDtoPagedResultDto implements IReadWorkflowDtoPagedResultDto {
+    items: ReadWorkflowDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadWorkflowDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadWorkflowDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadWorkflowDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadWorkflowDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadWorkflowDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadWorkflowDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadWorkflowDtoPagedResultDto {
+    items: ReadWorkflowDto[] | undefined;
+    totalCount: number;
 }
 
 export class ReadWorkflowSettingDto implements IReadWorkflowSettingDto {
     id: string;
-    title: number;
+    title: string | undefined;
     steps: number;
 
     constructor(data?: IReadWorkflowSettingDto) {
@@ -39892,8 +40003,63 @@ export class ReadWorkflowSettingDto implements IReadWorkflowSettingDto {
 
 export interface IReadWorkflowSettingDto {
     id: string;
-    title: number;
+    title: string | undefined;
     steps: number;
+}
+
+export class ReadWorkflowSettingDtoPagedResultDto implements IReadWorkflowSettingDtoPagedResultDto {
+    items: ReadWorkflowSettingDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadWorkflowSettingDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadWorkflowSettingDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadWorkflowSettingDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadWorkflowSettingDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadWorkflowSettingDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadWorkflowSettingDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadWorkflowSettingDtoPagedResultDto {
+    items: ReadWorkflowSettingDto[] | undefined;
+    totalCount: number;
 }
 
 export class ReadWorkshopDto implements IReadWorkshopDto {
@@ -43001,7 +43167,7 @@ export interface IUpdateChildrenDto {
 
 export class UpdateCompanyHolidayDto implements IUpdateCompanyHolidayDto {
     id: string;
-    dayOfWeek: DayOfWeek;
+    dayOfWeek: number;
 
     constructor(data?: IUpdateCompanyHolidayDto) {
         if (data) {
@@ -43043,7 +43209,7 @@ export class UpdateCompanyHolidayDto implements IUpdateCompanyHolidayDto {
 
 export interface IUpdateCompanyHolidayDto {
     id: string;
-    dayOfWeek: DayOfWeek;
+    dayOfWeek: number;
 }
 
 export class UpdateConvictionDto implements IUpdateConvictionDto {
@@ -44508,7 +44674,6 @@ export class UpdateLeaveSettingDto implements IUpdateLeaveSettingDto {
     name: string | undefined;
     balance: number;
     isPaidLeave: boolean;
-    employeeId: string;
     workflowSettingId: string;
     description: string | undefined;
 
@@ -44527,7 +44692,6 @@ export class UpdateLeaveSettingDto implements IUpdateLeaveSettingDto {
             this.name = _data["name"];
             this.balance = _data["balance"];
             this.isPaidLeave = _data["isPaidLeave"];
-            this.employeeId = _data["employeeId"];
             this.workflowSettingId = _data["workflowSettingId"];
             this.description = _data["description"];
         }
@@ -44546,7 +44710,6 @@ export class UpdateLeaveSettingDto implements IUpdateLeaveSettingDto {
         data["name"] = this.name;
         data["balance"] = this.balance;
         data["isPaidLeave"] = this.isPaidLeave;
-        data["employeeId"] = this.employeeId;
         data["workflowSettingId"] = this.workflowSettingId;
         data["description"] = this.description;
         return data;
@@ -44565,7 +44728,6 @@ export interface IUpdateLeaveSettingDto {
     name: string | undefined;
     balance: number;
     isPaidLeave: boolean;
-    employeeId: string;
     workflowSettingId: string;
     description: string | undefined;
 }
@@ -45862,10 +46024,10 @@ export interface IUpdateTravelMissionDto {
 
 export class UpdateWorkflowDto implements IUpdateWorkflowDto {
     id: string;
-    date: moment.Moment;
+    date: string | undefined;
     description: string | undefined;
-    status: WorkflowStatus;
-    type: WorkflowType;
+    status: number;
+    type: number;
     creatorId: number;
     firstUserId: number;
     currentUserId: number;
@@ -45883,7 +46045,7 @@ export class UpdateWorkflowDto implements IUpdateWorkflowDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.date = _data["date"] ? moment(_data["date"].toString()) : <any>undefined;
+            this.date = _data["date"];
             this.description = _data["description"];
             this.status = _data["status"];
             this.type = _data["type"];
@@ -45904,7 +46066,7 @@ export class UpdateWorkflowDto implements IUpdateWorkflowDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
+        data["date"] = this.date;
         data["description"] = this.description;
         data["status"] = this.status;
         data["type"] = this.type;
@@ -45925,10 +46087,10 @@ export class UpdateWorkflowDto implements IUpdateWorkflowDto {
 
 export interface IUpdateWorkflowDto {
     id: string;
-    date: moment.Moment;
+    date: string | undefined;
     description: string | undefined;
-    status: WorkflowStatus;
-    type: WorkflowType;
+    status: number;
+    type: number;
     creatorId: number;
     firstUserId: number;
     currentUserId: number;
@@ -45937,7 +46099,7 @@ export interface IUpdateWorkflowDto {
 
 export class UpdateWorkflowSettingDto implements IUpdateWorkflowSettingDto {
     id: string;
-    title: number;
+    title: string | undefined;
     steps: number;
 
     constructor(data?: IUpdateWorkflowSettingDto) {
@@ -45982,7 +46144,7 @@ export class UpdateWorkflowSettingDto implements IUpdateWorkflowSettingDto {
 
 export interface IUpdateWorkflowSettingDto {
     id: string;
-    title: number;
+    title: string | undefined;
     steps: number;
 }
 
@@ -46814,7 +46976,7 @@ export class WorkflowSetting implements IWorkflowSetting {
     isDeleted: boolean;
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
-    title: number;
+    title: string | undefined;
     steps: number;
 
     constructor(data?: IWorkflowSetting) {
@@ -46891,21 +47053,8 @@ export interface IWorkflowSetting {
     isDeleted: boolean;
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
-    title: number;
+    title: string | undefined;
     steps: number;
-}
-
-export enum WorkflowStatus {
-    _0 = 0,
-    _1 = 1,
-    _2 = 2,
-}
-
-export enum WorkflowType {
-    _0 = 0,
-    _1 = 1,
-    _2 = 2,
-    _3 = 3,
 }
 
 export class Workshop implements IWorkshop {

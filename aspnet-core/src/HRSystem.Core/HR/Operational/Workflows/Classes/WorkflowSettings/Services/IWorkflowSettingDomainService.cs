@@ -9,7 +9,7 @@ namespace HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings.Services
 {
     public interface IWorkflowSettingDomainService :IDomainService
     {
-        public Task<List<WorkflowSetting>> GetAll();
+        public IQueryable<WorkflowSetting> GetAll();
         public Task<WorkflowSetting> GetbyId(Guid id);
         public Task<WorkflowSetting> Insert(WorkflowSetting workflowSetting);
         public Task<WorkflowSetting> Update(WorkflowSetting workflowSetting);

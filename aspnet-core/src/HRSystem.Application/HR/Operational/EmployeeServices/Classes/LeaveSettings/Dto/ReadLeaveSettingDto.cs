@@ -14,8 +14,6 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveSettings.Dto
         public string Name { get; set; }
         public double Balance { get; set; }
         public bool isPaidLeave { get; set; }
-        public Guid EmployeeId { get; set; }
-        public ReadEmployeeDto Employee { get; set; }
         public Guid WorkflowSettingId { get; set; }
         public ReadWorkflowSettingDto WorkflowSetting { get; set; }
         public string Description { get; set; }

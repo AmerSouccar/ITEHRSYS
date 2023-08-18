@@ -22,9 +22,9 @@ namespace HRSystem.HR.Operational.Workflows.Classes.Workflow.Services
             await _workflowRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Workflow>> GetAll()
+        public IQueryable<Workflow> GetAll()
         {
-            return _workflowRepository.GetAllIncluding(x => x.Creator, x => x.FirstUser, x => x.CurrentUser, x => x.TargetUser).ToList();
+            return _workflowRepository.GetAllIncluding(x => x.Creator, x => x.FirstUser, x => x.CurrentUser, x => x.TargetUser);
         }
 
         public async Task<Workflow> GetbyId(Guid id)

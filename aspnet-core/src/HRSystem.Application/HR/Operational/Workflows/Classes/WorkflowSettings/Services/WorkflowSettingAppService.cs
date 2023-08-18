@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Dto;
+using HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +24,24 @@ namespace HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings.Services
             await _workflowSettingDomainService.Delete(id);
         }
 
-        public async Task<List<ReadWorkflowSettingDto>> GetAll()
+        public PagedResultDto<ReadWorkflowSettingDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadWorkflowSettingDto>>(await _workflowSettingDomainService.GetAll());
+            var workflowSettings = _workflowSettingDomainService.GetAll();
+            int total = workflowSettings.Count();
+            workflowSettings = workflowSettings.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadWorkflowSettingDto>>(workflowSettings.ToList());
+            return new PagedResultDto<ReadWorkflowSettingDto>(total, list);
         }
 
         public async Task<ReadWorkflowSettingDto> GetbyId(Guid id)
         {
             return ObjectMapper.Map<ReadWorkflowSettingDto>(await _workflowSettingDomainService.GetbyId(id));
+        }
+
+        public async Task<UpdateWorkflowSettingDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateWorkflowSettingDto>(await _workflowSettingDomainService.GetbyId(id));
         }
 
         public async Task<InsertWorkflowSettingDto> Insert(InsertWorkflowSettingDto workflowSetting)

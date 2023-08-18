@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.Workflows.Classes.Workflow.Services
 {
     public interface IWorkflowDomainService :IDomainService
     {
-        public Task<List<Workflow>> GetAll();
+        public IQueryable<Workflow> GetAll();
         public Task<Workflow> GetbyId(Guid id);
         public Task<Workflow> Insert(Workflow workflow);
         public Task<Workflow> Update(Workflow workflow);

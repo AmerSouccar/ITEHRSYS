@@ -21,9 +21,9 @@ namespace HRSystem.HR.Operational.Workflows.Classes.WorkflowSettings.Services
            await _workflowSettingRepository.DeleteAsync(id);
         }
 
-        public async Task<List<WorkflowSetting>> GetAll()
+        public IQueryable<WorkflowSetting> GetAll()
         {
-           return await _workflowSettingRepository.GetAllListAsync();
+           return _workflowSettingRepository.GetAll();
         }
 
         public async Task<WorkflowSetting> GetbyId(Guid id)

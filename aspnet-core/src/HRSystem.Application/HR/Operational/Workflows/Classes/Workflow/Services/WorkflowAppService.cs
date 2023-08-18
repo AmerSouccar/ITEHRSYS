@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Operational.Workflows.Classes.Workflow.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Dto;
+using HRSystem.HR.Operational.Workflows.Classes.Workflow.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Operational.Workflows.Classes.Workflow.Services
             await _workflowDomainService.Delete(id);
         }
 
-        public async Task<List<ReadWorkflowDto>> GetAll()
+        public PagedResultDto<ReadWorkflowDto> GetAll(PagedGeneralResultRequestDto input)
         {
-           return ObjectMapper.Map<List<ReadWorkflowDto>>(await _workflowDomainService.GetAll());
+            var workflows = _workflowDomainService.GetAll();
+            int total = workflows.Count();
+            workflows = workflows.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadWorkflowDto>>(workflows.ToList());
+            return new PagedResultDto<ReadWorkflowDto>(total, list);
         }
 
         public async Task<ReadWorkflowDto> GetbyId(Guid id)
