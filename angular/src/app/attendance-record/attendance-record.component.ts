@@ -95,7 +95,7 @@ export class AttendanceRecordComponent extends PagedListingComponentBase<ReadAtt
       {
         class: 'modal-lg',
         initialState: {
-          id: id,
+          // id: id,
         },
       }
     );

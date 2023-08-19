@@ -239,11 +239,11 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                         'fas fa-dot-circle',
                         '',
                         [
-                            new MenuItem(
-                                this.l('LeaveRequestService'),
-                                '/app/countries',
-                                'far fa-circle'
-                            ),
+                            // new MenuItem(
+                            //     this.l('LeaveRequestService'),
+                            //     '/app/countries',
+                            //     'far fa-circle'
+                            // ),
                             new MenuItem(
                                 this.l('AcceptLeaveRequest'),
                                 '/app/my-employees-leave-requests',

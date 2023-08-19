@@ -27324,10 +27324,10 @@ export interface IInsertAttendanceMonthlyCardDto {
 export class InsertAttendanceRecordDto implements IInsertAttendanceRecordDto {
     id: string;
     year: number;
-    month: MonthName;
+    month: number;
     name: string | undefined;
-    fromDate: moment.Moment;
-    toDate: moment.Moment;
+    fromDate: string | undefined;
+    toDate: string | undefined;
     note: string | undefined;
     isCalculated: boolean;
 
@@ -27346,8 +27346,8 @@ export class InsertAttendanceRecordDto implements IInsertAttendanceRecordDto {
             this.year = _data["year"];
             this.month = _data["month"];
             this.name = _data["name"];
-            this.fromDate = _data["fromDate"] ? moment(_data["fromDate"].toString()) : <any>undefined;
-            this.toDate = _data["toDate"] ? moment(_data["toDate"].toString()) : <any>undefined;
+            this.fromDate = _data["fromDate"];
+            this.toDate = _data["toDate"];
             this.note = _data["note"];
             this.isCalculated = _data["isCalculated"];
         }
@@ -27366,8 +27366,8 @@ export class InsertAttendanceRecordDto implements IInsertAttendanceRecordDto {
         data["year"] = this.year;
         data["month"] = this.month;
         data["name"] = this.name;
-        data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
-        data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
+        data["fromDate"] = this.fromDate;
+        data["toDate"] = this.toDate;
         data["note"] = this.note;
         data["isCalculated"] = this.isCalculated;
         return data;
@@ -27384,10 +27384,10 @@ export class InsertAttendanceRecordDto implements IInsertAttendanceRecordDto {
 export interface IInsertAttendanceRecordDto {
     id: string;
     year: number;
-    month: MonthName;
+    month: number;
     name: string | undefined;
-    fromDate: moment.Moment;
-    toDate: moment.Moment;
+    fromDate: string | undefined;
+    toDate: string | undefined;
     note: string | undefined;
     isCalculated: boolean;
 }
@@ -38367,6 +38367,7 @@ export interface IReadMonthDtoPagedResultDto {
 export class ReadMonthlyCardDto implements IReadMonthlyCardDto {
     id: string;
     employeeCardId: string;
+    employeeCard: ReadEmployeeCardDto;
     salary: number;
     calculated: boolean;
     workDays: number;
@@ -38389,6 +38390,7 @@ export class ReadMonthlyCardDto implements IReadMonthlyCardDto {
         if (_data) {
             this.id = _data["id"];
             this.employeeCardId = _data["employeeCardId"];
+            this.employeeCard = _data["employeeCard"] ? ReadEmployeeCardDto.fromJS(_data["employeeCard"]) : <any>undefined;
             this.salary = _data["salary"];
             this.calculated = _data["calculated"];
             this.workDays = _data["workDays"];
@@ -38419,6 +38421,7 @@ export class ReadMonthlyCardDto implements IReadMonthlyCardDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["employeeCardId"] = this.employeeCardId;
+        data["employeeCard"] = this.employeeCard ? this.employeeCard.toJSON() : <any>undefined;
         data["salary"] = this.salary;
         data["calculated"] = this.calculated;
         data["workDays"] = this.workDays;
@@ -38449,6 +38452,7 @@ export class ReadMonthlyCardDto implements IReadMonthlyCardDto {
 export interface IReadMonthlyCardDto {
     id: string;
     employeeCardId: string;
+    employeeCard: ReadEmployeeCardDto;
     salary: number;
     calculated: boolean;
     workDays: number;
@@ -43361,10 +43365,10 @@ export interface IUpdateAttendanceMonthlyCardDto {
 export class UpdateAttendanceRecordDto implements IUpdateAttendanceRecordDto {
     id: string;
     year: number;
-    month: MonthName;
+    month: number;
     name: string | undefined;
-    fromDate: moment.Moment;
-    toDate: moment.Moment;
+    fromDate: string | undefined;
+    toDate: string | undefined;
     note: string | undefined;
     isCalculated: boolean;
 
@@ -43383,8 +43387,8 @@ export class UpdateAttendanceRecordDto implements IUpdateAttendanceRecordDto {
             this.year = _data["year"];
             this.month = _data["month"];
             this.name = _data["name"];
-            this.fromDate = _data["fromDate"] ? moment(_data["fromDate"].toString()) : <any>undefined;
-            this.toDate = _data["toDate"] ? moment(_data["toDate"].toString()) : <any>undefined;
+            this.fromDate = _data["fromDate"];
+            this.toDate = _data["toDate"];
             this.note = _data["note"];
             this.isCalculated = _data["isCalculated"];
         }
@@ -43403,8 +43407,8 @@ export class UpdateAttendanceRecordDto implements IUpdateAttendanceRecordDto {
         data["year"] = this.year;
         data["month"] = this.month;
         data["name"] = this.name;
-        data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
-        data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
+        data["fromDate"] = this.fromDate;
+        data["toDate"] = this.toDate;
         data["note"] = this.note;
         data["isCalculated"] = this.isCalculated;
         return data;
@@ -43421,10 +43425,10 @@ export class UpdateAttendanceRecordDto implements IUpdateAttendanceRecordDto {
 export interface IUpdateAttendanceRecordDto {
     id: string;
     year: number;
-    month: MonthName;
+    month: number;
     name: string | undefined;
-    fromDate: moment.Moment;
-    toDate: moment.Moment;
+    fromDate: string | undefined;
+    toDate: string | undefined;
     note: string | undefined;
     isCalculated: boolean;
 }

@@ -12,10 +12,10 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Dto
     public class InsertAttendanceRecordDto :EntityDto<Guid>
     {
         public int Year { get; set; }
-        public MonthName Month { get; set; }
+        public int Month { get; set; }
         public string Name { get; set; }
-        public DateTime FromDate { get; set; }
-        public DateTime ToDate { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
         public string Note { get; set; }
         public bool isCalculated { get; set; }
     }
