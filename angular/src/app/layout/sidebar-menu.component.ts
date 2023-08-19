@@ -258,12 +258,12 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                 new MenuItem(this.l('Payroll'), '', 'fas fa-dot-circle', '', [
                     new MenuItem(
                         this.l('Month'),
-                        '/app/employees',
+                        '/app/payroll-months',
                         'far fa-circle'
                     ),
                     new MenuItem(
                         this.l('FinancialCards'),
-                        'https://aspnetboilerplate.com/Templates?ref=abptmpl',
+                        '/app/financial-cards',
                         'far fa-circle'
                     ),
                    

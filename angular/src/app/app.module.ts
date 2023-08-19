@@ -119,6 +119,11 @@ import { EditLeaveSettingDialogComponent } from './leave-setting/edit-leave-sett
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import { CreateLeaveRequestDialogComponent } from './leave-request/create-leave-request-dialog/create-leave-request-dialog.component';
 import { EditLeaveRequestDialogComponent } from './leave-request/edit-leave-request-dialog/edit-leave-request-dialog.component';
+import { PayrollMonthComponent } from './payroll-month/payroll-month.component';
+import { CreatePayrollMonthDialogComponent } from './payroll-month/create-payroll-month-dialog/create-payroll-month-dialog.component';
+import { EditPayrollMonthDialogComponent } from './payroll-month/edit-payroll-month-dialog/edit-payroll-month-dialog.component';
+import { FinancialCardComponent } from './financial-card/financial-card.component';
+import { EditFinancialCardDialogComponent } from './financial-card/edit-financial-card-dialog/edit-financial-card-dialog.component';
 
 @NgModule({
     declarations: [
@@ -230,6 +235,11 @@ import { EditLeaveRequestDialogComponent } from './leave-request/edit-leave-requ
         LeaveRequestComponent,
         CreateLeaveRequestDialogComponent,
         EditLeaveRequestDialogComponent,
+        PayrollMonthComponent,
+        CreatePayrollMonthDialogComponent,
+        EditPayrollMonthDialogComponent,
+        FinancialCardComponent,
+        EditFinancialCardDialogComponent,
         
     ],
     imports: [

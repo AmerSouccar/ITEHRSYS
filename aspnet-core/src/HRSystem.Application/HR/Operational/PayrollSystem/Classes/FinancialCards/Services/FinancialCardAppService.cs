@@ -1,4 +1,6 @@
-﻿using HRSystem.HR.Operational.PayrollSystem.Classes.FinancialCards.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.PayrollSystem.Classes.FinancialCards.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +23,24 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.FinancialCards.Services
             await _financialCardDomainService.Delete(id);
         }
 
-        public async Task<List<ReadFinancialCardDto>> GetAll()
+        public PagedResultDto<ReadFinancialCardDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadFinancialCardDto>>(await _financialCardDomainService.GetAll());
+            var financialCards = _financialCardDomainService.GetAll();
+            int total = financialCards.Count();
+            financialCards = financialCards.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadFinancialCardDto>>(financialCards.ToList());
+            return new PagedResultDto<ReadFinancialCardDto>(total, list);
         }
 
         public async Task<ReadFinancialCardDto> GetbyId(Guid id)
         {
             return ObjectMapper.Map<ReadFinancialCardDto>(await _financialCardDomainService.GetbyId(id));
+        }
+
+        public async Task<UpdateFinancialCardDto> GetForEdit(Guid id)
+        {
+            return ObjectMapper.Map<UpdateFinancialCardDto>(await _financialCardDomainService.GetbyId(id));
         }
 
         public async Task<InsertFinancialCardDto> Insert(InsertFinancialCardDto financialCard)

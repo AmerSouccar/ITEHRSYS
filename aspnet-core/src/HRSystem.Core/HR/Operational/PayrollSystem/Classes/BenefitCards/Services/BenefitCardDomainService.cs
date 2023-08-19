@@ -21,9 +21,9 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards.Services
             await _benefitCardRepository.DeleteAsync(id);
         }
 
-        public async Task<List<BenefitCard>> GetAll()
+        public IQueryable<BenefitCard> GetAll()
         {
-            return await _benefitCardRepository.GetAllListAsync();
+            return _benefitCardRepository.GetAll();
         }
 
         public Task<BenefitCard> GetbyId(Guid id)

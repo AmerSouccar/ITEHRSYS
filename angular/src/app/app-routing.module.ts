@@ -36,6 +36,8 @@ import { WorkflowComponent } from './workflow/workflow.component';
 import { WorkflowSettingsComponent } from './workflow-settings/workflow-settings.component';
 import { LeaveSettingComponent } from './leave-setting/leave-setting.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
+import { PayrollMonthComponent } from './payroll-month/payroll-month.component';
+import { FinancialCardComponent } from './financial-card/financial-card.component';
 
 @NgModule({
     imports: [
@@ -60,6 +62,7 @@ import { LeaveRequestComponent } from './leave-request/leave-request.component';
                     { path: 'nationalities', component: NationalityComponent, canActivate: [AppRouteGuard] },
                     { path: 'education-grades', component: EducationalGradeComponent, canActivate: [AppRouteGuard] },
                     { path: 'grades', component: GradeComponent, canActivate: [AppRouteGuard] },
+                    { path: 'payroll-months', component: PayrollMonthComponent, canActivate: [AppRouteGuard] },
                     { path: 'workflows', component: WorkflowComponent, canActivate: [AppRouteGuard] },
                     { path: 'workflow-settings', component: WorkflowSettingsComponent, canActivate: [AppRouteGuard] },
                     { path: 'changeable-holidays', component: ChangeableHolidayComponent, canActivate: [AppRouteGuard] },
@@ -72,6 +75,7 @@ import { LeaveRequestComponent } from './leave-request/leave-request.component';
                     { path: 'entrance-exit-records', component: EntranceExitRecordComponent, canActivate: [AppRouteGuard] },
                     { path: 'leave-settings', component: LeaveSettingComponent, canActivate: [AppRouteGuard] },
                     { path: 'leave-requests', component: LeaveRequestComponent, canActivate: [AppRouteGuard] },
+                    { path: 'financial-cards', component: FinancialCardComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForms', component: AttendanceFormComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForm/:id/workshops', component:WorkshopComponent ,  canActivate: [AppRouteGuard] },
                     { path: 'workshop/:id/normalshifts', component:NormalShiftComponent ,  canActivate: [AppRouteGuard] },

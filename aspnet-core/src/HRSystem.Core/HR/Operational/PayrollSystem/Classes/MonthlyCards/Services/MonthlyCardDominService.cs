@@ -22,9 +22,9 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.Services
             await _monthlyCardDominRepository.DeleteAsync(id);
         }
 
-        public async Task<List<MonthlyCard>> GetAll()
+        public IQueryable<MonthlyCard> GetAll()
         {
-            return _monthlyCardDominRepository.GetAllIncluding(x => x.EmployeeCard, x => x.BenefitCards, x => x.DeductionCards).ToList();
+            return _monthlyCardDominRepository.GetAllIncluding(x => x.EmployeeCard, x => x.BenefitCards, x => x.DeductionCards);
         }
 
         public async Task<MonthlyCard> GetbyId(Guid id)

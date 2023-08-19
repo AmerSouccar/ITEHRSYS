@@ -21,9 +21,9 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards.Services
            await _deductionCardRepository.DeleteAsync(id);
         }
 
-        public async Task<List<DeductionCard>> GetAll()
+        public IQueryable<DeductionCard> GetAll()
         {
-           return await _deductionCardRepository.GetAllListAsync();
+           return _deductionCardRepository.GetAll();
         }
 
         public async Task<DeductionCard> GetbyId(Guid id)

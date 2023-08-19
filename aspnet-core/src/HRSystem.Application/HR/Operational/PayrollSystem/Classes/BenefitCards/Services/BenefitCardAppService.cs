@@ -1,4 +1,6 @@
-﻿using HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +24,14 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards.Services
             await _benefitCarddomainService.Delete(id);
         }
 
-        public async Task<List<ReadBenefitCardDto>> GetAll()
+        public PagedResultDto<ReadBenefitCardDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadBenefitCardDto>>(await _benefitCarddomainService.GetAll());
+            var benefitCards = _benefitCarddomainService.GetAll();
+            int total = benefitCards.Count();
+            benefitCards = benefitCards.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadBenefitCardDto>>(benefitCards.ToList());
+            return new PagedResultDto<ReadBenefitCardDto>(total, list);
         }
 
         public async Task<ReadBenefitCardDto> GetbyId(Guid id)

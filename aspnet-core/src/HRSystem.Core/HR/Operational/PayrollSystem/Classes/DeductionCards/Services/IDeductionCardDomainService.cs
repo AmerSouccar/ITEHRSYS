@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards.Services
 {
     public interface IDeductionCardDomainService :IDomainService
     {
-        public Task<List<DeductionCard>> GetAll();
+        public IQueryable<DeductionCard> GetAll();
         public Task<DeductionCard> GetbyId(Guid id);
         public Task<DeductionCard> Insert(DeductionCard deductionCard);
         public Task<DeductionCard> Update(DeductionCard deductionCard);

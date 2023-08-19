@@ -32,9 +32,9 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.Months.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<Month>> GetAll()
+        public IQueryable<Month> GetAll()
         {
-            return _monthRepository.GetAllIncluding(x => x.MonthlyCards).ToList();
+            return _monthRepository.GetAllIncluding(x => x.MonthlyCards);
         }
 
         public async Task<Month> GetbyId(Guid id)

@@ -1,4 +1,7 @@
-﻿using HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.EmployeeServices.Classes.Assignments.Dto;
+using HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,14 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.Services
             await _monthlyCardDominService.Delete(id);
         }
 
-        public async Task<List<ReadMonthlyCardDto>> GetAll()
+        public PagedResultDto<ReadMonthlyCardDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadMonthlyCardDto>>(await _monthlyCardDominService.GetAll());
+            var monthlyCards = _monthlyCardDominService.GetAll();
+            int total = monthlyCards.Count();
+            monthlyCards = monthlyCards.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadMonthlyCardDto>>(monthlyCards.ToList());
+            return new PagedResultDto<ReadMonthlyCardDto>(total, list);
         }
 
         public async Task<ReadMonthlyCardDto> GetbyId(Guid id)

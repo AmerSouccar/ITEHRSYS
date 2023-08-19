@@ -10,7 +10,7 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.FinancialCards.Services
 {
     public interface IFinancialCardDomainService :IDomainService
     {
-        public Task<List<FinancialCard>> GetAll();
+        public IQueryable<FinancialCard> GetAll();
         public Task<FinancialCard> GetbyId(Guid id);
         public Task<FinancialCard> Insert(FinancialCard financialCard);
         public Task<FinancialCard> Update(FinancialCard financialCard);

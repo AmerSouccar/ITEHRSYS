@@ -1,4 +1,6 @@
-﻿using HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards.Dto;
+﻿using Abp.Application.Services.Dto;
+using HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards.Dto;
+using HRSystem.HR.PaginationDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,14 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards.Services
             await _deductionCarddomainService.Delete(id);
         }
 
-        public async Task<List<ReadDeductionCardDto>> GetAll()
+        public PagedResultDto<ReadDeductionCardDto> GetAll(PagedGeneralResultRequestDto input)
         {
-            return ObjectMapper.Map<List<ReadDeductionCardDto>>(await _deductionCarddomainService.GetAll());
+            var deductionCards = _deductionCarddomainService.GetAll();
+            int total = deductionCards.Count();
+            deductionCards = deductionCards.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadDeductionCardDto>>(deductionCards.ToList());
+            return new PagedResultDto<ReadDeductionCardDto>(total, list);
         }
 
         public async Task<ReadDeductionCardDto> GetbyId(Guid id)

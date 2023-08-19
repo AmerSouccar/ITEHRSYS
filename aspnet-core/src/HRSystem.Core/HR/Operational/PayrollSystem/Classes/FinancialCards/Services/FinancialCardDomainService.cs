@@ -22,9 +22,9 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.FinancialCards.Services
            await _financialCardRepository.DeleteAsync(id);
         }
 
-        public async Task<List<FinancialCard>> GetAll()
+        public IQueryable<FinancialCard> GetAll()
         {
-            return _financialCardRepository.GetAllIncluding(x => x.Employee).ToList();
+            return _financialCardRepository.GetAllIncluding(x => x.Employee);
         }
 
         public async Task<FinancialCard> GetbyId(Guid id)

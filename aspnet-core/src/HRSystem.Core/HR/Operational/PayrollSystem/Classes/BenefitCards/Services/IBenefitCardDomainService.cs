@@ -11,7 +11,7 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards.Services
 {
     public interface IBenefitCardDomainService :IDomainService
     {
-        public Task<List<BenefitCard>> GetAll();
+        public IQueryable<BenefitCard> GetAll();
         public Task<BenefitCard> GetbyId(Guid id);
         public Task<BenefitCard> Insert(BenefitCard benefitCard);
         public Task<BenefitCard> Update(BenefitCard benefitCard);

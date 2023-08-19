@@ -2327,10 +2327,20 @@ export class BenefitCardServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadBenefitCardDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/BenefitCard/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadBenefitCardDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/BenefitCard/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -2348,14 +2358,14 @@ export class BenefitCardServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadBenefitCardDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadBenefitCardDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadBenefitCardDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadBenefitCardDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadBenefitCardDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadBenefitCardDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -2366,14 +2376,7 @@ export class BenefitCardServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadBenefitCardDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadBenefitCardDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -5137,10 +5140,20 @@ export class DeductionCardServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadDeductionCardDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/DeductionCard/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadDeductionCardDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/DeductionCard/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -5158,14 +5171,14 @@ export class DeductionCardServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadDeductionCardDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadDeductionCardDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadDeductionCardDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadDeductionCardDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadDeductionCardDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadDeductionCardDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -5176,14 +5189,7 @@ export class DeductionCardServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadDeductionCardDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadDeductionCardDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -8882,10 +8888,20 @@ export class FinancialCardServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadFinancialCardDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/FinancialCard/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadFinancialCardDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/FinancialCard/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -8903,14 +8919,14 @@ export class FinancialCardServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadFinancialCardDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadFinancialCardDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadFinancialCardDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadFinancialCardDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadFinancialCardDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadFinancialCardDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -8921,14 +8937,7 @@ export class FinancialCardServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadFinancialCardDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadFinancialCardDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -8985,6 +8994,62 @@ export class FinancialCardServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ReadFinancialCardDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getForEdit(id: string | undefined): Observable<UpdateFinancialCardDto> {
+        let url_ = this.baseUrl + "/api/services/app/FinancialCard/GetForEdit?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetForEdit(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UpdateFinancialCardDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UpdateFinancialCardDto>;
+        }));
+    }
+
+    protected processGetForEdit(response: HttpResponseBase): Observable<UpdateFinancialCardDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = UpdateFinancialCardDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -13138,10 +13203,20 @@ export class MonthServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadMonthDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/Month/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadMonthDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Month/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -13159,14 +13234,14 @@ export class MonthServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadMonthDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadMonthDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadMonthDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadMonthDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadMonthDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadMonthDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -13177,14 +13252,7 @@ export class MonthServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadMonthDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadMonthDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -13428,10 +13496,20 @@ export class MonthlyCardServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(): Observable<ReadMonthlyCardDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/MonthlyCard/GetAll";
+    getAll(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadMonthlyCardDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/MonthlyCard/GetAll?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -13449,14 +13527,14 @@ export class MonthlyCardServiceProxy {
                 try {
                     return this.processGetAll(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ReadMonthlyCardDto[]>;
+                    return _observableThrow(e) as any as Observable<ReadMonthlyCardDtoPagedResultDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ReadMonthlyCardDto[]>;
+                return _observableThrow(response_) as any as Observable<ReadMonthlyCardDtoPagedResultDto>;
         }));
     }
 
-    protected processGetAll(response: HttpResponseBase): Observable<ReadMonthlyCardDto[]> {
+    protected processGetAll(response: HttpResponseBase): Observable<ReadMonthlyCardDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -13467,14 +13545,7 @@ export class MonthlyCardServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(ReadMonthlyCardDto.fromJS(item));
-            }
-            else {
-                result200 = <any>null;
-            }
+            result200 = ReadMonthlyCardDtoPagedResultDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -34050,6 +34121,61 @@ export interface IReadBenefitCardDto {
     formula: Formula;
 }
 
+export class ReadBenefitCardDtoPagedResultDto implements IReadBenefitCardDtoPagedResultDto {
+    items: ReadBenefitCardDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadBenefitCardDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadBenefitCardDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadBenefitCardDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadBenefitCardDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadBenefitCardDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadBenefitCardDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadBenefitCardDtoPagedResultDto {
+    items: ReadBenefitCardDto[] | undefined;
+    totalCount: number;
+}
+
 export class ReadCertificateDto implements IReadCertificateDto {
     id: string;
     type: string | undefined;
@@ -34907,6 +35033,61 @@ export interface IReadDeductionCardDto {
     name: string | undefined;
     value: number;
     formula: Formula;
+}
+
+export class ReadDeductionCardDtoPagedResultDto implements IReadDeductionCardDtoPagedResultDto {
+    items: ReadDeductionCardDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadDeductionCardDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadDeductionCardDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadDeductionCardDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadDeductionCardDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadDeductionCardDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadDeductionCardDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadDeductionCardDtoPagedResultDto {
+    items: ReadDeductionCardDto[] | undefined;
+    totalCount: number;
 }
 
 export class ReadDependentDto implements IReadDependentDto {
@@ -36496,6 +36677,61 @@ export interface IReadFinancialCardDto {
     salary: number;
 }
 
+export class ReadFinancialCardDtoPagedResultDto implements IReadFinancialCardDtoPagedResultDto {
+    items: ReadFinancialCardDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadFinancialCardDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadFinancialCardDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadFinancialCardDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadFinancialCardDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadFinancialCardDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadFinancialCardDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadFinancialCardDtoPagedResultDto {
+    items: ReadFinancialCardDto[] | undefined;
+    totalCount: number;
+}
+
 export class ReadFixedHolidayDto implements IReadFixedHolidayDto {
     id: string;
     name: string | undefined;
@@ -37797,6 +38033,61 @@ export interface IReadMonthDto {
     isCalculated: boolean;
 }
 
+export class ReadMonthDtoPagedResultDto implements IReadMonthDtoPagedResultDto {
+    items: ReadMonthDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadMonthDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadMonthDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadMonthDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadMonthDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadMonthDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadMonthDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadMonthDtoPagedResultDto {
+    items: ReadMonthDto[] | undefined;
+    totalCount: number;
+}
+
 export class ReadMonthlyCardDto implements IReadMonthlyCardDto {
     id: string;
     employeeCardId: string;
@@ -37890,6 +38181,61 @@ export interface IReadMonthlyCardDto {
     finalSalary: number;
     benefitCards: ReadBenefitCardDto[] | undefined;
     deductionCards: ReadDeductionCardDto[] | undefined;
+}
+
+export class ReadMonthlyCardDtoPagedResultDto implements IReadMonthlyCardDtoPagedResultDto {
+    items: ReadMonthlyCardDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IReadMonthlyCardDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ReadMonthlyCardDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): ReadMonthlyCardDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReadMonthlyCardDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+
+    clone(): ReadMonthlyCardDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new ReadMonthlyCardDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReadMonthlyCardDtoPagedResultDto {
+    items: ReadMonthlyCardDto[] | undefined;
+    totalCount: number;
 }
 
 export class ReadNodeDto implements IReadNodeDto {
