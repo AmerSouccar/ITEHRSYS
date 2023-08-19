@@ -38,6 +38,8 @@ import { LeaveSettingComponent } from './leave-setting/leave-setting.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import { PayrollMonthComponent } from './payroll-month/payroll-month.component';
 import { FinancialCardComponent } from './financial-card/financial-card.component';
+import { MonthlyCardComponent } from './monthly-card/monthly-card.component';
+import { AcceptLeaveRequestServiceComponent } from './accept-leave-request-service/accept-leave-request-service.component';
 
 @NgModule({
     imports: [
@@ -77,11 +79,13 @@ import { FinancialCardComponent } from './financial-card/financial-card.componen
                     { path: 'leave-requests', component: LeaveRequestComponent, canActivate: [AppRouteGuard] },
                     { path: 'financial-cards', component: FinancialCardComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForms', component: AttendanceFormComponent, canActivate: [AppRouteGuard] },
+                    { path: 'my-employees-leave-requests', component: AcceptLeaveRequestServiceComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceForm/:id/workshops', component:WorkshopComponent ,  canActivate: [AppRouteGuard] },
                     { path: 'workshop/:id/normalshifts', component:NormalShiftComponent ,  canActivate: [AppRouteGuard] },
                     { path: 'attendanceRecords', component: AttendanceRecordComponent, canActivate: [AppRouteGuard] },
                     { path: 'attendanceRecord/:id/monthlyCards', component:AttendanceMonthlyCardComponent ,  canActivate: [AppRouteGuard] },
                     { path: 'grade/:id/jobTitles', component:JobTitleComponent ,  canActivate: [AppRouteGuard] },
+                    { path: 'payrollMonth/:id/cards', component:MonthlyCardComponent ,  canActivate: [AppRouteGuard] },
 
                 ]
             }

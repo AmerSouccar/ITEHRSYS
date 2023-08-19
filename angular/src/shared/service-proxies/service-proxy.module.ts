@@ -44,6 +44,7 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.LeaveSettingServiceProxy,
         ApiServiceProxies.FinancialCardServiceProxy,
         ApiServiceProxies.MonthServiceProxy,
+        ApiServiceProxies.MonthlyCardServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

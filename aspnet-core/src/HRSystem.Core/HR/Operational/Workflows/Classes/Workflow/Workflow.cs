@@ -16,6 +16,7 @@ namespace HRSystem.HR.Operational.Workflows.Classes.Workflow
         public string Description { get; set; }
         public WorkflowStatus Status { get; set; }
         public WorkflowType Type { get; set; }
+        public Guid RequiredTypeId { get; set; }
         #region Creator
         [ForeignKey("Creator")]
         public long CreatorId { get; set; }

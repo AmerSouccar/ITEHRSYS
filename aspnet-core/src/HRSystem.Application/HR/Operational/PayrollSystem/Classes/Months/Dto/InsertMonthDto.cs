@@ -12,7 +12,7 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.Months.Dto
     public class InsertMonthDto :EntityDto<Guid>
     {
         public int Year { get; set; }
-        public MonthName MonthName { get; set; }
+        public int MonthName { get; set; }
         public string Title { get; set; }
         public bool isCalculated { get; set; }
     }

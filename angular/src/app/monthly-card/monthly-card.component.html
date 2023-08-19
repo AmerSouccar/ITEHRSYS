@@ -3,16 +3,16 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-6">
-            <h1>{{ "Payroll System" | localize }}</h1>
+            <h1>{{ "Payroll Monthly Cards" | localize }}</h1>
           </div>
-          <div class="col-6 text-right">
+          <!-- <div class="col-6 text-right">
             <a href="javascript:;"
               class="btn bg-blue"
               (click)="createMonth()">
               <i class="fa fa-plus-square"></i>
               {{ "Create" | localize }}
             </a>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -28,16 +28,14 @@
                 [busy]="isTableLoading">
                 <thead class="bg-light">
                   <tr>
-                    <th>{{ "Year" | localize }}</th>
-                    <th>{{ "Month" | localize }}</th>
-                    <th>{{ "Title" | localize }}</th>
+                    <th>{{ "Employee" | localize }}</th>
+                    <th>{{ "Salary" | localize }}</th>
                     <th>{{ "Calculated" | localize }}</th>
-                    <th style="width: 300px;">{{ "Actions" | localize }}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="
-                    let month of months
+                    let monthlyCard of monthlyCards
                       | paginate
                         : {
                             id: 'server',
@@ -46,18 +44,16 @@
                             totalItems: totalItems
                           }
                   ">
-                    <td>{{ month.year }}</td>
-                    <td>{{ month.monthName + 1 }}</td>
-                    <td>{{ month.title }}</td>
-                    <td>{{ month.isCalculated ? "Yes" : "No" }}</td>
-                    <td>
+                    <td>{{ monthlyCard.employee?.tripleName }}</td>
+                    <td>{{ monthlyCard.salary }}</td>
+                    <td>{{ monthlyCard.isCalculated ? "Yes" : "No" }}</td>
                       <!-- <button type="button"
                         class="btn btn-sm bg-secondary"
                         (click)="editMonth(month)">
                         <i class="fas fa-pencil-alt"></i>
                         {{ "Edit" | localize }}
                       </button> -->
-                      <button type="button"
+                      <!-- <button type="button"
                         class="btn btn-sm bg-danger mx-2"
                         (click)="delete(month)">
                         <i class="fas fa-trash"></i>
@@ -79,8 +75,7 @@
                         >
                         {{ "Calculated" | localize }}
                         <i class="fas fa-check"></i>
-                      </button>
-                    </td>
+                      </button> -->
                   </tr>
                 </tbody>
               </table>

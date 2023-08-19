@@ -4,6 +4,7 @@ using HRSystem.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRSystem.Migrations
 {
     [DbContext(typeof(HRSystemDbContext))]
-    partial class HRSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230819024953_BDCards")]
+    partial class BDCards
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -5027,7 +5030,7 @@ namespace HRSystem.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<Guid>("MonthId")
+                    b.Property<Guid?>("MonthId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<double>("Salary")
@@ -5136,9 +5139,6 @@ namespace HRSystem.Migrations
 
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
-
-                    b.Property<Guid>("RequiredTypeId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -6395,15 +6395,11 @@ namespace HRSystem.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HRSystem.HR.Operational.PayrollSystem.Classes.Months.Month", "Month")
+                    b.HasOne("HRSystem.HR.Operational.PayrollSystem.Classes.Months.Month", null)
                         .WithMany("MonthlyCards")
-                        .HasForeignKey("MonthId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MonthId");
 
                     b.Navigation("EmployeeCard");
-
-                    b.Navigation("Month");
                 });
 
             modelBuilder.Entity("HRSystem.HR.Operational.Workflows.Classes.Workflow.Workflow", b =>

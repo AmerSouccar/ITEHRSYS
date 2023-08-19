@@ -44,6 +44,16 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
             return ObjectMapper.Map<ReadLeaveRequestDto>(await _leaveRequestDomanService.GetbyId(id));
         }
 
+        public PagedResultDto<ReadLeaveRequestDto> GetMyEmployeesLeaveRequests(PagedGeneralResultRequestDto input)
+        {
+            var requests = _leaveRequestDomanService.GetMyEmployeesLeaveRequests();
+            int total = requests.Count();
+            requests = requests.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadLeaveRequestDto>>(requests.ToList());
+            return new PagedResultDto<ReadLeaveRequestDto>(total, list);
+        }
+
         public async Task<InsertLeaveRequestDto> Insert(InsertLeaveRequestDto leaveRequest)
         {
             return ObjectMapper.Map<InsertLeaveRequestDto>(await _leaveRequestDomanService.Insert(ObjectMapper.Map<LeaveRequest>(leaveRequest)));
@@ -52,6 +62,11 @@ namespace HRSystem.HR.Operational.EmployeeServices.Classes.LeaveRequests.Service
         public async Task RejectLeaveRequest(Guid id)
         {
             await _leaveRequestDomanService.RejectLeaveRequest(id);
+        }
+
+        public async Task RequestLeave(InsertLeaveRequestDto leaveRequest)
+        {
+            await _leaveRequestDomanService.RequestLeave(ObjectMapper.Map<LeaveRequest>(leaveRequest));
         }
 
         public async Task<UpdateLeaveRequestDto> Update(UpdateLeaveRequestDto leaveRequest)

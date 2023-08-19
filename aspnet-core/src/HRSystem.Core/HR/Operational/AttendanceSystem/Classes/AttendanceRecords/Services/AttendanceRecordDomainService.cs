@@ -37,8 +37,10 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
         private readonly IRepository<Workshop,Guid> _workshopRepository;
         private readonly IRepository<NormalShift,Guid> _normalShiftRepository;
         private readonly IRepository<FinancialCard,Guid> _financialCardRepository;
+        private readonly IRepository<BenefitCard,Guid> _benefitCardRepository;
+        private readonly IRepository<DeductionCard,Guid> _deductionCardRepository;
 
-        public AttendanceRecordDomainService(IRepository<AttendanceRecord, Guid> attendanceRecordRepository, IRepository<EmployeeCard, Guid> employeeCardRepository, IRepository<Employee, Guid> employeeRepository, IRepository<AttendanceMonthlyCard, Guid> attendanceMonthlyCardRepository, ICompanyHolidayDomainService companyHolidayDomainService, IFixedHolidayDomainService fixedHolidayDomainService, IChangeableHolidayDomainService changeableHolidayDomainService, IRepository<LeaveRequest, Guid> leaveRequestRepository, IRepository<EntranceExitRecord, Guid> entranceExitRecordRepository, IRepository<AttendanceForm, Guid> attendanceFormRepository, IRepository<Workshop, Guid> workshopRepository, IRepository<NormalShift, Guid> normalShiftRepository, IRepository<FinancialCard, Guid> financialCardRepository)
+        public AttendanceRecordDomainService(IRepository<AttendanceRecord, Guid> attendanceRecordRepository, IRepository<EmployeeCard, Guid> employeeCardRepository, IRepository<Employee, Guid> employeeRepository, IRepository<AttendanceMonthlyCard, Guid> attendanceMonthlyCardRepository, ICompanyHolidayDomainService companyHolidayDomainService, IFixedHolidayDomainService fixedHolidayDomainService, IChangeableHolidayDomainService changeableHolidayDomainService, IRepository<LeaveRequest, Guid> leaveRequestRepository, IRepository<EntranceExitRecord, Guid> entranceExitRecordRepository, IRepository<AttendanceForm, Guid> attendanceFormRepository, IRepository<Workshop, Guid> workshopRepository, IRepository<NormalShift, Guid> normalShiftRepository, IRepository<FinancialCard, Guid> financialCardRepository, IRepository<BenefitCard, Guid> benefitCardRepository, IRepository<DeductionCard, Guid> deductionCardRepository)
         {
             _attendanceRecordRepository = attendanceRecordRepository;
             _employeeCardRepository = employeeCardRepository;
@@ -53,9 +55,11 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
             _workshopRepository = workshopRepository;
             _normalShiftRepository = normalShiftRepository;
             _financialCardRepository = financialCardRepository;
+            _benefitCardRepository = benefitCardRepository;
+            _deductionCardRepository = deductionCardRepository;
         }
 
-        public async Task CalculateMonth(Guid id)
+        public async Task OldCalculateMonth(Guid id)
         {
             var record = await _attendanceRecordRepository.FirstOrDefaultAsync(x => x.Id == id);
             if (record != null)
@@ -306,6 +310,154 @@ namespace HRSystem.HR.Operational.AttendanceSystem.Classes.AttendanceRecords.Ser
         public async Task<AttendanceRecord> Update(AttendanceRecord attendanceRecord)
         {
             return await _attendanceRecordRepository.UpdateAsync(attendanceRecord);
+        }
+
+        public async Task CalculateMonth(Guid id)
+        {
+            var record = await _attendanceRecordRepository.FirstOrDefaultAsync(x => x.Id == id);
+            if (record != null)
+            {
+                await _attendanceRecordRepository.EnsureCollectionLoadedAsync(record, x => x.AttendanceMonthlyCards);
+                foreach (var attendanceMonthlyCard in record.AttendanceMonthlyCards)
+                {
+                    if(attendanceMonthlyCard.isCalculated)
+                    {
+                        continue;
+                    }
+                    await _attendanceMonthlyCardRepository.EnsurePropertyLoadedAsync(attendanceMonthlyCard, x => x.EmployeeCard);
+                    await _employeeCardRepository.EnsurePropertyLoadedAsync(attendanceMonthlyCard.EmployeeCard, x => x.Employee);
+                    await _employeeCardRepository.EnsurePropertyLoadedAsync(attendanceMonthlyCard.EmployeeCard, x => x.AttendanceForm);
+                    await _employeeCardRepository.EnsurePropertyLoadedAsync(attendanceMonthlyCard.EmployeeCard, x => x.Position);
+                    var employeePosition = attendanceMonthlyCard.EmployeeCard.Position;
+                    double totalRequiredHoursPerDay = 0;
+                    double actualRequiredHours = 0;
+                    double actualAttendanceHours = 0;
+                    if (employeePosition.Per == Administrative.JobDesc.Enums.HoursPer.Day)
+                    {
+                        totalRequiredHoursPerDay = employeePosition.WorkingHours ;
+                    }
+                    else if(employeePosition.Per == Administrative.JobDesc.Enums.HoursPer.Week)
+                    {
+                        totalRequiredHoursPerDay = (employeePosition.WorkingHours/7);
+                    }
+                    else if(employeePosition.Per == Administrative.JobDesc.Enums.HoursPer.Month)
+                    {
+                        totalRequiredHoursPerDay = (employeePosition.WorkingHours / 30);
+                    }
+                    else if(employeePosition.Per == Administrative.JobDesc.Enums.HoursPer.Year)
+                    {
+                        totalRequiredHoursPerDay = (employeePosition.WorkingHours / 365);
+                    }
+                    for (DateTime dt = record.FromDate; dt < record.ToDate; dt = dt.AddDays(1))
+                    {
+                        //Check if Holiday
+                        bool holidayConfirmed = false;
+                        bool leaveConfirmed = false;
+                        bool hourlyLeaveConfirmed = false;
+
+                        //var companyHolidays = _companyHolidayDomainService.GetAll();
+                        //if (!holidayConfirmed && companyHolidays.Any(x => x.DayOfWeek == dt.Day.ToString("dddd")))
+                        //{
+                        //    holidayConfirmed = true;
+                        //}
+                        var fixedHolidays = _fixedHolidayDomainService.GetAll();
+                        if (!holidayConfirmed && fixedHolidays.Any(x => x.Month.ToString() == dt.Month.ToString() && x.Day.ToString() == dt.Day.ToString()))
+                        {
+                            holidayConfirmed = true;
+                        }
+                        var changeableHolidays = _changeableHolidayDomainService.GetAll();
+                        if (!holidayConfirmed && changeableHolidays.Any(x => x.StartDate <= dt && x.EndDate >= dt))
+                        {
+                            holidayConfirmed = true;
+                        }
+
+                        if (holidayConfirmed)
+                        {
+                            actualRequiredHours += totalRequiredHoursPerDay;
+                            actualAttendanceHours += totalRequiredHoursPerDay;
+                            continue;
+                        }
+
+                        var leaveRequests = _leaveRequestRepository.GetAll().Where(x => x.EmployeeId == attendanceMonthlyCard.EmployeeCard.EmployeeId && x.StartDate <= dt && x.EndDate > dt).ToList();
+                        foreach (var leaveRequest in leaveRequests)
+                        {
+                            await _leaveRequestRepository.EnsurePropertyLoadedAsync(leaveRequest, x => x.LeaveSetting);
+                           if(leaveRequest.isHourly)
+                            {
+                                if(leaveRequest.LeaveSetting.isPaidLeave)
+                                {
+                                    actualRequiredHours += (totalRequiredHoursPerDay - leaveRequest.LeaveRequestBalance);
+                                    hourlyLeaveConfirmed = true;
+                                }
+                            }
+                           else if(!leaveRequest.isHourly)
+                            {
+                                if (leaveRequest.LeaveSetting.isPaidLeave)
+                                {
+                                    actualRequiredHours += totalRequiredHoursPerDay;
+                                    actualAttendanceHours += totalRequiredHoursPerDay;
+                                    leaveConfirmed = true;
+                                }
+                            }
+                        }
+                        if(!leaveConfirmed && !hourlyLeaveConfirmed)
+                        {
+                            actualRequiredHours += totalRequiredHoursPerDay;
+                        }
+
+
+                        var entranceExitRecords = _entranceExitRecordRepository.GetAll().Where(x => x.EmployeeId == attendanceMonthlyCard.EmployeeCard.EmployeeId && x.LogDate.Date == dt.Date).ToArray();
+                        double thisDayWorkedHours = 0;
+                        if(entranceExitRecords.Length > 0)
+                        {
+                            for(int i = 0; i <  entranceExitRecords.Length; i += 2)
+                            {
+                                thisDayWorkedHours += entranceExitRecords[i + 1].LogTime.TimeOfDay.Subtract(entranceExitRecords[i].LogTime.TimeOfDay).TotalHours;
+                            }
+                        }
+                        actualAttendanceHours += thisDayWorkedHours;
+                    }
+
+                    var financialCard = _financialCardRepository.GetAllList().FirstOrDefault(x => x.EmployeeId == attendanceMonthlyCard.EmployeeCard.EmployeeId);
+                    double empSalaryPerHour = (financialCard.Salary / 30) / attendanceMonthlyCard.EmployeeCard.Position.WorkingHours;
+
+                    attendanceMonthlyCard.TotalRequiredWorkHours = actualRequiredHours;
+                    attendanceMonthlyCard.ActualTotalWorkHours = actualAttendanceHours;
+                    attendanceMonthlyCard.isCalculated = true;
+                    await _attendanceMonthlyCardRepository.UpdateAsync(attendanceMonthlyCard);
+
+                    if (attendanceMonthlyCard.TotalRequiredWorkHours < attendanceMonthlyCard.ActualTotalWorkHours)
+                    {
+                        double benefitHours = attendanceMonthlyCard.ActualTotalWorkHours - attendanceMonthlyCard.TotalRequiredWorkHours;
+                        BenefitCard benefitCard = new BenefitCard()
+                        {
+                            isCalculatedInPayrollSystem = false,
+                            Name = "Benefit For Extra Time",
+                            Value = benefitHours * empSalaryPerHour,
+                            EmployeeId = attendanceMonthlyCard.EmployeeCard.EmployeeId,
+                        };
+                        await _benefitCardRepository.InsertAsync(benefitCard);
+                    }
+                    else if (attendanceMonthlyCard.TotalRequiredWorkHours > attendanceMonthlyCard.ActualTotalWorkHours)
+                    {
+                        double deductionHours = attendanceMonthlyCard.TotalRequiredWorkHours - attendanceMonthlyCard.ActualTotalWorkHours;
+
+                        DeductionCard deductionCard = new DeductionCard()
+                        {
+                            isCalculatedInPayrollSystem = false,
+                            Name = "Deduction For Less Time",
+                            Value = deductionHours * empSalaryPerHour,
+                            EmployeeId = attendanceMonthlyCard.EmployeeCard.EmployeeId,
+                        };
+                        await _deductionCardRepository.InsertAsync(deductionCard);
+
+                    }
+
+                }
+                var notCalculated = record.AttendanceMonthlyCards.Any(x => x.isCalculated == false);
+                record.isCalculated = !notCalculated;
+                await _attendanceRecordRepository.UpdateAsync(record);
+            }
         }
     }
 }

@@ -246,7 +246,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                             ),
                             new MenuItem(
                                 this.l('AcceptLeaveRequest'),
-                                '/app/cities',
+                                '/app/my-employees-leave-requests',
                                 'far fa-circle'
                             ),
                            

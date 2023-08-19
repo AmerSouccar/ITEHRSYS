@@ -2,6 +2,7 @@
 using HRSystem.HR.Administrative.Personal.Classes.EmployeeCards;
 using HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards;
 using HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards;
+using HRSystem.HR.Operational.PayrollSystem.Classes.Months;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,6 +25,9 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards
         public double TotalDeductions { get; set; }
         public double TotalBenefits { get; set; }
         public double FinalSalary { get; set; }
+        [ForeignKey("Month")]
+        public Guid MonthId { get; set; }
+        public Month Month { get; set; }
         public List<BenefitCard> BenefitCards { get; set; }
         public List<DeductionCard> DeductionCards { get; set; }
     }

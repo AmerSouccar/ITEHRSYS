@@ -34,6 +34,16 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.Services
             return new PagedResultDto<ReadMonthlyCardDto>(total, list);
         }
 
+        public PagedResultDto<ReadMonthlyCardDto> GetAllbyId(Guid id,PagedGeneralResultRequestDto input)
+        {
+            var monthlyCards = _monthlyCardDominService.GetAllbyId(id);
+            int total = monthlyCards.Count();
+            monthlyCards = monthlyCards.Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            var list = ObjectMapper.Map<List<ReadMonthlyCardDto>>(monthlyCards.ToList());
+            return new PagedResultDto<ReadMonthlyCardDto>(total, list);
+        }
+
         public async Task<ReadMonthlyCardDto> GetbyId(Guid id)
         {
             return ObjectMapper.Map<ReadMonthlyCardDto>(await _monthlyCardDominService.GetbyId(id));

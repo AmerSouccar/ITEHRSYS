@@ -12040,6 +12040,67 @@ export class LeaveRequestServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getMyEmployeesLeaveRequests(skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadLeaveRequestDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/LeaveRequest/GetMyEmployeesLeaveRequests?";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetMyEmployeesLeaveRequests(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetMyEmployeesLeaveRequests(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ReadLeaveRequestDtoPagedResultDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ReadLeaveRequestDtoPagedResultDto>;
+        }));
+    }
+
+    protected processGetMyEmployeesLeaveRequests(response: HttpResponseBase): Observable<ReadLeaveRequestDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ReadLeaveRequestDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param body (optional) 
      * @return Success
      */
@@ -12129,6 +12190,58 @@ export class LeaveRequestServiceProxy {
     }
 
     protected processRejectLeaveRequest(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return _observableOf(null as any);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    requestLeave(body: InsertLeaveRequestDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/LeaveRequest/RequestLeave";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processRequestLeave(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processRequestLeave(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<void>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<void>;
+        }));
+    }
+
+    protected processRequestLeave(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -13154,6 +13267,58 @@ export class MonthServiceProxy {
      * @param id (optional) 
      * @return Success
      */
+    calculateMonth(id: string | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/Month/CalculateMonth?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCalculateMonth(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCalculateMonth(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<void>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<void>;
+        }));
+    }
+
+    protected processCalculateMonth(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return _observableOf(null as any);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
     delete(id: string | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/Month/Delete?";
         if (id === null)
@@ -13184,6 +13349,63 @@ export class MonthServiceProxy {
     }
 
     protected processDelete(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return _observableOf(null as any);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @param body (optional) 
+     * @return Success
+     */
+    generateMonthlyCards(id: string | undefined, body: string[] | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/Month/GenerateMonthlyCards?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGenerateMonthlyCards(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGenerateMonthlyCards(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<void>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<void>;
+        }));
+    }
+
+    protected processGenerateMonthlyCards(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -13535,6 +13757,72 @@ export class MonthlyCardServiceProxy {
     }
 
     protected processGetAll(response: HttpResponseBase): Observable<ReadMonthlyCardDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ReadMonthlyCardDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getAllbyId(id: string | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<ReadMonthlyCardDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/MonthlyCard/GetAllbyId?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllbyId(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllbyId(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ReadMonthlyCardDtoPagedResultDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ReadMonthlyCardDtoPagedResultDto>;
+        }));
+    }
+
+    protected processGetAllbyId(response: HttpResponseBase): Observable<ReadMonthlyCardDtoPagedResultDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -29116,7 +29404,7 @@ export interface IInsertMilitaryServiceDto {
 export class InsertMonthDto implements IInsertMonthDto {
     id: string;
     year: number;
-    monthName: MonthName;
+    monthName: number;
     title: string | undefined;
     isCalculated: boolean;
 
@@ -29167,7 +29455,7 @@ export class InsertMonthDto implements IInsertMonthDto {
 export interface IInsertMonthDto {
     id: string;
     year: number;
-    monthName: MonthName;
+    monthName: number;
     title: string | undefined;
     isCalculated: boolean;
 }
@@ -37965,9 +38253,8 @@ export interface IReadMilitaryServiceDtoPagedResultDto {
 export class ReadMonthDto implements IReadMonthDto {
     id: string;
     year: number;
-    monthName: MonthName;
+    monthName: number;
     title: string | undefined;
-    monthlyCards: ReadMonthlyCardDto[] | undefined;
     isCalculated: boolean;
 
     constructor(data?: IReadMonthDto) {
@@ -37985,11 +38272,6 @@ export class ReadMonthDto implements IReadMonthDto {
             this.year = _data["year"];
             this.monthName = _data["monthName"];
             this.title = _data["title"];
-            if (Array.isArray(_data["monthlyCards"])) {
-                this.monthlyCards = [] as any;
-                for (let item of _data["monthlyCards"])
-                    this.monthlyCards.push(ReadMonthlyCardDto.fromJS(item));
-            }
             this.isCalculated = _data["isCalculated"];
         }
     }
@@ -38007,11 +38289,6 @@ export class ReadMonthDto implements IReadMonthDto {
         data["year"] = this.year;
         data["monthName"] = this.monthName;
         data["title"] = this.title;
-        if (Array.isArray(this.monthlyCards)) {
-            data["monthlyCards"] = [];
-            for (let item of this.monthlyCards)
-                data["monthlyCards"].push(item.toJSON());
-        }
         data["isCalculated"] = this.isCalculated;
         return data;
     }
@@ -38027,9 +38304,8 @@ export class ReadMonthDto implements IReadMonthDto {
 export interface IReadMonthDto {
     id: string;
     year: number;
-    monthName: MonthName;
+    monthName: number;
     title: string | undefined;
-    monthlyCards: ReadMonthlyCardDto[] | undefined;
     isCalculated: boolean;
 }
 
@@ -45256,7 +45532,7 @@ export interface IUpdateMilitaryServiceDto {
 export class UpdateMonthDto implements IUpdateMonthDto {
     id: string;
     year: number;
-    monthName: MonthName;
+    monthName: number;
     title: string | undefined;
     isCalculated: boolean;
 
@@ -45307,7 +45583,7 @@ export class UpdateMonthDto implements IUpdateMonthDto {
 export interface IUpdateMonthDto {
     id: string;
     year: number;
-    monthName: MonthName;
+    monthName: number;
     title: string | undefined;
     isCalculated: boolean;
 }

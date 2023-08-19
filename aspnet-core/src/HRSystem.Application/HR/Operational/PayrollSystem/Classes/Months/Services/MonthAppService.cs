@@ -19,9 +19,19 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.Months.Services
             _monthDomainService = monthDomainService;
         }
 
+        public async Task CalculateMonth(Guid id)
+        {
+            await _monthDomainService.CalculateMonth(id);
+        }
+
         public async Task Delete(Guid id)
         {
             await _monthDomainService.Delete(id);
+        }
+
+        public async Task GenerateMonthlyCards(Guid id, List<Guid> employeeIds)
+        {
+            await _monthDomainService.GenerateMonthlyCards(id, employeeIds);
         }
 
         public PagedResultDto<ReadMonthDto> GetAll(PagedGeneralResultRequestDto input)

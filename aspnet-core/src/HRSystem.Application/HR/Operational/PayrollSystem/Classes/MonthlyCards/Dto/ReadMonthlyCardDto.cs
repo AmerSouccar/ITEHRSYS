@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using HRSystem.HR.Administrative.Personal.Classes.EmployeeCards;
+using HRSystem.HR.Administrative.Personal.Classes.EmployeeCards.Dto;
 using HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards;
 using HRSystem.HR.Operational.PayrollSystem.Classes.BenefitCards.Dto;
 using HRSystem.HR.Operational.PayrollSystem.Classes.DeductionCards;
@@ -16,7 +17,7 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.Dto
     public class ReadMonthlyCardDto :EntityDto<Guid>
     {
         public Guid EmployeeCardId { get; set; }
-        //public ReadEmployeeCardDto EmployeeCard { get; set; }
+        public ReadEmployeeCardDto EmployeeCard { get; set; }
         public double Salary { get; set; }
         public bool Calculated { get; set; }
         public double WorkDays { get; set; }

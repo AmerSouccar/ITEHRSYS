@@ -27,6 +27,11 @@ namespace HRSystem.HR.Operational.PayrollSystem.Classes.MonthlyCards.Services
             return _monthlyCardDominRepository.GetAllIncluding(x => x.EmployeeCard, x => x.BenefitCards, x => x.DeductionCards);
         }
 
+        public IQueryable<MonthlyCard> GetAllbyId(Guid id)
+        {
+            return _monthlyCardDominRepository.GetAllIncluding(x => x.EmployeeCard.Employee).Where(x => x.MonthId == id);
+        }
+
         public async Task<MonthlyCard> GetbyId(Guid id)
         {
             MonthlyCard monthlyCard = await _monthlyCardDominRepository.GetAsync(id);
