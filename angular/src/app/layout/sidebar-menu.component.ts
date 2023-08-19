@@ -68,12 +68,14 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     new MenuItem(
                         this.l('Employee'),
                         '/app/employees',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.Employee'
                     ),
                     new MenuItem(
                         this.l('Employee Card'),
                         '/app/employee-cards',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.Employeecard'
                     ),
                     new MenuItem(
                         this.l('Indexes'),
@@ -84,22 +86,26 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                             new MenuItem(
                                 this.l('Country'),
                                 '/app/countries',
-                                'far fa-circle'
+                                'far fa-circle',
+                                'Perm.Country'
                             ),
                             new MenuItem(
                                 this.l('City'),
                                 '/app/cities',
-                                'far fa-circle'
+                                'far fa-circle',
+                                'Perm.City'
                             ),
                             new MenuItem(
                                 this.l('Religion'),
                                 '/app/religions',
-                                'far fa-circle'
+                                'far fa-circle',
+                                'Perm.Religion'
                             ),
                             new MenuItem(
                                 this.l('Nationality'),
                                 '/app/nationalities',
-                                'far fa-circle'
+                                'far fa-circle',
+                                'Perm.Nationality'
                             ),
                         ]
                     ),
@@ -109,19 +115,22 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     new MenuItem(
                         this.l('Nodes'),
                         '/app/nodes',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.Nodes'
                     ),
                 ]),
                 new MenuItem(this.l('Grades'), '', 'fas fa-dot-circle', '', [
                     new MenuItem(
                         this.l('Educational Grade'),
                         '/app/education-grades',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.EducationalGrade'
                     ),
                     new MenuItem(
                         this.l('Grade'),
                         '/app/grades',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.Grade'
                     ),
                     
                     new MenuItem(
@@ -133,7 +142,8 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                             new MenuItem(
                                 this.l('OrgLevels'),
                                 '/app/organization-levels',
-                                'far fa-circle'
+                                'far fa-circle',
+                                'Perm.OrgLevels'
                             ),
                            
                         ]
@@ -143,12 +153,14 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     new MenuItem(
                         this.l('Job Description'),
                         '/app/job-descriptions',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.JobDescription'
                     ),
                     new MenuItem(
                         this.l('Position'),
                         '/app/positions',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.Position'
                     ),
                   
                     new MenuItem(
@@ -160,7 +172,8 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                             new MenuItem(
                                 this.l('Position Type'),
                                 '/app/position-work-types',
-                                'far fa-circle'
+                                'far fa-circle',
+                                'Perm.PositionType'
                             ),
                            
                         ]
@@ -173,17 +186,20 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     new MenuItem(
                         this.l('AttendanceForm'),
                         '/app/attendanceForms',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.AttendanceForm'
                     ),
                     new MenuItem(
                         this.l('AttendanceRecord'),
                         '/app/attendanceRecords',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.AttendanceRecord'
                     ),
                     new MenuItem(
                         this.l('EntryExitRecords'),
                         '/app/entrance-exit-records',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.EntryExitRecord'
                     ),
                    
                 ]),
@@ -191,17 +207,20 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     new MenuItem(
                         this.l('Assignments'),
                         '/app/assignments',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.Assignment'
                     ),
                     new MenuItem(
                         this.l('ChangeableHolidays'),
                         '/app/changeable-holidays',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.ChangableHolidays'
                     ),
                     new MenuItem(
                         this.l('CompanyHolidays'),
                         '/app/company-holidays',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.CompanyHolidays'
                     ),
                     // new MenuItem(
                     //     this.l('FixedHolidays'),
@@ -211,12 +230,14 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     new MenuItem(
                         this.l('LeaveSettings'),
                         '/app/leave-settings',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.LeaveSetting'
                     ),
                     new MenuItem(
                         this.l('LeaveRequests'),
                         '/app/leave-requests',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.LeaveRequest'
                     ),
                       // new MenuItem(
                     //     this.l('Promotions'),
@@ -247,7 +268,8 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                             new MenuItem(
                                 this.l('AcceptLeaveRequest'),
                                 '/app/my-employees-leave-requests',
-                                'far fa-circle'
+                                'far fa-circle',
+                                'Perm.AcceptLeaveRequest'
                             ),
                            
                         ]
@@ -259,12 +281,14 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     new MenuItem(
                         this.l('Month'),
                         '/app/payroll-months',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.Month'
                     ),
                     new MenuItem(
                         this.l('FinancialCards'),
                         '/app/financial-cards',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.FinancialCards'
                     ),
                    
                 ]),
@@ -273,12 +297,14 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     new MenuItem(
                         this.l('Workflow'),
                         '/app/workflows',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.WorkFlow'
                     ),
                     new MenuItem(
                         this.l('WorkflowSettings'),
                         '/app/workflow-settings',
-                        'far fa-circle'
+                        'far fa-circle',
+                        'Perm.WorkFlowSettings'
                     ),
                    
                 ]),
